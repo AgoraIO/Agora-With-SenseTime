@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Beauty Options -->
+    <color name="beauty_option_panel_background">#80000000</color>
+    <color name="beauty_option_selected_text_color">#bc47ff</color>
+    <color name="beauty_option_divider_color">#80efefef</color>
+
+    <!-- Filter Options -->
+    <color name="filter_item_image_cover_selected">#88000000</color>
+    
+    <!-- LiveActivity -->
+    <color name="light_gray">#55efefef</color>
+</resources>

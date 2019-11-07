@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">sensetime</string>
+    <string name="makeup_original">Original</string>
+    <string name="legal_characters_for_agora" translatable="false" >abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&amp;()+,-:;&lt;=.>?@[]^_`{|}~</string>
+
+    <!-- MainActivity -->
+    <string name="start_broadcast">Start Broadcast</string>
+    <string name="need_permissions">Necessary Permissions Required.</string>
+    <string name="empty_channel_name">Please Input A Valid Channel Name</string>
+</resources>

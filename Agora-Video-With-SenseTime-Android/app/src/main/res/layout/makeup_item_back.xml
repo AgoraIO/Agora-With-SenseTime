@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/makeup_item_back_layout_width"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/makeup_item_back_layout"
+        android:layout_width="@dimen/makeup_item_layout_width"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/makeup_group_item_image"
+            android:layout_width="@dimen/makeup_group_item_image_size"
+            android:layout_height="@dimen/makeup_group_item_image_size"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/makeup_group_item_name"
+            android:layout_width="@dimen/makeup_group_item_image_size"
+            android:layout_height="@dimen/makeup_item_text_height"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/beauty_option_text_color"
+            android:textAlignment="gravity"
+            android:gravity="center"/>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/makeup_item_back_icon_width"
+        android:layout_height="@dimen/makeup_item_back_icon_width"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/makeup_item_back_layout"
+        android:src="@drawable/filter_back"/>
+</RelativeLayout>

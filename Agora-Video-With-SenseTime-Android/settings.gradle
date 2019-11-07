@@ -1,0 +1,2 @@
+include ':app', ':sensetime', ':framework', ':videocapture'
+rootProject.name='Agora-Video-With-SenseTime-Android'

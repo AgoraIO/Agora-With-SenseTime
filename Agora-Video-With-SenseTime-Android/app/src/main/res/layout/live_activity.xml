@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <io.agora.rtcwithst.views.AgoraSurfaceView
+        android:id="@+id/local_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <io.agora.rtcwithst.views.sensetime.EffectOptionsLayout
+        android:id="@+id/effect_option_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+    <FrameLayout
+        android:id="@+id/remote_view_layout"
+        android:layout_width="@dimen/remote_view_width"
+        android:layout_height="@dimen/remote_view_height"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/global_view_margin"
+        android:visibility="gone">
+    </FrameLayout>
+    <ImageView
+        android:id="@+id/change_camera_btn"
+        android:layout_width="@dimen/switch_camera_btn_size"
+        android:layout_height="@dimen/switch_camera_btn_size"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/global_view_margin"
+        android:src="@drawable/change_camera"
+        android:background="@drawable/change_camera_btn_bg"
+        android:onClick="onCameraChange"/>
+</RelativeLayout>

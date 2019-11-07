@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sensetime="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/filter_item_layout_width"
+    android:layout_height="@dimen/effect_option_list_height">
+
+    <RelativeLayout
+        android:id="@+id/filter_image_container"
+        android:layout_width="@dimen/filter_item_width"
+        android:layout_height="@dimen/filter_item_height"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/filter_item_margin_top"
+        android:layout_marginEnd="@dimen/filter_item_margin_right"
+        android:padding="@dimen/filter_item_layout_padding"
+        android:background="@drawable/filter_item_background">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <io.agora.rtcwithst.views.sensetime.widgets.RoundImageView
+                android:id="@+id/filter_image"
+                android:layout_width="@dimen/filter_item_image_size"
+                android:layout_height="@dimen/filter_item_image_size"
+                sensetime:borderRadius="@dimen/filter_item_image_border_radius"
+                sensetime:type="round"/>
+            <TextView
+                android:id="@+id/filter_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/filter_item_name_text_view_height"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/filter_name_text_color"
+                android:textSize="@dimen/filter_item_name_text_size" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_cover"
+            android:layout_width="@dimen/filter_item_image_size"
+            android:layout_height="@dimen/filter_item_image_size"
+            android:background="@drawable/filter_item_image_cover"/>
+    </RelativeLayout>
+</RelativeLayout>
