@@ -374,7 +374,8 @@ public class STRenderer {
         }
     }
 
-    private void adjustImageSize(int width, int height) {
+    private void adjustImageSize(int width, int height,
+                                 int resizeWidth, int resizeHeight) {
         if (mImageWidth != width || mImageHeight != height) {
             mImageWidth = width;
             mImageHeight = height;
@@ -382,14 +383,13 @@ public class STRenderer {
             // SenseTime renderer does not need to know
             // the surface size, thus without concerning
             // flipping and resizing.
-            mGLRender.init(mImageWidth, mImageHeight);
+            mGLRender.init(mImageWidth, mImageHeight, resizeWidth, resizeHeight);
             mGLRender.calculateVertexBuffer(mImageWidth,
                     mImageHeight, mImageWidth, mImageHeight);
         }
     }
 
     private int getCurrentOrientation() {
-        // TODO provide a callback to initialize the accelerometer
         //int dir = Accelerometer.getDirection();
         //int orientation = dir - 1;
         //if (orientation < 0) {
@@ -397,7 +397,14 @@ public class STRenderer {
         //}
 
         //return orientation;
-        return STRotateType.ST_CLOCKWISE_ROTATE_270;
+
+        // Note: the image byte array obtained from
+        // texture glReadPixels arranges from the
+        // bottom left to top right, row by row.
+        // So when the image is rotated to ROTATE_0,
+        // its direction in byte array is actually
+        // ROTATE_180
+        return STRotateType.ST_CLOCKWISE_ROTATE_180;
     }
 
     public void enableBeautify(boolean needBeautify) {
@@ -556,13 +563,21 @@ public class STRenderer {
     }
 
     public int preProcess(int textureId, SurfaceTexture surfaceTexture,
-                          int width, int height, float[] mvpMatrix, float[] texMatrix) {
+                          int width, int height, float[] texMatrix) {
+        return preProcess(textureId, surfaceTexture, width, height,
+                -1, -1, texMatrix);
+    }
+
+    public int preProcess(int textureId, SurfaceTexture surfaceTexture,
+                          int width, int height, int resizeWidth,
+                          int resizeHeight, float[] texMatrix) {
+
         if (!mAuthorized || mIsPaused ||
                 mCameraChanging || surfaceTexture == null) {
             return 0;
         }
 
-        adjustImageSize(width, height);
+        adjustImageSize(width, height, resizeWidth, resizeHeight);
         // init buffers here cause we need the image size info
         initBuffers();
 
@@ -572,8 +587,10 @@ public class STRenderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         mRGBABuffer.rewind();
-        int processedTextureId = mGLRender.preProcess(textureId,
-                mRGBABuffer, 0, mvpMatrix, texMatrix);
+        // Convert texture OES to texture 2D, and rotate
+        // the image to normal direction here
+        int processedTextureId = mGLRender.preProcess(
+                textureId, mRGBABuffer, 0, texMatrix);
 
         if (mShowOriginal) {
             return processedTextureId;
@@ -670,12 +687,12 @@ public class STRenderer {
                     // 如果需要输出buffer推流或其他，设置该开关为true
                     if (!mNeedFilterOutputBuffer) {
                         result = mStStickerNative.processTexture(processedTextureId, humanAction,
-                                orientation, STRotateType.ST_CLOCKWISE_ROTATE_270, mImageWidth, mImageHeight,
+                                STRotateType.ST_CLOCKWISE_ROTATE_180, STRotateType.ST_CLOCKWISE_ROTATE_270, mImageWidth, mImageHeight,
                                 false, inputParams, mTextureOutId[0]);
                     } else {
                         byte[] imageOut = new byte[mImageWidth * mImageHeight * 4];
                         result = mStStickerNative.processTextureAndOutputBuffer(processedTextureId,
-                                humanAction, orientation, STRotateType.ST_CLOCKWISE_ROTATE_270, mImageWidth,
+                                humanAction, 0, STRotateType.ST_CLOCKWISE_ROTATE_0, mImageWidth,
                                 mImageHeight, false, inputParams, mTextureOutId[0],
                                 STCommon.ST_PIX_FMT_RGBA8888, imageOut);
                     }

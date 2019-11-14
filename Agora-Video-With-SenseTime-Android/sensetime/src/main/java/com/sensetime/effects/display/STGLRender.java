@@ -2,7 +2,7 @@ package com.sensetime.effects.display;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
-import android.opengl.Matrix;
+import android.opengl.GLES30;
 import android.util.Log;
 
 import com.sensetime.effects.glutils.GlUtil;
@@ -18,7 +18,6 @@ import java.util.HashMap;
 public class STGLRender {
     private final static String TAG = "STGLRender";
     private static final String CAMERA_INPUT_VERTEX_SHADER =
-            "uniform mat4 uMVPMatrix;\n" +
             "uniform mat4 uTexMatrix;\n" +
             "attribute vec4 position;\n" +
             "attribute vec4 inputTextureCoordinate;\n" +
@@ -27,7 +26,7 @@ public class STGLRender {
             "\n" +
             "void main()\n" +
             "{\n" +
-            "	gl_Position = uMVPMatrix * position;\n" +
+            "	gl_Position = position;\n" +
             "	textureCoordinate = (uTexMatrix * inputTextureCoordinate).xy;\n" +
             "}";
 
@@ -101,7 +100,6 @@ public class STGLRender {
 
     private final static String PROGRAM_ID = "program";
     private final static String POSITION_COORDINATE = "position";
-    private final static String MVP_COORDINATE_MATRIX = "uMVPMatrix";
     private final static String TEX_COORDINATE_MATRIX = "uTexMatrix";
     private final static String TEXTURE_UNIFORM = "inputImageTexture";
     private final static String TEXTURE_COORDINATE = "inputTextureCoordinate";
@@ -112,9 +110,9 @@ public class STGLRender {
     private int yTextureLoc = -1;
     private int uvTextureLoc = -1;
 
-    private final FloatBuffer mGLCubeBuffer;
-    private final FloatBuffer mGLTextureBuffer;
-    private final FloatBuffer mGLSaveTextureBuffer;
+    private final FloatBuffer mGLVertexMatrixBuffer;
+    private final FloatBuffer mGLTexMatrixBuffer;
+    // private final FloatBuffer mGLSaveTextureBuffer;
 
     private FloatBuffer mTextureBuffer;
     private FloatBuffer mVertexBuffer;
@@ -122,20 +120,7 @@ public class STGLRender {
     private boolean mIsInitialized;
     private int glError;
 
-    private ArrayList<HashMap<String, Integer>> mArrayPrograms =
-            new ArrayList<HashMap<String, Integer>>(2) {{
-                    for (int i = 0; i < 2; ++i) {
-                        HashMap<String, Integer> hashMap = new HashMap<>();
-                        hashMap.put(PROGRAM_ID, 0);
-                        hashMap.put(POSITION_COORDINATE, -1);
-                        hashMap.put(TEXTURE_UNIFORM, -1);
-                        hashMap.put(TEXTURE_COORDINATE, -1);
-                        hashMap.put(MVP_COORDINATE_MATRIX, -1);
-                        hashMap.put(TEX_COORDINATE_MATRIX, -1);
-                        add(hashMap);
-                    }
-                }
-    };
+    private ArrayList<HashMap<String, Integer>> mArrayPrograms;
 
     private int mViewPortWidth;
     private int mViewPortHeight;
@@ -155,20 +140,37 @@ public class STGLRender {
 
 
     public STGLRender() {
-        mGLCubeBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.CUBE.length * 4)
+        mGLVertexMatrixBuffer = ByteBuffer.allocateDirect(
+                TextureRotationUtil.VERTEX_MATRIX.length * 4)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer();
-        mGLCubeBuffer.put(TextureRotationUtil.CUBE).position(0);
+        mGLVertexMatrixBuffer.put(TextureRotationUtil.VERTEX_MATRIX).position(0);
 
-        mGLTextureBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.TEXTURE_NO_ROTATION.length * 4)
+        mGLTexMatrixBuffer = ByteBuffer.allocateDirect(
+                TextureRotationUtil.TEXTURE_NO_ROTATION.length * 4)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer();
-        mGLTextureBuffer.put(TextureRotationUtil.TEXTURE_NO_ROTATION).position(0);
+        mGLTexMatrixBuffer.put(TextureRotationUtil.TEXTURE_NO_ROTATION).position(0);
 
-        mGLSaveTextureBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.TEXTURE_NO_ROTATION.length * 4)
-                .order(ByteOrder.nativeOrder())
-                .asFloatBuffer();
-        mGLSaveTextureBuffer.put(TextureRotationUtil.getPhotoRotation(0, false, true)).position(0);
+        //mGLSaveTextureBuffer = ByteBuffer.allocateDirect(
+        //        TextureRotationUtil.TEXTURE_NO_ROTATION.length * 4)
+        //        .order(ByteOrder.nativeOrder())
+        //        .asFloatBuffer();
+
+        // mGLSaveTextureBuffer.put(TextureRotationUtil.getPhotoRotation(
+        //  0, false, true)).position(0);
+
+        mArrayPrograms = new ArrayList<HashMap<String, Integer>>(2) {{
+            for (int i = 0; i < 2; ++i) {
+                HashMap<String, Integer> hashMap = new HashMap<>();
+                hashMap.put(PROGRAM_ID, 0);
+                hashMap.put(POSITION_COORDINATE, -1);
+                hashMap.put(TEXTURE_UNIFORM, -1);
+                hashMap.put(TEXTURE_COORDINATE, -1);
+                hashMap.put(TEX_COORDINATE_MATRIX, -1);
+                add(hashMap);
+            }
+        }};
     }
 
     public void init(int width, int height) {
@@ -183,6 +185,7 @@ public class STGLRender {
         if (mViewPortWidth == width && mViewPortHeight == height) {
             return;
         }
+
         initProgram(CAMERA_INPUT_FRAGMENT_SHADER_OES, mArrayPrograms.get(0));
         initProgram(CAMERA_INPUT_FRAGMENT_SHADER, mArrayPrograms.get(1));
         initYUVProgram(CAMERA_INPUT_VERTEX_SHADER, YUV_TEXTURE);
@@ -300,7 +303,6 @@ public class STGLRender {
             programInfo.put(POSITION_COORDINATE, GLES20.glGetAttribLocation(proID, POSITION_COORDINATE));
             programInfo.put(TEXTURE_UNIFORM, GLES20.glGetUniformLocation(proID, TEXTURE_UNIFORM));
             programInfo.put(TEXTURE_COORDINATE, GLES20.glGetAttribLocation(proID, TEXTURE_COORDINATE));
-            programInfo.put(MVP_COORDINATE_MATRIX, GLES20.glGetUniformLocation(proID, MVP_COORDINATE_MATRIX));
             programInfo.put(TEX_COORDINATE_MATRIX, GLES20.glGetUniformLocation(proID, TEX_COORDINATE_MATRIX));
         }
     }
@@ -323,40 +325,7 @@ public class STGLRender {
         }
     }
 
-    /**
-     * 此函数有三个功能
-     * 1. 将OES的纹理转换为标准的GL_TEXTURE_2D格式
-     * 2. 将纹理宽高对换，即将wxh的纹理转换为了hxw的纹理，并且如果是前置摄像头，则需要有水平的翻转
-     * 3. 读取上面两个步骤后的纹理内容存储到RGBA格式的buffer中，若初始化时使用resize参数，则读取resize后的纹理内容
-     *
-     * @param textureId [in] OES的纹理id
-     * @param buffer    [out] RGBA的buffer
-     * @return 转换后的GL_TEXTURE_2D的纹理id
-     */
-    public int preProcess(int textureId, ByteBuffer buffer) {
-        return preProcess(textureId, buffer, 0);
-    }
-
-    public int preProcess(int textureId, ByteBuffer buffer, int bufIndex) {
-        float[] mvp = new float[16];
-        Matrix.setIdentityM(mvp, 0);
-        float[] tex = new float[16];
-        Matrix.setIdentityM(tex, 0);
-        return preProcess(textureId, buffer, bufIndex, mvp, tex);
-    }
-
-    /**
-     * 此函数有三个功能
-     * 1. 将OES的纹理转换为标准的GL_TEXTURE_2D格式
-     * 2. 将纹理宽高对换，即将wxh的纹理转换为了hxw的纹理，并且如果是前置摄像头，则需要有水平的翻转
-     * 3. 读取上面两个步骤后的纹理内容存储到RGBA格式的buffer中，若初始化时使用resize参数，则读取resize后的纹理内容
-     *
-     * @param textureId [in] OES的纹理id
-     * @param buffer    [out] RGBA的buffer
-     * @param bufIndex  [in] 使用的buffer索引
-     * @return 转换后的GL_TEXTURE_2D的纹理id
-     */
-    public int preProcess(int textureId, ByteBuffer buffer, int bufIndex, float[] mvpMatrix, float[] texMatrix) {
+    public int preProcess(int textureId, ByteBuffer buffer, int bufIndex, float[] texMatrix) {
         if (mFrameBuffers == null || !mIsInitialized)
             return OpenGLUtils.NO_TEXTURE;
 
@@ -365,19 +334,15 @@ public class STGLRender {
         GLES20.glUseProgram(program);
         GlUtil.checkGlError("glUseProgram");
 
-        mGLCubeBuffer.position(0);
+        mGLVertexMatrixBuffer.position(0);
         int glAttribPosition = mArrayPrograms.get(0).get(POSITION_COORDINATE);
-        GLES20.glVertexAttribPointer(glAttribPosition, 2, GLES20.GL_FLOAT, false, 0, mGLCubeBuffer);
+        GLES20.glVertexAttribPointer(glAttribPosition, 2, GLES20.GL_FLOAT, false, 0, mGLVertexMatrixBuffer);
         GLES20.glEnableVertexAttribArray(glAttribPosition);
 
         mTextureBuffer.position(0);
         int glAttribTextureCoordinate = mArrayPrograms.get(0).get(TEXTURE_COORDINATE);
         GLES20.glVertexAttribPointer(glAttribTextureCoordinate, 2, GLES20.GL_FLOAT, false, 0, mTextureBuffer);
         GLES20.glEnableVertexAttribArray(glAttribTextureCoordinate);
-
-        int glUniformMvpLocation = mArrayPrograms.get(0).get(MVP_COORDINATE_MATRIX);
-        GLES20.glUniformMatrix4fv(glUniformMvpLocation, 1, false, mvpMatrix, 0);
-        GlUtil.checkGlError("glUniformMatrix4fv MVP matrix");
 
         int glUniformTexLocation = mArrayPrograms.get(0).get(TEX_COORDINATE_MATRIX);
         GLES20.glUniformMatrix4fv(glUniformTexLocation, 1, false, texMatrix, 0);
@@ -406,7 +371,7 @@ public class STGLRender {
                 //GLES30.glReadBuffer(GLES30.GL_COLOR_ATTACHMENT0);
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, mFrameBuffersResize[bufIndex]);
                 GLES20.glViewport(0, 0, mWidthResize, mHeightResize);
-                //GLES30.glBlitFramebuffer(0, 0, mViewPortWidth, mViewPortHeight, 0, 0, mWidthResize, mHeightResize, GLES30.GL_COLOR_BUFFER_BIT, GLES30.GL_NEAREST);
+                // GLES30.glBlitFramebuffer(0, 0, mViewPortWidth, mViewPortHeight, 0, 0, mWidthResize, mHeightResize, GLES20.GL_COLOR_BUFFER_BIT, GLES30.GL_NEAREST);
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
 
@@ -431,7 +396,8 @@ public class STGLRender {
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
         GLES20.glUseProgram(0);
 
-        return mFrameBufferTextures[bufIndex];
+        return mNeedResize ? mFrameBufferTexturesResize[bufIndex] : mFrameBufferTextures[bufIndex];
+        // return mFrameBufferTextures[bufIndex];
     }
 
     public int onDrawFrame(final int textureId) {
@@ -446,10 +412,10 @@ public class STGLRender {
         GLES20.glVertexAttribPointer(glAttribPosition, 2, GLES20.GL_FLOAT, false, 0, mVertexBuffer);
         GLES20.glEnableVertexAttribArray(glAttribPosition);
 
-        mGLTextureBuffer.position(0);
+        mGLTexMatrixBuffer.position(0);
         int glAttribTextureCoordinate = mArrayPrograms.get(1).get(TEXTURE_COORDINATE);
         GLES20.glVertexAttribPointer(glAttribTextureCoordinate, 2, GLES20.GL_FLOAT, false, 0,
-                mGLTextureBuffer);
+                mGLTexMatrixBuffer);
         GLES20.glEnableVertexAttribArray(glAttribTextureCoordinate);
 
         if (textureId != OpenGLUtils.NO_TEXTURE) {
@@ -480,10 +446,10 @@ public class STGLRender {
         float ratioHeight = imageHeightNew / (float) outputHeight;
 
         float[] cube = new float[]{
-                TextureRotationUtil.CUBE[0] / ratioHeight, TextureRotationUtil.CUBE[1] / ratioWidth,
-                TextureRotationUtil.CUBE[2] / ratioHeight, TextureRotationUtil.CUBE[3] / ratioWidth,
-                TextureRotationUtil.CUBE[4] / ratioHeight, TextureRotationUtil.CUBE[5] / ratioWidth,
-                TextureRotationUtil.CUBE[6] / ratioHeight, TextureRotationUtil.CUBE[7] / ratioWidth,
+                TextureRotationUtil.VERTEX_MATRIX[0] / ratioHeight, TextureRotationUtil.VERTEX_MATRIX[1] / ratioWidth,
+                TextureRotationUtil.VERTEX_MATRIX[2] / ratioHeight, TextureRotationUtil.VERTEX_MATRIX[3] / ratioWidth,
+                TextureRotationUtil.VERTEX_MATRIX[4] / ratioHeight, TextureRotationUtil.VERTEX_MATRIX[5] / ratioWidth,
+                TextureRotationUtil.VERTEX_MATRIX[6] / ratioHeight, TextureRotationUtil.VERTEX_MATRIX[7] / ratioWidth,
         };
 
         if (mVertexBuffer == null) {

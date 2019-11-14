@@ -19,8 +19,6 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     private STRenderer mSTRenderer;
     private Context mContext;
     private float[] mIdentityMatrix = new float[16];
-    private int mRotatedTextureId;
-    private SurfaceTexture mRotatedSurfaceTexture;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
@@ -54,12 +52,18 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return;
         }
 
+        // Rotate the texture according to the texture transformation
+        // matrix obtained before sent to preprocessor.
         int textureId = mSTRenderer.preProcess(outFrame.mTextureId,
-                outFrame.mSurfaceTexture, outFrame.mFormat.getWidth(),
-                outFrame.mFormat.getHeight(), mIdentityMatrix, mIdentityMatrix);
+                outFrame.mSurfaceTexture,
+                outFrame.mFormat.getWidth(),
+                outFrame.mFormat.getHeight(),
+                outFrame.mTexMatrix);
 
         if (textureId > 0) {
             outFrame.mTextureId = textureId;
+            outFrame.mTexMatrix = mIdentityMatrix;
+            outFrame.mRotation = 0;
             outFrame.mFormat.setPixelFormat(GLES20.GL_TEXTURE_2D);
         }
     }
