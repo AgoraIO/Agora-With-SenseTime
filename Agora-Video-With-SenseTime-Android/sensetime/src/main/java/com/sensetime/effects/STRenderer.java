@@ -380,10 +380,10 @@ public class STRenderer {
             mImageWidth = width;
             mImageHeight = height;
 
-            // SenseTime renderer does not need to know
-            // the surface size, thus without concerning
-            // flipping and resizing.
-            mGLRender.init(mImageWidth, mImageHeight, resizeWidth, resizeHeight);
+            // SenseTime effect drawer does not need to know
+            // the surface size, but it cares the size of
+            // texture if being rotated.
+            mGLRender.init(resizeWidth, resizeHeight);
             mGLRender.calculateVertexBuffer(mImageWidth,
                     mImageHeight, mImageWidth, mImageHeight);
         }
@@ -531,7 +531,6 @@ public class STRenderer {
         mSTMobileStreamFilterNative.destroyInstance();
         mRGBABuffer = null;
         deleteTextures();
-        mGLRender.destroyFrameBuffers();
         mGLRender.destroyPrograms();
     }
 
@@ -589,8 +588,7 @@ public class STRenderer {
         mRGBABuffer.rewind();
         // Convert texture OES to texture 2D, and rotate
         // the image to normal direction here
-        int processedTextureId = mGLRender.preProcess(
-                textureId, mRGBABuffer, 0, texMatrix);
+        int processedTextureId = mGLRender.preProcess(textureId, texMatrix, mRGBABuffer);
 
         if (mShowOriginal) {
             return processedTextureId;

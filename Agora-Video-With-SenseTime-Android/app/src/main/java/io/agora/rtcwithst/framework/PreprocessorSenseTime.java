@@ -52,20 +52,38 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return;
         }
 
+        int resizeW = -1;
+        int resizeH = -1;
+        if (needRotate(outFrame.mRotation)) {
+            resizeW = outFrame.mFormat.getHeight();
+            resizeH = outFrame.mFormat.getWidth();
+        }
+
         // Rotate the texture according to the texture transformation
         // matrix obtained before sent to preprocessor.
         int textureId = mSTRenderer.preProcess(outFrame.mTextureId,
                 outFrame.mSurfaceTexture,
                 outFrame.mFormat.getWidth(),
                 outFrame.mFormat.getHeight(),
+                resizeW, resizeH,
                 outFrame.mTexMatrix);
 
         if (textureId > 0) {
             outFrame.mTextureId = textureId;
             outFrame.mTexMatrix = mIdentityMatrix;
             outFrame.mRotation = 0;
+
+            if (needRotate(outFrame.mRotation)) {
+                outFrame.mFormat.setWidth(resizeW);
+                outFrame.mFormat.setHeight(resizeH);
+            }
+
             outFrame.mFormat.setPixelFormat(GLES20.GL_TEXTURE_2D);
         }
+    }
+
+    private boolean needRotate(int rotation) {
+        return rotation == 90 || rotation == 270;
     }
 
     @Override
