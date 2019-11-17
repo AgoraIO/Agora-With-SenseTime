@@ -68,7 +68,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         rtcEngine().setVideoSource(new RtcVideoConsumer(videoModule(),
                 ChannelManager.ChannelID.CAMERA));
         rtcEngine().setVideoEncoderConfiguration(new VideoEncoderConfiguration(
-                VideoEncoderConfiguration.VD_1280x720,
+                VideoEncoderConfiguration.VD_640x480,
                 VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_24,
                 VideoEncoderConfiguration.STANDARD_BITRATE,
                 VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT));

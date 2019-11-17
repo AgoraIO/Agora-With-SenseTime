@@ -71,9 +71,11 @@ public abstract class BaseWindowConsumer implements IVideoConsumer {
         GLES20.glViewport(0, 0, width, height);
 
         if (!mMVPInit) {
-            mMVPMatrix = GlUtil.changeMVPMatrix(GlUtil.IDENTITY_MATRIX,
-                    width, height, frame.mFormat.getHeight(),
-                    frame.mFormat.getWidth());
+            mMVPMatrix = GlUtil.changeMVPMatrix(
+                    GlUtil.IDENTITY_MATRIX,
+                    width, height,
+                    frame.mFormat.getWidth(),
+                    frame.mFormat.getHeight());
             mMVPInit = true;
         }
 

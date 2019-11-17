@@ -1,7 +1,6 @@
 package io.agora.rtcwithst.framework;
 
 import android.content.Context;
-import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
@@ -9,6 +8,7 @@ import android.util.Log;
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
 
+import io.agora.framework.VideoCaptureFormat;
 import io.agora.framework.channels.VideoChannel;
 import io.agora.framework.preprocess.IPreprocessor;
 import io.agora.framework.VideoCaptureFrame;
@@ -19,6 +19,14 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     private STRenderer mSTRenderer;
     private Context mContext;
     private float[] mIdentityMatrix = new float[16];
+
+    // Capture module sends the same video capture format
+    // instance in a single capture session.
+    // If the video sent in needs to be rotated, we must
+    // maintain another format instance for the
+    // consumers.
+    private VideoCaptureFormat mCaptureFormat;
+    private VideoCaptureFormat mConsumerFormat;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
@@ -52,37 +60,49 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return;
         }
 
-        int resizeW = -1;
-        int resizeH = -1;
-        if (needRotate(outFrame.mRotation)) {
-            resizeW = outFrame.mFormat.getHeight();
-            resizeH = outFrame.mFormat.getWidth();
+        boolean needSwapWH = needSwapDimension(outFrame.mRotation);
+        boolean sessionChanged = mCaptureFormat == null || mCaptureFormat != outFrame.mFormat;
+
+        if (sessionChanged) {
+            mCaptureFormat = outFrame.mFormat;
+            int resizeW;
+            int resizeH;
+
+            if (needSwapWH) {
+                resizeW = mCaptureFormat.getHeight();
+                resizeH = mCaptureFormat.getWidth();
+            } else {
+                resizeW = mCaptureFormat.getWidth();
+                resizeH = mCaptureFormat.getHeight();
+            }
+
+            mConsumerFormat = new VideoCaptureFormat(
+                    resizeW, resizeH,
+                    mCaptureFormat.getFramerate(),
+                    mCaptureFormat.getPixelFormat());
         }
 
-        // Rotate the texture according to the texture transformation
-        // matrix obtained before sent to preprocessor.
-        int textureId = mSTRenderer.preProcess(outFrame.mTextureId,
+        int textureId = mSTRenderer.preProcess(
+                outFrame.mTextureId,
                 outFrame.mSurfaceTexture,
-                outFrame.mFormat.getWidth(),
-                outFrame.mFormat.getHeight(),
-                resizeW, resizeH,
+                mConsumerFormat.getWidth(),
+                mConsumerFormat.getHeight(),
+                mConsumerFormat.getWidth(),
+                mConsumerFormat.getHeight(),
                 outFrame.mTexMatrix);
 
         if (textureId > 0) {
+            // Have been pre-processed (textureOES -> texture2D and
+            // pre-rotation) by the preprocessor.
             outFrame.mTextureId = textureId;
             outFrame.mTexMatrix = mIdentityMatrix;
             outFrame.mRotation = 0;
-
-            if (needRotate(outFrame.mRotation)) {
-                outFrame.mFormat.setWidth(resizeW);
-                outFrame.mFormat.setHeight(resizeH);
-            }
-
+            outFrame.mFormat = mConsumerFormat;
             outFrame.mFormat.setPixelFormat(GLES20.GL_TEXTURE_2D);
         }
     }
 
-    private boolean needRotate(int rotation) {
+    private boolean needSwapDimension(int rotation) {
         return rotation == 90 || rotation == 270;
     }
 
