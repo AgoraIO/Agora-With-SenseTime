@@ -329,6 +329,7 @@ public class STRenderer {
         }
 
         mStStickerNative.loadAvatarModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_CORE, mContext.getAssets());
+        addSubModel(FileUtils.MODEL_NAME_AVATAR_HELP);
         setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
     }
 
