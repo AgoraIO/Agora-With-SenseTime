@@ -61,7 +61,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
         }
 
         boolean needSwapWH = needSwapDimension(outFrame.mRotation);
-        boolean sessionChanged = mCaptureFormat == null || mCaptureFormat != outFrame.mFormat;
+        boolean sessionChanged = mCaptureFormat != outFrame.mFormat;
 
         if (sessionChanged) {
             mCaptureFormat = outFrame.mFormat;
