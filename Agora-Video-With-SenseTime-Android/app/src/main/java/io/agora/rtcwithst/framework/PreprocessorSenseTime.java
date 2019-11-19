@@ -85,10 +85,11 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
         int textureId = mSTRenderer.preProcess(
                 outFrame.mTextureId,
                 outFrame.mSurfaceTexture,
+                mCaptureFormat.getWidth(),
+                mCaptureFormat.getHeight(),
                 mConsumerFormat.getWidth(),
                 mConsumerFormat.getHeight(),
-                mConsumerFormat.getWidth(),
-                mConsumerFormat.getHeight(),
+                outFrame.mRotation,
                 outFrame.mTexMatrix);
 
         if (textureId > 0) {
