@@ -7,10 +7,12 @@ public class STGLRender {
 
     private PreProcessProgram mProcessProgram;
     private RotateProgram mRotateProgram;
+    private PointProgram mPointProgram;
 
     public STGLRender() {
         mProcessProgram = new PreProcessProgram();
         mRotateProgram = new RotateProgram();
+        mPointProgram = new PointProgram();
     }
 
     public void adjustPreProcessImageSize(int width, int height) {
@@ -33,8 +35,13 @@ public class STGLRender {
         return mRotateProgram.rotate(textureId, texMatrix);
     }
 
+    public void drawPoints(int textureId, float[] points, int width, int height) {
+        mPointProgram.drawPoints(textureId, points, width, height);
+    }
+
     public void destroyPrograms() {
         mProcessProgram.destroyProgram();
         mRotateProgram.destroyProgram();
+        mPointProgram.destroyProgram();
     }
 }

@@ -40,7 +40,8 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 .enableSticker(true)
                 .enableBeauty(true)
                 .enableFilter(true)
-                .enableMakeup(true);
+                .enableMakeup(true)
+                .enableDebug(false);
         mSTRenderer = builder.build();
         Matrix.setIdentityM(mIdentityMatrix, 0);
     }

@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.hardware.SensorEvent;
 import android.opengl.GLES20;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -14,6 +13,7 @@ import android.util.SparseArray;
 
 import com.sensetime.effects.display.STGLRender;
 import com.sensetime.effects.glutils.GlUtil;
+import com.sensetime.effects.glutils.STUtils;
 import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
 import com.sensetime.effects.utils.STLicenceUtils;
@@ -32,10 +32,6 @@ import com.sensetime.stmobile.model.STRect;
 import com.sensetime.stmobile.model.STRotateType;
 import com.sensetime.stmobile.model.STStickerInputParams;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +40,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class STRenderer {
     private static final String TAG = STRenderer.class.getSimpleName();
+
+    private boolean mInDebugMode = false;
 
     private Context mContext;
 
@@ -127,6 +125,10 @@ public class STRenderer {
     private SensorEvent mSensorEvent;
 
     private STEffectParameters mParams = new STEffectParameters();
+
+    public void setDebugMode(boolean enabled) {
+        mInDebugMode = enabled;
+    }
 
     public STRenderer(Context context) {
         mContext = context;
@@ -630,6 +632,41 @@ public class STRenderer {
 
                 // Log.i("STRenderer", "face count:" + humanAction.faceCount);
 
+                if (mInDebugMode) {
+                    if (humanAction != null) {
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getExtraPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getTonguePoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.bodyCount > 0) {
+                            for (int i = 0; i < humanAction.bodyCount; i++) {
+                                float[] points = STUtils.getBodyKeyPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+
+                            //print body[0] action
+                            LogUtils.i(TAG, "human action body count: %d", humanAction.bodyCount);
+                            LogUtils.i(TAG, "human action body[0] action: %d", humanAction.bodys[0].bodyAction);
+                        }
+                    }
+                }
+
                 if (mNeedDistance) {
                     if (humanAction.faceCount > 0) {
                         mFaceDistance = mSTHumanActionNative.getFaceDistance(humanAction.faces[0],
@@ -749,6 +786,7 @@ public class STRenderer {
         private boolean mNeedBeautify = false;
         private boolean mNeedFilter = false;
         private boolean mNeedMakeup = false;
+        private boolean mInDebugMode = false;
 
         public Builder setContext(Context context) {
             mContext = context;
@@ -775,12 +813,18 @@ public class STRenderer {
             return this;
         }
 
+        public Builder enableDebug(boolean enabled) {
+            mInDebugMode = enabled;
+            return this;
+        }
+
         public STRenderer build() {
             STRenderer renderer = new STRenderer(mContext);
             renderer.enableBeautify(mNeedBeautify);
             renderer.enableFilter(mNeedFilter);
             renderer.enableSticker(mNeedSticker);
             renderer.enableMakeup(mNeedMakeup);
+            renderer.setDebugMode(mInDebugMode);
             renderer.init();
             return renderer;
         }
