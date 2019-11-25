@@ -47,7 +47,7 @@ or you can manual to download and unzip [SenseTime-iOS-Resource.zip](https://git
 
 #### 1.2.2 SenseTime Licence
 
-Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to assets folder.
+Developers must contact SenseTime to obtain the licence file. Change the file name as **"SENSEME.lic"** and copy the file to assets folder.
 
 
 ## Developer Environment Requirements
