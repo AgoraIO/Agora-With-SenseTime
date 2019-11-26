@@ -39,6 +39,7 @@
 		7891D1D7237944B2003260D6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1D32379449B003260D6 /* libc++.tbd */; };
 		7891D1D8237944BB003260D6 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1D4237944A0003260D6 /* libresolv.tbd */; };
 		7891D1DA237944C0003260D6 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1D9237944C0003260D6 /* VideoToolbox.framework */; };
+		78B2B0D9238CD6F9007547BE /* KeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B0D8238CD6F9007547BE /* KeyCenter.m */; };
 		78E9310B23798A4D00BA664F /* STBmpStrengthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E930BD23798A4D00BA664F /* STBmpStrengthView.m */; };
 		78E9310C23798A4D00BA664F /* STBMPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E930BF23798A4D00BA664F /* STBMPModel.m */; };
 		78E9310D23798A4D00BA664F /* STViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E930C223798A4D00BA664F /* STViewButton.xib */; };
@@ -177,6 +178,8 @@
 		7891D1D4237944A0003260D6 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		7891D1D5237944A5003260D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7891D1D9237944C0003260D6 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		78B2B0D7238CD6F9007547BE /* KeyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCenter.h; sourceTree = "<group>"; };
+		78B2B0D8238CD6F9007547BE /* KeyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyCenter.m; sourceTree = "<group>"; };
 		78E930BC23798A4D00BA664F /* STBMPDetailColVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColVCell.h; sourceTree = "<group>"; };
 		78E930BD23798A4D00BA664F /* STBmpStrengthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBmpStrengthView.m; sourceTree = "<group>"; };
 		78E930BE23798A4D00BA664F /* STBMPDetailColV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColV.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				7891D1B123793785003260D6 /* MainViewController.m */,
 				781E3EEA238A4FD900098EBC /* ViewController.h */,
 				781E3EE9238A4FD900098EBC /* ViewController.m */,
+				78B2B0D7238CD6F9007547BE /* KeyCenter.h */,
+				78B2B0D8238CD6F9007547BE /* KeyCenter.m */,
 				78E9307C2379896600BA664F /* SenseTimePart */,
 				7891D1B323793785003260D6 /* Main.storyboard */,
 				7891D1B623793787003260D6 /* Assets.xcassets */,
@@ -824,6 +829,7 @@
 				78E9312A23798A4D00BA664F /* STCommonObjectView.m in Sources */,
 				78E9311223798A4D00BA664F /* STCommonObjectContainerView.m in Sources */,
 				78E9311523798A4D00BA664F /* STCustomMemoryCache.m in Sources */,
+				78B2B0D9238CD6F9007547BE /* KeyCenter.m in Sources */,
 				781E3EF0238A504D00098EBC /* SenseTimeUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
