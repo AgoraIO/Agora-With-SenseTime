@@ -33,7 +33,7 @@ def main():
         appId = os.environ["AGORA_APP_ID"]
     token = ""
 
-    senseAppId =
+    senseAppId = ""
     if "SENSE_APP_ID" in os.environ:
         senseAppId = os.environ["SENSE_APP_ID"]
     senseAppKey = ""
