@@ -23,6 +23,8 @@
 #import "st_mobile_face_attribute.h"
 #import "st_mobile_avatar.h"
 
+#import "KeyCenter.h"
+
 @interface SenseTimeManager ()
 {
     st_handle_t _hDetector; // detector句柄

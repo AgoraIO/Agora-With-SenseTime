@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KeyCenter : NSObject
 
--(NSString*)agoraAppId;
--(NSString*)agoraAppToken;
++ (NSString*)agoraAppId;
++ (NSString*)agoraAppToken;
 
--(NSString*)senseAppId;
--(NSString*)senseAppKey;
++ (NSString*)senseAppId;
++ (NSString*)senseAppKey;
 
 @end
 
