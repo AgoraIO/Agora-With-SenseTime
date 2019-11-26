@@ -8,7 +8,7 @@
 	<false/>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>io.agora.OpenVideoCall</key>
+		<key>io.agora.Agora-With-SenseTime</key>
 		<string>AgoraAppsDevProfile</string>
 	</dict>
 </dict>
