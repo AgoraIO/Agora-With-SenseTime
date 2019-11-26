@@ -10,19 +10,19 @@
 
 @implementation KeyCenter
 
--(NSString*)agoraAppId {
++ (NSString*)agoraAppId {
     return <#Agora App Id#>;
 }
 
--(NSString*)agoraAppToken {
++ (NSString*)agoraAppToken {
     return <#Agora App Token#>;
 }
 
--(NSString*)senseAppId {
++ (NSString*)senseAppId {
     return <#Sense App Id#>;
 }
 
--(NSString*)senseAppKey {
++ (NSString*)senseAppKey {
     return <#Sense App Key#>;
 }
 
