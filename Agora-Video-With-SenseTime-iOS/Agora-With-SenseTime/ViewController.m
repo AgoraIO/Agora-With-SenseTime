@@ -24,6 +24,8 @@
 #import "SenseAttributeView.h"
 #import "SenseRecordView.h"
 
+#import "KeyCenter.h"
+
 #import <AgoraRtcEngineKit/AgoraRtcEngineKit.h>
 
 #import <AGMCapturer/AGMCapturer.h>
@@ -565,8 +567,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
  * load Agora Engine && Join Channel
  */
 - (void)loadAgoraKit {
-    self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:@"7db05f7d569847a995cdda5a02e9a319" delegate:nil];
-    self.agoraKit.delegate = self;
+    self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: self];
     [self.agoraKit setChannelProfile:AgoraChannelProfileLiveBroadcasting];
     [self.agoraKit setVideoEncoderConfiguration:[[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360
                                                                                           frameRate:AgoraVideoFrameRateFps15
@@ -584,14 +585,14 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     
     self.count = 0;
     
-    [self.agoraKit joinChannelByToken:nil channelId:self.channelName info:nil uid:0 joinSuccess:nil];
+    [self.agoraKit joinChannelByToken:[KeyCenter agoraAppToken] channelId:self.channelName info:nil uid:0 joinSuccess:nil];
 }
 
 - (void)setupLocalView {
     if (self.localCanvas == nil) {
         self.localCanvas = [[AgoraRtcVideoCanvas alloc] init];
     }
-    self.localCanvas.view =  [[UIView alloc] initWithFrame:self.view.frame];;
+    self.localCanvas.view = self.preview;
     self.localCanvas.renderMode = AgoraVideoRenderModeHidden;
     // set render view
     [self.agoraKit setupLocalVideo:self.localCanvas];
@@ -689,6 +690,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 - (BOOL)prefersHomeIndicatorAutoHidden {
     return YES;
 }
+
 
 -(AgoraVideoRotation)agoraRotation {
     
