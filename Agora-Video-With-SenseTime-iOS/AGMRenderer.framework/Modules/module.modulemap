@@ -1,6 +1,0 @@
-framework module AGMRenderer {
-  umbrella header "AGMRenderer.h"
-
-  export *
-  module * { export * }
-}
