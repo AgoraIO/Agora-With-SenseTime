@@ -18,7 +18,6 @@ typedef struct _SenseTimeModel {
     AVCaptureDevicePosition devicePosition;
     BOOL isVideoMirrored;
 
-    CMSampleBufferRef sampleBuffer;
     GLuint *textureResult;
     CVPixelBufferRef pixelBuffer;
 } SenseTimeModel;
