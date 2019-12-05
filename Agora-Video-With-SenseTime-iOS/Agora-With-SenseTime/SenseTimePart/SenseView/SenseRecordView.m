@@ -70,6 +70,32 @@ typedef NS_ENUM(NSInteger, STWriterRecordingStatus){
     return (self.recording && (current - self.recordStartTime) > 10);
 }
 
+- (void)captureOutputOriginalCVPixelBufferRef:(CVPixelBufferRef)originalPixelBuffer
+                       resultCVPixelBufferRef:(CVPixelBufferRef)resultPixelBuffer
+                                    timeStamp:(CMTime)timeStamp
+{
+    
+    if ([self isOvertimeRecording]) {
+        [self.timer stop];
+        [self.timer reset];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopRecorder];
+            if(self.senseRecordDelegate != nil) {
+                [self.senseRecordDelegate onOvertimeRecording];
+            }
+        });
+    }
+    
+    if (!self.outputVideoFormatDescription) {
+        CMVideoFormatDescriptionCreateForImageBuffer(kCFAllocatorDefault, originalPixelBuffer, &(_outputVideoFormatDescription));
+    }
+    
+    if (self.recordStatus == STWriterRecordingStatusRecording) {
+        [self.stRecoder appendVideoPixelBuffer:resultPixelBuffer withPresentationTime:timeStamp];
+    }
+}
+
 - (void)captureOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer  originalCVPixelBufferRef:(CVPixelBufferRef)originalPixelBuffer resultCVPixelBufferRef:(CVPixelBufferRef)resultPixelBuffer {
     
     if ([self isOvertimeRecording]) {
@@ -93,6 +119,7 @@ typedef NS_ENUM(NSInteger, STWriterRecordingStatus){
         [self.stRecoder appendVideoPixelBuffer:resultPixelBuffer withPresentationTime:timestamp];
     }
 }
+
 
 #pragma mark - lazy load views
 - (UILabel *)recordTimeLabel {

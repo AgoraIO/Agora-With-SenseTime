@@ -40,12 +40,12 @@
     return rectRet;
 }
 
-+ (void)snapWithView:(UIView *)preview texture:(GLuint)iTexture width:(int)iWidth height:(int)iHeight {
++ (void)snapWithView:(UIView *)preview  width:(int)iWidth height:(int)iHeight {
     ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(iWidth, iHeight), NO, 0.0);
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(iWidth, iHeight), NO, 1.0);
         [preview drawViewHierarchyInRect:CGRectMake(0, 0, iWidth, iHeight) afterScreenUpdates:YES];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -56,6 +56,25 @@
         }];
         
     });
+}
+
+
+/** CVPixelBufferRef covert to UIImage */
++ (UIImage *)imageFromCVPixelBufferRef0:(CVPixelBufferRef)pixelBuffer{
+    // MUST READ-WRITE LOCK THE PIXEL BUFFER!!!!
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    CIImage *ciImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    CIContext *temporaryContext = [CIContext contextWithOptions:nil];
+    CGImageRef videoImage = [temporaryContext
+                             createCGImage:ciImage
+                             fromRect:CGRectMake(0, 0,
+                                                 CVPixelBufferGetWidth(pixelBuffer),
+                                                 CVPixelBufferGetHeight(pixelBuffer))];
+    
+    UIImage *uiImage = [UIImage imageWithCGImage:videoImage];
+    CGImageRelease(videoImage);
+    return uiImage;
 }
 
 + (BOOL)checkMediaStatus:(NSString *)mediaType {

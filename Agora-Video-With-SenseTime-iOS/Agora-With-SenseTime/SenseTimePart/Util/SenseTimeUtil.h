@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     
 + (CGRect)getZoomedRectWithRect:(CGRect)rect scaleToFit:(BOOL)bScaleToFit videoSettingSize:(CGSize)size;
 
-+ (void)snapWithView:(UIView *)preview texture:(GLuint)iTexture width:(int)iWidth height:(int)iHeight;
++ (void)snapWithView:(UIView *)preview width:(int)iWidth height:(int)iHeight;
 
 + (BOOL)checkMediaStatus:(NSString *)mediaType;
 

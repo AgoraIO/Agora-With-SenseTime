@@ -7,6 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090FDFD9238BC75B00743861 /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FDFD8238BC75B00743861 /* libSenseArSourceService.a */; };
+		090FE00D238BC78700743861 /* M_SenseME_Face_Video_5.3.3.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFEC238BC78500743861 /* M_SenseME_Face_Video_5.3.3.model */; };
+		090FE00E238BC78700743861 /* M_SenseME_Face_Extra_5.22.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFED238BC78500743861 /* M_SenseME_Face_Extra_5.22.0.model */; };
+		090FE00F238BC78700743861 /* M_SenseME_CatFace_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFEE238BC78500743861 /* M_SenseME_CatFace_2.0.0.model */; };
+		090FE010238BC78700743861 /* M_SenseME_Iris_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFEF238BC78500743861 /* M_SenseME_Iris_2.0.0.model */; };
+		090FE011238BC78700743861 /* M_SenseME_Segment_1.5.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF0238BC78500743861 /* M_SenseME_Segment_1.5.0.model */; };
+		090FE012238BC78700743861 /* M_SenseME_Hand_5.4.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF1238BC78500743861 /* M_SenseME_Hand_5.4.0.model */; };
+		090FE013238BC78700743861 /* M_Align_DeepFace_Tongue_1.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF2238BC78500743861 /* M_Align_DeepFace_Tongue_1.0.0.model */; };
+		090FE014238BC78700743861 /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF3238BC78500743861 /* M_SenseME_Attribute_1.0.1.model */; };
+		090FE015238BC78700743861 /* M_SenseME_Avatar_Core_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF4238BC78500743861 /* M_SenseME_Avatar_Core_2.0.0.model */; };
+		090FE016238BC78700743861 /* M_SenseME_Avatar_Help_new.model in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF5238BC78500743861 /* M_SenseME_Avatar_Help_new.model */; };
+		090FE017238BC78700743861 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFF6238BC78500743861 /* VERSION */; };
+		090FE018238BC78700743861 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FDFF9238BC78500743861 /* libst_mobile.a */; };
+		090FE019238BC78700743861 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FDFFB238BC78500743861 /* libst_mobile.a */; };
+		090FE01A238BC78700743861 /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFFE238BC78700743861 /* PortraitFilters.bundle */; };
+		090FE01B238BC78700743861 /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FDFFF238BC78700743861 /* SceneryFilters.bundle */; };
+		090FE01C238BC78700743861 /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE000238BC78700743861 /* StillLifeFilters.bundle */; };
+		090FE01D238BC78700743861 /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE001238BC78700743861 /* DeliciousFoodFilters.bundle */; };
+		090FE01E238BC78700743861 /* eyeliner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE003238BC78700743861 /* eyeliner.bundle */; };
+		090FE01F238BC78700743861 /* eyelash.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE004238BC78700743861 /* eyelash.bundle */; };
+		090FE020238BC78700743861 /* lips.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE005238BC78700743861 /* lips.bundle */; };
+		090FE021238BC78700743861 /* brow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE006238BC78700743861 /* brow.bundle */; };
+		090FE022238BC78700743861 /* face.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE007238BC78700743861 /* face.bundle */; };
+		090FE023238BC78700743861 /* eyeshadow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE008238BC78700743861 /* eyeshadow.bundle */; };
+		090FE024238BC78700743861 /* eye.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE009238BC78700743861 /* eye.bundle */; };
+		090FE025238BC78700743861 /* blush.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE00A238BC78700743861 /* blush.bundle */; };
+		090FE026238BC78700743861 /* my_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE00C238BC78700743861 /* my_sticker.bundle */; };
+		090FE028238BC7A100743861 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 090FE027238BC7A100743861 /* SENSEME.lic */; };
+		090FE02C238BC7C700743861 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE029238BC7C300743861 /* libcrypto.a */; };
+		090FE02D238BC7C700743861 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */; };
+		090FE02E238BC7C700743861 /* AgoraRtcCryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */; };
+		090FE09B238BF30400743861 /* AGMSenceTimeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 090FE09A238BF30400743861 /* AGMSenceTimeFilter.m */; };
+		09A66296239930E500FD5C76 /* AGMBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A66293239930E500FD5C76 /* AGMBase.framework */; };
+		09A66297239930E500FD5C76 /* AGMCapturer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A66294239930E500FD5C76 /* AGMCapturer.framework */; };
+		09A66298239930E500FD5C76 /* AGMRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A66295239930E500FD5C76 /* AGMRenderer.framework */; };
 		781E3EB7238797F500098EBC /* TermsOfUse.htm in Resources */ = {isa = PBXBuildFile; fileRef = 781E3EB6238797F400098EBC /* TermsOfUse.htm */; };
 		781E3EEB238A4FD900098EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E3EE9238A4FD900098EBC /* ViewController.m */; };
 		781E3EF0238A504D00098EBC /* SenseTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E3EEC238A504D00098EBC /* SenseTimeUtil.m */; };
@@ -76,33 +111,6 @@
 		78E9312D23798A4D00BA664F /* STVFShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E9310023798A4D00BA664F /* STVFShader.m */; };
 		78E9312E23798A4D00BA664F /* STMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E9310123798A4D00BA664F /* STMovieRecorder.m */; };
 		78E9312F23798A4D00BA664F /* STBMPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E9310323798A4D00BA664F /* STBMPCollectionViewCell.m */; };
-		78E931C223798B1000BA664F /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E9313B23798B1000BA664F /* libSenseArSourceService.a */; };
-		78E931C523798B1000BA664F /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314323798B1000BA664F /* PortraitFilters.bundle */; };
-		78E931C623798B1000BA664F /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314423798B1000BA664F /* SceneryFilters.bundle */; };
-		78E931C723798B1000BA664F /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314523798B1000BA664F /* StillLifeFilters.bundle */; };
-		78E931C823798B1000BA664F /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314623798B1000BA664F /* DeliciousFoodFilters.bundle */; };
-		78E931C923798B1000BA664F /* eyeliner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314823798B1000BA664F /* eyeliner.bundle */; };
-		78E931CA23798B1000BA664F /* eyelash.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314923798B1000BA664F /* eyelash.bundle */; };
-		78E931CB23798B1000BA664F /* lips.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314A23798B1000BA664F /* lips.bundle */; };
-		78E931CC23798B1000BA664F /* brow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314B23798B1000BA664F /* brow.bundle */; };
-		78E931CD23798B1000BA664F /* face.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314C23798B1000BA664F /* face.bundle */; };
-		78E931CE23798B1000BA664F /* eyeshadow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314D23798B1000BA664F /* eyeshadow.bundle */; };
-		78E931CF23798B1000BA664F /* eye.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314E23798B1000BA664F /* eye.bundle */; };
-		78E931D023798B1000BA664F /* blush.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9314F23798B1000BA664F /* blush.bundle */; };
-		78E931D123798B1000BA664F /* my_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78E9315123798B1000BA664F /* my_sticker.bundle */; };
-		78E931D223798B1000BA664F /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 78E9315423798B1000BA664F /* SENSEME.lic */; };
-		78E931D423798B1000BA664F /* M_SenseME_Face_Video_5.3.3.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316623798B1000BA664F /* M_SenseME_Face_Video_5.3.3.model */; };
-		78E931D523798B1000BA664F /* M_SenseME_Face_Extra_5.22.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316723798B1000BA664F /* M_SenseME_Face_Extra_5.22.0.model */; };
-		78E931D623798B1000BA664F /* M_SenseME_CatFace_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316823798B1000BA664F /* M_SenseME_CatFace_2.0.0.model */; };
-		78E931D723798B1000BA664F /* M_SenseME_Iris_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316923798B1000BA664F /* M_SenseME_Iris_2.0.0.model */; };
-		78E931D823798B1000BA664F /* M_SenseME_Segment_1.5.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316A23798B1000BA664F /* M_SenseME_Segment_1.5.0.model */; };
-		78E931D923798B1000BA664F /* M_SenseME_Hand_5.4.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316B23798B1000BA664F /* M_SenseME_Hand_5.4.0.model */; };
-		78E931DA23798B1000BA664F /* M_Align_DeepFace_Tongue_1.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316C23798B1000BA664F /* M_Align_DeepFace_Tongue_1.0.0.model */; };
-		78E931DB23798B1000BA664F /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316D23798B1000BA664F /* M_SenseME_Attribute_1.0.1.model */; };
-		78E931DC23798B1000BA664F /* M_SenseME_Avatar_Core_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316E23798B1000BA664F /* M_SenseME_Avatar_Core_2.0.0.model */; };
-		78E931DD23798B1000BA664F /* M_SenseME_Avatar_Help_new.model in Resources */ = {isa = PBXBuildFile; fileRef = 78E9316F23798B1000BA664F /* M_SenseME_Avatar_Help_new.model */; };
-		78E931DE23798B1000BA664F /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 78E9317023798B1000BA664F /* VERSION */; };
-		78E9320F237A544700BA664F /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E9320E237A544700BA664F /* libst_mobile.a */; };
 		78E93210237A55AB00BA664F /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E9320D237A52B900BA664F /* libz.1.1.3.tbd */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +138,56 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		090FDFD8238BC75B00743861 /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSenseArSourceService.a; path = ios_universal/libSenseArSourceService.a; sourceTree = SOURCE_ROOT; };
+		090FDFDD238BC78500743861 /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
+		090FDFDE238BC78500743861 /* st_mobile_sticker_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_module.h; sourceTree = "<group>"; };
+		090FDFDF238BC78500743861 /* st_mobile_beautify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_beautify.h; sourceTree = "<group>"; };
+		090FDFE0238BC78500743861 /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
+		090FDFE1238BC78500743861 /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
+		090FDFE2238BC78500743861 /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
+		090FDFE3238BC78500743861 /* st_mobile_makeup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_makeup.h; sourceTree = "<group>"; };
+		090FDFE4238BC78500743861 /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
+		090FDFE5238BC78500743861 /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
+		090FDFE6238BC78500743861 /* st_mobile_filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_filter.h; sourceTree = "<group>"; };
+		090FDFE7238BC78500743861 /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
+		090FDFE8238BC78500743861 /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
+		090FDFE9238BC78500743861 /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
+		090FDFEA238BC78500743861 /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
+		090FDFEC238BC78500743861 /* M_SenseME_Face_Video_5.3.3.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Video_5.3.3.model; sourceTree = "<group>"; };
+		090FDFED238BC78500743861 /* M_SenseME_Face_Extra_5.22.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Extra_5.22.0.model; sourceTree = "<group>"; };
+		090FDFEE238BC78500743861 /* M_SenseME_CatFace_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_2.0.0.model; sourceTree = "<group>"; };
+		090FDFEF238BC78500743861 /* M_SenseME_Iris_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Iris_2.0.0.model; sourceTree = "<group>"; };
+		090FDFF0238BC78500743861 /* M_SenseME_Segment_1.5.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_1.5.0.model; sourceTree = "<group>"; };
+		090FDFF1238BC78500743861 /* M_SenseME_Hand_5.4.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Hand_5.4.0.model; sourceTree = "<group>"; };
+		090FDFF2238BC78500743861 /* M_Align_DeepFace_Tongue_1.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_Align_DeepFace_Tongue_1.0.0.model; sourceTree = "<group>"; };
+		090FDFF3238BC78500743861 /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
+		090FDFF4238BC78500743861 /* M_SenseME_Avatar_Core_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Core_2.0.0.model; sourceTree = "<group>"; };
+		090FDFF5238BC78500743861 /* M_SenseME_Avatar_Help_new.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Help_new.model; sourceTree = "<group>"; };
+		090FDFF6238BC78500743861 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		090FDFF9238BC78500743861 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
+		090FDFFB238BC78500743861 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
+		090FDFFE238BC78700743861 /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
+		090FDFFF238BC78700743861 /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
+		090FE000238BC78700743861 /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
+		090FE001238BC78700743861 /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
+		090FE003238BC78700743861 /* eyeliner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeliner.bundle; sourceTree = "<group>"; };
+		090FE004238BC78700743861 /* eyelash.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyelash.bundle; sourceTree = "<group>"; };
+		090FE005238BC78700743861 /* lips.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lips.bundle; sourceTree = "<group>"; };
+		090FE006238BC78700743861 /* brow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = brow.bundle; sourceTree = "<group>"; };
+		090FE007238BC78700743861 /* face.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = face.bundle; sourceTree = "<group>"; };
+		090FE008238BC78700743861 /* eyeshadow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeshadow.bundle; sourceTree = "<group>"; };
+		090FE009238BC78700743861 /* eye.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eye.bundle; sourceTree = "<group>"; };
+		090FE00A238BC78700743861 /* blush.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blush.bundle; sourceTree = "<group>"; };
+		090FE00C238BC78700743861 /* my_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = my_sticker.bundle; sourceTree = "<group>"; };
+		090FE027238BC7A100743861 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
+		090FE029238BC7C300743861 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcEngineKit.framework; sourceTree = "<group>"; };
+		090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcCryptoLoader.framework; sourceTree = "<group>"; };
+		090FE099238BF30400743861 /* AGMSenceTimeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMSenceTimeFilter.h; sourceTree = "<group>"; };
+		090FE09A238BF30400743861 /* AGMSenceTimeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMSenceTimeFilter.m; sourceTree = "<group>"; };
+		09A66293239930E500FD5C76 /* AGMBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMBase.framework; sourceTree = "<group>"; };
+		09A66294239930E500FD5C76 /* AGMCapturer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMCapturer.framework; sourceTree = "<group>"; };
+		09A66295239930E500FD5C76 /* AGMRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMRenderer.framework; sourceTree = "<group>"; };
 		781E3EB6238797F400098EBC /* TermsOfUse.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TermsOfUse.htm; sourceTree = "<group>"; };
 		781E3EE9238A4FD900098EBC /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		781E3EEA238A4FD900098EBC /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -254,48 +312,7 @@
 		78E9313623798B1000BA664F /* SenseArSourceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArSourceService.h; sourceTree = "<group>"; };
 		78E9313723798B1000BA664F /* SenseArMaterialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialService.h; sourceTree = "<group>"; };
 		78E9313823798B1000BA664F /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
-		78E9313B23798B1000BA664F /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSenseArSourceService.a; sourceTree = "<group>"; };
-		78E9314323798B1000BA664F /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
-		78E9314423798B1000BA664F /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
-		78E9314523798B1000BA664F /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
-		78E9314623798B1000BA664F /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
-		78E9314823798B1000BA664F /* eyeliner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeliner.bundle; sourceTree = "<group>"; };
-		78E9314923798B1000BA664F /* eyelash.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyelash.bundle; sourceTree = "<group>"; };
-		78E9314A23798B1000BA664F /* lips.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lips.bundle; sourceTree = "<group>"; };
-		78E9314B23798B1000BA664F /* brow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = brow.bundle; sourceTree = "<group>"; };
-		78E9314C23798B1000BA664F /* face.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = face.bundle; sourceTree = "<group>"; };
-		78E9314D23798B1000BA664F /* eyeshadow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeshadow.bundle; sourceTree = "<group>"; };
-		78E9314E23798B1000BA664F /* eye.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eye.bundle; sourceTree = "<group>"; };
-		78E9314F23798B1000BA664F /* blush.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blush.bundle; sourceTree = "<group>"; };
-		78E9315123798B1000BA664F /* my_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = my_sticker.bundle; sourceTree = "<group>"; };
-		78E9315423798B1000BA664F /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
-		78E9315723798B1000BA664F /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
-		78E9315823798B1000BA664F /* st_mobile_sticker_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_module.h; sourceTree = "<group>"; };
-		78E9315923798B1000BA664F /* st_mobile_beautify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_beautify.h; sourceTree = "<group>"; };
-		78E9315A23798B1000BA664F /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
-		78E9315B23798B1000BA664F /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
-		78E9315C23798B1000BA664F /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
-		78E9315D23798B1000BA664F /* st_mobile_makeup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_makeup.h; sourceTree = "<group>"; };
-		78E9315E23798B1000BA664F /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
-		78E9315F23798B1000BA664F /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
-		78E9316023798B1000BA664F /* st_mobile_filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_filter.h; sourceTree = "<group>"; };
-		78E9316123798B1000BA664F /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
-		78E9316223798B1000BA664F /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
-		78E9316323798B1000BA664F /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
-		78E9316423798B1000BA664F /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
-		78E9316623798B1000BA664F /* M_SenseME_Face_Video_5.3.3.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Video_5.3.3.model; sourceTree = "<group>"; };
-		78E9316723798B1000BA664F /* M_SenseME_Face_Extra_5.22.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Extra_5.22.0.model; sourceTree = "<group>"; };
-		78E9316823798B1000BA664F /* M_SenseME_CatFace_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_2.0.0.model; sourceTree = "<group>"; };
-		78E9316923798B1000BA664F /* M_SenseME_Iris_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Iris_2.0.0.model; sourceTree = "<group>"; };
-		78E9316A23798B1000BA664F /* M_SenseME_Segment_1.5.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_1.5.0.model; sourceTree = "<group>"; };
-		78E9316B23798B1000BA664F /* M_SenseME_Hand_5.4.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Hand_5.4.0.model; sourceTree = "<group>"; };
-		78E9316C23798B1000BA664F /* M_Align_DeepFace_Tongue_1.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_Align_DeepFace_Tongue_1.0.0.model; sourceTree = "<group>"; };
-		78E9316D23798B1000BA664F /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
-		78E9316E23798B1000BA664F /* M_SenseME_Avatar_Core_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Core_2.0.0.model; sourceTree = "<group>"; };
-		78E9316F23798B1000BA664F /* M_SenseME_Avatar_Help_new.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Help_new.model; sourceTree = "<group>"; };
-		78E9317023798B1000BA664F /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		78E9320D237A52B900BA664F /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
-		78E9320E237A544700BA664F /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
 		78E9324E237AC14700BA664F /* Agora-With-SenseTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Agora-With-SenseTime.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,20 +322,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				7891D1CE23794489003260D6 /* CoreMedia.framework in Frameworks */,
+				090FE02E238BC7C700743861 /* AgoraRtcCryptoLoader.framework in Frameworks */,
+				09A66297239930E500FD5C76 /* AGMCapturer.framework in Frameworks */,
 				7891D1D6237944A5003260D6 /* SystemConfiguration.framework in Frameworks */,
-				78E931C223798B1000BA664F /* libSenseArSourceService.a in Frameworks */,
+				090FE018238BC78700743861 /* libst_mobile.a in Frameworks */,
 				7891D1D02379448F003260D6 /* CoreML.framework in Frameworks */,
 				7891D1D8237944BB003260D6 /* libresolv.tbd in Frameworks */,
 				7891D1C423794390003260D6 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1C72379439B003260D6 /* Accelerate.framework in Frameworks */,
+				090FE02D238BC7C700743861 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1D223794494003260D6 /* CoreTelephony.framework in Frameworks */,
+				090FE02C238BC7C700743861 /* libcrypto.a in Frameworks */,
 				7891D1D7237944B2003260D6 /* libc++.tbd in Frameworks */,
 				782831B92379467800FA5EE8 /* UIKit.framework in Frameworks */,
 				78E93210237A55AB00BA664F /* libz.1.1.3.tbd in Frameworks */,
+				09A66298239930E500FD5C76 /* AGMRenderer.framework in Frameworks */,
 				7891D1DA237944C0003260D6 /* VideoToolbox.framework in Frameworks */,
+				090FDFD9238BC75B00743861 /* libSenseArSourceService.a in Frameworks */,
+				09A66296239930E500FD5C76 /* AGMBase.framework in Frameworks */,
 				7891D1CC23794483003260D6 /* AVFoundation.framework in Frameworks */,
 				7891D1C9237943A5003260D6 /* AVFoundation.framework in Frameworks */,
-				78E9320F237A544700BA664F /* libst_mobile.a in Frameworks */,
+				090FE019238BC78700743861 /* libst_mobile.a in Frameworks */,
 				7891D1CB2379447D003260D6 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +350,133 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090FDFDA238BC78500743861 /* st_mobile */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFDB238BC78500743861 /* license */,
+				090FDFDC238BC78500743861 /* include */,
+				090FDFEB238BC78500743861 /* models */,
+				090FDFF6238BC78500743861 /* VERSION */,
+				090FDFF7238BC78500743861 /* lib */,
+			);
+			path = st_mobile;
+			sourceTree = "<group>";
+		};
+		090FDFDB238BC78500743861 /* license */ = {
+			isa = PBXGroup;
+			children = (
+				090FE027238BC7A100743861 /* SENSEME.lic */,
+			);
+			path = license;
+			sourceTree = "<group>";
+		};
+		090FDFDC238BC78500743861 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFDD238BC78500743861 /* st_mobile_common.h */,
+				090FDFDE238BC78500743861 /* st_mobile_sticker_module.h */,
+				090FDFDF238BC78500743861 /* st_mobile_beautify.h */,
+				090FDFE0238BC78500743861 /* st_mobile_animal.h */,
+				090FDFE1238BC78500743861 /* st_mobile_human_action.h */,
+				090FDFE2238BC78500743861 /* st_mobile_object.h */,
+				090FDFE3238BC78500743861 /* st_mobile_makeup.h */,
+				090FDFE4238BC78500743861 /* st_mobile_face_attribute.h */,
+				090FDFE5238BC78500743861 /* st_mobile_license.h */,
+				090FDFE6238BC78500743861 /* st_mobile_filter.h */,
+				090FDFE7238BC78500743861 /* st_mobile_color_convert.h */,
+				090FDFE8238BC78500743861 /* st_mobile_avatar.h */,
+				090FDFE9238BC78500743861 /* st_mobile_sticker.h */,
+				090FDFEA238BC78500743861 /* st_mobile_sticker_transition.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		090FDFEB238BC78500743861 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFEC238BC78500743861 /* M_SenseME_Face_Video_5.3.3.model */,
+				090FDFED238BC78500743861 /* M_SenseME_Face_Extra_5.22.0.model */,
+				090FDFEE238BC78500743861 /* M_SenseME_CatFace_2.0.0.model */,
+				090FDFEF238BC78500743861 /* M_SenseME_Iris_2.0.0.model */,
+				090FDFF0238BC78500743861 /* M_SenseME_Segment_1.5.0.model */,
+				090FDFF1238BC78500743861 /* M_SenseME_Hand_5.4.0.model */,
+				090FDFF2238BC78500743861 /* M_Align_DeepFace_Tongue_1.0.0.model */,
+				090FDFF3238BC78500743861 /* M_SenseME_Attribute_1.0.1.model */,
+				090FDFF4238BC78500743861 /* M_SenseME_Avatar_Core_2.0.0.model */,
+				090FDFF5238BC78500743861 /* M_SenseME_Avatar_Help_new.model */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		090FDFF7238BC78500743861 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFF8238BC78500743861 /* ios_os */,
+				090FDFFA238BC78500743861 /* ios_sim */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		090FDFF8238BC78500743861 /* ios_os */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFF9238BC78500743861 /* libst_mobile.a */,
+			);
+			path = ios_os;
+			sourceTree = "<group>";
+		};
+		090FDFFA238BC78500743861 /* ios_sim */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFFB238BC78500743861 /* libst_mobile.a */,
+			);
+			path = ios_sim;
+			sourceTree = "<group>";
+		};
+		090FDFFC238BC78700743861 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFFD238BC78700743861 /* Filters */,
+				090FE002238BC78700743861 /* Makeup */,
+				090FE00B238BC78700743861 /* StickerZipAndIcons */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		090FDFFD238BC78700743861 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				090FDFFE238BC78700743861 /* PortraitFilters.bundle */,
+				090FDFFF238BC78700743861 /* SceneryFilters.bundle */,
+				090FE000238BC78700743861 /* StillLifeFilters.bundle */,
+				090FE001238BC78700743861 /* DeliciousFoodFilters.bundle */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		090FE002238BC78700743861 /* Makeup */ = {
+			isa = PBXGroup;
+			children = (
+				090FE003238BC78700743861 /* eyeliner.bundle */,
+				090FE004238BC78700743861 /* eyelash.bundle */,
+				090FE005238BC78700743861 /* lips.bundle */,
+				090FE006238BC78700743861 /* brow.bundle */,
+				090FE007238BC78700743861 /* face.bundle */,
+				090FE008238BC78700743861 /* eyeshadow.bundle */,
+				090FE009238BC78700743861 /* eye.bundle */,
+				090FE00A238BC78700743861 /* blush.bundle */,
+			);
+			path = Makeup;
+			sourceTree = "<group>";
+		};
+		090FE00B238BC78700743861 /* StickerZipAndIcons */ = {
+			isa = PBXGroup;
+			children = (
+				090FE00C238BC78700743861 /* my_sticker.bundle */,
+			);
+			path = StickerZipAndIcons;
+			sourceTree = "<group>";
+		};
 		781E3EF2238A505600098EBC /* SenseManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +534,8 @@
 				7891D1AB23793785003260D6 /* AppDelegate.m */,
 				7891D1B023793785003260D6 /* MainViewController.h */,
 				7891D1B123793785003260D6 /* MainViewController.m */,
+				090FE099238BF30400743861 /* AGMSenceTimeFilter.h */,
+				090FE09A238BF30400743861 /* AGMSenceTimeFilter.m */,
 				781E3EEA238A4FD900098EBC /* ViewController.h */,
 				781E3EE9238A4FD900098EBC /* ViewController.m */,
 				78E9307C2379896600BA664F /* SenseTimePart */,
@@ -399,7 +552,13 @@
 		7891D1C52379439B003260D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09A66293239930E500FD5C76 /* AGMBase.framework */,
+				09A66294239930E500FD5C76 /* AGMCapturer.framework */,
+				09A66295239930E500FD5C76 /* AGMRenderer.framework */,
+				090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */,
 				7891D1C323794390003260D6 /* AgoraRtcEngineKit.framework */,
+				090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */,
+				090FE029238BC7C300743861 /* libcrypto.a */,
 				78E9320D237A52B900BA664F /* libz.1.1.3.tbd */,
 				782831B82379467800FA5EE8 /* UIKit.framework */,
 				7891D1D9237944C0003260D6 /* VideoToolbox.framework */,
@@ -419,12 +578,12 @@
 		78E9307C2379896600BA664F /* SenseTimePart */ = {
 			isa = PBXGroup;
 			children = (
+				090FDFFC238BC78700743861 /* resources */,
+				090FDFDA238BC78500743861 /* st_mobile */,
 				781E3EF2238A505600098EBC /* SenseManager */,
 				781E3EF9238A505600098EBC /* SenseView */,
 				78E930BB23798A4D00BA664F /* Util */,
-				78E9314123798B1000BA664F /* resources */,
 				78E9313223798B1000BA664F /* SenseArSourceService */,
-				78E9315223798B1000BA664F /* st_mobile */,
 			);
 			path = SenseTimePart;
 			sourceTree = "<group>";
@@ -432,82 +591,82 @@
 		78E930BB23798A4D00BA664F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				78E930D423798A4D00BA664F /* EffectsCollectionView.h */,
+				78E930FC23798A4D00BA664F /* EffectsCollectionView.m */,
+				78E930D023798A4D00BA664F /* EffectsCollectionViewCell.h */,
+				78E930F423798A4D00BA664F /* EffectsCollectionViewCell.m */,
+				78E930F223798A4D00BA664F /* EffectsCollectionViewCell.xib */,
 				781E3EEF238A504D00098EBC /* SaveToastUtil.h */,
 				781E3EED238A504D00098EBC /* SaveToastUtil.m */,
+				78E930C123798A4D00BA664F /* SenseMEUtils.h */,
+				78E930EC23798A4D00BA664F /* SenseMEUtils.m */,
 				781E3EEE238A504D00098EBC /* SenseTimeUtil.h */,
 				781E3EEC238A504D00098EBC /* SenseTimeUtil.m */,
-				78E930BC23798A4D00BA664F /* STBMPDetailColVCell.h */,
-				78E930BD23798A4D00BA664F /* STBmpStrengthView.m */,
-				78E930BE23798A4D00BA664F /* STBMPDetailColV.h */,
-				78E930BF23798A4D00BA664F /* STBMPModel.m */,
-				78E930C023798A4D00BA664F /* STPlayerControlBar.h */,
-				78E930C123798A4D00BA664F /* SenseMEUtils.h */,
-				78E930C223798A4D00BA664F /* STViewButton.xib */,
-				78E930C323798A4D00BA664F /* STLock.m */,
-				78E930C423798A4D00BA664F /* STGLPreview.m */,
-				78E930C523798A4D00BA664F /* STSliderView.xib */,
-				78E930C623798A4D00BA664F /* STButton.m */,
-				78E930C723798A4D00BA664F /* STScrollTitleView.h */,
-				78E930C823798A4D00BA664F /* STSliderView.h */,
-				78E930C923798A4D00BA664F /* STViewButton.h */,
-				78E930CA23798A4D00BA664F /* STEffectsAudioPlayer.h */,
-				78E930CB23798A4D00BA664F /* STFilterView.h */,
-				78E930CC23798A4D00BA664F /* STCommonObjectContainerView.m */,
-				78E930CD23798A4D00BA664F /* STTriggerView.m */,
-				78E930CE23798A4D00BA664F /* STBMPCollectionView.h */,
-				78E930CF23798A4D00BA664F /* STCollectionViewCell.h */,
-				78E930D023798A4D00BA664F /* EffectsCollectionViewCell.h */,
-				78E930D123798A4D00BA664F /* STTitleViewItem.m */,
-				78E930D223798A4D00BA664F /* STCollectionView.h */,
-				78E930D323798A4D00BA664F /* STCustomMemoryCache.m */,
-				78E930D423798A4D00BA664F /* EffectsCollectionView.h */,
-				78E930D523798A4D00BA664F /* STParamUtil.m */,
-				78E930D623798A4D00BA664F /* STCustomCollectionView.m */,
-				78E930D723798A4D00BA664F /* STEffectsTimer.m */,
-				78E930D823798A4D00BA664F /* STCommonObjectView.h */,
-				78E930D923798A4D00BA664F /* STBMPCollectionViewCell.h */,
-				78E930DA23798A4D00BA664F /* STMobileLog.h */,
-				78E930DB23798A4D00BA664F /* STAudioManager.m */,
-				78E930DC23798A4D00BA664F /* STVFShader.h */,
-				78E930DD23798A4D00BA664F /* STMovieRecorder.h */,
-				78E930DE23798A4D00BA664F /* STCamera.h */,
-				78E930DF23798A4D00BA664F /* STGLPreview2.m */,
-				78E930E023798A4D00BA664F /* STBeautySlider.m */,
-				78E930E123798A4D00BA664F /* STCommonObjectContainerView.h */,
-				78E930E223798A4D00BA664F /* STTriggerView.h */,
-				78E930E323798A4D00BA664F /* STFilterView.m */,
-				78E930E423798A4D00BA664F /* STViewButton.m */,
-				78E930E523798A4D00BA664F /* STEffectsAudioPlayer.m */,
-				78E930E623798A4D00BA664F /* STSliderView.m */,
-				78E930E723798A4D00BA664F /* STScrollTitleView.m */,
-				78E930E823798A4D00BA664F /* STButton.h */,
-				78E930E923798A4D00BA664F /* STLock.h */,
-				78E930EA23798A4D00BA664F /* STGLPreview.h */,
-				78E930EB23798A4D00BA664F /* STPlayerControlBar.m */,
-				78E930EC23798A4D00BA664F /* SenseMEUtils.m */,
-				78E930ED23798A4D00BA664F /* STBMPModel.h */,
-				78E930EE23798A4D00BA664F /* STBMPDetailColV.m */,
-				78E930EF23798A4D00BA664F /* STBmpStrengthView.h */,
-				78E930F023798A4D00BA664F /* STBMPDetailColVCell.m */,
-				78E930F123798A4D00BA664F /* STCollectionView.m */,
-				78E930F223798A4D00BA664F /* EffectsCollectionViewCell.xib */,
-				78E930F323798A4D00BA664F /* STTitleViewItem.h */,
-				78E930F423798A4D00BA664F /* EffectsCollectionViewCell.m */,
-				78E930F523798A4D00BA664F /* STCollectionViewCell.m */,
-				78E930F623798A4D00BA664F /* STBMPCollectionView.m */,
-				78E930F723798A4D00BA664F /* STCommonObjectView.m */,
-				78E930F823798A4D00BA664F /* STEffectsTimer.h */,
-				78E930F923798A4D00BA664F /* STCustomCollectionView.h */,
-				78E930FA23798A4D00BA664F /* STParamUtil.h */,
-				78E930FB23798A4D00BA664F /* STCustomMemoryCache.h */,
-				78E930FC23798A4D00BA664F /* EffectsCollectionView.m */,
-				78E930FD23798A4D00BA664F /* STBeautySlider.h */,
-				78E930FE23798A4D00BA664F /* STGLPreview2.h */,
-				78E930FF23798A4D00BA664F /* STCamera.m */,
-				78E9310023798A4D00BA664F /* STVFShader.m */,
-				78E9310123798A4D00BA664F /* STMovieRecorder.m */,
 				78E9310223798A4D00BA664F /* STAudioManager.h */,
+				78E930DB23798A4D00BA664F /* STAudioManager.m */,
+				78E930FD23798A4D00BA664F /* STBeautySlider.h */,
+				78E930E023798A4D00BA664F /* STBeautySlider.m */,
+				78E930CE23798A4D00BA664F /* STBMPCollectionView.h */,
+				78E930F623798A4D00BA664F /* STBMPCollectionView.m */,
+				78E930D923798A4D00BA664F /* STBMPCollectionViewCell.h */,
 				78E9310323798A4D00BA664F /* STBMPCollectionViewCell.m */,
+				78E930BE23798A4D00BA664F /* STBMPDetailColV.h */,
+				78E930EE23798A4D00BA664F /* STBMPDetailColV.m */,
+				78E930BC23798A4D00BA664F /* STBMPDetailColVCell.h */,
+				78E930F023798A4D00BA664F /* STBMPDetailColVCell.m */,
+				78E930ED23798A4D00BA664F /* STBMPModel.h */,
+				78E930BF23798A4D00BA664F /* STBMPModel.m */,
+				78E930EF23798A4D00BA664F /* STBmpStrengthView.h */,
+				78E930BD23798A4D00BA664F /* STBmpStrengthView.m */,
+				78E930E823798A4D00BA664F /* STButton.h */,
+				78E930C623798A4D00BA664F /* STButton.m */,
+				78E930DE23798A4D00BA664F /* STCamera.h */,
+				78E930FF23798A4D00BA664F /* STCamera.m */,
+				78E930D223798A4D00BA664F /* STCollectionView.h */,
+				78E930F123798A4D00BA664F /* STCollectionView.m */,
+				78E930CF23798A4D00BA664F /* STCollectionViewCell.h */,
+				78E930F523798A4D00BA664F /* STCollectionViewCell.m */,
+				78E930E123798A4D00BA664F /* STCommonObjectContainerView.h */,
+				78E930CC23798A4D00BA664F /* STCommonObjectContainerView.m */,
+				78E930D823798A4D00BA664F /* STCommonObjectView.h */,
+				78E930F723798A4D00BA664F /* STCommonObjectView.m */,
+				78E930F923798A4D00BA664F /* STCustomCollectionView.h */,
+				78E930D623798A4D00BA664F /* STCustomCollectionView.m */,
+				78E930FB23798A4D00BA664F /* STCustomMemoryCache.h */,
+				78E930D323798A4D00BA664F /* STCustomMemoryCache.m */,
+				78E930CA23798A4D00BA664F /* STEffectsAudioPlayer.h */,
+				78E930E523798A4D00BA664F /* STEffectsAudioPlayer.m */,
+				78E930F823798A4D00BA664F /* STEffectsTimer.h */,
+				78E930D723798A4D00BA664F /* STEffectsTimer.m */,
+				78E930CB23798A4D00BA664F /* STFilterView.h */,
+				78E930E323798A4D00BA664F /* STFilterView.m */,
+				78E930EA23798A4D00BA664F /* STGLPreview.h */,
+				78E930C423798A4D00BA664F /* STGLPreview.m */,
+				78E930FE23798A4D00BA664F /* STGLPreview2.h */,
+				78E930DF23798A4D00BA664F /* STGLPreview2.m */,
+				78E930E923798A4D00BA664F /* STLock.h */,
+				78E930C323798A4D00BA664F /* STLock.m */,
+				78E930DA23798A4D00BA664F /* STMobileLog.h */,
+				78E930DD23798A4D00BA664F /* STMovieRecorder.h */,
+				78E9310123798A4D00BA664F /* STMovieRecorder.m */,
+				78E930FA23798A4D00BA664F /* STParamUtil.h */,
+				78E930D523798A4D00BA664F /* STParamUtil.m */,
+				78E930C023798A4D00BA664F /* STPlayerControlBar.h */,
+				78E930EB23798A4D00BA664F /* STPlayerControlBar.m */,
+				78E930C723798A4D00BA664F /* STScrollTitleView.h */,
+				78E930E723798A4D00BA664F /* STScrollTitleView.m */,
+				78E930C823798A4D00BA664F /* STSliderView.h */,
+				78E930E623798A4D00BA664F /* STSliderView.m */,
+				78E930C523798A4D00BA664F /* STSliderView.xib */,
+				78E930F323798A4D00BA664F /* STTitleViewItem.h */,
+				78E930D123798A4D00BA664F /* STTitleViewItem.m */,
+				78E930E223798A4D00BA664F /* STTriggerView.h */,
+				78E930CD23798A4D00BA664F /* STTriggerView.m */,
+				78E930DC23798A4D00BA664F /* STVFShader.h */,
+				78E9310023798A4D00BA664F /* STVFShader.m */,
+				78E930C923798A4D00BA664F /* STViewButton.h */,
+				78E930E423798A4D00BA664F /* STViewButton.m */,
+				78E930C223798A4D00BA664F /* STViewButton.xib */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -544,135 +703,9 @@
 		78E9313A23798B1000BA664F /* ios_universal */ = {
 			isa = PBXGroup;
 			children = (
-				78E9313B23798B1000BA664F /* libSenseArSourceService.a */,
+				090FDFD8238BC75B00743861 /* libSenseArSourceService.a */,
 			);
 			path = ios_universal;
-			sourceTree = "<group>";
-		};
-		78E9314123798B1000BA664F /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				78E9314223798B1000BA664F /* Filters */,
-				78E9314723798B1000BA664F /* Makeup */,
-				78E9315023798B1000BA664F /* StickerZipAndIcons */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
-		78E9314223798B1000BA664F /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				78E9314323798B1000BA664F /* PortraitFilters.bundle */,
-				78E9314423798B1000BA664F /* SceneryFilters.bundle */,
-				78E9314523798B1000BA664F /* StillLifeFilters.bundle */,
-				78E9314623798B1000BA664F /* DeliciousFoodFilters.bundle */,
-			);
-			path = Filters;
-			sourceTree = "<group>";
-		};
-		78E9314723798B1000BA664F /* Makeup */ = {
-			isa = PBXGroup;
-			children = (
-				78E9314823798B1000BA664F /* eyeliner.bundle */,
-				78E9314923798B1000BA664F /* eyelash.bundle */,
-				78E9314A23798B1000BA664F /* lips.bundle */,
-				78E9314B23798B1000BA664F /* brow.bundle */,
-				78E9314C23798B1000BA664F /* face.bundle */,
-				78E9314D23798B1000BA664F /* eyeshadow.bundle */,
-				78E9314E23798B1000BA664F /* eye.bundle */,
-				78E9314F23798B1000BA664F /* blush.bundle */,
-			);
-			path = Makeup;
-			sourceTree = "<group>";
-		};
-		78E9315023798B1000BA664F /* StickerZipAndIcons */ = {
-			isa = PBXGroup;
-			children = (
-				78E9315123798B1000BA664F /* my_sticker.bundle */,
-			);
-			path = StickerZipAndIcons;
-			sourceTree = "<group>";
-		};
-		78E9315223798B1000BA664F /* st_mobile */ = {
-			isa = PBXGroup;
-			children = (
-				78E9315323798B1000BA664F /* license */,
-				78E9315623798B1000BA664F /* include */,
-				78E9316523798B1000BA664F /* models */,
-				78E9317023798B1000BA664F /* VERSION */,
-				78E9317123798B1000BA664F /* lib */,
-			);
-			path = st_mobile;
-			sourceTree = "<group>";
-		};
-		78E9315323798B1000BA664F /* license */ = {
-			isa = PBXGroup;
-			children = (
-				78E9315423798B1000BA664F /* SENSEME.lic */,
-			);
-			path = license;
-			sourceTree = "<group>";
-		};
-		78E9315623798B1000BA664F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				78E9315723798B1000BA664F /* st_mobile_common.h */,
-				78E9315823798B1000BA664F /* st_mobile_sticker_module.h */,
-				78E9315923798B1000BA664F /* st_mobile_beautify.h */,
-				78E9315A23798B1000BA664F /* st_mobile_animal.h */,
-				78E9315B23798B1000BA664F /* st_mobile_human_action.h */,
-				78E9315C23798B1000BA664F /* st_mobile_object.h */,
-				78E9315D23798B1000BA664F /* st_mobile_makeup.h */,
-				78E9315E23798B1000BA664F /* st_mobile_face_attribute.h */,
-				78E9315F23798B1000BA664F /* st_mobile_license.h */,
-				78E9316023798B1000BA664F /* st_mobile_filter.h */,
-				78E9316123798B1000BA664F /* st_mobile_color_convert.h */,
-				78E9316223798B1000BA664F /* st_mobile_avatar.h */,
-				78E9316323798B1000BA664F /* st_mobile_sticker.h */,
-				78E9316423798B1000BA664F /* st_mobile_sticker_transition.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		78E9316523798B1000BA664F /* models */ = {
-			isa = PBXGroup;
-			children = (
-				78E9316623798B1000BA664F /* M_SenseME_Face_Video_5.3.3.model */,
-				78E9316723798B1000BA664F /* M_SenseME_Face_Extra_5.22.0.model */,
-				78E9316823798B1000BA664F /* M_SenseME_CatFace_2.0.0.model */,
-				78E9316923798B1000BA664F /* M_SenseME_Iris_2.0.0.model */,
-				78E9316A23798B1000BA664F /* M_SenseME_Segment_1.5.0.model */,
-				78E9316B23798B1000BA664F /* M_SenseME_Hand_5.4.0.model */,
-				78E9316C23798B1000BA664F /* M_Align_DeepFace_Tongue_1.0.0.model */,
-				78E9316D23798B1000BA664F /* M_SenseME_Attribute_1.0.1.model */,
-				78E9316E23798B1000BA664F /* M_SenseME_Avatar_Core_2.0.0.model */,
-				78E9316F23798B1000BA664F /* M_SenseME_Avatar_Help_new.model */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		78E9317123798B1000BA664F /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				78E9317223798B1000BA664F /* ios_os */,
-				78E9317423798B1000BA664F /* ios_sim */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		78E9317223798B1000BA664F /* ios_os */ = {
-			isa = PBXGroup;
-			children = (
-				78E9320E237A544700BA664F /* libst_mobile.a */,
-			);
-			path = ios_os;
-			sourceTree = "<group>";
-		};
-		78E9317423798B1000BA664F /* ios_sim */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ios_sim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -734,38 +767,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E931C523798B1000BA664F /* PortraitFilters.bundle in Resources */,
-				78E931CF23798B1000BA664F /* eye.bundle in Resources */,
-				78E931D923798B1000BA664F /* M_SenseME_Hand_5.4.0.model in Resources */,
-				78E931DD23798B1000BA664F /* M_SenseME_Avatar_Help_new.model in Resources */,
+				090FE016238BC78700743861 /* M_SenseME_Avatar_Help_new.model in Resources */,
+				090FE028238BC7A100743861 /* SENSEME.lic in Resources */,
+				090FE012238BC78700743861 /* M_SenseME_Hand_5.4.0.model in Resources */,
 				7891D1BA23793787003260D6 /* LaunchScreen.storyboard in Resources */,
-				78E931DB23798B1000BA664F /* M_SenseME_Attribute_1.0.1.model in Resources */,
-				78E931D423798B1000BA664F /* M_SenseME_Face_Video_5.3.3.model in Resources */,
+				090FE01E238BC78700743861 /* eyeliner.bundle in Resources */,
+				090FE017238BC78700743861 /* VERSION in Resources */,
+				090FE023238BC78700743861 /* eyeshadow.bundle in Resources */,
 				78E9310D23798A4D00BA664F /* STViewButton.xib in Resources */,
-				78E931D623798B1000BA664F /* M_SenseME_CatFace_2.0.0.model in Resources */,
-				78E931D023798B1000BA664F /* blush.bundle in Resources */,
-				78E931D823798B1000BA664F /* M_SenseME_Segment_1.5.0.model in Resources */,
-				78E931CE23798B1000BA664F /* eyeshadow.bundle in Resources */,
+				090FE024238BC78700743861 /* eye.bundle in Resources */,
+				090FE01D238BC78700743861 /* DeliciousFoodFilters.bundle in Resources */,
+				090FE01A238BC78700743861 /* PortraitFilters.bundle in Resources */,
+				090FE022238BC78700743861 /* face.bundle in Resources */,
+				090FE01C238BC78700743861 /* StillLifeFilters.bundle in Resources */,
+				090FE01F238BC78700743861 /* eyelash.bundle in Resources */,
+				090FE00D238BC78700743861 /* M_SenseME_Face_Video_5.3.3.model in Resources */,
+				090FE020238BC78700743861 /* lips.bundle in Resources */,
+				090FE026238BC78700743861 /* my_sticker.bundle in Resources */,
+				090FE011238BC78700743861 /* M_SenseME_Segment_1.5.0.model in Resources */,
+				090FE025238BC78700743861 /* blush.bundle in Resources */,
+				090FE00F238BC78700743861 /* M_SenseME_CatFace_2.0.0.model in Resources */,
+				090FE010238BC78700743861 /* M_SenseME_Iris_2.0.0.model in Resources */,
+				090FE021238BC78700743861 /* brow.bundle in Resources */,
 				781E3EB7238797F500098EBC /* TermsOfUse.htm in Resources */,
-				78E931D723798B1000BA664F /* M_SenseME_Iris_2.0.0.model in Resources */,
-				78E931D223798B1000BA664F /* SENSEME.lic in Resources */,
-				78E931DA23798B1000BA664F /* M_Align_DeepFace_Tongue_1.0.0.model in Resources */,
-				78E931CC23798B1000BA664F /* brow.bundle in Resources */,
 				78E9312623798A4D00BA664F /* EffectsCollectionViewCell.xib in Resources */,
-				78E931C723798B1000BA664F /* StillLifeFilters.bundle in Resources */,
-				78E931CB23798B1000BA664F /* lips.bundle in Resources */,
-				78E931CD23798B1000BA664F /* face.bundle in Resources */,
-				78E931C923798B1000BA664F /* eyeliner.bundle in Resources */,
-				78E931D123798B1000BA664F /* my_sticker.bundle in Resources */,
 				78E9311023798A4D00BA664F /* STSliderView.xib in Resources */,
 				7891D1B723793787003260D6 /* Assets.xcassets in Resources */,
-				78E931C823798B1000BA664F /* DeliciousFoodFilters.bundle in Resources */,
-				78E931C623798B1000BA664F /* SceneryFilters.bundle in Resources */,
-				78E931DC23798B1000BA664F /* M_SenseME_Avatar_Core_2.0.0.model in Resources */,
-				78E931CA23798B1000BA664F /* eyelash.bundle in Resources */,
-				78E931DE23798B1000BA664F /* VERSION in Resources */,
 				7891D1B523793785003260D6 /* Main.storyboard in Resources */,
-				78E931D523798B1000BA664F /* M_SenseME_Face_Extra_5.22.0.model in Resources */,
+				090FE014238BC78700743861 /* M_SenseME_Attribute_1.0.1.model in Resources */,
+				090FE015238BC78700743861 /* M_SenseME_Avatar_Core_2.0.0.model in Resources */,
+				090FE013238BC78700743861 /* M_Align_DeepFace_Tongue_1.0.0.model in Resources */,
+				090FE00E238BC78700743861 /* M_SenseME_Face_Extra_5.22.0.model in Resources */,
+				090FE01B238BC78700743861 /* SceneryFilters.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +841,7 @@
 				78E9310C23798A4D00BA664F /* STBMPModel.m in Sources */,
 				78E9311923798A4D00BA664F /* STAudioManager.m in Sources */,
 				78E9310B23798A4D00BA664F /* STBmpStrengthView.m in Sources */,
+				090FE09B238BF30400743861 /* AGMSenceTimeFilter.m in Sources */,
 				78E9311823798A4D00BA664F /* STEffectsTimer.m in Sources */,
 				781E3F0E238A505600098EBC /* SenseRecordView.m in Sources */,
 				78E9312D23798A4D00BA664F /* STVFShader.m in Sources */,
@@ -972,15 +1006,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Agora-With-SenseTime/Agora-With-SenseTime.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7289G77ZF3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/ThirdParty",
+					"$(PROJECT_DIR)/Agora-With-SenseTime",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = AgoraARS_IOS;
 				INFOPLIST_FILE = "Agora-With-SenseTime/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -991,6 +1027,8 @@
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/st_mobile/lib/ios_os",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/st_mobile/lib/ios_sim",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/ios_universal",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"-lc++",
@@ -999,7 +1037,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraIOTest2019;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1009,15 +1047,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Agora-With-SenseTime/Agora-With-SenseTime.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7289G77ZF3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/ThirdParty",
+					"$(PROJECT_DIR)/Agora-With-SenseTime",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = AgoraARS_IOS;
 				INFOPLIST_FILE = "Agora-With-SenseTime/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1028,6 +1068,8 @@
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/st_mobile/lib/ios_os",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/st_mobile/lib/ios_sim",
 					"$(PROJECT_DIR)/Agora-With-SenseTime/SenseTimePart/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/ios_universal",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
 					"-lc++",
@@ -1036,7 +1078,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraIOTest2019;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
