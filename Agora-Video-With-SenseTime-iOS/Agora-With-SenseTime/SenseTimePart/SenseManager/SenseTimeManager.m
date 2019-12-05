@@ -193,8 +193,8 @@
     
     STWeakSelf;
     [[SenseArMaterialService sharedInstance]
-     authorizeWithAppID:<#Your Sense App Id#>
-     appKey:<#Your Sense App Key#>
+     authorizeWithAppID:@"6dc0af51b69247d0af4b0a676e11b5ee"
+     appKey:@"e4156e4d61b040d2bcbf896c798d06e3"
      onSuccess:^{
         
 #if USE_ONLINE_ACTIVATION
