@@ -91,6 +91,9 @@ typedef int   st_result_t;
 
 #define ST_E_LICENSE_LIMIT_EXCEEDED         -37 ///< license激活次数已用完
 
+// rendering related errors.
+#define ST_E_INVALID_GL_CONTEXT             -100 ///< OpenGL Context错误，当前为空，或不一致
+
 #ifndef CHECK_FLAG
 #define CHECK_FLAG(action,flag) (((action)&(flag)) == flag)
 #endif

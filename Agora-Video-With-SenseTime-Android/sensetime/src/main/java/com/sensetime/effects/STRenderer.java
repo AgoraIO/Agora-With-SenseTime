@@ -296,8 +296,9 @@ public class STRenderer {
 
     /**
      * Options of human action detection
+     *
      * @param needFaceDetect the same as whether use face beauty or not.
-     * @param config  here use STStickerNative.getTriggerAction()
+     * @param config         here use STStickerNative.getTriggerAction()
      */
     private void setHumanActionDetectConfig(boolean needFaceDetect, long config) {
         if (!mNeedSticker || mCurrentSticker == null) {
@@ -389,15 +390,20 @@ public class STRenderer {
 
     /**
      * Transform orientation in angles to STRotateType
+     *
      * @param rotation
      * @return
      */
     private int getCurrentOrientation(int rotation) {
         switch (rotation) {
-            case 90: return STRotateType.ST_CLOCKWISE_ROTATE_90;
-            case 180: return STRotateType.ST_CLOCKWISE_ROTATE_180;
-            case 270: return STRotateType.ST_CLOCKWISE_ROTATE_270;
-            default: return STRotateType.ST_CLOCKWISE_ROTATE_0;
+            case 90:
+                return STRotateType.ST_CLOCKWISE_ROTATE_90;
+            case 180:
+                return STRotateType.ST_CLOCKWISE_ROTATE_180;
+            case 270:
+                return STRotateType.ST_CLOCKWISE_ROTATE_270;
+            default:
+                return STRotateType.ST_CLOCKWISE_ROTATE_0;
         }
     }
 
@@ -413,7 +419,7 @@ public class STRenderer {
         }
     }
 
-    public void enableFilter(boolean needFilter){
+    public void enableFilter(boolean needFilter) {
         mNeedFilter = needFilter;
     }
 
@@ -429,6 +435,7 @@ public class STRenderer {
     /**
      * STRenderer itself does not any more maintain
      * the values of beauty params .
+     *
      * @param param
      * @param value
      */
@@ -466,7 +473,8 @@ public class STRenderer {
 
     /**
      * Set makeup effect for a type from STMobileType
-     * @param type makeup type
+     *
+     * @param type     makeup type
      * @param typePath sub path of this type
      * @return package id for this effect
      */
@@ -476,7 +484,7 @@ public class STRenderer {
 
     public void removeMakeupByType(String type) {
         if (mMakeupPaths.containsKey(type) &&
-            mMakeupPackageIds.containsKey(type)) {
+                mMakeupPackageIds.containsKey(type)) {
             Integer id = mMakeupPackageIds.get(type);
             int result = 0;
             if (id != null) {
@@ -494,7 +502,7 @@ public class STRenderer {
         // if (type == Constants.ST_MAKEUP_HIGHLIGHT) {
         //     mSTMobileMakeupNative.setStrengthForType(type, strength * mMakeUpStrength);
         // } else {
-            mSTMobileMakeupNative.setStrengthForType(type, 1.0f);
+        mSTMobileMakeupNative.setStrengthForType(type, 1.0f);
         // }
     }
 
@@ -562,7 +570,7 @@ public class STRenderer {
     public int preProcess(int textureId, SurfaceTexture surfaceTexture,
                           int width, int height, int orientation, float[] texMatrix) {
         return preProcess(textureId, surfaceTexture, width, height,
-                -1, -1, orientation,  texMatrix);
+                -1, -1, orientation, texMatrix);
     }
 
     public int preProcess(int textureId, SurfaceTexture surfaceTexture,
@@ -632,41 +640,6 @@ public class STRenderer {
 
                 // Log.i("STRenderer", "face count:" + humanAction.faceCount);
 
-                if (mInDebugMode) {
-                    if (humanAction != null) {
-                        if (humanAction.faceCount > 0) {
-                            for (int i = 0; i < humanAction.faceCount; i++) {
-                                float[] points = STUtils.getExtraPoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-                        }
-
-                        if (humanAction.faceCount > 0) {
-                            for (int i = 0; i < humanAction.faceCount; i++) {
-                                float[] points = STUtils.getTonguePoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-                        }
-
-                        if (humanAction.bodyCount > 0) {
-                            for (int i = 0; i < humanAction.bodyCount; i++) {
-                                float[] points = STUtils.getBodyKeyPoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-
-                            //print body[0] action
-                            LogUtils.i(TAG, "human action body count: %d", humanAction.bodyCount);
-                            LogUtils.i(TAG, "human action body[0] action: %d", humanAction.bodys[0].bodyAction);
-                        }
-                    }
-                }
-
                 if (mNeedDistance) {
                     if (humanAction.faceCount > 0) {
                         mFaceDistance = mSTHumanActionNative.getFaceDistance(humanAction.faces[0],
@@ -711,7 +684,7 @@ public class STRenderer {
                     if (mSensorEvent != null && mSensorEvent.values != null && mSensorEvent.values.length > 0) {
                         inputParams = new STStickerInputParams(mSensorEvent.values, false, event);
                     } else {
-                        inputParams = new STStickerInputParams(new float[] {0, 0, 0, 1}, false, event);
+                        inputParams = new STStickerInputParams(new float[]{0, 0, 0, 1}, false, event);
                     }
 
                     // 如果需要输出buffer推流或其他，设置该开关为true
@@ -734,6 +707,41 @@ public class STRenderer {
                     if (result == 0) {
                         Log.i("sticker", "process sticker success");
                         processedTextureId = mTextureOutId[0];
+                    }
+                }
+
+                if (mInDebugMode) {
+                    if (humanAction != null) {
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getExtraPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getTonguePoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.bodyCount > 0) {
+                            for (int i = 0; i < humanAction.bodyCount; i++) {
+                                float[] points = STUtils.getBodyKeyPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+
+                            // print body[0] action
+                            LogUtils.i(TAG, "human action body count: %d", humanAction.bodyCount);
+                            LogUtils.i(TAG, "human action body[0] action: %d", humanAction.bodys[0].bodyAction);
+                        }
                     }
                 }
             }
@@ -882,6 +890,7 @@ public class STRenderer {
 
         /**
          * Get current value of a beauty parameter
+         *
          * @param param STBeautyParam values
          * @return current value of this param
          */

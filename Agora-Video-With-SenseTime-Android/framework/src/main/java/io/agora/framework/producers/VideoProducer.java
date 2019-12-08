@@ -34,7 +34,7 @@ public abstract class VideoProducer implements IVideoProducer {
                     return;
                 }
 
-                //TODO workaround for setting the texture type
+                // TODO workaround for setting the texture type
                 frame.mFormat.setPixelFormat(GLES11Ext.GL_TEXTURE_EXTERNAL_OES);
 
                 final VideoCaptureFrame out = new VideoCaptureFrame(frame);

@@ -27,7 +27,7 @@ There are two ways to add Agora Video SDK to the project:
 
 **The first method** will download Agora Video SDK automatically from JCenter when the project is building. Add the following line to "app/build.gradle" (which is default in the project):
 ```
-implementation 'io.agora.rtc:full-sdk:2.9.1'
+implementation 'io.agora.rtc:full-sdk:2.9.2'
 ```
 
 **The second method** needs developers to download SDK and copy the unzipped library files to proper project folders (acquires knowledge of the project structure):
@@ -74,7 +74,7 @@ Developers must contact SenseTime to obtain the licence file. Change the file na
 ## Connect Us
 
 - You can find full Agora API document at [Document Center](https://docs.agora.io/en/)
-- You can file bugs about this demo at [issue](https://github.com/AgoraIO/Advanced-Video/issues)
+- You can file bugs about this demo at [issue](https://github.com/AgoraIO/Agora-With-SenseTime/issues)
 
 ## License
 
