@@ -1029,7 +1029,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime1";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraAppsDevProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1070,7 +1070,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime1";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraAppsDevProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
