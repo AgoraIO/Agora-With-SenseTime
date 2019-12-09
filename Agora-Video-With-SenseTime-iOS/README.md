@@ -162,7 +162,7 @@ Create a class that inherits form AGMVideoSource and implements the AGMVideoSink
 ```
 
 ## Developer Environment Requirements
-- Xcode 10 or above
+- Xcode 11 or above
 - iOS 8.0 or above
 - Real devices
 
