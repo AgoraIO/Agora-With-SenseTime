@@ -35,9 +35,6 @@
 		090FE025238BC78700743861 /* blush.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE00A238BC78700743861 /* blush.bundle */; };
 		090FE026238BC78700743861 /* my_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 090FE00C238BC78700743861 /* my_sticker.bundle */; };
 		090FE028238BC7A100743861 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 090FE027238BC7A100743861 /* SENSEME.lic */; };
-		090FE02C238BC7C700743861 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE029238BC7C300743861 /* libcrypto.a */; };
-		090FE02D238BC7C700743861 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */; };
-		090FE02E238BC7C700743861 /* AgoraRtcCryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */; };
 		090FE09B238BF30400743861 /* AGMSenceTimeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 090FE09A238BF30400743861 /* AGMSenceTimeFilter.m */; };
 		781E3EB7238797F500098EBC /* TermsOfUse.htm in Resources */ = {isa = PBXBuildFile; fileRef = 781E3EB6238797F400098EBC /* TermsOfUse.htm */; };
 		781E3EEB238A4FD900098EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E3EE9238A4FD900098EBC /* ViewController.m */; };
@@ -53,13 +50,16 @@
 		781E3F0D238A505600098EBC /* SenseTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E3F04238A505600098EBC /* SenseTouchView.m */; };
 		781E3F0E238A505600098EBC /* SenseRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E3F05238A505600098EBC /* SenseRecordView.m */; };
 		782831B92379467800FA5EE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782831B82379467800FA5EE8 /* UIKit.framework */; };
+		783447B7239DF5030075F852 /* AGMRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783447B3239DF5030075F852 /* AGMRenderer.framework */; };
+		783447B8239DF5030075F852 /* AGMBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783447B4239DF5030075F852 /* AGMBase.framework */; };
+		783447BA239DF5030075F852 /* AGMCapturer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783447B6239DF5030075F852 /* AGMCapturer.framework */; };
+		783447BC239DFBF40075F852 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783447BB239DFBF40075F852 /* AgoraRtcEngineKit.framework */; };
 		7891D1AC23793785003260D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7891D1AB23793785003260D6 /* AppDelegate.m */; };
 		7891D1B223793785003260D6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7891D1B123793785003260D6 /* MainViewController.m */; };
 		7891D1B523793785003260D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7891D1B323793785003260D6 /* Main.storyboard */; };
 		7891D1B723793787003260D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7891D1B623793787003260D6 /* Assets.xcassets */; };
 		7891D1BA23793787003260D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7891D1B823793787003260D6 /* LaunchScreen.storyboard */; };
 		7891D1BD23793787003260D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7891D1BC23793787003260D6 /* main.m */; };
-		7891D1C423794390003260D6 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1C323794390003260D6 /* AgoraRtcEngineKit.framework */; };
 		7891D1C72379439B003260D6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1C62379439B003260D6 /* Accelerate.framework */; };
 		7891D1C9237943A5003260D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1C8237943A5003260D6 /* AVFoundation.framework */; };
 		7891D1CB2379447D003260D6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7891D1CA2379447D003260D6 /* AudioToolbox.framework */; };
@@ -178,9 +178,6 @@
 		090FE00A238BC78700743861 /* blush.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blush.bundle; sourceTree = "<group>"; };
 		090FE00C238BC78700743861 /* my_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = my_sticker.bundle; sourceTree = "<group>"; };
 		090FE027238BC7A100743861 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
-		090FE029238BC7C300743861 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcEngineKit.framework; sourceTree = "<group>"; };
-		090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcCryptoLoader.framework; sourceTree = "<group>"; };
 		090FE099238BF30400743861 /* AGMSenceTimeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMSenceTimeFilter.h; sourceTree = "<group>"; };
 		090FE09A238BF30400743861 /* AGMSenceTimeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMSenceTimeFilter.m; sourceTree = "<group>"; };
 		781E3EB6238797F400098EBC /* TermsOfUse.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TermsOfUse.htm; sourceTree = "<group>"; };
@@ -209,6 +206,10 @@
 		781E3F04238A505600098EBC /* SenseTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseTouchView.m; sourceTree = "<group>"; };
 		781E3F05238A505600098EBC /* SenseRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseRecordView.m; sourceTree = "<group>"; };
 		782831B82379467800FA5EE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		783447B3239DF5030075F852 /* AGMRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGMRenderer.framework; path = "Agora-With-SenseTime/AGMRenderer.framework"; sourceTree = "<group>"; };
+		783447B4239DF5030075F852 /* AGMBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGMBase.framework; path = "Agora-With-SenseTime/AGMBase.framework"; sourceTree = "<group>"; };
+		783447B6239DF5030075F852 /* AGMCapturer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGMCapturer.framework; path = "Agora-With-SenseTime/AGMCapturer.framework"; sourceTree = "<group>"; };
+		783447BB239DFBF40075F852 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "Agora-With-SenseTime/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
 		7891D1A723793785003260D6 /* Agora-With-SenseTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agora-With-SenseTime.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7891D1AA23793785003260D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7891D1AB23793785003260D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -219,7 +220,6 @@
 		7891D1B923793787003260D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7891D1BB23793787003260D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7891D1BC23793787003260D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7891D1C323794390003260D6 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcEngineKit.framework; sourceTree = SOURCE_ROOT; };
 		7891D1C62379439B003260D6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7891D1C8237943A5003260D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7891D1CA2379447D003260D6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -319,22 +319,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7891D1CE23794489003260D6 /* CoreMedia.framework in Frameworks */,
-				090FE02E238BC7C700743861 /* AgoraRtcCryptoLoader.framework in Frameworks */,
+				783447B8239DF5030075F852 /* AGMBase.framework in Frameworks */,
 				7891D1D6237944A5003260D6 /* SystemConfiguration.framework in Frameworks */,
 				090FE018238BC78700743861 /* libst_mobile.a in Frameworks */,
 				7891D1D02379448F003260D6 /* CoreML.framework in Frameworks */,
 				7891D1D8237944BB003260D6 /* libresolv.tbd in Frameworks */,
-				7891D1C423794390003260D6 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1C72379439B003260D6 /* Accelerate.framework in Frameworks */,
-				090FE02D238BC7C700743861 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1D223794494003260D6 /* CoreTelephony.framework in Frameworks */,
-				090FE02C238BC7C700743861 /* libcrypto.a in Frameworks */,
+				783447B7239DF5030075F852 /* AGMRenderer.framework in Frameworks */,
 				7891D1D7237944B2003260D6 /* libc++.tbd in Frameworks */,
 				782831B92379467800FA5EE8 /* UIKit.framework in Frameworks */,
 				78E93210237A55AB00BA664F /* libz.1.1.3.tbd in Frameworks */,
+				783447BC239DFBF40075F852 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1DA237944C0003260D6 /* VideoToolbox.framework in Frameworks */,
 				090FDFD9238BC75B00743861 /* libSenseArSourceService.a in Frameworks */,
 				7891D1CC23794483003260D6 /* AVFoundation.framework in Frameworks */,
+				783447BA239DF5030075F852 /* AGMCapturer.framework in Frameworks */,
 				7891D1C9237943A5003260D6 /* AVFoundation.framework in Frameworks */,
 				090FE019238BC78700743861 /* libst_mobile.a in Frameworks */,
 				7891D1CB2379447D003260D6 /* AudioToolbox.framework in Frameworks */,
@@ -548,10 +548,10 @@
 		7891D1C52379439B003260D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				090FE02B238BC7C700743861 /* AgoraRtcCryptoLoader.framework */,
-				7891D1C323794390003260D6 /* AgoraRtcEngineKit.framework */,
-				090FE02A238BC7C700743861 /* AgoraRtcEngineKit.framework */,
-				090FE029238BC7C300743861 /* libcrypto.a */,
+				783447BB239DFBF40075F852 /* AgoraRtcEngineKit.framework */,
+				783447B4239DF5030075F852 /* AGMBase.framework */,
+				783447B6239DF5030075F852 /* AGMCapturer.framework */,
+				783447B3239DF5030075F852 /* AGMRenderer.framework */,
 				78E9320D237A52B900BA664F /* libz.1.1.3.tbd */,
 				782831B82379467800FA5EE8 /* UIKit.framework */,
 				7891D1D9237944C0003260D6 /* VideoToolbox.framework */,
@@ -1000,9 +1000,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Agora-With-SenseTime/Agora-With-SenseTime.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = SW3CA7M752;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,9 +1029,9 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraAppsDevProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1070,7 +1070,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraAppsDevProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
