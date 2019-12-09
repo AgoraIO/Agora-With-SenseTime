@@ -62,7 +62,7 @@ Developers must contact SenseTime to obtain the licence file. Change the file na
 - [x]     Audio configuration
 - [x]     Video configuration
 - [x]   Audio Mute
-- [x]     Background recording
+- [ ]     Background recording
 - [x]   Support  Beauty Face With SenseTime
 - [x]   Support  Beauty Face With FaceUnity
 - [x]     Switch camera position
