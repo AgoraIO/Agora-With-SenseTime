@@ -33,6 +33,9 @@
                        resultCVPixelBufferRef:(CVPixelBufferRef)resultPixelBuffer
                                     timeStamp:(CMTime)timeStamp;
 
+- (void)captureOutputPixelBufferRef:(CVPixelBufferRef)pixelBuffer
+             timeStamp:(CMTime)timeStamp;
+
 // cancel recording when Interval greater than 10 seconds
 - (BOOL)isOvertimeRecording;
 

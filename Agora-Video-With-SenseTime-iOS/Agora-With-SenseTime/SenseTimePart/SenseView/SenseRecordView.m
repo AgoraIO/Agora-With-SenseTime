@@ -96,6 +96,11 @@ typedef NS_ENUM(NSInteger, STWriterRecordingStatus){
     }
 }
 
+- (void)captureOutputPixelBufferRef:(CVPixelBufferRef)pixelBuffer
+                          timeStamp:(CMTime)timeStamp {
+    [self captureOutputOriginalCVPixelBufferRef:pixelBuffer resultCVPixelBufferRef:pixelBuffer timeStamp:timeStamp];
+}
+
 - (void)captureOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer  originalCVPixelBufferRef:(CVPixelBufferRef)originalPixelBuffer resultCVPixelBufferRef:(CVPixelBufferRef)resultPixelBuffer {
     
     if ([self isOvertimeRecording]) {

@@ -29,7 +29,6 @@
 #import <AgoraRtcEngineKit/AgoraRtcEngineKit.h>
 
 #import <AGMCapturer/AGMCapturer.h>
-#import <AGMRenderer/AGMRenderer.h>
 #import "AGMSenceTimeFilter.h"
 
 typedef NS_ENUM(NSInteger, STViewTag) {
@@ -38,7 +37,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     STViewTagBeautyBtn,
 };
 
-@interface ViewController () <STViewButtonDelegate, SenseSettingDelegate, SenseTouchViewDelegate, SenseRecordDelegate, SenseEffectsViewDelegate, SenseTimeDelegate, AgoraRtcEngineDelegate, AgoraVideoSourceProtocol> {
+@interface ViewController () <STViewButtonDelegate, SenseSettingDelegate, SenseTouchViewDelegate, SenseRecordDelegate, SenseEffectsViewDelegate, SenseTimeDelegate, AgoraRtcEngineDelegate, AgoraVideoSourceProtocol, AGMVideoSink> {
 
 }
 
@@ -67,12 +66,10 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 @property (nonatomic, readwrite, strong) UIButton *btnCompare;
 @property (nonatomic, readwrite, strong) UIButton *btnSetting;
 
-#pragma CapturerAndRenderer
+#pragma Capturer
 @property (nonatomic, strong) AGMCameraCapturer *cameraCapturer;
-@property (nonatomic, strong) AGMVideoRenderer *videoRnderer;
 @property (nonatomic, strong) AGMSenceTimeFilter *senceTimeFilter;
 @property (nonatomic, strong) AGMCapturerVideoConfig *videoConfig;
-@property (nonatomic, strong) AGMRendererConfig *rendererConfig;
 
 @property (nonatomic, strong) UIView *preview;
 
@@ -105,7 +102,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     
     STWeakSelf
     self.senseTimeManager = [[SenseTimeManager alloc] initWithSuccessBlock:^{
-        [weakSelf initCapturerAndRenderer];
+        [weakSelf initCapturer];
         [weakSelf initSenseModule];
         [weakSelf setupSubviews];
         [weakSelf loadAgoraKit];
@@ -113,7 +110,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     self.senseTimeManager.senseTimeDelegate = self;
 }
 
-- (void)initCapturerAndRenderer
+- (void)initCapturer
 {
 #pragma mark Capturer
 {
@@ -122,7 +119,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     self.videoConfig.sessionPreset = AGMCaptureSessionPreset720x1280;
     self.videoConfig.outputPixelFormat = AGMVideoPixelFormatBGRA;
 
-    EAGLContext *previewContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 sharegroup:self.senseTimeManager.glContext.sharegroup];
     CGRect rect = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     CGFloat fWidth = self.videoConfig.videoSize.width;
     CGFloat fHeight = self.videoConfig.videoSize.height;
@@ -137,7 +133,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     self.senceTimeFilter.didCompletion = ^(CVPixelBufferRef  _Nonnull originalPixelBuffer, CVPixelBufferRef  _Nonnull resultPixelBuffer, CMTime timeStamp) {
         
 //        // for snap button
-        [weakSelf.senseRecordView captureOutputOriginalCVPixelBufferRef:originalPixelBuffer resultCVPixelBufferRef:resultPixelBuffer timeStamp:timeStamp];
+//        [weakSelf.senseRecordView captureOutputOriginalCVPixelBufferRef:originalPixelBuffer resultCVPixelBufferRef:resultPixelBuffer timeStamp:timeStamp];
         if (weakSelf.needSnap) {
             weakSelf.needSnap = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,7 +144,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 
         // push video frame to agora
         AgoraVideoRotation agoraRotation = [weakSelf agoraRotation];
-        [weakSelf.consumer consumePixelBuffer:resultPixelBuffer withTimestamp:timeStamp rotation:agoraRotation];
+        [weakSelf.consumer consumePixelBuffer:resultPixelBuffer withTimestamp:timeStamp rotation:AgoraVideoRotation90];
 
         double dAttributeStart = CFAbsoluteTimeGetCurrent();
 
@@ -156,25 +152,31 @@ typedef NS_ENUM(NSInteger, STViewTag) {
         
     };
     
-#pragma mark Renderer
+#pragma mark VideoFrameAdapter
     self.preview = [[UIView alloc] initWithFrame:rect];
     [self.view addSubview:self.preview];
-    self.rendererConfig = [AGMRendererConfig defaultConfig];
-    self.rendererConfig.renderMode = AGMRENDER_MODE_FIT;
-    self.videoRnderer = [[AGMVideoRenderer alloc] initWithConfig:self.rendererConfig glContext:previewContext];
-    self.videoRnderer.preView = self.preview;
-    
+
+    AGMVideoFrameAdapter *videoFrameAdapter = [[AGMVideoFrameAdapter alloc] init];
+    videoFrameAdapter.orientationMode = AGMVideoOutputOrientationModeFixedPortrait;
+    videoFrameAdapter.sinkDelegate = self;
 #pragma mark Connect
     [self.cameraCapturer addVideoSink:self.senceTimeFilter];
-    [self.senceTimeFilter addVideoSink:self.self.videoRnderer];
-    
+    [self.senceTimeFilter addVideoSink:videoFrameAdapter];
 #pragma mark
     self.senceTimeFilter.devicePosition = self.cameraCapturer.captureDevicePosition;
-    self.senceTimeFilter.isVideoMirrored = YES;
+    self.senceTimeFilter.isVideoMirrored = NO;
 }
 }
-
-
+/**
+ Writer on the file.
+ */
+- (void)onFrame:(AGMVideoFrame *)videoFrame {
+    if (![videoFrame.buffer isKindOfClass:AGMCVPixelBuffer.class]) {
+        [videoFrame newNV12VideoFrame];
+    }
+    AGMCVPixelBuffer *agmPixelBuffer = videoFrame.buffer;
+    [self.senseRecordView captureOutputPixelBufferRef:agmPixelBuffer.pixelBuffer timeStamp:videoFrame.timeStamp];
+}
 
 -(void)initSenseModule {
 
@@ -568,7 +570,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
  */
 - (void)loadAgoraKit {
     self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: self];
-    [self.agoraKit setChannelProfile:AgoraChannelProfileLiveBroadcasting];
+    [self.agoraKit setChannelProfile:AgoraChannelProfileCommunication];
     [self.agoraKit setVideoEncoderConfiguration:[[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360
                                                                                           frameRate:AgoraVideoFrameRateFps15
                                                                                             bitrate:AgoraVideoBitrateStandard
@@ -579,13 +581,13 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     [self.agoraKit setVideoSource:self];
     
     [self.agoraKit enableWebSdkInteroperability:YES];
-    
     [self setupLocalView];
     [self.agoraKit startPreview];
     
     self.count = 0;
     
     [self.agoraKit joinChannelByToken:[KeyCenter agoraAppToken] channelId:self.channelName info:nil uid:0 joinSuccess:nil];
+
 }
 
 - (void)setupLocalView {
@@ -606,12 +608,10 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 
 - (void)shouldStart {
     [self.cameraCapturer start];
-    [self.videoRnderer start];
 }
 
 - (void)shouldStop {
     [self.cameraCapturer stop];
-    [self.videoRnderer stop];
 }
 
 - (void)shouldDispose {
@@ -639,7 +639,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
         self.remoteCanvas.view = renderView;
         self.remoteCanvas.renderMode = AgoraVideoRenderModeHidden;
         [self.agoraKit setupRemoteVideo:self.remoteCanvas];
-        
+
         self.remoteRenderView = renderView;
         
         [UIView animateWithDuration:0.3 animations:^{
@@ -680,7 +680,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     [self setViewsHidden:YES];
     [self setButtonsHidden:YES];
     
-    [self.senseRecordView startRecorder:self.cameraCapturer.videoCompressingSettings];
+    [self.senseRecordView startRecorder:nil];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -690,7 +690,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 - (BOOL)prefersHomeIndicatorAutoHidden {
     return YES;
 }
-
 
 -(AgoraVideoRotation)agoraRotation {
     
