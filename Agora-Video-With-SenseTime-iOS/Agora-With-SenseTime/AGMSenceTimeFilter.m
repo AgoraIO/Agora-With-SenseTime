@@ -44,10 +44,11 @@
     AGMVideoFrame *aVideoFrame = [[AGMVideoFrame alloc] initWithBuffer:aPixelBuffer
                                                              rotation:videoFrame.rotation
                                                              timeStamp:timeStamp];
-    
+    aVideoFrame.usingFrontCamera = videoFrame.usingFrontCamera;
+    aVideoFrame.videoSize = videoFrame.videoSize;
 
     
-    if (self.allSinks) {
+    if (self.allSinks.count) {
         for (id<AGMVideoSink> sink in self.allSinks) {
             [sink onFrame:aVideoFrame];
         }
