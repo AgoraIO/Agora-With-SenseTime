@@ -74,7 +74,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 @property (nonatomic, strong) UIView *preview;
 
 #pragma Agora
-@property (strong, nonatomic) AgoraRtcEngineKit *agoraKit;    //Agora Engine
 @property (nonatomic, strong) AgoraRtcVideoCanvas *remoteCanvas;
 @property (nonatomic, weak)   UIView *remoteRenderView;
 @property (nonatomic, strong) AgoraRtcVideoCanvas *localCanvas;
@@ -286,6 +285,11 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     }
 }
 
+-(void)leaveRTC {
+    [self.agoraKit stopPreview];
+    [self.agoraKit leaveChannel:nil];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -294,6 +298,8 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     [self.cameraCapturer stop];
     
     [self.senseTimeManager releaseResources];
+    
+    [self leaveRTC];
 }
 
 #pragma mark - handle system notifications
@@ -571,6 +577,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 - (void)loadAgoraKit {
     self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: self];
     [self.agoraKit setChannelProfile:AgoraChannelProfileCommunication];
+    self.agoraKit.delegate = self;
     [self.agoraKit setVideoEncoderConfiguration:[[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360
                                                                                           frameRate:AgoraVideoFrameRateFps15
                                                                                             bitrate:AgoraVideoBitrateStandard

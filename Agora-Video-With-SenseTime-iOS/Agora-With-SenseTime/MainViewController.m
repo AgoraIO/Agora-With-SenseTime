@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "ViewController.h"
 #import <AgoraRtcEngineKit/AgoraRtcEngineKit.h>
+#import "KeyCenter.h"
 
 @interface MainViewController ()
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self onClickJoin:nil];
+    self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: nil];
 }
 
 - (IBAction)onClickJoin:(id)sender {
@@ -31,6 +33,7 @@
     
     ViewController *vc = [ViewController new];
     vc.channelName = self.channelNameTF.text;
+    vc.agoraKit =  self.agoraKit;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc  animated:YES completion:nil];
 }

@@ -22,10 +22,10 @@ def main():
     unzip = "unzip -q " + TARGET_LIBS_ZIP + " -d " + TARGET_INTERNAL_FOLDER
     os.system(unzip)
 
-    mv_rtc = "mv -f " + TARGET_INTERNAL_FOLDER + "/" + ZIP_STRUCTURE_FOLDER + "/" + FRAMEWORK_NAME + " \"" + FRAMEWORK_NAME + "\""
+    mv_rtc = "mv -f " + TARGET_INTERNAL_FOLDER + "/" + ZIP_STRUCTURE_FOLDER + "/" + FRAMEWORK_NAME + " \"" + "Agora-With-SenseTime/" + FRAMEWORK_NAME + "\""
     os.system(mv_rtc)
 
-    mv_ecy = "mv -f " + TARGET_INTERNAL_FOLDER + "/" + ZIP_STRUCTURE_FOLDER + "/" + CRY_FRAMEWORK_NAME + " \"" + CRY_FRAMEWORK_NAME + "\""
+    mv_ecy = "mv -f " + TARGET_INTERNAL_FOLDER + "/" + ZIP_STRUCTURE_FOLDER + "/" + CRY_FRAMEWORK_NAME + " \"" + "Agora-With-SenseTime/" + CRY_FRAMEWORK_NAME + "\""
     os.system(mv_ecy)
 
     appId = ""

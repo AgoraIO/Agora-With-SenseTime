@@ -6,9 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AgoraRtcEngineKit/AgoraRtcEngineKit.h>
 
 @interface ViewController : UIViewController
 
 @property (copy, nonatomic) NSString *channelName;
+@property (strong, nonatomic) AgoraRtcEngineKit *agoraKit;    //Agora Engine
 
 @end
