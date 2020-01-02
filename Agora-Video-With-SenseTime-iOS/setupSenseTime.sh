@@ -9,7 +9,7 @@ echo "unzip..."
 unzip -n SenseTime-iOS-Resource.zip -d tmp/
 
 echo "move AgoraModule"
-mv tmp/SenseTime-iOS-Resource/AgoraModule_1.0.0/* Agora-With-SenseTime/
+mv tmp/SenseTime-iOS-Resource/AgoraModule_1.1.0/* Agora-With-SenseTime/
 
 echo "move libSenseArSourceService.a"
 mv tmp/SenseTime-iOS-Resource/SenseTime/libSenseArSourceService.a Agora-With-SenseTime/SenseTimePart/SenseArSourceService/lib/ios_universal/
