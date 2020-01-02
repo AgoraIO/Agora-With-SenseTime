@@ -48,7 +48,6 @@ or you can manual to download and unzip [SenseTime-iOS-Resource.zip](https://git
         |_ st_mobile
     |_ AGMBase.framework
     |_ AGMCapturer.framework
-    |_ AGMRenderer.framework
 ```
 
 #### 1.2.2 SenseTime Licence
@@ -56,29 +55,24 @@ or you can manual to download and unzip [SenseTime-iOS-Resource.zip](https://git
 Developers must contact SenseTime to obtain the licence file. Change the file name as **"SENSEME.lic"** and copy the file to assets folder.
 
 ### 1.3 Agora Module
-**Agora Module is a Agora  SDK component for iOS.**  
+**Agora Module is an Agora  SDK component for iOS.**  
 
 #### Features
-- [x]     Audio configuration
-- [x]     Video configuration
-- [x]   Audio Mute
-- [ ]     Background recording
-- [x]   Support  Beauty Face With SenseTime
-- [x]   Support  Beauty Face With FaceUnity
-- [x]     Switch camera position
-- [ ]     Support Beauty Face With GPUImage
-- [ ]   Support build-in filter
-- [ ]     Support horizontal vertical recording
-- [ ]     Support H264+AAC Hardware Encoding
-- [ ]     Drop frames on bad network 
-- [ ]     Dynamic switching rate
-- [ ]     RTMP Transport
-- [ ]     Support Send Buffer
-- [ ]     Support WaterMark
-- [ ]     Swift Support
-- [ ]     Support Single Video or Audio 
-- [ ]     Support External input video or audio(Screen recording or Peripheral)
-- [ ]     ~~FLV package and send~~
+- [x] 	Capturer
+	- [x] Camera Capturer
+		- [x] Support for front and rear camera switching
+		- [x] Support for dynamic resolution switching
+		- [x] Support I420, NV12, BGRA pixel format output
+		- [x] Support Exposure, ISO
+		- [ ] Support ZoomScale
+		- [ ] Support Torch
+		- [ ] Support watermark
+	- [x] Audio Capturer
+		- [x] Support single and double channel
+		- [x] Support Mute
+	- [x]  Video Frame Adapter (For processing the video frame direction required by different modules)
+		- [x] Support VideoOutputOrientationModeAdaptative for RTC function
+		- [x] Support ...FixedLandscape and ...FixedLandscape for CDN live streaming
   
 #### required frameworks
      * UIKit.framework
