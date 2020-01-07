@@ -178,8 +178,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 }
 
 -(void)initSenseModule {
-
-    
 #pragma mark SenseTouchView
     {
         self.senseTouchView = [[SenseTouchView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -522,9 +520,13 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     if (self.senseSettingView.isHidden) {
         [self setViewsHidden:YES];
         self.senseSettingView.hidden = NO;
+        self.beautyBtn.hidden = YES;
+        self.specialEffectsBtn.hidden = YES;
     } else {
         [self setButtonsHidden:NO];
         self.senseSettingView.hidden = YES;
+        self.beautyBtn.hidden = NO;
+        self.specialEffectsBtn.hidden = NO;
     }
 }
 
