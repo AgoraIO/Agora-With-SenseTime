@@ -36,7 +36,11 @@ But things to note that developers need run
 cd Agora-Video-With-SenseTime-iOS/
 sh setupSenseTime.sh
 ```
-or you can manual to download and unzip [SenseTime-iOS-Resource.zip](https://github.com/AgoraIO/Agora-With-SenseTime/releases/download/0.0.1/SenseTime-iOS-Resource.zip) to **"Agora-With-SenseTime/SenseTimePart/"** folder:
+or you can manual to download and unzip to **"Agora-With-SenseTime/SenseTimePart/"** folder:
+1. [SenseTime-iOS-Resource.zip](https://github.com/AgoraIO/Agora-With-SenseTime/releases/download/0.0.1/SenseTime-iOS-Resource.zip) 
+2. [AgoraModule_Base_iOS-1.1.0](https://download.agora.io/components/release/AgoraModule_Base_iOS-1.1.0.zip)
+3. [AgoraModule_Capturer_iOS-1.1.0](https://download.agora.io/components/release/AgoraModule_Capturer_iOS-1.1.0.zip)
+4. [AgoraModule_Renderer_iOS-1.1.0](https://download.agora.io/components/release/AgoraModule_Renderer_iOS-1.1.0.zip)
 ```
  Agora-With-SenseTime
     |_ SenseTimePart
@@ -48,6 +52,7 @@ or you can manual to download and unzip [SenseTime-iOS-Resource.zip](https://git
         |_ st_mobile
     |_ AGMBase.framework
     |_ AGMCapturer.framework
+    |_ AGMRenderer.framework
 ```
 
 #### 1.2.2 SenseTime Licence
