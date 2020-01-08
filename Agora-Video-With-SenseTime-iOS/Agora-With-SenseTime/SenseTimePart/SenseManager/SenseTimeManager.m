@@ -467,7 +467,7 @@
     senseBeautifyModel.isTextureOriginReady = isTextureOriginReady;
     senseBeautifyModel.textureOriginInput = _textureOriginInput;
     pixelBuffer = [self.senseBeautifyManager captureOutputSenseBeautifyModel:senseBeautifyModel textureResult:model.textureResult pixelBufffer:pixelBuffer];
-    
+     
     SenseEffectsModel senseEffectsModel;
     senseEffectsModel.scale = _scale;
     senseEffectsModel.margin = _margin;
@@ -911,40 +911,40 @@ void freeHumanAction(st_mobile_human_action_t *src) {
     BOOL isFrontCamera = devicePosition == AVCaptureDevicePositionFront;
     
     UIDeviceOrientation deviceOrientation = [self getDeviceOrientation:self.motionManager.accelerometerData];
-    switch (deviceOrientation) {
-            
-        case UIDeviceOrientationPortrait:
-            return ST_CLOCKWISE_ROTATE_90;
-            
-        case UIDeviceOrientationPortraitUpsideDown:
-            return ST_CLOCKWISE_ROTATE_270;
-            
-        case UIDeviceOrientationLandscapeLeft:
-            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_0 : ST_CLOCKWISE_ROTATE_180;
-            
-        case UIDeviceOrientationLandscapeRight:
-            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_180 : ST_CLOCKWISE_ROTATE_0;
-            
-        default:
-            return ST_CLOCKWISE_ROTATE_90;
-    }
 //    switch (deviceOrientation) {
 //
 //        case UIDeviceOrientationPortrait:
-//            return ST_CLOCKWISE_ROTATE_0;
+//            return ST_CLOCKWISE_ROTATE_90;
 //
 //        case UIDeviceOrientationPortraitUpsideDown:
-//            return ST_CLOCKWISE_ROTATE_180;
+//            return ST_CLOCKWISE_ROTATE_270;
 //
 //        case UIDeviceOrientationLandscapeLeft:
-//            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_270 : ST_CLOCKWISE_ROTATE_90;
+//            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_0 : ST_CLOCKWISE_ROTATE_180;
 //
 //        case UIDeviceOrientationLandscapeRight:
-//            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_90 : ST_CLOCKWISE_ROTATE_270;
+//            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_180 : ST_CLOCKWISE_ROTATE_0;
 //
 //        default:
-//            return ST_CLOCKWISE_ROTATE_0;
+//            return ST_CLOCKWISE_ROTATE_90;
 //    }
+    switch (deviceOrientation) {
+
+        case UIDeviceOrientationPortrait:
+            return ST_CLOCKWISE_ROTATE_0;
+
+        case UIDeviceOrientationPortraitUpsideDown:
+            return ST_CLOCKWISE_ROTATE_180;
+
+        case UIDeviceOrientationLandscapeLeft:
+            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_270 : ST_CLOCKWISE_ROTATE_90;
+
+        case UIDeviceOrientationLandscapeRight:
+            return ((isFrontCamera && isVideoMirrored) || (!isFrontCamera && !isVideoMirrored)) ? ST_CLOCKWISE_ROTATE_90 : ST_CLOCKWISE_ROTATE_270;
+
+        default:
+            return ST_CLOCKWISE_ROTATE_0;
+    }
 }
 
 - (st_rotate_type)getSTMobileRotate {

@@ -114,10 +114,10 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 #pragma mark Capturer
 {
     self.videoConfig = [AGMCapturerVideoConfig defaultConfig];
-    self.videoConfig.videoSize = CGSizeMake(720, 1280);
-    self.videoConfig.sessionPreset = AGMCaptureSessionPreset720x1280;
+    self.videoConfig.videoSize = CGSizeMake(480, 640);
+    self.videoConfig.sessionPreset = AGMCaptureSessionPreset480x640;
     self.videoConfig.outputPixelFormat = AGMVideoPixelFormatBGRA;
-
+    self.videoConfig.fps = 15;
     CGRect rect = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     CGFloat fWidth = self.videoConfig.videoSize.width;
     CGFloat fHeight = self.videoConfig.videoSize.height;
@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 
         // push video frame to agora
         AgoraVideoRotation agoraRotation = [weakSelf agoraRotation];
-        [weakSelf.consumer consumePixelBuffer:resultPixelBuffer withTimestamp:timeStamp rotation:AgoraVideoRotation90];
+        [weakSelf.consumer consumePixelBuffer:resultPixelBuffer withTimestamp:timeStamp rotation:AgoraVideoRotationNone];
 
         double dAttributeStart = CFAbsoluteTimeGetCurrent();
 
@@ -151,25 +151,27 @@ typedef NS_ENUM(NSInteger, STViewTag) {
         
     };
     
-#pragma mark VideoFrameAdapter
+#pragma mark Renderer
     self.preview = [[UIView alloc] initWithFrame:rect];
     [self.view addSubview:self.preview];
-
+    
+#pragma mark VideoFrameAdapter
     AGMVideoFrameAdapter *videoFrameAdapter = [[AGMVideoFrameAdapter alloc] init];
     videoFrameAdapter.orientationMode = AGMVideoOutputOrientationModeFixedPortrait;
     videoFrameAdapter.sinkDelegate = self;
 #pragma mark Connect
-    [self.cameraCapturer addVideoSink:self.senceTimeFilter];
-    [self.senceTimeFilter addVideoSink:videoFrameAdapter];
+    [self.cameraCapturer addVideoSink:videoFrameAdapter];
+    [videoFrameAdapter addVideoSink:self.senceTimeFilter];
 #pragma mark
     self.senceTimeFilter.devicePosition = self.cameraCapturer.captureDevicePosition;
-    self.senceTimeFilter.isVideoMirrored = NO;
+    self.senceTimeFilter.isVideoMirrored = YES;
 }
 }
 /**
  Writer on the file.
  */
 - (void)onFrame:(AGMVideoFrame *)videoFrame {
+//    NSLog(@"Rotation : %ld", (long)videoFrame.rotation);
     if (![videoFrame.buffer isKindOfClass:AGMCVPixelBuffer.class]) {
         [videoFrame newNV12VideoFrame];
     }
@@ -578,7 +580,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
  */
 - (void)loadAgoraKit {
     self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: self];
-    [self.agoraKit setChannelProfile:AgoraChannelProfileCommunication];
+    [self.agoraKit setChannelProfile:AgoraChannelProfileLiveBroadcasting];
     self.agoraKit.delegate = self;
     [self.agoraKit setVideoEncoderConfiguration:[[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360
                                                                                           frameRate:AgoraVideoFrameRateFps15
@@ -596,7 +598,7 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     self.count = 0;
     
     [self.agoraKit joinChannelByToken:[KeyCenter agoraAppToken] channelId:self.channelName info:nil uid:0 joinSuccess:nil];
-
+    
 }
 
 - (void)setupLocalView {
@@ -605,8 +607,9 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     }
     self.localCanvas.view = self.preview;
     self.localCanvas.renderMode = AgoraVideoRenderModeHidden;
-    // set render view
+//     set render view
     [self.agoraKit setupLocalVideo:self.localCanvas];
+    [self.agoraKit setLocalVideoMirrorMode:AgoraVideoMirrorModeDisabled];
     self.localRenderView = self.preview;
 }
 
@@ -624,7 +627,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 }
 
 - (void)shouldDispose {
-    
 }
 
 - (AgoraVideoBufferType)bufferType {
@@ -698,6 +700,10 @@ typedef NS_ENUM(NSInteger, STViewTag) {
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
     return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 -(AgoraVideoRotation)agoraRotation {
