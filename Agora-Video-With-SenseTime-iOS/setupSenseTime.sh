@@ -1,15 +1,28 @@
 #!/bin/bash
 
+AgoraModuleVersion="1.1.0"
+
 echo "======setup start======"
 
 echo "downing..."
 curl -OL https://github.com/AgoraIO/Agora-With-SenseTime/releases/download/0.0.1/SenseTime-iOS-Resource.zip
+curl -OL "https://download.agora.io/components/release/AgoraModule_Base_iOS-${AgoraModuleVersion}.zip"
+curl -OL "https://download.agora.io/components/release/AgoraModule_Capturer_iOS-${AgoraModuleVersion}.zip"
+curl -OL "https://download.agora.io/components/release/AgoraModule_Renderer_iOS-${AgoraModuleVersion}.zip"
 
 echo "unzip..."
+
+rm -rf tmp/
+mkdir tmp
+mkdir tmp/AgoraModule
+
 unzip -n SenseTime-iOS-Resource.zip -d tmp/
+unzip -n "AgoraModule_Base_iOS-${AgoraModuleVersion}.zip" -d tmp/AgoraModule/
+unzip -n "AgoraModule_Capturer_iOS-${AgoraModuleVersion}.zip" -d tmp/AgoraModule/
+unzip -n "AgoraModule_Renderer_iOS-${AgoraModuleVersion}.zip" -d tmp/AgoraModule/
 
 echo "move AgoraModule"
-mv tmp/SenseTime-iOS-Resource/AgoraModule_1.1.0/* Agora-With-SenseTime/
+mv tmp/AgoraModule/* Agora-With-SenseTime/
 
 echo "move libSenseArSourceService.a"
 mv tmp/SenseTime-iOS-Resource/SenseTime/libSenseArSourceService.a Agora-With-SenseTime/SenseTimePart/SenseArSourceService/lib/ios_universal/
@@ -23,6 +36,9 @@ mv tmp/SenseTime-iOS-Resource/SenseTime/st_mobile/* Agora-With-SenseTime/SenseTi
 echo "clear"
 rm -rf tmp/
 rm SenseTime-iOS-Resource.zip
+rm "AgoraModule_Base_iOS-${AgoraModuleVersion}.zip"
+rm "AgoraModule_Capturer_iOS-${AgoraModuleVersion}.zip"
+rm "AgoraModule_Renderer_iOS-${AgoraModuleVersion}.zip"
 
 echo "======setup success======"
 
