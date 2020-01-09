@@ -106,6 +106,9 @@
 		78E9312E23798A4D00BA664F /* STMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E9310123798A4D00BA664F /* STMovieRecorder.m */; };
 		78E9312F23798A4D00BA664F /* STBMPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E9310323798A4D00BA664F /* STBMPCollectionViewCell.m */; };
 		78E93210237A55AB00BA664F /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E9320D237A52B900BA664F /* libz.1.1.3.tbd */; };
+		78EE4F8223C7080200CD3203 /* AGMCapturer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EE4F7F23C7080200CD3203 /* AGMCapturer.framework */; };
+		78EE4F8323C7080200CD3203 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EE4F8023C7080200CD3203 /* AgoraRtcEngineKit.framework */; };
+		78EE4F8423C7080300CD3203 /* AGMBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EE4F8123C7080200CD3203 /* AGMBase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,6 +306,9 @@
 		78E9313823798B1000BA664F /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
 		78E9320D237A52B900BA664F /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		78E9324E237AC14700BA664F /* Agora-With-SenseTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Agora-With-SenseTime.entitlements"; sourceTree = "<group>"; };
+		78EE4F7F23C7080200CD3203 /* AGMCapturer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGMCapturer.framework; path = "Agora-With-SenseTime/AGMCapturer.framework"; sourceTree = "<group>"; };
+		78EE4F8023C7080200CD3203 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "Agora-With-SenseTime/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
+		78EE4F8123C7080200CD3203 /* AGMBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGMBase.framework; path = "Agora-With-SenseTime/AGMBase.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78EE4F8323C7080200CD3203 /* AgoraRtcEngineKit.framework in Frameworks */,
 				7891D1CE23794489003260D6 /* CoreMedia.framework in Frameworks */,
 				7891D1D6237944A5003260D6 /* SystemConfiguration.framework in Frameworks */,
 				090FE018238BC78700743861 /* libst_mobile.a in Frameworks */,
@@ -323,9 +330,11 @@
 				7891D1DA237944C0003260D6 /* VideoToolbox.framework in Frameworks */,
 				090FDFD9238BC75B00743861 /* libSenseArSourceService.a in Frameworks */,
 				7891D1CC23794483003260D6 /* AVFoundation.framework in Frameworks */,
+				78EE4F8423C7080300CD3203 /* AGMBase.framework in Frameworks */,
 				7891D1C9237943A5003260D6 /* AVFoundation.framework in Frameworks */,
 				090FE019238BC78700743861 /* libst_mobile.a in Frameworks */,
 				7891D1CB2379447D003260D6 /* AudioToolbox.framework in Frameworks */,
+				78EE4F8223C7080200CD3203 /* AGMCapturer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +545,9 @@
 		7891D1C52379439B003260D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78EE4F8123C7080200CD3203 /* AGMBase.framework */,
+				78EE4F7F23C7080200CD3203 /* AGMCapturer.framework */,
+				78EE4F8023C7080200CD3203 /* AgoraRtcEngineKit.framework */,
 				78E9320D237A52B900BA664F /* libz.1.1.3.tbd */,
 				782831B82379467800FA5EE8 /* UIKit.framework */,
 				7891D1D9237944C0003260D6 /* VideoToolbox.framework */,
