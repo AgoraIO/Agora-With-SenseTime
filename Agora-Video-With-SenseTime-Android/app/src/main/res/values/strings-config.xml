@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AGORA_APP_ID" translatable="false"></string>
+    <string name="AGORA_APP_ID" translatable="false"><#YOUR APP ID#></string>
 </resources>
