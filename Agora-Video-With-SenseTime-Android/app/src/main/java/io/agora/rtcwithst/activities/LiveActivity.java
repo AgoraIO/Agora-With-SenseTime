@@ -68,7 +68,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         rtcEngine().setVideoSource(new RtcVideoConsumer(videoModule(),
                 ChannelManager.ChannelID.CAMERA));
         rtcEngine().setVideoEncoderConfiguration(new VideoEncoderConfiguration(
-                VideoEncoderConfiguration.VD_1280x720,
+                VideoEncoderConfiguration.VD_640x480,
                 VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_24,
                 VideoEncoderConfiguration.STANDARD_BITRATE,
                 VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT));
@@ -127,15 +127,22 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
 
     public void onCameraChange(View view) {
         switch (mFacing) {
+            case Constant.CAMERA_FACING_INVALID:
+                Log.e(TAG, "camera not allocated or already deallocated");
+                break;
             case Constant.CAMERA_FACING_BACK:
                 mVideoCapture.setPaused(true);
                 mVideoCapture.stopCaptureAndBlockUntilStopped();
+                mVideoCapture.deallocate(false);
                 mVideoCapture.allocate(640, 480, 24, Constant.CAMERA_FACING_FRONT);
                 mFacing = Constant.CAMERA_FACING_FRONT;
                 mVideoCapture.startCaptureMaybeAsync(false);
+                mVideoCapture.setPaused(false);
                 break;
             case Constant.CAMERA_FACING_FRONT:
+                mVideoCapture.setPaused(true);
                 mVideoCapture.stopCaptureAndBlockUntilStopped();
+                mVideoCapture.deallocate(false);
                 mVideoCapture.allocate(640, 480, 24, Constant.CAMERA_FACING_BACK);
                 mFacing = Constant.CAMERA_FACING_BACK;
                 mVideoCapture.startCaptureMaybeAsync(false);

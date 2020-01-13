@@ -20,6 +20,7 @@ typedef enum
 	ST_MAKEUP_TYPE_BROW = 5,		//眉部美妆
     ST_MAKEUP_TYPE_EYELINER = 6,    //眼线美妆
     ST_MAKEUP_TYPE_EYELASH = 7,     //眼睫毛美妆
+    ST_MAKEUP_TYPE_EYEBALL = 8,     //美瞳美妆
 }st_makeup_type;
 
 /// @brief 创建美妆句柄

@@ -33,6 +33,7 @@ typedef enum {
     ST_BEAUTIFY_SATURATION_STRENGTH = 9,    /// 饱和度强度, [0,1.0], 默认值0.10, 0.0不做饱和度处理
     ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光，注意，此功能只用于图片处理，预览或视频处理均设为0.0
 	ST_BEAUTIFY_NARROW_FACE_STRENGTH = 11,  /// 窄脸强度, [0,1.0], 默认值0.0, 0.0不做窄脸
+    ST_BEAUTIFY_ROUND_EYE_RATIO = 12,       /// 圆眼比例, [0,1.0], 默认值0.0, 0.0不做圆眼
 
     ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,              /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
     ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,              /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
@@ -50,36 +51,6 @@ typedef enum {
     ST_BEAUTIFY_3D_REMOVE_NASOLABIAL_FOLDS_RATIO = 33,  /// 去法令纹比例，[0, 1.0]，默认值为0.0，0.0不做去法令纹
     ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 34,              /// 白牙比例，[0, 1.0]，默认值为0.0，0.0不做白牙
     ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 35,              /// 苹果肌比例，[0, 1.0]，默认值为0.0，0.0不做苹果肌
-
-    /// 以下美体系数默认为0.0，ST_BEAUTIFY_BODY_REF_HEAD模式
-    /// 身体整体美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦身，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦身，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_WHOLE_RATIO = 100,
-    /// 头部美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦头，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦头，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_HEAD_RATIO,
-    /// 肩部美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦肩，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦肩，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_SHOULDER_RATIO,
-    /// 腰部美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦腰，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦腰，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_WAIST_RATIO,
-    /// 臀部美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦臀，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦臀，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_HIP_RATIO,
-    /// 腿部美化系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0, INFINITE)，1.0为原始效果，[0, 1)为瘦腿，(1, INFINITE)为变胖
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [-1, 1]，0.0为原始效果，[0, 1]为瘦腿，[-1, 0)为变胖
-    ST_BEAUTIFY_BODY_LEG_RATIO,
-    /// 身体高度按比例调节系数
-    /// ST_BEAUTIFY_BODY_REF_PART模式: [0.0， 1.0]，0.0为原始效果，(0.0, 1.0]为增高，最高限制为8头身
-    /// ST_BEAUTIFY_BODY_REF_HEAD模式: [0.0， 1.0]，0.0为原始效果，(0.0, 1.0]为增高，最高限制为8头身
-    ST_BEAUTIFY_BODY_HEIGHT_RATIO,
 } st_beautify_type;
 
 /// @brief 设置美化参数,默认包含所有功能参数和强度参数
@@ -194,78 +165,4 @@ st_mobile_beautify_destroy(
     st_handle_t handle
 );
 
-typedef enum
-{
-    /// 相机预览输入
-    ST_BEAUTIFY_PREVIEW,
-    /// 视频文件输入
-    ST_BEAUTIFY_VIDEO,
-    /// 图片文件输入
-    ST_BEAUTIFY_PHOTO,
-} st_beautify_source;
-
-/// @brief 设置美颜/美体输入源
-/// @param[in] handle 已初始化的美化句柄
-/// @param[in] source 输入源，为相机预览源，或者视频/图像源
-ST_SDK_API void
-st_mobile_beautify_set_input_source(st_handle_t handle, st_beautify_source source);
-
-/// @brief 获取美体处理后的未拉伸区域,已停用
-/// @param[in] handle 已初始化的美化句柄
-/// @param[out] p_valid_region 有效区域指针，为原图像的左、上、右、下四个边界
-/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_beautify_get_body_valid_region(st_handle_t handle, st_rect_t* p_valid_region);
-
-typedef enum
-{
-    /// 按美体部位的比例调节
-    ST_BEAUTIFY_BODY_REF_PART,
-    /// 按头的比例去调节对应美体部位
-    ST_BEAUTIFY_BODY_REF_HEAD,
-} st_beautify_body_ref_type;
-
-/// @brief 获取美体处理后的未拉伸区域
-/// @param[in] handle 已初始化的美化句柄
-/// @param[in] measure 瘦身方式，按头的比例，或瘦身区域比例。
-///                    注意，按不同方式瘦身，应该设置的参数初始值及范围不同，参考st_beautify_type中的美体参数说明。
-/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_beautify_set_body_ref_type(st_handle_t handle, st_beautify_body_ref_type ref_type);
-
-typedef enum
-{
-    /// 美体输入、输出纹理为RGBA格式
-    ST_BEAUTIFY_TEX_RGBA,
-    /// 美体输入、输出纹理为YUV格式（目前只在Android手机上支持）
-    ST_BEAUTIFY_TEX_YUV,
-} st_beautify_tex_format;
-
-/// @brief 设置美体输出纹理格式
-/// @param[in] handle 已初始化的美化句柄
-/// @param[in] format 纹理格式，目前支持RGBA与YUV两种格式，其中YUV只在Android手机支持
-/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_beautify_set_body_beautify_tex_format(st_handle_t handle, st_beautify_tex_format format);
-
-/// @brief 准备美体渲染需要的资源，必须在OpenGL线程调用！
-/// @param[in] handle 已初始化的美化句柄
-/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_beautify_prepare_body_beautify_gl_resource(st_handle_t handle);
-
-/// @brief 配置是否在设置美体参数时启用平滑效果
-/// @param[in] handle 已初始化的美化句柄
-/// @param[in] enable_smooth 设置参数时启用/禁用平滑，默认行为是开启平滑
-/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_beautify_enable_smooth_on_change_body_param(st_handle_t handle, bool enable_smooth);
-
-/// @brief 获取当前设置美体参数时是否启用平滑效果
-/// @param[in] handle 已初始化的美化句柄
-/// @return true - 设置参数时启用平滑，false - 设置参数时禁用平滑
-ST_SDK_API bool
-st_mobile_beautify_is_enable_smooth_on_change_body_param(st_handle_t handle);
-
-/// @}
 #endif // INCLUDE_STMOBILE_ST_MOBILE_BEAUTIFY_H_

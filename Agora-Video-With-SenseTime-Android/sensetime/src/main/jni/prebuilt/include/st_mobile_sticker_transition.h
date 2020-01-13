@@ -15,7 +15,8 @@ typedef enum {
 /// @brief 贴纸package的播放状态类型
 typedef enum {
 	ST_AS_BEGIN = 1,
-	ST_AS_END = 2
+	ST_AS_END = 2,
+    ST_AS_TERMINATED = 3
 } st_package_state_type;
 
 /// @brief 事件类型
