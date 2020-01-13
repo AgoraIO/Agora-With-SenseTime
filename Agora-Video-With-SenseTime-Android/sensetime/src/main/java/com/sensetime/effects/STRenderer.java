@@ -13,6 +13,7 @@ import android.util.SparseArray;
 
 import com.sensetime.effects.display.STGLRender;
 import com.sensetime.effects.glutils.GlUtil;
+import com.sensetime.effects.glutils.STUtils;
 import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
 import com.sensetime.effects.utils.STLicenceUtils;
@@ -39,6 +40,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class STRenderer {
     private static final String TAG = STRenderer.class.getSimpleName();
+
+    private boolean mInDebugMode = false;
 
     private Context mContext;
 
@@ -123,6 +126,10 @@ public class STRenderer {
 
     private STEffectParameters mParams = new STEffectParameters();
 
+    public void setDebugMode(boolean enabled) {
+        mInDebugMode = enabled;
+    }
+
     public STRenderer(Context context) {
         mContext = context;
     }
@@ -145,11 +152,6 @@ public class STRenderer {
 
     private void initGLRender() {
         mGLRender = new STGLRender();
-
-        // Pre-processing module does not concern the image
-        // transformation as if the images are already what
-        // they should be before input into the preprocessor.
-        mGLRender.adjustTextureBuffer(0, false, false);
     }
 
     private void initHumanAction() {
@@ -294,8 +296,9 @@ public class STRenderer {
 
     /**
      * Options of human action detection
+     *
      * @param needFaceDetect the same as whether use face beauty or not.
-     * @param config  here use STStickerNative.getTriggerAction()
+     * @param config         here use STStickerNative.getTriggerAction()
      */
     private void setHumanActionDetectConfig(boolean needFaceDetect, long config) {
         if (!mNeedSticker || mCurrentSticker == null) {
@@ -329,6 +332,7 @@ public class STRenderer {
         }
 
         mStStickerNative.loadAvatarModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_CORE, mContext.getAssets());
+        addSubModel(FileUtils.MODEL_NAME_AVATAR_HELP);
         setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
     }
 
@@ -374,30 +378,33 @@ public class STRenderer {
         }
     }
 
-    private void adjustImageSize(int width, int height) {
+    private void adjustImageSize(int width, int height, int resizeWidth, int resizeHeight) {
         if (mImageWidth != width || mImageHeight != height) {
             mImageWidth = width;
             mImageHeight = height;
 
-            // SenseTime renderer does not need to know
-            // the surface size, thus without concerning
-            // flipping and resizing.
-            mGLRender.init(mImageWidth, mImageHeight);
-            mGLRender.calculateVertexBuffer(mImageWidth,
-                    mImageHeight, mImageWidth, mImageHeight);
+            mGLRender.adjustPreProcessImageSize(mImageWidth, mImageHeight);
+            mGLRender.adjustRotateImageSize(resizeWidth, resizeHeight);
         }
     }
 
-    private int getCurrentOrientation() {
-        // TODO provide a callback to initialize the accelerometer
-        //int dir = Accelerometer.getDirection();
-        //int orientation = dir - 1;
-        //if (orientation < 0) {
-        //    orientation = dir ^ 3;
-        //}
-
-        //return orientation;
-        return STRotateType.ST_CLOCKWISE_ROTATE_270;
+    /**
+     * Transform orientation in angles to STRotateType
+     *
+     * @param rotation
+     * @return
+     */
+    private int getCurrentOrientation(int rotation) {
+        switch (rotation) {
+            case 90:
+                return STRotateType.ST_CLOCKWISE_ROTATE_90;
+            case 180:
+                return STRotateType.ST_CLOCKWISE_ROTATE_180;
+            case 270:
+                return STRotateType.ST_CLOCKWISE_ROTATE_270;
+            default:
+                return STRotateType.ST_CLOCKWISE_ROTATE_0;
+        }
     }
 
     public void enableBeautify(boolean needBeautify) {
@@ -412,7 +419,7 @@ public class STRenderer {
         }
     }
 
-    public void enableFilter(boolean needFilter){
+    public void enableFilter(boolean needFilter) {
         mNeedFilter = needFilter;
     }
 
@@ -428,6 +435,7 @@ public class STRenderer {
     /**
      * STRenderer itself does not any more maintain
      * the values of beauty params .
+     *
      * @param param
      * @param value
      */
@@ -465,7 +473,8 @@ public class STRenderer {
 
     /**
      * Set makeup effect for a type from STMobileType
-     * @param type makeup type
+     *
+     * @param type     makeup type
      * @param typePath sub path of this type
      * @return package id for this effect
      */
@@ -475,7 +484,7 @@ public class STRenderer {
 
     public void removeMakeupByType(String type) {
         if (mMakeupPaths.containsKey(type) &&
-            mMakeupPackageIds.containsKey(type)) {
+                mMakeupPackageIds.containsKey(type)) {
             Integer id = mMakeupPackageIds.get(type);
             int result = 0;
             if (id != null) {
@@ -493,7 +502,7 @@ public class STRenderer {
         // if (type == Constants.ST_MAKEUP_HIGHLIGHT) {
         //     mSTMobileMakeupNative.setStrengthForType(type, strength * mMakeUpStrength);
         // } else {
-            mSTMobileMakeupNative.setStrengthForType(type, 1.0f);
+        mSTMobileMakeupNative.setStrengthForType(type, 1.0f);
         // }
     }
 
@@ -524,7 +533,6 @@ public class STRenderer {
         mSTMobileStreamFilterNative.destroyInstance();
         mRGBABuffer = null;
         deleteTextures();
-        mGLRender.destroyFrameBuffers();
         mGLRender.destroyPrograms();
     }
 
@@ -555,14 +563,29 @@ public class STRenderer {
         }
     }
 
+    private void adjustTexture(int orientation, boolean flipHorizontal, boolean flipVertical) {
+        mGLRender.adjustTextureBuffer(orientation, flipHorizontal, flipVertical);
+    }
+
     public int preProcess(int textureId, SurfaceTexture surfaceTexture,
-                          int width, int height, float[] mvpMatrix, float[] texMatrix) {
+                          int width, int height, int orientation, float[] texMatrix) {
+        return preProcess(textureId, surfaceTexture, width, height,
+                -1, -1, orientation, texMatrix);
+    }
+
+    public int preProcess(int textureId, SurfaceTexture surfaceTexture,
+                          int width, int height,
+                          int resizeWidth, int resizeHeight,
+                          int orientation, float[] texMatrix) {
+
         if (!mAuthorized || mIsPaused ||
                 mCameraChanging || surfaceTexture == null) {
             return 0;
         }
 
-        adjustImageSize(width, height);
+        adjustImageSize(width, height, resizeWidth, resizeHeight);
+        adjustTexture(orientation, false, false);
+
         // init buffers here cause we need the image size info
         initBuffers();
 
@@ -572,13 +595,14 @@ public class STRenderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         mRGBABuffer.rewind();
-        int processedTextureId = mGLRender.preProcess(textureId,
-                mRGBABuffer, 0, mvpMatrix, texMatrix);
+
+        int processedTextureId = mGLRender.preProcess(textureId, mRGBABuffer);
 
         if (mShowOriginal) {
             return processedTextureId;
         }
 
+        int stOrientation = getCurrentOrientation(orientation);
         int result;
 
         // Begins effect rendering
@@ -612,37 +636,33 @@ public class STRenderer {
                 final byte[] face = mRGBABuffer.array();
                 humanAction = mSTHumanActionNative.humanActionDetect(face,
                         STCommon.ST_PIX_FMT_RGBA8888, mDetectConfig,
-                        getCurrentOrientation(), mImageWidth, mImageHeight);
+                        stOrientation, mImageWidth, mImageHeight);
+
+                // Log.i("STRenderer", "face count:" + humanAction.faceCount);
 
                 if (mNeedDistance) {
-                    if (humanAction != null && humanAction.faceCount > 0) {
+                    if (humanAction.faceCount > 0) {
                         mFaceDistance = mSTHumanActionNative.getFaceDistance(humanAction.faces[0],
-                                getCurrentOrientation(), mImageWidth, mImageHeight,
-                                // TODO workaround here, and obtain this parameter
-                                // mCameraProxy.getCamera().getParameters().getVerticalViewAngle()
-                                270);
+                                0, mImageWidth, mImageHeight, 270);
                     } else {
                         // no face info found
                         mFaceDistance = 0f;
                     }
                 }
 
-                int orientation = getCurrentOrientation();
-
                 if (mNeedBeautify) {
                     result = mStBeautifyNative.processTexture(processedTextureId, mImageWidth,
-                            mImageHeight, orientation, humanAction,
+                            mImageHeight, stOrientation, humanAction,
                             mBeautifyTextureId[0], mHumanActionBeautyOutput);
                     if (result == 0) {
                         processedTextureId = mBeautifyTextureId[0];
                         humanAction = mHumanActionBeautyOutput;
-                        //LogUtils.i(TAG, "replace enlarge eye and shrink face action");
                     }
                 }
 
                 if (mNeedMakeup && needMakeupProcess(humanAction)) {
                     result = mSTMobileMakeupNative.processTexture(processedTextureId, humanAction,
-                            orientation, mImageWidth, mImageHeight, mMakeupTextureId[0]);
+                            stOrientation, mImageWidth, mImageHeight, mMakeupTextureId[0]);
                     if (result == 0) {
                         processedTextureId = mMakeupTextureId[0];
                     }
@@ -664,18 +684,18 @@ public class STRenderer {
                     if (mSensorEvent != null && mSensorEvent.values != null && mSensorEvent.values.length > 0) {
                         inputParams = new STStickerInputParams(mSensorEvent.values, false, event);
                     } else {
-                        inputParams = new STStickerInputParams(new float[] {0, 0, 0, 1}, false, event);
+                        inputParams = new STStickerInputParams(new float[]{0, 0, 0, 1}, false, event);
                     }
 
                     // 如果需要输出buffer推流或其他，设置该开关为true
                     if (!mNeedFilterOutputBuffer) {
                         result = mStStickerNative.processTexture(processedTextureId, humanAction,
-                                orientation, STRotateType.ST_CLOCKWISE_ROTATE_270, mImageWidth, mImageHeight,
+                                stOrientation, stOrientation, mImageWidth, mImageHeight,
                                 false, inputParams, mTextureOutId[0]);
                     } else {
                         byte[] imageOut = new byte[mImageWidth * mImageHeight * 4];
                         result = mStStickerNative.processTextureAndOutputBuffer(processedTextureId,
-                                humanAction, orientation, STRotateType.ST_CLOCKWISE_ROTATE_270, mImageWidth,
+                                humanAction, stOrientation, stOrientation, mImageWidth,
                                 mImageHeight, false, inputParams, mTextureOutId[0],
                                 STCommon.ST_PIX_FMT_RGBA8888, imageOut);
                     }
@@ -687,6 +707,41 @@ public class STRenderer {
                     if (result == 0) {
                         Log.i("sticker", "process sticker success");
                         processedTextureId = mTextureOutId[0];
+                    }
+                }
+
+                if (mInDebugMode) {
+                    if (humanAction != null) {
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getExtraPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.faceCount > 0) {
+                            for (int i = 0; i < humanAction.faceCount; i++) {
+                                float[] points = STUtils.getTonguePoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+                        }
+
+                        if (humanAction.bodyCount > 0) {
+                            for (int i = 0; i < humanAction.bodyCount; i++) {
+                                float[] points = STUtils.getBodyKeyPoints(humanAction, i, mImageWidth, mImageHeight);
+                                if (points != null && points.length > 0) {
+                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
+                                }
+                            }
+
+                            // print body[0] action
+                            LogUtils.i(TAG, "human action body count: %d", humanAction.bodyCount);
+                            LogUtils.i(TAG, "human action body[0] action: %d", humanAction.bodys[0].bodyAction);
+                        }
                     }
                 }
             }
@@ -716,7 +771,9 @@ public class STRenderer {
             }
         }
 
-        return processedTextureId;
+        // Transform the image to the ideal direction according
+        // to the texture matrix.
+        return mGLRender.transform(processedTextureId, texMatrix);
     }
 
     /**
@@ -737,6 +794,7 @@ public class STRenderer {
         private boolean mNeedBeautify = false;
         private boolean mNeedFilter = false;
         private boolean mNeedMakeup = false;
+        private boolean mInDebugMode = false;
 
         public Builder setContext(Context context) {
             mContext = context;
@@ -763,12 +821,18 @@ public class STRenderer {
             return this;
         }
 
+        public Builder enableDebug(boolean enabled) {
+            mInDebugMode = enabled;
+            return this;
+        }
+
         public STRenderer build() {
             STRenderer renderer = new STRenderer(mContext);
             renderer.enableBeautify(mNeedBeautify);
             renderer.enableFilter(mNeedFilter);
             renderer.enableSticker(mNeedSticker);
             renderer.enableMakeup(mNeedMakeup);
+            renderer.setDebugMode(mInDebugMode);
             renderer.init();
             return renderer;
         }
@@ -826,6 +890,7 @@ public class STRenderer {
 
         /**
          * Get current value of a beauty parameter
+         *
          * @param param STBeautyParam values
          * @return current value of this param
          */

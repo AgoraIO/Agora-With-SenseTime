@@ -50,7 +50,6 @@
 #define ST_MOBILE_DETECT_GAZE               0x100000000000 ///< 检测视线方向
 #define ST_MOBILE_DETECT_DYNAMIC_GESTURE    0x200000000000 ///< 检测动态手势
 #define ST_MOBILE_DETECT_AVATAR_HELPINFO    0x800000000000 ///< 检测avatar辅助信息
-
 #define ST_MOBILE_FACE_DETECT_FULL        0x000000FF      ///< 检测所有脸部动作
 #define ST_MOBILE_HAND_DETECT_FULL        0x410000FEFF00  ///< 检测所有手势
 #define ST_MOBILE_BODY_DETECT_FULL        0x018000000     ///< 检测肢体关键点和肢体轮廓点
@@ -130,7 +129,6 @@ typedef struct st_mobile_human_action_t {
 #define ST_MOBILE_ENABLE_GAZE_DETECT            0x08000000  ///< 检测视线方向
 #define ST_MOBILE_ENABLE_DYNAMIC_GESTURE        0x10000000  ///< 检测动态手势
 #define ST_MOBILE_ENABLE_AVATAR_HELPER          0x20000000  ///< 检测avatar辅助信息开关
-
 /// 检测模式
 #define ST_MOBILE_DETECT_MODE_VIDEO             0x00020000  ///< 视频检测
 #define ST_MOBILE_DETECT_MODE_IMAGE             0x00040000  ///< 图片检测 与视频检测互斥，只能同时使用一个
@@ -355,6 +353,20 @@ ST_SDK_API
 void st_mobile_human_action_resize(
 	float scale,
 	st_mobile_human_action_t* p_human_action
+);
+/// @brief 拷贝human_action检测结果.
+/// @param[in] p_human_action_src 需要拷贝的human_action检测结果
+/// @param[out] p_human_action_dst 需要拷贝的human_action检测结果.注意初始化成员,如果指针非空, 默认是已被分配过内存, 不会重新分配内存
+ST_SDK_API
+void st_mobile_human_action_copy(
+    const st_mobile_human_action_t * p_human_action_src,
+    st_mobile_human_action_t * p_human_action_dst
+);
+/// @brief 删除human_action 结果, 只能删除st_mobile_human_action_copy的输出结果
+/// @param[in] p_human_action 需要删除的human_action检测结果
+ST_SDK_API
+void st_mobile_human_action_delete(
+    st_mobile_human_action_t * p_human_action
 );
 
 typedef enum{
