@@ -9,10 +9,9 @@ jobs:
     displayName: ${{ parameters.displayName }}
 
     pool:
-      vmImage: 'macOS-10.13'
+      vmImage: 'macos-latest'
 
     variables:
-      - group: AgoraKeys
       - group: AgoraKeys
       
     steps:
