@@ -38,8 +38,8 @@ sh setupSenseTime.sh
 ```
 or you can manual to download and unzip to **"Agora-With-SenseTime/SenseTimePart/"** folder:
 1. [SenseTime-iOS-Resource.zip](https://github.com/AgoraIO/Agora-With-SenseTime/releases/download/0.0.1/SenseTime-iOS-Resource.zip) 
-2. [AgoraModule_Base_iOS-1.1.0](https://download.agora.io/components/release/AgoraModule_Base_iOS-1.1.0.zip)
-3. [AgoraModule_Capturer_iOS-1.1.0](https://download.agora.io/components/release/AgoraModule_Capturer_iOS-1.1.0.zip)
+2. [AgoraModule_Base_iOS-1.1.1](https://download.agora.io/components/release/AgoraModule_Base_iOS-1.1.1.zip)
+3. [AgoraModule_Capturer_iOS-1.1.1](https://download.agora.io/components/release/AgoraModule_Capturer_iOS-1.1.1.zip)
 ```
  Agora-With-SenseTime
     |_ SenseTimePart
