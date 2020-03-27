@@ -48,6 +48,8 @@ public class SurfaceTextureConsumer extends BaseWindowConsumer implements Textur
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         // Log.i(TAG, "onSurfaceTextureAvailable");
         mSurfaceTexture = surface;
+        destroyed = false;
+        initialized = false;
         setSize(width, height);
         connectChannel(CHANNEL_ID);
     }

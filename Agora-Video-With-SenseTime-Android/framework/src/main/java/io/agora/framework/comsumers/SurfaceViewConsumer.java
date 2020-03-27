@@ -48,6 +48,8 @@ public class SurfaceViewConsumer extends BaseWindowConsumer implements SurfaceHo
 
     @Override
     public void surfaceCreated(final SurfaceHolder holder) {
+        destroyed = false;
+        initialized = false;
         connectChannel(CHANNEL_ID);
     }
 
