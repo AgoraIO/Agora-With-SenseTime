@@ -10,50 +10,28 @@
 
 @implementation AGMSenceTimeFilter
 
-- (void)onFrame:(AGMVideoFrame *)videoFrame
-{
-#pragma mark 写入滤镜处理
-    
-    AGMCVPixelBuffer *AGMPixelBuffer = videoFrame.buffer;
+- (void)onTextureFrame:(AGMImageFramebuffer *)textureFrame frameTime:(CMTime)time {
     
     //获取每一帧图像信息
-    CVPixelBufferRef originalPixelBuffer = AGMPixelBuffer.pixelBuffer;
-    CVPixelBufferLockBaseAddress(originalPixelBuffer, 0);
+     CVPixelBufferRef originalPixelBuffer = textureFrame.pixelBuffer;
+     CVPixelBufferLockBaseAddress(originalPixelBuffer, 0);
 
-    GLuint textureResult = 0;
-    CVPixelBufferRef pixelBufferRefResult = originalPixelBuffer;
+     GLuint textureResult = 0;
+     CVPixelBufferRef pixelBufferRefResult = originalPixelBuffer;
 
-    SenseTimeModel model;
-    model.devicePosition = self.devicePosition;
-    model.isVideoMirrored = self.isVideoMirrored;
-    model.pixelBuffer = originalPixelBuffer;
-    model.textureResult = &textureResult;
-    pixelBufferRefResult = [self.senseTimeManager captureOutputWithSenseTimeModel:model];
+     SenseTimeModel model;
+     model.devicePosition = self.devicePosition;
+     model.isVideoMirrored = self.isVideoMirrored;
+     model.pixelBuffer = originalPixelBuffer;
+     model.textureResult = &textureResult;
+     pixelBufferRefResult = [self.senseTimeManager captureOutputWithSenseTimeModel:model];
 
-    
-    if (self.didCompletion) {
-        self.didCompletion(originalPixelBuffer, pixelBufferRefResult, videoFrame.timeStamp);
-    }
-    
-    CVPixelBufferUnlockBaseAddress(originalPixelBuffer, 0);
-
-
-    CMTime timeStamp = videoFrame.timeStamp;
-
-    AGMCVPixelBuffer *aPixelBuffer = [[AGMCVPixelBuffer alloc] initWithPixelBuffer:pixelBufferRefResult];
-    AGMVideoFrame *aVideoFrame = [[AGMVideoFrame alloc] initWithBuffer:aPixelBuffer
-                                                             rotation:videoFrame.rotation
-                                                             timeStamp:timeStamp];
-    aVideoFrame.usingFrontCamera = videoFrame.usingFrontCamera;
-    aVideoFrame.videoSize = videoFrame.videoSize;
-
-    
-    if (self.allSinks.count) {
-        for (id<AGMVideoSink> sink in self.allSinks) {
-            [sink onFrame:aVideoFrame];
-        }
-    }
-
+     
+     if (self.didCompletion) {
+         self.didCompletion(originalPixelBuffer, pixelBufferRefResult, time);
+     }
+     
+     CVPixelBufferUnlockBaseAddress(originalPixelBuffer, 0);
 }
 
 @end
