@@ -116,7 +116,6 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     self.videoConfig = [AGMCapturerVideoConfig defaultConfig];
     self.videoConfig.videoSize = CGSizeMake(480, 640);
     self.videoConfig.sessionPreset = AGMCaptureSessionPreset480x640;
-    self.videoConfig.outputPixelFormat = AGMVideoPixelFormatBGRA;
     self.videoConfig.fps = 15;
     CGRect rect = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     CGFloat fWidth = self.videoConfig.videoSize.width;
@@ -140,6 +139,8 @@ typedef NS_ENUM(NSInteger, STViewTag) {
                 [SenseTimeUtil snapWithView:weakSelf.preview width:previewSize.width height:previewSize.height];
             });
         }
+        // write to file
+        [weakSelf.senseRecordView captureOutputPixelBufferRef:resultPixelBuffer timeStamp:timeStamp];
 
         // push video frame to agora
         AgoraVideoRotation agoraRotation = [weakSelf agoraRotation];
@@ -156,27 +157,19 @@ typedef NS_ENUM(NSInteger, STViewTag) {
     [self.view addSubview:self.preview];
     
 #pragma mark VideoFrameAdapter
-    AGMVideoFrameAdapter *videoFrameAdapter = [[AGMVideoFrameAdapter alloc] init];
-    videoFrameAdapter.orientationMode = AGMVideoOutputOrientationModeFixedPortrait;
-    videoFrameAdapter.sinkDelegate = self;
+    AGMVideoAdapterFilter *videoAdapterFilter = [[AGMVideoAdapterFilter alloc] init];
+    #define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
+    CGAffineTransform rotation = CGAffineTransformMakeRotation( DEGREES_TO_RADIANS(90) );
+    videoAdapterFilter.affineTransform = rotation;
+    videoAdapterFilter.ignoreAspectRatio = YES;
+    videoAdapterFilter.isMirror = YES;
 #pragma mark Connect
-    [self.cameraCapturer addVideoSink:videoFrameAdapter];
-    [videoFrameAdapter addVideoSink:self.senceTimeFilter];
+    [self.cameraCapturer addVideoSink:videoAdapterFilter];
+    [videoAdapterFilter addVideoSink:self.senceTimeFilter];
 #pragma mark
     self.senceTimeFilter.devicePosition = self.cameraCapturer.captureDevicePosition;
     self.senceTimeFilter.isVideoMirrored = YES;
 }
-}
-/**
- Writer on the file.
- */
-- (void)onFrame:(AGMVideoFrame *)videoFrame {
-//    NSLog(@"Rotation : %ld", (long)videoFrame.rotation);
-    if (![videoFrame.buffer isKindOfClass:AGMCVPixelBuffer.class]) {
-        [videoFrame newNV12VideoFrame];
-    }
-    AGMCVPixelBuffer *agmPixelBuffer = videoFrame.buffer;
-    [self.senseRecordView captureOutputPixelBufferRef:agmPixelBuffer.pixelBuffer timeStamp:videoFrame.timeStamp];
 }
 
 -(void)initSenseModule {
