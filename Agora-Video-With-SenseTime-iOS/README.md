@@ -38,8 +38,8 @@ sh setupSenseTime.sh
 ```
 or you can manual to download and unzip to **"Agora-With-SenseTime/SenseTimePart/"** folder:
 1. [SenseTime-iOS-Resource.zip](https://github.com/AgoraIO/Agora-With-SenseTime/releases/download/0.0.1/SenseTime-iOS-Resource.zip) 
-2. [AgoraModule_Base_iOS-1.1.1](https://download.agora.io/components/release/AgoraModule_Base_iOS-1.1.1.zip)
-3. [AgoraModule_Capturer_iOS-1.1.1](https://download.agora.io/components/release/AgoraModule_Capturer_iOS-1.1.1.zip)
+2. [AgoraModule_Base_iOS-1.2.0](https://download.agora.io/components/release/AgoraModule_Base_iOS-1.2.0.zip)
+3. [AgoraModule_Capturer_iOS-1.2.0](https://download.agora.io/components/release/AgoraModule_Capturer_iOS-1.2.0.zip)
 ```
  Agora-With-SenseTime
     |_ SenseTimePart
@@ -98,30 +98,23 @@ self.cameraCapturer = [[AGMCameraCapturer alloc] initWithConfig:videoConfig];
 [self.cameraCapturer start];
 ```
 
-##### How to use build-in filter
-```objc
-self.filter = [[AGMFilter alloc] init];
-```
+##### Adapter Filter
 
-##### How to use renderer
-```objc
-self.preview = [[UIView alloc] initWithFrame:self.view.bounds];
-[self.view insertSubview:self.preview atIndex:0];
-    
-AGMRendererConfig *rendererConfig = [AGMRendererConfig defaultConfig];
-self.videoRenderer = [[AGMVideoRenderer alloc] initWithConfig:rendererConfig];
-self.videoRenderer.preView = self.preview;
-[self.videoRenderer start];    
-
-
-```
+ ```objc
+ self.videoAdapterFilter = [[AGMVideoAdapterFilter alloc] init];
+ self.videoAdapterFilter.ignoreAspectRatio = YES;
+ self.videoAdapterFilter.isMirror = YES;
+ #define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
+ CGAffineTransform rotation = CGAffineTransformMakeRotation( DEGREES_TO_RADIANS(90));
+ self.videoAdapterFilter.affineTransform = rotation;
+ ```
 
 ##### Associate the modules
 
 ```objc
 
-[self.cameraCapturer addVideoSink:self.filter];
-[self.filter addVideoSink:self.videoRenderer];
+[self.cameraCapturer addVideoSink:self.videoAdapterFilter];
+[self.videoAdapterFilter addVideoSink:senceTimeFilter];
 
 ```
 
@@ -141,7 +134,7 @@ Create a class that inherits form AGMVideoSource and implements the AGMVideoSink
 
 @implementation AGMSenceTimeFilter
 
-- (void)onFrame:(AGMVideoFrame *)videoFrame
+- (void)onTextureFrame:(AGMImageFramebuffer *)textureFrame frameTime:(CMTime)time {
 {
 #pragma mark Write the filter processing.
     
@@ -149,7 +142,7 @@ Create a class that inherits form AGMVideoSource and implements the AGMVideoSink
 #pragma mark When you're done, pass it to the next sink.
     if (self.allSinks.count) {
         for (id<AGMVideoSink> sink in self.allSinks) {
-            [sink onFrame:videoFrame];
+            [sink onTextureFrame:textureFrame frameTime:time];
         }
     }
 }
