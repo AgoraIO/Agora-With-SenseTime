@@ -12,7 +12,7 @@ This demo demonstrates the combined use of Agora RTC sdk and SenseTime beautific
 ### 1.1 Agora RTC
 #### 1.1.1 App Id
 
-Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), and obtain an App ID as the identification of the running app. Update "app/src/main/res/values/strings-config.xml" with your App ID.
+Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), create a new project and obtain an App ID as the identification of the running app. Update "app/src/main/res/values/strings-config.xml" with your App ID.
 
 ```
 <string name="AGORA_APP_ID"><#YOUR APP ID#></string>
