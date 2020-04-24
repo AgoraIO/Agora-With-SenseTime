@@ -34,7 +34,7 @@ implementation 'io.agora.rtc:full-sdk:2.9.2'
 
 * Copy ***.jar** under **libs** to **app/libs**
 * Copy **arm64-v8a**/**x86**/**armeabi-v7a** under **libs** to **app/src/main/jniLibs**.
-* Add the fllowing code in the property of the dependence of the "app/build.gradle":
+* Add the following code in the property of the dependence of the "app/build.gradle":
 
 ```
 implementation fileTree(dir: 'libs', include: ['*.jar'])
