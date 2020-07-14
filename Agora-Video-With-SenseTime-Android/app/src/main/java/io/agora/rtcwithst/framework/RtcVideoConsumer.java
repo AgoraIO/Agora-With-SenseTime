@@ -3,10 +3,10 @@ package io.agora.rtcwithst.framework;
 import android.opengl.GLES20;
 import android.util.Log;
 
-import io.agora.framework.VideoCaptureFrame;
-import io.agora.framework.VideoModule;
-import io.agora.framework.channels.VideoChannel;
-import io.agora.framework.comsumers.IVideoConsumer;
+import io.agora.capture.framework.modules.channels.VideoChannel;
+import io.agora.capture.framework.modules.consumers.IVideoConsumer;
+import io.agora.capture.video.camera.VideoCaptureFrame;
+import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.mediaio.IVideoFrameConsumer;
 import io.agora.rtc.mediaio.IVideoSource;
 import io.agora.rtc.mediaio.MediaIO;
@@ -34,14 +34,14 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     @Override
     public void onConsumeFrame(VideoCaptureFrame frame, VideoChannel.ChannelContext context) {
         if (mRtcConsumer != null && mValidInRtc) {
-            int format = frame.mFormat.getPixelFormat() == GLES20.GL_TEXTURE_2D
+            int format = frame.format.getPixelFormat() == GLES20.GL_TEXTURE_2D
                     ? AgoraVideoFrame.FORMAT_TEXTURE_2D
                     : AgoraVideoFrame.FORMAT_TEXTURE_OES;
 
-            mRtcConsumer.consumeTextureFrame(frame.mTextureId,
-                    format, frame.mFormat.getWidth(),
-                    frame.mFormat.getHeight(), frame.mRotation,
-                    frame.mTimeStamp, frame.mTexMatrix);
+            mRtcConsumer.consumeTextureFrame(frame.textureId,
+                    format, frame.format.getWidth(),
+                    frame.format.getHeight(), frame.rotation,
+                    frame.timestamp, frame.textureTransform);
         }
     }
 
@@ -58,7 +58,12 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     }
 
     @Override
-    public Object onGetDrawingTarget() {
+    public void setMirrorMode(int i) {
+
+    }
+
+    @Override
+    public Object getDrawingTarget() {
         // Rtc engine does not draw the frames
         // on any target window surface
         return null;
@@ -72,6 +77,16 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     @Override
     public int onMeasuredHeight() {
         return 0;
+    }
+
+    @Override
+    public void recycle() {
+
+    }
+
+    @Override
+    public String getId() {
+        return null;
     }
 
     @Override

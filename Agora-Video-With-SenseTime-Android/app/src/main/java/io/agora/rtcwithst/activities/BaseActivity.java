@@ -2,6 +2,7 @@ package io.agora.rtcwithst.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import io.agora.framework.VideoModule;
+import io.agora.capture.video.camera.CameraVideoManager;
+import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtcwithst.AgoraApplication;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
@@ -109,8 +111,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         return (AgoraApplication) getApplication();
     }
 
-    public VideoModule videoModule() {
-        return application().videoModule();
+    public CameraVideoManager videoManager() {
+        return application().videoManager();
     }
 
     public RtcEngine rtcEngine() {
@@ -123,9 +125,5 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void removeHandler(IRtcEventHandler handler) {
         application().removeEventHandler(handler);
-    }
-
-    public PreprocessorSenseTime getSenseTimeRender() {
-        return application().getSenseTimeRender();
     }
 }

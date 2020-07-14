@@ -138,7 +138,7 @@ class PreProcessProgram {
         mTextureBuffer.position(0);
         GLES20.glVertexAttribPointer(mTexCoordLocation, 2, GLES20.GL_FLOAT, false, 0, mTextureBuffer);
         GLES20.glEnableVertexAttribArray(mTexCoordLocation);
-        GlUtil.checkGlError("glEnableVertexAttribArray");;
+        GlUtil.checkGlError("glEnableVertexAttribArray");
 
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
         GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textureId);

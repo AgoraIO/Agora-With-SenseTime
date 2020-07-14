@@ -2,8 +2,8 @@ package io.agora.rtcwithst;
 
 import android.app.Application;
 
-import io.agora.framework.VideoModule;
-import io.agora.framework.channels.ChannelManager;
+import io.agora.capture.video.camera.CameraVideoManager;
+import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
@@ -11,7 +11,7 @@ import io.agora.rtcwithst.rtc.IRtcEventHandler;
 import io.agora.rtcwithst.rtc.RtcEventHandler;
 
 public class AgoraApplication extends Application {
-    private VideoModule mVideoModule;
+    private CameraVideoManager mVideoManager;
     private RtcEngine mRtcEngine;
     private RtcEventHandler mEventHandler;
 
@@ -23,9 +23,7 @@ public class AgoraApplication extends Application {
     }
 
     private void initVideoModule() {
-        mVideoModule = VideoModule.instance();
-        mVideoModule.init(getApplicationContext());
-        mVideoModule.setPreprocessor(ChannelManager.ChannelID.CAMERA,
+        mVideoManager = new CameraVideoManager(this,
                 new PreprocessorSenseTime(getApplicationContext()));
     }
 
@@ -37,15 +35,13 @@ public class AgoraApplication extends Application {
             mRtcEngine.enableVideo();
             mRtcEngine.enableDualStreamMode(false);
             mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
-            mRtcEngine.enableWebSdkInteroperability(true);
-            // mRtcEngine.setParameters("{\"rtc.log_filter\":65535}");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public VideoModule videoModule() {
-        return mVideoModule;
+    public CameraVideoManager videoManager() {
+        return mVideoManager;
     }
 
     public RtcEngine rtcEngine() {
@@ -60,15 +56,10 @@ public class AgoraApplication extends Application {
         mEventHandler.removeHandler(handler);
     }
 
-    public PreprocessorSenseTime getSenseTimeRender() {
-        return (PreprocessorSenseTime) mVideoModule.
-                getPreprocessor(ChannelManager.ChannelID.CAMERA);
-    }
-
     @Override
     public void onTerminate() {
         super.onTerminate();
-        mVideoModule.stopAllChannels();
+        VideoModule.instance().stopAllChannels();
         RtcEngine.destroy();
     }
 }
