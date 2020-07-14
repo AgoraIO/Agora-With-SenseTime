@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "io.agora.rtcwithst"
-        minSdkVersion 17
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,18 +23,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'io.agora.rtc:full-sdk:2.9.2'
+    implementation 'io.agora.rtc:full-sdk:3.0.1'
+    implementation files('libs/video-capture-release.aar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':framework')
-    implementation project(path: ':videocapture')
     implementation project(path: ':sensetime')
 }

@@ -6,18 +6,20 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
-import io.agora.framework.channels.ChannelManager;
-import io.agora.kit.media.camera.capture.VideoCapture;
-import io.agora.kit.media.camera.capture.VideoCaptureFactory;
+import io.agora.capture.framework.modules.channels.ChannelManager;
+import io.agora.capture.video.camera.CameraVideoManager;
+import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 import io.agora.rtcwithst.Constant;
 import io.agora.rtcwithst.R;
+import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 import io.agora.rtcwithst.rtc.IRtcEventHandler;
 import io.agora.rtcwithst.framework.RtcVideoConsumer;
 import io.agora.rtcwithst.views.sensetime.EffectOptionsLayout;
@@ -25,29 +27,40 @@ import io.agora.rtcwithst.views.sensetime.EffectOptionsLayout;
 public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     private static final String TAG = LiveActivity.class.getSimpleName();
 
-    private VideoCapture mVideoCapture;
-
     private FrameLayout mRemotePreviewLayout;
+
+    private CameraVideoManager mVideoManager;
+    private SurfaceView mLocalPreview;
+    private boolean mFinished;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUI();
+        registerHandler(this);
         checkPermission();
-    }
-
-    private void initUI() {
-        setContentView(R.layout.live_activity);
-        EffectOptionsLayout effectLayout = findViewById(R.id.effect_option_layout);
-        effectLayout.setSTEffectListener(getSenseTimeRender());
-        mRemotePreviewLayout = findViewById(R.id.remote_view_layout);
     }
 
     @Override
     protected void onPermissionsGranted() {
-        registerHandler(this);
-        startVideoCapture();
+        init();
         joinChannel();
+    }
+
+    private void init() {
+        setContentView(R.layout.live_activity);
+
+        mVideoManager = videoManager();
+        mVideoManager.setPictureSize(640, 480);
+        mVideoManager.setFrameRate(24);
+        mLocalPreview = new SurfaceView(this);
+        RelativeLayout windowLayout = findViewById(R.id.local_preview_layout);
+        windowLayout.addView(mLocalPreview);
+        mVideoManager.setLocalPreview(mLocalPreview);
+        mVideoManager.startCapture();
+
+        EffectOptionsLayout effectLayout = findViewById(R.id.effect_option_layout);
+        effectLayout.setSTEffectListener((PreprocessorSenseTime)mVideoManager.getPreprocessor());
+        mRemotePreviewLayout = findViewById(R.id.remote_view_layout);
     }
 
     @Override
@@ -55,38 +68,19 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
 
     }
 
-    private void startVideoCapture() {
-        mVideoCapture = VideoCaptureFactory.createVideoCapture(this);
-        mVideoCapture.allocate(640, 480, 24, mFacing);
-        mVideoCapture.startCaptureMaybeAsync(false);
-        mVideoCapture.connectChannel(ChannelManager.ChannelID.CAMERA);
-    }
-
     private void joinChannel() {
         String channelName = getIntent().getStringExtra(Constant.ACTION_KEY_ROOM_NAME);
         rtcEngine().setClientRole(Constants.CLIENT_ROLE_BROADCASTER);
-        rtcEngine().setVideoSource(new RtcVideoConsumer(videoModule(),
+
+        rtcEngine().setVideoSource(new RtcVideoConsumer(VideoModule.instance(),
                 ChannelManager.ChannelID.CAMERA));
+
         rtcEngine().setVideoEncoderConfiguration(new VideoEncoderConfiguration(
                 VideoEncoderConfiguration.VD_640x480,
                 VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_24,
                 VideoEncoderConfiguration.STANDARD_BITRATE,
                 VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT));
         rtcEngine().joinChannel(null, channelName, null, 0);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        removeHandler(this);
-        rtcEngine().leaveChannel();
-        stopVideoCapture();
-    }
-
-    private void stopVideoCapture() {
-        mVideoCapture.disconnect();
-        mVideoCapture.stopCaptureAndBlockUntilStopped();
-        mVideoCapture.deallocate();
     }
 
     @Override
@@ -114,42 +108,47 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
 
     @Override
     public void onUserOffline(int uid, int reason) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mRemotePreviewLayout.removeAllViews();
-                mRemotePreviewLayout.setVisibility(View.GONE);
-            }
+        runOnUiThread(() -> {
+            mRemotePreviewLayout.removeAllViews();
+            mRemotePreviewLayout.setVisibility(View.GONE);
         });
     }
 
-    private int mFacing = Constant.CAMERA_FACING_FRONT;
-
     public void onCameraChange(View view) {
-        switch (mFacing) {
-            case Constant.CAMERA_FACING_INVALID:
-                Log.e(TAG, "camera not allocated or already deallocated");
-                break;
-            case Constant.CAMERA_FACING_BACK:
-                mVideoCapture.setPaused(true);
-                mVideoCapture.stopCaptureAndBlockUntilStopped();
-                mVideoCapture.deallocate(false);
-                mVideoCapture.allocate(640, 480, 24, Constant.CAMERA_FACING_FRONT);
-                mFacing = Constant.CAMERA_FACING_FRONT;
-                mVideoCapture.startCaptureMaybeAsync(false);
-                mVideoCapture.setPaused(false);
-                break;
-            case Constant.CAMERA_FACING_FRONT:
-                mVideoCapture.setPaused(true);
-                mVideoCapture.stopCaptureAndBlockUntilStopped();
-                mVideoCapture.deallocate(false);
-                mVideoCapture.allocate(640, 480, 24, Constant.CAMERA_FACING_BACK);
-                mFacing = Constant.CAMERA_FACING_BACK;
-                mVideoCapture.startCaptureMaybeAsync(false);
-                mVideoCapture.setPaused(false);
-                break;
-            default:
-                Log.e(TAG, "no facing matched");
+        if (mVideoManager != null) {
+            mVideoManager.switchCamera();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mVideoManager != null) {
+            mVideoManager.startCapture();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (!mFinished && mVideoManager != null) {
+            mVideoManager.stopCapture();
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        mFinished = true;
+        if (mVideoManager != null) {
+            mVideoManager.stopCapture();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeHandler(this);
+        rtcEngine().leaveChannel();
     }
 }
