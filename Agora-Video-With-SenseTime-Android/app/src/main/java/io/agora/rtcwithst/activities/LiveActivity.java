@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -30,8 +32,11 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     private FrameLayout mRemotePreviewLayout;
 
     private CameraVideoManager mVideoManager;
-    private SurfaceView mLocalPreview;
     private boolean mFinished;
+
+    private RelativeLayout mLocalPreviewLayout1;
+    private RelativeLayout mLocalPreviewLayout2;
+    private boolean mCurrentPos = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,19 +53,34 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
 
     private void init() {
         setContentView(R.layout.live_activity);
+        mLocalPreviewLayout1 = findViewById(R.id.local_preview_layout1);
+        mLocalPreviewLayout2 = findViewById(R.id.local_preview_layout2);
 
         mVideoManager = videoManager();
         mVideoManager.setPictureSize(640, 480);
         mVideoManager.setFrameRate(24);
-        mLocalPreview = new SurfaceView(this);
-        RelativeLayout windowLayout = findViewById(R.id.local_preview_layout);
-        windowLayout.addView(mLocalPreview);
-        mVideoManager.setLocalPreview(mLocalPreview);
+        resetCurrentPreview();
         mVideoManager.startCapture();
 
         EffectOptionsLayout effectLayout = findViewById(R.id.effect_option_layout);
         effectLayout.setSTEffectListener((PreprocessorSenseTime)mVideoManager.getPreprocessor());
         mRemotePreviewLayout = findViewById(R.id.remote_view_layout);
+    }
+
+    private void resetCurrentPreview() {
+        if (mCurrentPos) {
+            SurfaceView surfaceView = new SurfaceView(this);
+            mLocalPreviewLayout2.removeAllViews();
+            mLocalPreviewLayout1.addView(surfaceView);
+            mVideoManager.setLocalPreview(surfaceView);
+        } else {
+            TextureView textureView = new TextureView(this);
+            mLocalPreviewLayout1.removeAllViews();
+            mLocalPreviewLayout2.addView(textureView);
+            mVideoManager.setLocalPreview(textureView);
+        }
+
+        mCurrentPos = !mCurrentPos;
     }
 
     @Override
@@ -94,15 +114,12 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     }
 
     private void createRemoteView(final Context context, final int uid) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                SurfaceView remoteView = RtcEngine.CreateRendererView(context);
-                mRemotePreviewLayout.addView(remoteView);
-                mRemotePreviewLayout.setVisibility(View.VISIBLE);
-                rtcEngine().setupRemoteVideo(new VideoCanvas(remoteView,
-                        VideoCanvas.RENDER_MODE_HIDDEN, uid));
-            }
+        runOnUiThread(() -> {
+            SurfaceView remoteView = RtcEngine.CreateRendererView(context);
+            mRemotePreviewLayout.addView(remoteView);
+            mRemotePreviewLayout.setVisibility(View.VISIBLE);
+            rtcEngine().setupRemoteVideo(new VideoCanvas(remoteView,
+                    VideoCanvas.RENDER_MODE_HIDDEN, uid));
         });
     }
 
@@ -118,6 +135,10 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         if (mVideoManager != null) {
             mVideoManager.switchCamera();
         }
+    }
+
+    public void onSwitchView(View view) {
+        resetCurrentPreview();
     }
 
     @Override
