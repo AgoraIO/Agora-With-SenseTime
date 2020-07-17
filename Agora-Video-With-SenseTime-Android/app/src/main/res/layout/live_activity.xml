@@ -3,10 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/local_preview_layout"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/local_preview_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <RelativeLayout
+            android:id="@+id/local_preview_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <io.agora.rtcwithst.views.sensetime.EffectOptionsLayout
         android:id="@+id/effect_option_layout"
@@ -32,4 +44,13 @@
         android:src="@drawable/change_camera"
         android:background="@drawable/change_camera_btn_bg"
         android:onClick="onCameraChange"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/global_view_margin"
+        android:layout_toEndOf="@id/change_camera_btn"
+        android:text="@string/switch_view_title"
+        android:onClick="onSwitchView"/>
 </RelativeLayout>
