@@ -7,7 +7,4 @@
     <string name="start_broadcast">Start Broadcast</string>
     <string name="need_permissions">Necessary Permissions Required.</string>
     <string name="empty_channel_name">Please Input A Valid Channel Name</string>
-
-    <!-- LiveActivity -->
-    <string name="switch_view_title">Switch View</string>
 </resources>
