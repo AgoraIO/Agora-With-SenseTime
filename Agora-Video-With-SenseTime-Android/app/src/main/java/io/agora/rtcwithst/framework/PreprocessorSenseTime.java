@@ -8,10 +8,10 @@ import android.util.Log;
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
 
-import io.agora.framework.VideoCaptureFormat;
-import io.agora.framework.channels.VideoChannel;
-import io.agora.framework.preprocess.IPreprocessor;
-import io.agora.framework.VideoCaptureFrame;
+import io.agora.capture.framework.modules.channels.VideoChannel;
+import io.agora.capture.framework.modules.processors.IPreprocessor;
+import io.agora.capture.video.camera.VideoCaptureFormat;
+import io.agora.capture.video.camera.VideoCaptureFrame;
 
 public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     private static final String TAG = PreprocessorSenseTime.class.getSimpleName();
@@ -20,13 +20,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     private Context mContext;
     private float[] mIdentityMatrix = new float[16];
 
-    // Capture module sends the same video capture format
-    // instance in a single capture session.
-    // If the video sent in needs to be rotated, we must
-    // maintain another format instance for the
-    // consumers.
-    private VideoCaptureFormat mCaptureFormat;
-    private VideoCaptureFormat mConsumerFormat;
+    private boolean mEnabled = true;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
@@ -47,6 +41,11 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     }
 
     @Override
+    public void enablePreProcess(boolean enabled) {
+        mEnabled = enabled;
+    }
+
+    @Override
     public void releasePreprocessor(VideoChannel.ChannelContext context) {
         Log.i(TAG, "releasePreprocessor");
         if (mSTRenderer != null) {
@@ -56,56 +55,35 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     }
 
     @Override
-    public void onPreProcessFrame(VideoCaptureFrame outFrame, VideoChannel.ChannelContext context) {
-        if (mSTRenderer == null) {
-            return;
+    public VideoCaptureFrame onPreProcessFrame(VideoCaptureFrame outFrame, VideoChannel.ChannelContext context) {
+        if (mSTRenderer == null || !mEnabled) {
+            return outFrame;
         }
 
-        boolean needSwapWH = needSwapDimension(outFrame.mRotation);
-        boolean sessionChanged = mCaptureFormat != outFrame.mFormat;
+        // SenseTime library will rotate the target
+        // image automatically to upright.
+        outFrame.textureId = mSTRenderer.preProcess(
+                outFrame.textureId,
+                outFrame.surfaceTexture,
+                outFrame.format.getWidth(),
+                outFrame.format.getHeight(),
+                outFrame.format.getWidth(),
+                outFrame.format.getHeight(),
+                outFrame.rotation,
+                outFrame.textureTransform);
 
-        if (sessionChanged) {
-            mCaptureFormat = outFrame.mFormat;
-            int resizeW;
-            int resizeH;
-
-            if (needSwapWH) {
-                resizeW = mCaptureFormat.getHeight();
-                resizeH = mCaptureFormat.getWidth();
-            } else {
-                resizeW = mCaptureFormat.getWidth();
-                resizeH = mCaptureFormat.getHeight();
-            }
-
-            mConsumerFormat = new VideoCaptureFormat(
-                    resizeW, resizeH,
-                    mCaptureFormat.getFramerate(),
-                    mCaptureFormat.getPixelFormat());
+        if (outFrame.rotation == 90 || outFrame.rotation == 270) {
+            int width = outFrame.format.getWidth();
+            int height = outFrame.format.getHeight();
+            outFrame.format.setWidth(height);
+            outFrame.format.setHeight(width);
         }
 
-        int textureId = mSTRenderer.preProcess(
-                outFrame.mTextureId,
-                outFrame.mSurfaceTexture,
-                mCaptureFormat.getWidth(),
-                mCaptureFormat.getHeight(),
-                mConsumerFormat.getWidth(),
-                mConsumerFormat.getHeight(),
-                outFrame.mRotation,
-                outFrame.mTexMatrix);
+        outFrame.rotation = 0;
+        outFrame.textureTransform = mIdentityMatrix;
+        outFrame.format.setTexFormat(GLES20.GL_TEXTURE_2D);
 
-        if (textureId > 0) {
-            // Have been pre-processed (textureOES -> texture2D and
-            // pre-rotation) by the preprocessor.
-            outFrame.mTextureId = textureId;
-            outFrame.mTexMatrix = mIdentityMatrix;
-            outFrame.mRotation = 0;
-            outFrame.mFormat = mConsumerFormat;
-            outFrame.mFormat.setPixelFormat(GLES20.GL_TEXTURE_2D);
-        }
-    }
-
-    private boolean needSwapDimension(int rotation) {
-        return rotation == 90 || rotation == 270;
+        return outFrame;
     }
 
     @Override

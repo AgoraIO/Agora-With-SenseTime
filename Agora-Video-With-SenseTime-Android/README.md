@@ -65,6 +65,9 @@ Copy all resource files to **"app/src/main/assets"** from the download link.
 
 Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to assets folder.
 
+### 1.3 Camera Capture Framework
+
+We have imported a camera capture framework library. If you are interested in source code and document of this framework, please go to [here](https://github.com/AgoraIO/Agora-Extensions/tree/master/VideoCapture/Android) for more information.
 
 ## Developer Environment Requirements
 - Android Studio 3.1 or above
