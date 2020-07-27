@@ -34,7 +34,7 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     @Override
     public void onConsumeFrame(VideoCaptureFrame frame, VideoChannel.ChannelContext context) {
         if (mRtcConsumer != null && mValidInRtc) {
-            int format = frame.format.getPixelFormat() == GLES20.GL_TEXTURE_2D
+            int format = frame.format.getTexFormat() == GLES20.GL_TEXTURE_2D
                     ? AgoraVideoFrame.FORMAT_TEXTURE_2D
                     : AgoraVideoFrame.FORMAT_TEXTURE_OES;
 
