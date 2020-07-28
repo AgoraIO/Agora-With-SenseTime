@@ -4,13 +4,14 @@ import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
 
 import io.agora.capture.framework.modules.channels.VideoChannel;
 import io.agora.capture.framework.modules.processors.IPreprocessor;
-import io.agora.capture.video.camera.VideoCaptureFormat;
 import io.agora.capture.video.camera.VideoCaptureFrame;
 
 public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
@@ -22,8 +23,12 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
 
     private boolean mEnabled = true;
 
+    private WindowManager mWindowManager;
+
     public PreprocessorSenseTime(Context context) {
         mContext = context;
+        mWindowManager = (WindowManager) mContext
+                .getSystemService(Context.WINDOW_SERVICE);
     }
 
     @Override
@@ -60,6 +65,11 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return outFrame;
         }
 
+        Display defaultDisplay = mWindowManager.getDefaultDisplay();
+        int surfaceRotation = defaultDisplay != null ? defaultDisplay.getRotation() : 0;
+        int rotation = surfaceRotation * 360 / 4;
+        rotation = outFrame.rotation - rotation;
+
         // SenseTime library will rotate the target
         // image automatically to upright.
         outFrame.textureId = mSTRenderer.preProcess(
@@ -69,7 +79,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 outFrame.format.getHeight(),
                 outFrame.format.getWidth(),
                 outFrame.format.getHeight(),
-                outFrame.rotation,
+                rotation,
                 outFrame.textureTransform);
 
         if (outFrame.rotation == 90 || outFrame.rotation == 270) {
