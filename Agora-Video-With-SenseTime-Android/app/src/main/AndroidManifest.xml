@@ -28,6 +28,6 @@
         </activity>
 
         <activity android:name=".activities.LiveActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="sensor"/>
     </application>
 </manifest>
