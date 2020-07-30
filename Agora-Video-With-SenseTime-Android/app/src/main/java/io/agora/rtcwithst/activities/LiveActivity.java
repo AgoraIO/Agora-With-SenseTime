@@ -31,6 +31,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     private FrameLayout mRemotePreviewLayout;
 
     private CameraVideoManager mVideoManager;
+    private PreprocessorSenseTime mSenseTime;
     private boolean mFinished;
 
     @Override
@@ -52,6 +53,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         mVideoManager = videoManager();
         mVideoManager.setPictureSize(640, 480);
         mVideoManager.setFrameRate(24);
+        mSenseTime = (PreprocessorSenseTime)mVideoManager.getPreprocessor();
 
         RelativeLayout localLayout = findViewById(R.id.local_preview_layout);
         TextureView textureView = new TextureView(this);
@@ -60,7 +62,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         mVideoManager.startCapture();
 
         EffectOptionsLayout effectLayout = findViewById(R.id.effect_option_layout);
-        effectLayout.setSTEffectListener((PreprocessorSenseTime)mVideoManager.getPreprocessor());
+        effectLayout.setSTEffectListener(mSenseTime);
         mRemotePreviewLayout = findViewById(R.id.remote_view_layout);
     }
 
@@ -121,16 +123,14 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     @Override
     protected void onStart() {
         super.onStart();
-        if (mVideoManager != null) {
-            mVideoManager.startCapture();
-        }
+        startCapture();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (!mFinished && mVideoManager != null) {
-            mVideoManager.stopCapture();
+        if (!mFinished) {
+            stopCapture();
         }
     }
 
@@ -138,9 +138,7 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
     public void finish() {
         super.finish();
         mFinished = true;
-        if (mVideoManager != null) {
-            mVideoManager.stopCapture();
-        }
+        stopCapture();
     }
 
     @Override
@@ -148,5 +146,25 @@ public class LiveActivity extends BaseActivity implements IRtcEventHandler {
         super.onDestroy();
         removeHandler(this);
         rtcEngine().leaveChannel();
+    }
+
+    private void startCapture() {
+        if (mSenseTime != null) {
+            mSenseTime.enableSensor();
+        }
+
+        if (mVideoManager != null) {
+            mVideoManager.startCapture();
+        }
+    }
+
+    private void stopCapture() {
+        if (mVideoManager != null) {
+            mVideoManager.stopCapture();
+        }
+
+        if (mSenseTime != null) {
+            mSenseTime.disableSensor();
+        }
     }
 }

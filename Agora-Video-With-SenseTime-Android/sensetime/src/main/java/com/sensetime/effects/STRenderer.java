@@ -568,15 +568,9 @@ public class STRenderer {
     }
 
     public int preProcess(int textureId, SurfaceTexture surfaceTexture,
-                          int width, int height, int orientation, float[] texMatrix) {
-        return preProcess(textureId, surfaceTexture, width, height,
-                -1, -1, orientation, texMatrix);
-    }
-
-    public int preProcess(int textureId, SurfaceTexture surfaceTexture,
                           int width, int height,
                           int resizeWidth, int resizeHeight,
-                          int orientation, float[] texMatrix) {
+                          int orientation, boolean isMirrored, float[] texMatrix) {
 
         if (!mAuthorized || mIsPaused ||
                 mCameraChanging || surfaceTexture == null) {
@@ -595,12 +589,7 @@ public class STRenderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         mRGBABuffer.rewind();
-
         int processedTextureId = mGLRender.preProcess(textureId, mRGBABuffer);
-
-        if (mShowOriginal) {
-            return processedTextureId;
-        }
 
         int stOrientation = getCurrentOrientation(orientation);
         int result;
@@ -616,7 +605,7 @@ public class STRenderer {
                 mIsObjectTracking = true;
             }
 
-            Rect rect = new Rect(0, 0, 0, 0);
+            // Rect rect = new Rect(0, 0, 0, 0);
 
             if (mIsObjectTracking) {
                 float[] score = new float[1];
@@ -771,9 +760,8 @@ public class STRenderer {
             }
         }
 
-        // Transform the image to the ideal direction according
-        // to the texture matrix.
-        return mGLRender.transform(processedTextureId, texMatrix);
+        processedTextureId = mGLRender.transform(processedTextureId, texMatrix);
+        return processedTextureId;
     }
 
     /**

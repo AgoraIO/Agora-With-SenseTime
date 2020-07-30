@@ -17,10 +17,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import io.agora.capture.video.camera.CameraVideoManager;
-import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtcwithst.AgoraApplication;
-import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 import io.agora.rtcwithst.rtc.IRtcEventHandler;
 
 public abstract class BaseActivity extends AppCompatActivity {

@@ -79,10 +79,10 @@ public class RotateProgram {
         mVertexBuffer.put(TextureRotationUtil.VERTEX_MATRIX).position(0);
 
         mTextureBuffer = ByteBuffer.
-                allocateDirect(TextureRotationUtil.TEXTURE_MATRIX.length * 4).
+                allocateDirect(TextureRotationUtil.TEXTURE_ROTATED_0_1.length * 4).
                 order(ByteOrder.nativeOrder()).
                 asFloatBuffer();
-        mTextureBuffer.put(TextureRotationUtil.TEXTURE_MATRIX).position(0);
+        mTextureBuffer.put(TextureRotationUtil.TEXTURE_ROTATED_0_1).position(0);
     }
 
     void resize(int width, int height) {

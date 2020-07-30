@@ -196,9 +196,7 @@ class PreProcessProgram {
         }
 
         mLastOrientation = orientation;
-        //float[] textureCords = TextureRotationUtil.getRotation(mLastOrientation, flipHorizontal, flipVertical);
-
-        float[] textureCords = TextureRotationUtil.TEXTURE_NO_ROTATION;
+        float[] textureCords = TextureRotationUtil.TEXTURE_ROTATED_0_1;
 
         if (mTextureBuffer == null) {
             mTextureBuffer = ByteBuffer.

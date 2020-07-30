@@ -4,31 +4,34 @@ import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
-import android.view.Display;
-import android.view.WindowManager;
+import android.view.OrientationEventListener;
 
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
 
+import io.agora.capture.framework.gles.core.GlUtil;
 import io.agora.capture.framework.modules.channels.VideoChannel;
 import io.agora.capture.framework.modules.processors.IPreprocessor;
 import io.agora.capture.video.camera.VideoCaptureFrame;
 
-public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
+public class PreprocessorSenseTime extends OrientationEventListener implements IPreprocessor, STEffectListener {
     private static final String TAG = PreprocessorSenseTime.class.getSimpleName();
 
     private STRenderer mSTRenderer;
     private Context mContext;
-    private float[] mIdentityMatrix = new float[16];
 
     private boolean mEnabled = true;
 
-    private WindowManager mWindowManager;
+    private int mDeviceOrientation;
 
     public PreprocessorSenseTime(Context context) {
+        super(context);
         mContext = context;
-        mWindowManager = (WindowManager) mContext
-                .getSystemService(Context.WINDOW_SERVICE);
+    }
+
+    @Override
+    public void onOrientationChanged(int orientation) {
+        mDeviceOrientation = orientation;
     }
 
     @Override
@@ -42,7 +45,6 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 .enableMakeup(true)
                 .enableDebug(false);
         mSTRenderer = builder.build();
-        Matrix.setIdentityM(mIdentityMatrix, 0);
     }
 
     @Override
@@ -65,13 +67,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return outFrame;
         }
 
-        Display defaultDisplay = mWindowManager.getDefaultDisplay();
-        int surfaceRotation = defaultDisplay != null ? defaultDisplay.getRotation() : 0;
-        int rotation = surfaceRotation * 360 / 4;
-        rotation = outFrame.rotation - rotation;
-
-        // SenseTime library will rotate the target
-        // image automatically to upright.
+        int rotation = calculateFaceOrientation(outFrame);
         outFrame.textureId = mSTRenderer.preProcess(
                 outFrame.textureId,
                 outFrame.surfaceTexture,
@@ -80,6 +76,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 outFrame.format.getWidth(),
                 outFrame.format.getHeight(),
                 rotation,
+                outFrame.mirrored,
                 outFrame.textureTransform);
 
         if (outFrame.rotation == 90 || outFrame.rotation == 270) {
@@ -90,10 +87,25 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
         }
 
         outFrame.rotation = 0;
-        outFrame.textureTransform = mIdentityMatrix;
+        outFrame.textureTransform = GlUtil.IDENTITY_MATRIX;
         outFrame.format.setTexFormat(GLES20.GL_TEXTURE_2D);
 
         return outFrame;
+    }
+
+    private int calculateFaceOrientation(VideoCaptureFrame frame) {
+        int device = ((mDeviceOrientation + 45) / 90 * 90) % 360;
+        int rotation = 0;
+        if (frame.mirrored) {
+            if (device == 0 || device == 180) {
+                rotation = (frame.rotation + device) % 360;
+            } else if (device == 90 || device == 270) {
+                rotation = (device + 90) % 360;
+            }
+        } else {
+            rotation = (device + 90) % 360;
+        }
+        return rotation;
     }
 
     @Override
@@ -145,5 +157,13 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     public String onGetCurrentGroupMakeup(String index) {
         return mSTRenderer == null ? null :
                 mSTRenderer.getSTEffectParameters().getMakeupPath(index);
+    }
+
+    public void enableSensor() {
+        enable();
+    }
+
+    public void disableSensor() {
+        disable();
     }
 }
