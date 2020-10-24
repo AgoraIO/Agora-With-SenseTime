@@ -10,15 +10,19 @@ import com.sensetime.stmobile.model.STStickerInputParams;
 import com.sensetime.stmobile.model.STTransParam;
 import com.sensetime.stmobile.sticker_module_types.STModuleInfo;
 
+/**
+ * 贴纸渲染JNI类定义
+ */
 public class STMobileStickerNative {
-    // 定义trigger action
-    public final static int ST_MOBILE_EYE_BLINK = 0x00000002;       ///<  眨眼
-    public final static int ST_MOBILE_MOUTH_AH = 0x00000004;        ///<  嘴巴大张
-    public final static int ST_MOBILE_HEAD_YAW = 0x00000008;        ///<  摇头
-    public final static int ST_MOBILE_HEAD_PITCH = 0x00000010;      ///<  点头
-    public final static int ST_MOBILE_BROW_JUMP = 0x00000020;       ///<  眉毛挑动
 
-    public final static int ST_INPUT_PARAM_NONE = 0x0;                   ///< 无需传感器
+    //定义trigger action
+    public final static int ST_MOBILE_EYE_BLINK = 0x00000002;    ///<  眨眼
+    public final static int ST_MOBILE_MOUTH_AH = 0x00000004;    ///<  嘴巴大张
+    public final static int ST_MOBILE_HEAD_YAW = 0x00000008;    ///<  摇头
+    public final static int ST_MOBILE_HEAD_PITCH = 0x00000010;    ///<  点头
+    public final static int ST_MOBILE_BROW_JUMP = 0x00000020;    ///<  眉毛挑动
+
+    public final static int ST_INPUT_PARAM_NONE = 0x0;          ///< 无需传感器
     public final static int ST_INPUT_PARAM_CAMERA_QUATERNION = 0x1;      ///< 手机朝向传感器
 
     enum RenderStatus {
@@ -28,7 +32,7 @@ public class STMobileStickerNative {
 
         private final int status;
 
-        RenderStatus(int status) {
+        private RenderStatus(int status) {
             this.status = status;
         }
 
@@ -144,10 +148,7 @@ public class STMobileStickerNative {
      * @param textureOut     处理后的纹理ID，用来做渲染
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTexture(int textureIn, STHumanAction humanAction,
-                                     int rotate, int frontRotate, int imageWidth,
-                                     int imageHeight, boolean needsMirroring,
-                                     STStickerInputParams inputParams, int textureOut);
+    public native int processTexture(int textureIn, STHumanAction humanAction, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut);
 
     /**
      * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式.支持buffer输出
@@ -164,10 +165,7 @@ public class STMobileStickerNative {
      * @param imageOut       输出图像的buffer，需要从外部创建
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTextureAndOutputBuffer(int textureIn,
-                                                    STHumanAction humanAction, int rotate, int frontRotate,
-                                                    int imageWidth, int imageHeight, boolean needsMirroring,
-                                                    STStickerInputParams inputParams, int textureOut, int outFmt, byte[] imageOut);
+    public native int processTextureAndOutputBuffer(int textureIn, STHumanAction humanAction, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut, int outFmt, byte[] imageOut);
 
     /**
      * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式
@@ -182,11 +180,7 @@ public class STMobileStickerNative {
      * @param textureOut     处理后的纹理ID，用来做渲染
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTextureBoth(int textureIn, STHumanAction humanAction,
-                                         int rotate, int frontRotate, int imageWidth,
-                                         int imageHeight, boolean needsMirroring,
-                                         STStickerInputParams inputParams, STAnimalFace[] animalFace,
-                                         int animalFaceCount, int textureOut);
+    public native int processTextureBoth(int textureIn, STHumanAction humanAction, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, STAnimalFace[] animalFace, int animalFaceCount, int textureOut);
 
     /**
      * 切换贴纸路径
@@ -322,26 +316,6 @@ public class STMobileStickerNative {
     private native void destroyInstanceNative();
 
     /**
-     * 加载Avatar功能对应的模型
-     * @param modelpath   Avatar模型文件对应的绝对路径
-     * @return        成功返回ST_OK,失败返回其他错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
-     */
-    public native int loadAvatarModel(String modelpath);
-
-    /**
-     * 从assets文件夹加载Avatar功能对应的模型
-     * @param assetModelpath 模型文件路径
-     * @param assetManager 资源文件管理器
-     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
-     */
-    public native int loadAvatarModelFromAssetFile(String assetModelpath, AssetManager assetManager);
-
-    /**
-     * 卸载Avatar功能对应的模型及清理相关数据
-     */
-    public native int removeAvatarModel();
-
-    /**
      * 为指定贴纸模块添加transition
      * @param moduleId 贴纸模块id
      * @param targetState 目标状态
@@ -350,8 +324,7 @@ public class STMobileStickerNative {
      * @param transId transition id
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int addModuleTransition(int moduleId, int targetState,
-                                          STCondition[] conditionArray, STTransParam[] paramArray, int[] transId);
+    public native int addModuleTransition(int moduleId, int targetState, STCondition[] conditionArray, STTransParam[] paramArray, int[] transId);
 
     /**
      * 移除指定贴纸模块的某一transition
@@ -426,4 +399,91 @@ public class STMobileStickerNative {
      * @return 返回需要自定义的参数列表类型
      */
     public native int getNeededInputParams();
+
+//    /**
+//     * 获取long类型参数
+//     * @param moduleId  贴纸模块id
+//     * @param paramType 参数类型
+//     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+//     */
+//    public native int getParamLong(int moduleId, int paramType);
+//
+//    /**
+//     * 获取bool类型参数
+//     * @param moduleId  贴纸模块id
+//     * @param paramType 参数类型
+//     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+//     */
+//    public native int getParamBool(int moduleId, int paramType);
+//
+//    /**
+//     * 获取float类型参数
+//     * @param moduleId  贴纸模块id
+//     * @param paramType 参数类型
+//     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+//     */
+//    public native int getParamFloat(int moduleId, int paramType);
+//
+//    /**
+//     * 获取string类型参数
+//     * @param moduleId  贴纸模块id
+//     * @param paramType 参数类型
+//     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+//     */
+//    public native int getParamStr(int moduleId, int paramType);
+
+    /**
+     * 设置性能/效果优先级倾向，引擎内部会根据设置调整渲染策略。
+     * @param hint 性能/效果优先级，参看STPerformanceHintType
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int setPerformanceHint(int hint);
+
+    /**
+     * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式
+     *
+     * @param textureIn      输入textureid
+     * @param humanActionPtr    输入检测到的人脸信息的指针
+     * @param rotate         为使人脸正向，pInputImage需要旋转的角度。比如STRotateType.ST_CLOCKWISE_ROTATE_90
+     * @param frontRotate    贴纸中前景方向
+     * @param imageWidth     图像宽度（以像素为单位）
+     * @param imageHeight    图像高度（以像素为单位）
+     * @param needsMirroring 传入图像与显示图像是否是镜像关系
+     * @param textureOut     处理后的纹理ID，用来做渲染
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut);
+
+    /**
+     * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式.支持buffer输出
+     *
+     * @param textureIn      输入textureid
+     * @param humanActionPtr    输入检测到的人脸信息的指针
+     * @param rotate         为使人脸正向，pInputImage需要旋转的角度。比如STRotateType.ST_CLOCKWISE_ROTATE_90
+     * @param frontRotate    贴纸中前景方向
+     * @param imageWidth     图像宽度（以像素为单位）
+     * @param imageHeight    图像高度（以像素为单位）
+     * @param needsMirroring 传入图像与显示图像是否是镜像关系
+     * @param textureOut     处理后的纹理ID，用来做渲染
+     * @param outFmt         输出图像的格式，支持NV21,BGR,BGRA,NV12,RGBA等,比如STCommon.ST_PIX_FMT_NV12。
+     * @param imageOut       输出图像的buffer，需要从外部创建
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureAndOutputBufferWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut, int outFmt, byte[] imageOut);
+
+    /**
+     * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式
+     *
+     * @param textureIn      输入textureid
+     * @param humanActionPtr    输入检测到的人脸信息，由STMobileHumanActionNative相关的API获得
+     * @param rotate         为使人脸正向，pInputImage需要旋转的角度。比如STRotateType.ST_CLOCKWISE_ROTATE_90
+     * @param frontRotate    贴纸中前景方向
+     * @param imageWidth     图像宽度（以像素为单位）
+     * @param imageHeight    图像高度（以像素为单位）
+     * @param needsMirroring 传入图像与显示图像是否是镜像关系
+     * @param textureOut     处理后的纹理ID，用来做渲染
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureBothWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, STAnimalFace[] animalFace, int animalFaceCount, int textureOut);
+
 }

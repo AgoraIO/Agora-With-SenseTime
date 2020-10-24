@@ -1,5 +1,9 @@
 package com.sensetime.stmobile.model;
 
+/**
+ * Created by sensetime on 18-5-8.
+ */
+
 public class STTransParam {
     private int fadeFrame;                // 需要多少帧渐变，当target是playing，first frame和invisible时有用；
     private int delayFrame;               // 延迟多少帧进行转换，都有用
@@ -37,4 +41,5 @@ public class STTransParam {
     public void setPlayloop(int playloop) {
         this.playloop = playloop;
     }
+
 }

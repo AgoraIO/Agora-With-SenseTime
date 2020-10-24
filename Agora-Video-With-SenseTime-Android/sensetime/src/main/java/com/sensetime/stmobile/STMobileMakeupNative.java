@@ -150,4 +150,40 @@ public class STMobileMakeupNative {
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
     public native int destroyInstance();
+
+    /**
+     * 设置性能/效果优先级倾向，引擎内部会根据设置调整渲染策略
+     * @param hint 性能/效果优先级，参看STPerformanceHintType
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int setPerformanceHint(int hint);
+
+    /**
+     * 美妆处理，运行在gl线程
+     *
+     * @param textureIn    输入纹理
+     * @param humanActionPtr  humanAction检测结果对应指针
+     * @param rotate       人脸在humanAction中的方向
+     * @param imageWidth   输入纹理宽度
+     * @param imageHeight  输入纹理高度
+     * @param textureOut   输出纹理
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureWithNativePtr(int textureIn, long humanActionPtr, int rotate, int imageWidth, int imageHeight, int textureOut);
+
+    /**
+     * 美妆处理并输出buffer，运行在gl线程
+     *
+     * @param textureIn    输入纹理
+     * @param humanActionPtr  humanAction检测结果
+     * @param rotate       人脸在humanAction中的方向
+     * @param imageWidth   输入纹理宽度
+     * @param imageHeight  输入纹理高度
+     * @param textureOut   输出纹理
+     * @param outFmt       输出buffer格式
+     * @param imageOut     输出buffer数据
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureAndOutputBufferWithNativePtr(int textureIn, long humanActionPtr, int rotate, int imageWidth, int imageHeight, int textureOut, int outFmt, byte[] imageOut);
+
 }

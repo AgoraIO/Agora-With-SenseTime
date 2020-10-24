@@ -2,7 +2,12 @@ package com.sensetime.stmobile;
 
 import com.sensetime.stmobile.model.STRect;
 
+/**
+ * Created by sensetime on 17-6-5.
+ */
+
 public class STMobileObjectTrackNative {
+
     //供JNI使用，应用不需要关注
     private long objectTrackNativeHandle;
 

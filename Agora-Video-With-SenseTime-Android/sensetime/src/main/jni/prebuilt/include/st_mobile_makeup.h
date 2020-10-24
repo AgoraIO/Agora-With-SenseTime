@@ -197,7 +197,7 @@ st_mobile_makeup_set_smooth_strength(
     float value
 );
 
-/// @brief 修改制定类型美妆的图片素材, 仅当该类型美妆目前只有一张素材图片时起效。
+/// @brief 修改指定类型美妆的图片素材, 仅当该类型美妆目前只有一张素材图片时起效。
 /// @param[in] handle 已初始化的美妆句柄
 /// @param[in] makeup_type 制定素材包所属的type, 定义如st_makeup_type.
 /// @param[in] package_id 指定素材所属的package
@@ -209,6 +209,16 @@ st_mobile_makeup_set_resource_for_type(
     int package_id,
     st_image_t resource_data
 );
+
+/// @brief 设置性能/效果优先级倾向，引擎内部会根据设置调整渲染策略。
+/// @param[in] handle 已初始化的美妆句柄
+/// @param[in] hint 性能/效果优先级
+ST_SDK_API st_result_t
+st_mobile_makeup_set_performance_hint(
+    st_handle_t handle,
+    st_performance_hint_t hint
+);
+
 
 /// @brief 释放美妆句柄, 必须在OpenGL线程中调用
 /// @parma[in] handle 已初始化的美妆句柄

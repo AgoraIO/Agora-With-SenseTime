@@ -34,6 +34,7 @@ typedef enum {
     ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光，注意，此功能只用于图片处理，预览或视频处理均设为0.0
 	ST_BEAUTIFY_NARROW_FACE_STRENGTH = 11,  /// 窄脸强度, [0,1.0], 默认值0.0, 0.0不做窄脸
     ST_BEAUTIFY_ROUND_EYE_RATIO = 12,       /// 圆眼比例, [0,1.0], 默认值0.0, 0.0不做圆眼
+    ST_BEAUTIFY_SHARPEN_STRENGTH = 14,      /// 锐化强度，[0, 1.0], 默认值0.0， 0.0不做锐化
 
     ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,              /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
     ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,              /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
@@ -51,6 +52,7 @@ typedef enum {
     ST_BEAUTIFY_3D_REMOVE_NASOLABIAL_FOLDS_RATIO = 33,  /// 去法令纹比例，[0, 1.0]，默认值为0.0，0.0不做去法令纹
     ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 34,              /// 白牙比例，[0, 1.0]，默认值为0.0，0.0不做白牙
     ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 35,              /// 苹果肌比例，[0, 1.0]，默认值为0.0，0.0不做苹果肌
+    ST_BEAUTIFY_SHRINK_CHEEKBONE_RATIO = 13,            /// 瘦颧骨比例， [0, 1.0], 默认值0.0， 0.0不做瘦颧骨
 } st_beautify_type;
 
 /// @brief 设置美化参数,默认包含所有功能参数和强度参数

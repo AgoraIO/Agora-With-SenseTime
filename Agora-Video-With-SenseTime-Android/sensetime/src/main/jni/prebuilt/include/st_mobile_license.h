@@ -31,6 +31,12 @@ st_mobile_check_activecode(
     const char* activation_code,
     int activation_code_len
 );
+/// @brief 检查进程中是否已包含相应的license 如果希望复用在其他动态库或静态库中加载的license, 必须使用这个接口
+/// @param[in] product_name 已在其他动态库或静态库中加载的license产品名称
+ST_SDK_API bool
+st_mobile_check_has_license(
+const char* product_name
+);
 
 /// @brief 根据授权文件缓存生成激活码, 在使用新的license文件时调用
 /// @param[in] license_buf license文件缓存地址

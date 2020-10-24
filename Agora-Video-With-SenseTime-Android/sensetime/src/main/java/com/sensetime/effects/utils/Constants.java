@@ -1,6 +1,6 @@
 package com.sensetime.effects.utils;
 
-import com.sensetime.stmobile.model.STBeautyParamsType;
+import com.sensetime.stmobile.STBeautyParamsType;
 import com.sensetime.stmobile.model.STMobileType;
 
 public class Constants {

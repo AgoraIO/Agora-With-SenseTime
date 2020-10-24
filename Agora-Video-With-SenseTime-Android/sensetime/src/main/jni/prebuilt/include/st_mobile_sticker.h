@@ -63,6 +63,7 @@ typedef enum {
     ST_MODULE_FACE_MATTING = 11,
     ST_MODULE_SKYBOX = 12,          ///< 天空盒模块
     ST_MODULE_CATCH_BUTTERFLY = 13, ///< 捕蝴蝶模块
+    ST_MODULE_FACE_STRETCH = 14,    ///< 人脸拖拽模块
 } st_module_type;
 
 /// @brief 创建贴纸句柄
@@ -340,36 +341,6 @@ st_mobile_sticker_destroy(
     st_handle_t handle
 );
 
-/// @brief 加载Avatar功能对应的模型
-/// @param[in] handle 已初始化的贴纸句柄
-/// @param[in] model_file_path Avatar模型文件对应的绝对路径
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_sticker_load_avatar_model(
-    st_handle_t handle,
-    const char* model_file_path
-);
-
-/// @brief 从内存加载Avatar功能对应的模型
-/// @param[in] handle 已初始化的贴纸句柄
-/// @param[in] p_buffer Avatar模型文件对应的内存buffer
-/// @param[in] buffer_len 内存buffer的字节数
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_sticker_load_avatar_model_from_buffer(
-    st_handle_t handle,
-    const char* p_buffer,
-    int buffer_len
-);
-
-/// @brief 卸载Avatar功能对应的模型及清理相关数据
-/// @param[in] handle 已初始化的贴纸句柄
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_sticker_remove_avatar_model(
-    st_handle_t handle
-);
-
 /// @brief 调整最小帧处理间隔
 /// @parma[in] handle 已初始化的贴纸句柄
 /// @param[in] minFrameInterval 贴纸前后两个序列帧切换的最小时间间隔，单位为毫秒。当两个相机帧处理的间隔小于这个值的时候，当前显示的贴纸序列帧会继续显示，直到显示的时间大于该设定值贴纸才会切换到下一阵，相机帧不受影响。
@@ -622,6 +593,15 @@ st_mobile_sticker_get_param_array_size(
     int module_id,
     int param_type,
     int* array_size
+);
+
+/// @brief 设置性能/效果优先级倾向，引擎内部会根据设置调整渲染策略。
+/// @parma[in] handle 已初始化的贴纸句柄
+/// @param[in] hint 性能/效果优先级
+ST_SDK_API st_result_t
+st_mobile_sticker_set_performance_hint(
+    st_handle_t handle,
+    st_performance_hint_t hint
 );
 
 #endif  // INCLUDE_STMOBILE_ST_MOBILE_STICKER_H_

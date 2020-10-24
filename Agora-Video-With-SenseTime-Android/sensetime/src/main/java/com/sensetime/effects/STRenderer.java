@@ -18,18 +18,18 @@ import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
 import com.sensetime.effects.utils.STLicenceUtils;
 import com.sensetime.stmobile.STBeautifyNative;
+import com.sensetime.stmobile.STBeautyParamsType;
 import com.sensetime.stmobile.STCommon;
+import com.sensetime.stmobile.STFilterParamsType;
 import com.sensetime.stmobile.STHumanActionParamsType;
 import com.sensetime.stmobile.STMobileHumanActionNative;
 import com.sensetime.stmobile.STMobileMakeupNative;
 import com.sensetime.stmobile.STMobileObjectTrackNative;
 import com.sensetime.stmobile.STMobileStickerNative;
 import com.sensetime.stmobile.STMobileStreamFilterNative;
-import com.sensetime.stmobile.model.STBeautyParamsType;
-import com.sensetime.stmobile.model.STFilterParamsType;
+import com.sensetime.stmobile.STRotateType;
 import com.sensetime.stmobile.model.STHumanAction;
 import com.sensetime.stmobile.model.STRect;
-import com.sensetime.stmobile.model.STRotateType;
 import com.sensetime.stmobile.model.STStickerInputParams;
 
 import java.nio.ByteBuffer;
@@ -236,12 +236,12 @@ public class STRenderer {
                             mCurrentSticker = (String) msg.obj;
                             int result = mStStickerNative.changeSticker(mCurrentSticker);
                             LogUtils.i(TAG, "change sticker result: %d", result);
-                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
+                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
                             break;
                         case MESSAGE_NEED_REMOVE_ALL_STICKERS:
                             mStStickerNative.removeAllStickers();
                             mCurrentSticker = null;
-                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
+                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
                             break;
                         default:
                             break;
@@ -295,24 +295,25 @@ public class STRenderer {
     }
 
     /**
-     * Options of human action detection
+     * human action detect的配置选项,根据Sticker的TriggerAction和是否需要美颜配置
      *
-     * @param needFaceDetect the same as whether use face beauty or not.
-     * @param config         here use STStickerNative.getTriggerAction()
+     * @param needFaceDetect  是否需要开启face detect
+     * @param stickerConfig  sticker的TriggerAction
+     * @param makeupConfig  makeup的TriggerAction
      */
-    private void setHumanActionDetectConfig(boolean needFaceDetect, long config) {
-        if (!mNeedSticker || mCurrentSticker == null) {
-            config = 0;
+    private void setHumanActionDetectConfig(boolean needFaceDetect, long stickerConfig, long makeupConfig){
+        if(!mNeedSticker || mCurrentSticker == null){
+            stickerConfig = 0;
         }
 
-        if (needFaceDetect) {
-            mDetectConfig = (config | STMobileHumanActionNative.ST_MOBILE_FACE_DETECT);
-        } else {
-            mDetectConfig = config;
+        if(!mNeedMakeup){
+            makeupConfig = 0;
         }
 
-        if (mNeedMakeup) {
-            mDetectConfig = (config | STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS);
+        if(needFaceDetect){
+            mDetectConfig = (stickerConfig | makeupConfig |STMobileHumanActionNative.ST_MOBILE_FACE_DETECT);
+        }else{
+            mDetectConfig = stickerConfig | makeupConfig;
         }
     }
 
@@ -331,9 +332,9 @@ public class STRenderer {
             mStStickerNative.changeSticker(mCurrentSticker);
         }
 
-        mStStickerNative.loadAvatarModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_CORE, mContext.getAssets());
+//        mStStickerNative.loadAvatarModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_CORE, mContext.getAssets());
         addSubModel(FileUtils.MODEL_NAME_AVATAR_HELP);
-        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
+        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
     }
 
     private void initFilter() {
@@ -352,9 +353,11 @@ public class STRenderer {
     }
 
     public void setFilterStyle(String filter, float strength) {
-        mFilterStyle = filter;
+
+        String absPath = FileUtils.copyToDataFromAssetIfNotExist(mContext, filter);
+        mFilterStyle = absPath;
         mFilterStrength = strength;
-        mParams.setFilter(filter, strength);
+        mParams.setFilter(absPath, strength);
     }
 
     private void initBuffers() {
@@ -409,13 +412,13 @@ public class STRenderer {
 
     public void enableBeautify(boolean needBeautify) {
         mNeedBeautify = needBeautify;
-        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
+        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
     }
 
     public void enableSticker(boolean needSticker) {
         mNeedSticker = needSticker;
         if (!needSticker) {
-            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction());
+            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
         }
     }
 
@@ -528,7 +531,7 @@ public class STRenderer {
         mSTHumanActionNative.reset();
 
         mStBeautifyNative.destroyBeautify();
-        mStStickerNative.removeAvatarModel();
+//        mStStickerNative.removeAvatarModel();
         mStStickerNative.destroyInstance();
         mSTMobileStreamFilterNative.destroyInstance();
         mRGBABuffer = null;
@@ -784,8 +787,7 @@ public class STRenderer {
             return false;
         }
 
-        return humanAction.faces != null && humanAction.faces[0] != null &&
-                humanAction.faces[0].extraFacePointsCount > 0;
+        return humanAction.faces != null && humanAction.faces[0] != null;
     }
 
     public static class Builder {

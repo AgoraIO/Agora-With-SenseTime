@@ -48,10 +48,10 @@ Most the of code of SenseTime SDK is already provided in the **"sensetime"** mod
 ```
     lib
       |_ arm64-v8a
-         libst_mobile.so
+         
          
       |_ armeabi-v7a
-         libst_mobile.so
+         
 ```
 
 Other native code and JNI interfaces are all in the jni folder. If you have problems building C code for the first time, you may try to select **"Build->Make Project"** or sync the gradle project.

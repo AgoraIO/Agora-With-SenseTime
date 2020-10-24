@@ -93,7 +93,7 @@ public class STSoundPlay {
     }
 
     public void setStickHandle(STMobileStickerNative stickHandle) {
-        stickerHandleRef = new WeakReference<>(stickHandle);
+        stickerHandleRef = new WeakReference<STMobileStickerNative>(stickHandle);
     }
 
     /**
@@ -131,6 +131,7 @@ public class STSoundPlay {
             stickerHandleRef.get().setSoundPlayDone(name);
         }
     }
+
 
     //===========================================================================================================
     //JNI调用，不做混淆
@@ -288,6 +289,17 @@ public class STSoundPlay {
             }
 
             mediaPlayer.start();
+//            if (requestFocus()) {
+//                if(0 == loop) {
+//                    //loop forever
+//                    mediaPlayer.setLooping(true);
+//                }
+//
+//                mediaPlayer.start();
+//            } else {
+//                Log.e(TAG, "Can not get audio focus");
+//                mediaPlayer.reset();
+//            }
         }
 
         @Override
@@ -348,7 +360,7 @@ public class STSoundPlay {
             return null;
         }
 
-        File file;
+        File file = null;
         try {
             file = new File(dir.getPath() + File.separator + name);
             FileOutputStream outputStream = new FileOutputStream(file, false);

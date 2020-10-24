@@ -1,6 +1,11 @@
 package com.sensetime.stmobile;
 
+/**
+ * 图像滤镜
+ */
+
 public class STMobileStreamFilterNative {
+
     //供JNI使用，应用不需要关注
     private long nativeHandle;
 
@@ -74,4 +79,5 @@ public class STMobileStreamFilterNative {
      * 释放滤镜句柄, 必须在OpenGL线程中调用
      */
     public native void destroyInstance();
+
 }

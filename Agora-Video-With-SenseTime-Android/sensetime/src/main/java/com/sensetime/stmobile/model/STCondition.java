@@ -1,5 +1,9 @@
 package com.sensetime.stmobile.model;
 
+/**
+ * Created by sensetime on 18-5-8.
+ */
+
 public class STCondition {
     private int preStateModuleId;
     private int preState;

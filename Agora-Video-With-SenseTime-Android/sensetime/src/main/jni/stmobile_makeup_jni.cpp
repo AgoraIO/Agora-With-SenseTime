@@ -31,6 +31,13 @@ extern "C" {
     JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setSmoothStrengthForType(JNIEnv * env, jobject obj, jint type, jfloat value);
     JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setResourceForType(JNIEnv * env, jobject obj, jint type, jint packageId, jobject imageData);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_destroyInstance(JNIEnv * env, jobject obj);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setPerformanceHint(JNIEnv * env, jobject obj, jint hint);
+
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_processTextureWithNativePtr(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                                    jlong humanActionPtr, jint rotate, jint imageWidth, jint imageHeight, jint textureOut);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_processTextureAndOutputBufferWithNativePtr(JNIEnv * env, jobject obj, jint textureIn, jlong humanActionPtr, jint rotate, jint imageWidth, jint imageHeight,
+                                                                                                    jint textureOut, jint outFmt, jbyteArray imageOut);
+};
 
 static inline jfieldID getMakeupHandleField(JNIEnv *env, jobject obj)
 {
@@ -145,8 +152,9 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setMakeu
     long readSize = AAsset_read(asset, buffer, size);
     if (readSize != size) {
         AAsset_close(asset);
-        if (buffer) {
+        if(buffer){
             delete[] buffer;
+            buffer = NULL;
         }
 
         result = st_mobile_makeup_set_makeup_for_type(makeupHandle, (st_makeup_type)type, NULL, &packageId);
@@ -169,8 +177,6 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setMakeu
         result = st_mobile_makeup_set_makeup_for_type_from_buffer(makeupHandle, (st_makeup_type)type, buffer, size, &packageId);
     }
 
-    LOGE("add makeup for type from assets");
-
     if(buffer){
         delete[] buffer;
         buffer = NULL;
@@ -181,7 +187,6 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setMakeu
         return result;
     }
 
-    LOGE("add makeup for type from assets end");
     return packageId;
 }
 
@@ -294,6 +299,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_addMakeu
     if(result != 0){
         LOGE("add_makeup_for_type_from_buffer failed, %d",result);
     }
+
     return packageId;
 }
 
@@ -484,4 +490,75 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_destroyI
     return ST_OK;
 }
 
-};
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_setPerformanceHint(JNIEnv * env, jobject obj, jint hint){
+    int result = ST_JNI_ERROR_DEFAULT;
+    st_handle_t handle = getMakeupHandle(env, obj);
+
+    if (handle == NULL) {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    if(handle != NULL) {
+        result = st_mobile_makeup_set_performance_hint(handle, (st_performance_hint_t)hint);
+    }
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_processTextureWithNativePtr(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                        jlong humanActionPtr, jint rotate, jint imageWidth, jint imageHeight, jint textureOut)
+{
+    LOGI("processTexture, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t handle = getMakeupHandle(env, obj);
+
+    if(handle == NULL)
+    {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionPtr);
+
+    if(handle != NULL && human_action != NULL) {
+        result  = st_mobile_makeup_process_texture(handle, textureIn, imageWidth, imageHeight, (st_rotate_type)rotate, human_action, textureOut);
+        LOGI("-->>st_mobile_makeup_process_texture --- result is %d", result);
+    }
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileMakeupNative_processTextureAndOutputBufferWithNativePtr(JNIEnv * env, jobject obj, jint textureIn, jlong humanActionPtr, jint rotate, jint imageWidth, jint imageHeight,
+                                                                                 jint textureOut, jint outFmt, jbyteArray imageOut)
+{
+    LOGI("processTexture, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t handle = getMakeupHandle(env, obj);
+
+    if (handle == NULL) {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    jbyte *dstdata = NULL;
+    if (imageOut != NULL) {
+        dstdata = (jbyte *) (env->GetByteArrayElements(imageOut, 0));
+    }
+
+    st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionPtr);
+
+    if (handle != NULL) {
+        result = st_mobile_makeup_process_and_output_texture(handle, textureIn, imageWidth, imageHeight, (st_rotate_type) rotate,
+                                                             human_action,  textureOut, (unsigned char *) dstdata, (st_pixel_format) outFmt);
+        LOGI("-->>st_mobile_makeup_process_and_output_texture --- result is %d", result);
+    }
+
+    if (dstdata != NULL) {
+        env->ReleaseByteArrayElements(imageOut, dstdata, 0);
+    }
+
+    return result;
+}

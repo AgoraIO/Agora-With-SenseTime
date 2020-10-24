@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import com.sensetime.stmobile.model.STHumanAction;
 import com.sensetime.stmobile.model.STMobileFaceInfo;
 
+/**
+ * 人脸关键点及人脸行为识别
+ */
 public class STMobileHumanActionNative {
     private final static String TAG = STMobileHumanActionNative.class.getSimpleName();
 
@@ -80,7 +83,7 @@ public class STMobileHumanActionNative {
     public final static long ST_MOBILE_BODY_ACTION5 = (long)1 << 36;    /// 动感超人 暂时不支持
 
     public final static int ST_MOBILE_FACE_DETECT_FULL = 0x000000FF;  ///< 检测所有脸部动作
-    public final static int ST_MOBILE_HAND_DETECT_FULL = 0x001EFF00;  ///< 检测所有手势
+    public final static long ST_MOBILE_HAND_DETECT_FULL = 0x410000FEFF00L;  ///< 检测所有手势
     public final static int ST_MOBILE_BODY_DETECT_FULL = 0x018000000; ///< 检测肢体关键点和肢体轮廓点
     /// 检测模式
     public final static int ST_MOBILE_DETECT_MODE_VIDEO = 0x00020000;  ///< 视频检测
@@ -193,6 +196,16 @@ public class STMobileHumanActionNative {
      */
     public native int createInstanceFromAssetFile(String assetModelpath, int config, AssetManager assetManager);
 
+    /**
+     * 从buffer创建实例
+     *
+     * @param buffer 模型文件的buffer
+     * @param len    buffer长度
+     * @param config 配置选项，比如STCommon.ST_MOBILE_TRACKING_RESIZE_IMG_320W。建议输入ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int createInstanceFromBuffer(byte[] buffer, int len, int config);
+    
     /**
      * 通过子模型创建人体行为检测句柄, st_mobile_human_action_create和st_mobile_human_action_create_with_sub_models只能调一个
      *
@@ -321,4 +334,56 @@ public class STMobileHumanActionNative {
      * @return 成功返回阈值数值
      */
     public native float getFaceActionThreshold(long faceAction);
+
+    /**
+     * HumanAction检测结果对应指针，detect检测结果会保存到其对应的结构体
+     */
+    private long nativeHumanActionResultPtr;
+
+    /**
+     * 获取HumanAction检测结果对应指针
+     */
+    public long getNativeHumanActionResultPtr() {
+        return nativeHumanActionResultPtr;
+    }
+
+    /**
+     * 使用Native方式检测，并将检测结果保存到nativeHumanActionResultPtr指针对应地址
+     *
+     * @param imgData       用于检测的图像数据
+     * @param imageFormat   用于检测的图像数据的像素格式,比如STCommon.ST_PIX_FMT_NV12。能够独立提取灰度通道的图像格式处理速度较快，
+     *                      比如ST_PIX_FMT_GRAY8，ST_PIX_FMT_YUV420P，ST_PIX_FMT_NV12，ST_PIX_FMT_NV21
+     * @param detect_config 检测选项，代表当前需要检测哪些动作，例如ST_MOBILE_EYE_BLINK|ST_MOBILE_MOUTH_AH表示当前帧只检测眨眼和张嘴
+     * @param orientation   图像中人脸的方向,例如STRotateType.ST_CLOCKWISE_ROTATE_0
+     * @param imageWidth    用于检测的图像的宽度(以像素为单位)
+     * @param imageHeight   用于检测的图像的高度(以像素为单位)
+     */
+    public native int nativeHumanActionDetectPtr(byte[] imgData, int imageFormat, long detect_config,
+                                                  int orientation, int imageWidth, int imageHeight);
+
+    /**
+     * 将Native检测结果resize
+     *
+     * @param scale       resize比例
+     */
+    public native void nativeHumanActionResizePtr(float scale);
+
+    /**
+     * 将Native检测结果镜像
+     *
+     * @param width     图像宽度
+     */
+    public native void nativeHumanActionMirrorPtr(int width);
+
+    /**
+     * 将Native检测结果旋转
+     *
+     * @param width         用于检测的图像的宽度(以像素为单位)
+     * @param height        用于检测的图像的高度(以像素为单位)
+     * @param rotateBackground 是否旋转前后背景分割的结果
+     * @param rotation      方向,例如STRotateType.ST_CLOCKWISE_ROTATE_0
+     */
+    public native void nativeHumanActionRotatePtr(int width, int height, int rotation, boolean rotateBackground);
+
+
 }
