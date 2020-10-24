@@ -214,6 +214,32 @@ jobject convert2Image(JNIEnv *env, const st_image_t *image){
     return imageObj;
 }
 
+jobject convert2Segment(JNIEnv *env, const st_mobile_segment_t *segment){
+    jclass segment_cls = env->FindClass("com/sensetime/stmobile/model/STSegment");
+
+    jfieldID fieldImage = env->GetFieldID(segment_cls, "image", "Lcom/sensetime/stmobile/model/STImage;");
+    jfieldID fieldScore = env->GetFieldID(segment_cls, "score", "F");
+    jfieldID fieldMinThrehold = env->GetFieldID(segment_cls, "minThrehold", "F");
+    jfieldID fieldMaxThrehold = env->GetFieldID(segment_cls, "maxThrehold", "F");
+
+    jobject segmentObj = env->AllocObject(segment_cls);
+
+    jobject imageObj;
+
+    if(segment->p_segment != NULL){
+        imageObj = convert2Image(env, segment->p_segment);
+        env->SetObjectField(segmentObj, fieldImage, imageObj);
+    }
+
+    env->SetFloatField(segmentObj, fieldScore, segment->score);
+    env->SetFloatField(segmentObj, fieldMinThrehold, segment->min_threshold);
+    env->SetFloatField(segmentObj, fieldMaxThrehold, segment->max_threshold);
+
+    env->DeleteLocalRef(segment_cls);
+
+    return segmentObj;
+}
+
 jobject convert2HandInfo(JNIEnv *env, const st_mobile_hand_t *hand_info){
     jclass hand_info_cls = env->FindClass("com/sensetime/stmobile/model/STMobileHandInfo");
 
@@ -509,14 +535,11 @@ jobject convert2HumanAction(JNIEnv *env, const st_mobile_human_action_t *human_a
     jfieldID fieldBodys = env->GetFieldID(human_action_cls, "bodys", "[Lcom/sensetime/stmobile/model/STMobileBodyInfo;");
     jfieldID fieldBodyCount = env->GetFieldID(human_action_cls, "bodyCount", "I");
 
-    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldBackGroundScore = env->GetFieldID(human_action_cls, "backGroundScore", "F");
+    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldHairScore = env->GetFieldID(human_action_cls, "hairScore", "F");
+    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldMultiSegmentScore = env->GetFieldID(human_action_cls, "multiSegmentScore", "F");
+    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STSegment;");
 
     jobject humanActionObj = env->AllocObject(human_action_cls);
 
@@ -575,36 +598,33 @@ jobject convert2HumanAction(JNIEnv *env, const st_mobile_human_action_t *human_a
     env->DeleteLocalRef(body_info_cls);
 
     //image
-    env->SetFloatField(humanActionObj, fieldBackGroundScore, human_action->background_score);
-    if(human_action->p_background != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_background);
+    if(human_action->p_figure != NULL){
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_figure);
 
-        env->SetObjectField(humanActionObj, fieldImage, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldImage, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 
     //hair
-    env->SetFloatField(humanActionObj, fieldHairScore, human_action->hair_score);
     if(human_action->p_hair != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_hair);
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_hair);
 
-        env->SetObjectField(humanActionObj, fieldHair, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldHair, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 
     //MultiSegment
-    env->SetFloatField(humanActionObj, fieldMultiSegmentScore, human_action->multi_segment_score);
-    if(human_action->p_multi_segment != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_multi_segment);
+    if(human_action->p_multi != NULL){
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_multi);
 
-        env->SetObjectField(humanActionObj, fieldMultiSegment, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldMultiSegment, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 
     return humanActionObj;
@@ -622,14 +642,11 @@ void convert2HumanAction(JNIEnv *env, const st_mobile_human_action_t *human_acti
     jfieldID fieldBodys = env->GetFieldID(human_action_cls, "bodys", "[Lcom/sensetime/stmobile/model/STMobileBodyInfo;");
     jfieldID fieldBodyCount = env->GetFieldID(human_action_cls, "bodyCount", "I");
 
-    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldBackGroundScore = env->GetFieldID(human_action_cls, "backGroundScore", "F");
+    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldHairScore = env->GetFieldID(human_action_cls, "hairScore", "F");
+    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldMultiSegmentScore = env->GetFieldID(human_action_cls, "multiSegmentScore", "F");
+    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STSegment;");
 
     //faces
     env->SetIntField(humanActionObj, fieldFaceCount, human_action->face_count);
@@ -686,37 +703,33 @@ void convert2HumanAction(JNIEnv *env, const st_mobile_human_action_t *human_acti
     env->DeleteLocalRef(body_info_cls);
 
     //image
-    env->SetFloatField(humanActionObj, fieldBackGroundScore, human_action->background_score);
-    if(human_action->p_background != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_background);
+    if(human_action->p_figure != NULL){
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_figure);
 
-        env->SetObjectField(humanActionObj, fieldImage, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldImage, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 
     //hair
-    env->SetFloatField(humanActionObj, fieldHairScore, human_action->hair_score);
     if(human_action->p_hair != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_hair);
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_hair);
 
-        env->SetObjectField(humanActionObj, fieldHair, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldHair, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 
-
     //MultiSegment
-    env->SetFloatField(humanActionObj, fieldMultiSegmentScore, human_action->multi_segment_score);
-    if(human_action->p_multi_segment != NULL){
-        jclass imageClass = env->FindClass("com/sensetime/stmobile/model/STImage");
-        jobject image_object = env->AllocObject(imageClass);
-        image_object = convert2Image(env, human_action->p_multi_segment);
+    if(human_action->p_multi != NULL){
+        jclass segmentClass = env->FindClass("com/sensetime/stmobile/model/STSegment");
+        jobject segment_object = env->AllocObject(segmentClass);
+        segment_object = convert2Segment(env, human_action->p_multi);
 
-        env->SetObjectField(humanActionObj, fieldMultiSegment, image_object);
-        env->DeleteLocalRef(imageClass);
+        env->SetObjectField(humanActionObj, fieldMultiSegment, segment_object);
+        env->DeleteLocalRef(segmentClass);
     }
 }
 
@@ -930,6 +943,38 @@ bool convert2Image(JNIEnv *env, jobject image, st_image_t *background){
     //jclass vm_class = env->FindClass("dalvik/system/VMDebug");
     //jmethodID dump_mid = env->GetStaticMethodID( vm_class, "dumpReferenceTables", "()V" );
     //env->CallStaticVoidMethod( vm_class, dump_mid );
+
+    return true;
+}
+
+bool convert2Segment(JNIEnv *env, jobject segmentObj, st_mobile_segment_t *segment){
+    if (segmentObj == NULL) {
+        return false;
+    }
+
+    jclass segment_cls = env->FindClass("com/sensetime/stmobile/model/STSegment");
+
+    jfieldID fieldImage = env->GetFieldID(segment_cls, "image", "Lcom/sensetime/stmobile/model/STImage;");
+    jfieldID fieldScore = env->GetFieldID(segment_cls, "score", "F");
+    jfieldID fieldMinThrehold = env->GetFieldID(segment_cls, "minThrehold", "F");
+    jfieldID fieldMaxThrehold = env->GetFieldID(segment_cls, "maxThrehold", "F");
+
+    jobject imageObj = env->GetObjectField(segmentObj, fieldImage);
+
+    if(imageObj != NULL){
+        segment->p_segment = new st_image_t;
+        memset(segment->p_segment, 0, sizeof(st_image_t));
+
+        convert2Image(env, imageObj, segment->p_segment);
+    } else{
+        segment->p_segment = NULL;
+    }
+
+    segment->score = env->GetFloatField(segmentObj, fieldScore);
+    segment->min_threshold = env->GetFloatField(segmentObj, fieldMinThrehold);
+    segment->max_threshold = env->GetFloatField(segmentObj, fieldMaxThrehold);
+
+    env->DeleteLocalRef(segment_cls);
 
     return true;
 }
@@ -1295,14 +1340,11 @@ bool convert2HumanAction(JNIEnv *env, jobject humanActionObject, st_mobile_human
     jfieldID fieldBodys = env->GetFieldID(human_action_cls, "bodys", "[Lcom/sensetime/stmobile/model/STMobileBodyInfo;");
     jfieldID fieldBodyCount = env->GetFieldID(human_action_cls, "bodyCount", "I");
 
-    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldBackGroundScore = env->GetFieldID(human_action_cls, "backGroundScore", "F");
+    jfieldID fieldImage = env->GetFieldID(human_action_cls, "image", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldHairScore = env->GetFieldID(human_action_cls, "hairScore", "F");
+    jfieldID fieldHair = env->GetFieldID(human_action_cls, "hair", "Lcom/sensetime/stmobile/model/STSegment;");
 
-    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STImage;");
-    jfieldID fieldMultiSegmentScore = env->GetFieldID(human_action_cls, "multiSegmentScore", "F");
+    jfieldID fieldMultiSegment = env->GetFieldID(human_action_cls, "multiSegment", "Lcom/sensetime/stmobile/model/STSegment;");
 
     //faces
     human_action->face_count = env->GetIntField(humanActionObject, fieldFaceCount);
@@ -1364,29 +1406,27 @@ bool convert2HumanAction(JNIEnv *env, jobject humanActionObject, st_mobile_human
     }
 
     //image
-    human_action->background_score = env->GetFloatField(humanActionObject, fieldBackGroundScore);
     jobject imageObj = env->GetObjectField(humanActionObject, fieldImage);
 
     if(imageObj != NULL){
-        human_action->p_background = new st_image_t;
-        memset(human_action->p_background, 0, sizeof(st_image_t));
+        human_action->p_figure = new st_mobile_segment_t;
+        memset(human_action->p_figure, 0, sizeof(st_mobile_segment_t));
 
-        convert2Image(env, imageObj, human_action->p_background);
+        convert2Segment(env, imageObj, human_action->p_figure);
     } else{
-        human_action->p_background = NULL;
+        human_action->p_figure = NULL;
     }
 
     env->DeleteLocalRef(imageObj);
 
     //hair
-    human_action->hair_score = env->GetFloatField(humanActionObject, fieldHairScore);
     jobject hairObj = env->GetObjectField(humanActionObject, fieldHair);
 
     if(hairObj != NULL){
-        human_action->p_hair = new st_image_t;
-        memset(human_action->p_hair, 0, sizeof(st_image_t));
+        human_action->p_hair = new st_mobile_segment_t;
+        memset(human_action->p_hair, 0, sizeof(st_mobile_segment_t));
 
-        convert2Image(env, hairObj, human_action->p_hair);
+        convert2Segment(env, hairObj, human_action->p_hair);
     } else{
         human_action->p_hair = NULL;
     }
@@ -1394,24 +1434,78 @@ bool convert2HumanAction(JNIEnv *env, jobject humanActionObject, st_mobile_human
     env->DeleteLocalRef(hairObj);
 
     //MultiSegment
-    human_action->multi_segment_score = env->GetFloatField(humanActionObject, fieldMultiSegmentScore);
     jobject multiSegmentObj = env->GetObjectField(humanActionObject, fieldMultiSegment);
 
     if(multiSegmentObj != NULL){
-        human_action->p_multi_segment = new st_image_t;
-        memset(human_action->p_multi_segment, 0, sizeof(st_image_t));
+        human_action->p_multi = new st_mobile_segment_t;
+        memset(human_action->p_multi, 0, sizeof(st_mobile_segment_t));
 
-        convert2Image(env, multiSegmentObj, human_action->p_multi_segment);
+        convert2Segment(env, multiSegmentObj, human_action->p_multi);
     } else{
-        human_action->p_multi_segment = NULL;
+        human_action->p_multi = NULL;
     }
 
-    env->DeleteLocalRef(hairObj);
+    env->DeleteLocalRef(multiSegmentObj);
 
     env->DeleteLocalRef(human_action_cls);
 
     return true;
 }
+
+//bool convert2YuvImage(JNIEnv *env, jobject yuvImageObj, st_yuv_image_t *yuv_image){
+//    if (yuvImageObj == NULL) {
+//        return false;
+//    }
+//
+//    jclass yuv_image_cls = env->FindClass("com/sensetime/stmobile/model/STYuvImage");
+//
+//    jfieldID fieldPlanes0 = env->GetFieldID(yuv_image_cls, "planes0", "[B");
+//    jfieldID fieldPlanes1 = env->GetFieldID(yuv_image_cls, "planes1", "[B");
+//    jfieldID fieldPlanes2 = env->GetFieldID(yuv_image_cls, "planes2", "[B");
+//    jfieldID fieldStrides = env->GetFieldID(yuv_image_cls, "strides", "[I");
+//    jfieldID fieldWidth = env->GetFieldID(yuv_image_cls, "width", "I");
+//    jfieldID fieldHeight = env->GetFieldID(yuv_image_cls, "height", "I");
+//    jfieldID fieldFormat = env->GetFieldID(yuv_image_cls, "format", "I");
+//
+//    yuv_image->width = env->GetIntField(yuvImageObj, fieldWidth);
+//    yuv_image->height = env->GetIntField(yuvImageObj, fieldHeight);
+//    yuv_image->format = (st_pixel_format)env->GetIntField(yuvImageObj, fieldFormat);
+//
+//    jintArray strides_array = (jintArray)env->GetObjectField(yuvImageObj, fieldStrides);
+//    int* values = env->GetIntArrayElements(strides_array, 0);
+//    for(int i = 0; i < 3; i++){
+//        yuv_image->strides[i] = values[i];
+//    }
+//
+//    jobject imagePlane0 = env->GetObjectField(yuvImageObj, fieldPlanes0);
+//    if(imagePlane0 != NULL){
+//        jbyteArray *arrayPlane0 = reinterpret_cast<jbyteArray*>(&imagePlane0);
+//        jbyte* dataPlane0 = env->GetByteArrayElements(*arrayPlane0, NULL);
+//        yuv_image->planes[0] = (uint8_t*)dataPlane0;
+//    } else{
+//        yuv_image->planes[0] = NULL;
+//    }
+//
+//    jobject imagePlane1 = env->GetObjectField(yuvImageObj, fieldPlanes1);
+//    if(imagePlane1 != NULL){
+//        jbyteArray *arrayPlane1 = reinterpret_cast<jbyteArray*>(&imagePlane1);
+//        jbyte* dataPlane1 = env->GetByteArrayElements(*arrayPlane1, NULL);
+//        yuv_image->planes[1] = (uint8_t*)dataPlane1;
+//    } else{
+//        yuv_image->planes[1] = NULL;
+//    }
+//
+//    jobject imagePlane2 = env->GetObjectField(yuvImageObj, fieldPlanes2);
+//    if(imagePlane2 != NULL){
+//        jbyteArray *arrayPlane2 = reinterpret_cast<jbyteArray*>(&imagePlane2);
+//        jbyte* dataPlane2 = env->GetByteArrayElements(*arrayPlane2, NULL);
+//        yuv_image->planes[2] = (uint8_t*)dataPlane2;
+//    } else{
+//        yuv_image->planes[2] = NULL;
+//    }
+//
+//    return true;
+//}
 
 void releaseHumanAction(st_mobile_human_action_t *human_action){
     if(human_action == NULL){
@@ -1440,9 +1534,9 @@ void releaseHumanAction(st_mobile_human_action_t *human_action){
     safe_delete(human_action->p_faces);
     safe_delete(human_action->p_hands);
     safe_delete(human_action->p_bodys);
-    safe_delete(human_action->p_background);
+    safe_delete(human_action->p_figure);
     safe_delete(human_action->p_hair);
-    safe_delete(human_action->p_multi_segment);
+    safe_delete(human_action->p_multi);
 }
 
 bool convert2Condition(JNIEnv *env, jobject conditionObject, st_condition &condition){
@@ -1612,5 +1706,4 @@ void releaseAnimal(st_mobile_animal_face_t *animal_face, int faceCount){
     for(int i = 0; i < faceCount; i++){
         safe_delete_array(animal_face[i].p_key_points);
     }
-
 }

@@ -8,10 +8,10 @@ public class STStickerInputParams {
     int customEvent;
 
     public STStickerInputParams(float[] quaternion, boolean isFront, int event){
-        if (quaternion != null) {
+        if(quaternion != null){
             cameraQuaternion = quaternion;
             quaternionLength = quaternion.length;
-        } else {
+        }else {
             cameraQuaternion = null;
             quaternionLength = 0;
         }

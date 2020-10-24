@@ -14,4 +14,5 @@ public class STStickerModuleType {
     public static final int ST_MODULE_FACE_MATTING = 11;
     public static final int ST_MODULE_SKYBOX = 12;          ///< 天空盒模块
     public static final int ST_MODULE_CATCH_BUTTERFLY = 13; ///< 捕蝴蝶模块
+
 }

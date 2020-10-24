@@ -17,6 +17,7 @@
 extern "C" {
 	JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstance(JNIEnv * env, jobject obj, jstring modelpath, jint config);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstanceFromAssetFile(JNIEnv * env, jobject obj, jstring model_path, jint config, jobject assetManager);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstanceFromBuffer(JNIEnv * env, jobject obj, jbyteArray buffer, jint len, jint config);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstanceWithSubModels(JNIEnv * env, jobject obj, jobjectArray modelPaths, jint modelCount, jint config);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_addSubModel(JNIEnv * env, jobject obj, jstring modelpath);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_addSubModelFromAssetFile(JNIEnv * env, jobject obj, jstring model_path, jobject assetManager);
@@ -35,6 +36,14 @@ extern "C" {
     JNIEXPORT jfloat JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_getFaceDistance(JNIEnv * env, jobject obj, jobject faceInfo, jint orientation, jint width, jint height, jfloat fov);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_setFaceActionThreshold(JNIEnv * env, jobject obj, jlong faceAction, jfloat threshold);
     JNIEXPORT jfloat JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_getFaceActionThreshold(JNIEnv * env, jobject obj, jlong faceAction);
+
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionDetectPtr(JNIEnv * env, jobject obj,
+                                                                                                 jbyteArray pInputImage, jint imageFormat, jlong detect_config, jint rotate, jint imageWidth, jint imageHeight);
+    JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionResizePtr(JNIEnv * env, jobject obj, jfloat scale);
+    JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionMirrorPtr(JNIEnv * env, jobject obj, jint width);
+    JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionRotatePtr(JNIEnv * env, jobject obj, jint width, jint height, jint rotation, jboolean rotateBackground);
+    
+    JNIEXPORT jobject JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_getNativeHumanActionFromPtr(JNIEnv * env, jobject obj, jlong humanActionResult);
 };
 
 static inline jfieldID getHumanActionHandleField(JNIEnv *env, jobject obj)
@@ -55,6 +64,26 @@ void* getHumanActionHandle(JNIEnv *env, jobject obj)
 	jlong handle = env->GetLongField(obj, getHumanActionHandleField(env, obj));
 	return reinterpret_cast<void *>(handle);
 }
+/////////
+
+static inline jfieldID getHumanActionResultField(JNIEnv *env, jobject obj){
+    jclass c = env->GetObjectClass(obj);
+    return env->GetFieldID(c, "nativeHumanActionResultPtr", "J");
+}
+
+void setHumanActionResult(JNIEnv *env, jobject obj, st_mobile_human_action_t * h){
+    jlong handle = reinterpret_cast<jlong>(h);
+    env->SetLongField(obj, getHumanActionResultField(env, obj), handle);
+}
+
+st_mobile_human_action_t* getHumanActionResult(JNIEnv *env, jobject obj){
+    jlong handle = env->GetLongField(obj, getHumanActionResultField(env, obj));
+    if(handle <= 0){
+        return NULL;
+    }
+    return reinterpret_cast<st_mobile_human_action_t *>(handle);
+}
+/////
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstance(JNIEnv * env, jobject obj, jstring modelpath, jint config)
 {
@@ -73,6 +102,11 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_cre
     }
     setHumanActionHandle(env, obj, ha_handle);
     env->ReleaseStringUTFChars(modelpath, modelpathChars);
+
+    st_mobile_human_action_t* human_action_src = new st_mobile_human_action_t;
+    memset(human_action_src, 0, sizeof(st_mobile_human_action_t));
+    setHumanActionResult(env, obj, human_action_src);
+
     return result;
 }
 
@@ -146,6 +180,39 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_cre
     }
 
     setHumanActionHandle(env, obj, handle);
+
+    st_mobile_human_action_t* human_action_src = new st_mobile_human_action_t;
+    memset(human_action_src, 0, sizeof(st_mobile_human_action_t));
+    setHumanActionResult(env, obj, human_action_src);
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_createInstanceFromBuffer(JNIEnv * env, jobject obj, jbyteArray buffer, jint len, jint config)
+{
+    st_handle_t handle = NULL;
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    if (buffer == NULL) {
+        LOGE("buffer is null");
+        return ST_E_INVALIDARG;
+    }
+
+    jbyte *srcdata = (jbyte*) (env->GetByteArrayElements(buffer, 0));
+
+    result = st_mobile_human_action_create_from_buffer((const unsigned char *)srcdata, len, (int)config, &handle);
+
+    env->ReleaseByteArrayElements(buffer, srcdata, 0);
+    if(result != 0){
+        LOGE("create handle failed, %d",result);
+    }
+
+    setHumanActionHandle(env, obj, handle);
+
+    st_mobile_human_action_t* human_action_src = new st_mobile_human_action_t;
+    memset(human_action_src, 0, sizeof(st_mobile_human_action_t));
+    setHumanActionResult(env, obj, human_action_src);
+
     return result;
 }
 
@@ -176,6 +243,11 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_cre
     for(int i = 0; i < count; i++){
         env->ReleaseStringUTFChars(modelPathStrings[i], modelpathChars[i]);
     }
+
+    st_mobile_human_action_t* human_action_src = new st_mobile_human_action_t;
+    memset(human_action_src, 0, sizeof(st_mobile_human_action_t));
+    setHumanActionResult(env, obj, human_action_src);
+
     return result;
 }
 
@@ -376,6 +448,15 @@ JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_des
 	    setHumanActionHandle(env,obj,NULL);
 	    st_mobile_human_action_destroy(humanActionhandle);
 	}
+
+    st_mobile_human_action_t* human_action_src = getHumanActionResult(env, obj);
+    if(human_action_src != NULL){
+        LOGI(" human action result destory");
+        setHumanActionResult(env,obj,NULL);
+        st_mobile_human_action_delete(human_action_src);
+        delete human_action_src;
+        human_action_src = nullptr;
+    }
 }
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_setParam(JNIEnv * env, jobject obj, jint type, jfloat value)
@@ -546,4 +627,69 @@ JNIEXPORT jfloat JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_g
 
     return ST_E_HANDLE;
 }
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionDetectPtr(JNIEnv * env, jobject obj, jbyteArray pInputImage, jint imageFormat,
+                                                                                                 jlong detect_config, jint rotate, jint imageWidth, jint imageHeight)
+{
+    LOGI("humanActionDetect, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    st_handle_t humanActionhandle = getHumanActionHandle(env, obj);
+    if(humanActionhandle == NULL)
+    {
+        LOGE("handle is null");
+        return NULL;
+    }
+
+    if (pInputImage == NULL) {
+        LOGE("input image is null");
+        return NULL;
+    }
+
+    jbyte *srcdata = (jbyte*) (env->GetByteArrayElements(pInputImage, 0));
+    int image_stride = getImageStride((st_pixel_format)imageFormat, imageWidth);
+
+    st_mobile_human_action_t human_action = {0};
+
+    int result = -1;
+    long startTime = getCurrentTime();
+    if(humanActionhandle != NULL)
+    {
+        LOGI("before detect");
+        result =  st_mobile_human_action_detect(humanActionhandle, (unsigned char *)srcdata,  (st_pixel_format)imageFormat,  imageWidth,
+                                                imageHeight, image_stride, (st_rotate_type)rotate, detect_config, &human_action);
+        LOGI("st_mobile_human_action_detect --- result is %d", result);
+    }
+
+    long afterdetectTime = getCurrentTime();
+    LOGI("the human action detected time is %ld", (afterdetectTime - startTime));
+    LOGI("the face count is %d", human_action.face_count);
+    env->ReleaseByteArrayElements(pInputImage, srcdata, 0);
+
+    st_mobile_human_action_t* human_action_src = getHumanActionResult(env, obj);
+    st_mobile_human_action_copy(&human_action, human_action_src);
+    setHumanActionResult(env, obj, human_action_src);
+
+    return result;
+}
+
+JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionResizePtr(JNIEnv * env, jobject obj, jfloat scale)
+{
+    st_mobile_human_action_t* human_action = getHumanActionResult(env, obj);
+    st_mobile_human_action_resize(scale, human_action);
+    setHumanActionResult(env, obj, human_action);
+}
+
+JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionMirrorPtr(JNIEnv * env, jobject obj, jint width)
+{
+    st_mobile_human_action_t* human_action = getHumanActionResult(env, obj);
+    st_mobile_human_action_mirror(width, human_action);
+    setHumanActionResult(env, obj, human_action);
+}
+
+JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileHumanActionNative_nativeHumanActionRotatePtr(JNIEnv * env, jobject obj, jint width, jint height, jint rotation, jboolean rotateBackground)
+{
+    st_mobile_human_action_t* human_action = getHumanActionResult(env, obj);
+    st_mobile_human_action_rotate(width, height, (st_rotate_type)rotation, (bool)rotateBackground, human_action);
+    setHumanActionResult(env, obj, human_action);
+}
+
 

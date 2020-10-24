@@ -2,6 +2,16 @@ package com.sensetime.stmobile.model;
 
 import android.hardware.Camera;
 
+import com.sensetime.stmobile.STRotateType;
+import com.sensetime.stmobile.model.STImage;
+import com.sensetime.stmobile.model.STMobile106;
+import com.sensetime.stmobile.model.STMobileFaceInfo;
+import com.sensetime.stmobile.model.STMobileHandInfo;
+
+/**
+ * 人脸信息定义（包括人脸信息及人脸行为），
+ * 作为STMobileHumanActionNative.humanActionDetect的返回值
+ */
 public class STHumanAction {
     public int bufIndex;             ///< 对应的图像数据缓冲区索引，用于双缓冲渲染时使用
 
@@ -11,14 +21,11 @@ public class STHumanAction {
     public STMobileHandInfo[] hands; ///< 检测到的手的信息
     public int handCount;            ///< 检测到的手的数目 (目前仅支持检测一只手)
 
-    public STImage image;            ///< 前后背景分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
-    public float backGroundScore;    ///< 置信度
+    public STSegment image;            ///< 前后背景分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
 
-    public STImage hair;             ///< 头发分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
-    public float hairScore;          ///< 置信度
+    public STSegment hair;             ///< 头发分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
 
-    public STImage multiSegment; ///多类分割结果图片信息,背景0，手1，头发2，眼镜3，躯干4，上臂5，下臂6，大腿7，小腿8，脚9，帽子10，随身物品11，脸12，上衣13，下装14，输出图像大小可以调节
-    public float multiSegmentScore;   ///多类分割置信度
+    public STSegment multiSegment; ///多类分割结果图片信息,背景0，手1，头发2，眼镜3，躯干4，上臂5，下臂6，大腿7，小腿8，脚9，帽子10，随身物品11，脸12，上衣13，下装14，输出图像大小可以调节
 
     public STMobileBodyInfo[] bodys; ///< 检测到的人体信息
     public int bodyCount;            ///< 检测到的人体的数目
@@ -64,11 +71,11 @@ public class STHumanAction {
         return hands;
     }
 
-    public STImage getImage(){
+    public STSegment getImage(){
         return image;
     }
 
-    public STImage getHair(){
+    public STSegment getHair(){
         return hair;
     }
 
@@ -112,28 +119,29 @@ public class STHumanAction {
      * @return  旋转或镜像后的HumanAction
      */
     public static STHumanAction humanActionRotateAndMirror(STHumanAction humanAction, int width, int height, int cameraId, int cameraOrientation){
-        if (humanAction == null) {
+        if(humanAction == null){
             return null;
         }
-
-        if (cameraId != Camera.CameraInfo.CAMERA_FACING_FRONT && cameraId != Camera.CameraInfo.CAMERA_FACING_BACK) {
+        if(cameraId != Camera.CameraInfo.CAMERA_FACING_FRONT && cameraId != Camera.CameraInfo.CAMERA_FACING_BACK){
             return humanAction;
         }
-
-        switch (cameraOrientation) {
+        switch (cameraOrientation){
+            case 0:
+                humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false, humanAction);
+                break;
             case 90:
                 humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_90, false, humanAction);
                 break;
-            case 0:
             case 180:
+                humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false, humanAction);
+                break;
             case 270:
                 humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false, humanAction);
                 break;
             default:
                 return humanAction;
         }
-
-        if (cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+        if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT){
             humanAction = humanActionMirror(width, humanAction);
         }
 

@@ -20,7 +20,7 @@ public class STLicenceUtils {
     // 是否联网激活
     public static boolean mIsOnlineLicense = false;
 
-    /**
+    /**cv
      * 检查activeCode合法性
      * @return true, 成功 false,失败
      */

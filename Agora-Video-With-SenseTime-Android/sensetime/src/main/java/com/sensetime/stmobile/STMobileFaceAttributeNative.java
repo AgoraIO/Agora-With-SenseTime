@@ -6,6 +6,10 @@ import com.sensetime.stmobile.model.STFaceAttribute;
 import com.sensetime.stmobile.model.STMobile106;
 import com.sensetime.stmobile.model.STMobileFaceInfo;
 
+
+/**
+ * 人脸属性JNI定义
+ */
 public class STMobileFaceAttributeNative {
     static {
         System.loadLibrary("st_mobile");
