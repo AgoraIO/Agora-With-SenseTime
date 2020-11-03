@@ -27,5 +27,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.STChatActivity"
+            android:configChanges="orientation"/>
+
     </application>
 </manifest>
