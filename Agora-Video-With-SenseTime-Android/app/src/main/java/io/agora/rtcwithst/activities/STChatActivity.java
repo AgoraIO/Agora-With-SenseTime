@@ -109,15 +109,15 @@ public class STChatActivity extends RtcBasedActivity {
     }
 
     private void setStickerItem(boolean selected) {
-        preprocessor.onStickerSelected(selected ? "newEngine" + File.separator + "ceshilvjing.zip" : null);
+        preprocessor.onStickerSelected(selected ? "newEngine" + File.separator + "maozi_uv_01.zip" : null);
     }
 
     private void setFilter(boolean selected) {
         if(selected){
-            preprocessor.onFilterSelected("filter_portrait" + File.separator + "filter_style_ol.model", 1);
+            preprocessor.onFilterSelected("filter_portrait" + File.separator + "filter_style_babypink.model", 1);
         }
         else{
-            preprocessor.onFilterSelected("filter_portrait" + File.separator + "filter_style_ol.model", 0);
+            preprocessor.onFilterSelected("filter_portrait" + File.separator + "filter_style_babypink.model", 0);
         }
     }
 

@@ -449,7 +449,7 @@ jlong detect_config, jint rotate, jint imageWidth, jint imageHeight)
         LOGI("before detect");
         result =  st_mobile_human_action_detect(humanActionhandle, (unsigned char *)srcdata,  (st_pixel_format)imageFormat,  imageWidth,
                                             imageHeight, image_stride, (st_rotate_type)rotate, detect_config, &human_action);
-        LOGE("st_mobile_human_action_detect --- result is %d", result);
+        LOGI("st_mobile_human_action_detect --- result is %d", result);
     }
 
     long afterdetectTime = getCurrentTime();
