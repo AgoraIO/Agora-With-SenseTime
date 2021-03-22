@@ -31,11 +31,12 @@ android {
         jniLibs.srcDir 'src/main/jni/prebuilt/lib'
     }
 
-//    externalNativeBuild {
-//        cmake {
-//            path 'CMakeLists.txt'
-//        }
-//    }
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

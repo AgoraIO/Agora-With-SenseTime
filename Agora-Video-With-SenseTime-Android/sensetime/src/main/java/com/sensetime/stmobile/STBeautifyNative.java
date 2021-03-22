@@ -42,7 +42,7 @@ public class STBeautifyNative {
      * @param humanActionOutput 输出美颜后的人脸106点数组，需要由用户分配内存，必须与输入的人脸106点数组大小相同；如果为NULL，不输出美颜后的人脸106点数组
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processBufferInGLContext(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, STHumanAction humanActionInput, byte[] pOutImage, int outFormat, STHumanAction humanActionOutput);
+    public native int processBuffer(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, STHumanAction humanActionInput, byte[] pOutImage, int outFormat, STHumanAction humanActionOutput);
 
     /**
      * 对图像做美颜处理，此接口针对不在OpenGL环境中(不在opengl线程中)执行函数的用户
@@ -58,7 +58,7 @@ public class STBeautifyNative {
      * @param humanActionOutput 输出美颜后的人脸106点数组，需要由用户分配内存，必须与输入的人脸106点数组大小相同；如果为NULL，不输出美颜后的人脸106点数组
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processBufferNotInGLContext(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, STHumanAction humanActionInput, byte[] pOutImage, int outFormat, STHumanAction humanActionOutput);
+    public native int processPicture(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, STHumanAction humanActionInput, byte[] pOutImage, int outFormat, STHumanAction humanActionOutput);
 
     /**
      * 对OpenGL ES中的纹理进行美颜处理，需要运行在Opengl环境中
@@ -94,6 +94,12 @@ public class STBeautifyNative {
      */
     public native void destroyBeautify();
 
+    private long nativeBeautyOutHumanActionPtr;
+
+    public long getNativeBeautyOutHumanActionPtr(){
+        return nativeBeautyOutHumanActionPtr;
+    }
+
     /**
      * 对OpenGL ES中的纹理进行美颜处理，需要运行在Opengl环境中
      *
@@ -105,7 +111,7 @@ public class STBeautifyNative {
      * @param humanActionPtr   人脸关键点对应的指针
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processTextureWithNativePtr(int textureIn, int outputWidth, int outputHeight, int rotate, int textureOut, long humanActionPtr);
+    public native int processTextureNative(int textureIn, int outputWidth, int outputHeight, int rotate, int textureOut, long humanActionPtr);
 
     /**
      * 对图像buffer做美颜处理，需要在OpengGL环境中调用（运行在OpenGL线程中）
@@ -120,7 +126,7 @@ public class STBeautifyNative {
      * @param humanActionPtr  人脸关键点对应的指针
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processBufferInGLContextWithNativePtr(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, byte[] pOutImage, int outFormat, long humanActionPtr);
+    public native int processBufferNative(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, byte[] pOutImage, int outFormat, long humanActionPtr);
 
     /**
      * 对图像做美颜处理，此接口针对不在OpenGL环境中(不在opengl线程中)执行函数的用户
@@ -135,7 +141,7 @@ public class STBeautifyNative {
      * @param humanActionPtr 人脸关键点对应的指针
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processBufferNotInGLContextWithNativePtr(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, byte[] pOutImage, int outFormat, long humanActionPtr);
+    public native int processPictureNative(byte[] pInputImage, int inFormat, int outputWidth, int outputHeight, int rotate, byte[] pOutImage, int outFormat, long humanActionPtr);
 
     /**
      * 对OpenGL ES中的纹理进行美颜处理，需要运行在Opengl环境中.可以输出buffer及人脸信息
@@ -150,6 +156,11 @@ public class STBeautifyNative {
      * @param humanActionPtr 人脸关键点对应的指针
      * @return 成功返回0，错误返回其他，参考STUtils.ResultCode
      */
-    public native int processTextureAndOutputBufferWithNativePtr(int textureIn, int outputWidth, int outputHeight, int rotate, int textureOut, byte[] outputBuf, int format, long humanActionPtr);
-
+    public native int processTextureAndOutputBufferNative(int textureIn, int outputWidth, int outputHeight, int rotate, int textureOut, byte[] outputBuf, int format, long humanActionPtr);
+    /**
+     * 获取当前打开的美颜功能需要的检测配置选项
+     *
+     * @return 当前打开的美颜功能需要的检测配置选项
+     */
+    public native long getDetectConfig();
 }

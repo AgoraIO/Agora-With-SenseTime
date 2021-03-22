@@ -17,7 +17,9 @@ extern "C" {
                                                                                                       jbyteArray pInputImage, jint textureOut);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rgbaTextureToNv12Buffer(JNIEnv * env, jobject obj, jint textureId, jint width, jint height, jbyteArray pOutputImage);
 
-JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_destroyInstance(JNIEnv * env, jobject obj);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rgbaTextureToGray8Buffer(JNIEnv * env, jobject obj, jint textureId, jint width, jint height, jbyteArray pOutputImage);
+
+    JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_destroyInstance(JNIEnv * env, jobject obj);
 };
 
 static inline jfieldID getColorConvertHandleField(JNIEnv *env, jobject obj)
@@ -47,7 +49,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_cr
     int result = (int)st_mobile_color_convert_create(&handle);
     if(result != 0)
     {
-        LOGE("create handle failed");
+        LOGE("create ColorConvert handle failed");
         return result;
     }
     setColorConvertHandle(env, obj, handle);
@@ -59,7 +61,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_se
     int result = ST_JNI_ERROR_DEFAULT;
     st_handle_t handle = getColorConvertHandle(env, obj);
     if(handle == NULL){
-        LOGE("object handle is null");
+        LOGE("ColorConvert handle is null");
         return ST_E_HANDLE;
     }
 
@@ -76,7 +78,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_nv
     int result = ST_JNI_ERROR_DEFAULT;
     st_handle_t handle = getColorConvertHandle(env, obj);
     if(handle == NULL){
-       LOGE("object handle is null");
+       LOGE("ColorConvert handle is null");
        return ST_E_HANDLE;
     }
 
@@ -95,7 +97,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rg
     int result = ST_JNI_ERROR_DEFAULT;
     st_handle_t handle = getColorConvertHandle(env, obj);
     if(handle == NULL){
-        LOGE("object handle is null");
+        LOGE("ColorConvert handle is null");
         return ST_E_HANDLE;
     }
 
@@ -115,7 +117,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_nv
     int result = ST_JNI_ERROR_DEFAULT;
     st_handle_t handle = getColorConvertHandle(env, obj);
     if(handle == NULL){
-        LOGE("object handle is null");
+        LOGE("ColorConvert handle is null");
         return ST_E_HANDLE;
     }
 
@@ -134,7 +136,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rg
     int result = ST_JNI_ERROR_DEFAULT;
     st_handle_t handle = getColorConvertHandle(env, obj);
     if(handle == NULL){
-        LOGE("object handle is null");
+        LOGE("ColorConvert handle is null");
         return ST_E_HANDLE;
     }
 
@@ -142,6 +144,35 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rg
 
     if(handle != NULL) {
         result = st_mobile_rgba_tex_to_nv12_buffer(handle, textureId, width, height, (unsigned char *)dstdata);
+    }
+    env->ReleasePrimitiveArrayCritical(pOutputImage, dstdata, 0);
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileColorConvertNative_rgbaTextureToGray8Buffer(JNIEnv * env, jobject obj, jint textureId, jint width, jint height, jbyteArray pOutputImage)
+{
+    int result = ST_JNI_ERROR_DEFAULT;
+    st_handle_t handle = getColorConvertHandle(env, obj);
+    if(handle == NULL){
+        LOGE("ColorConvert handle is null");
+        return ST_E_HANDLE;
+    }
+
+    jbyte *dstdata = (jbyte*) env->GetPrimitiveArrayCritical(pOutputImage, 0);
+
+    st_multiplane_image_t input_image = {0};
+    memset(&input_image, 0, sizeof(st_multiplane_image_t));
+    input_image.width = width;
+    input_image.height = height;
+    input_image.format = ST_PIX_FMT_GRAY8;
+    input_image.strides[0] = width;
+    input_image.strides[1] = width;
+    input_image.strides[2] = width;
+    input_image.planes[0] = (unsigned char *)dstdata;
+
+    if(handle != NULL) {
+        result = st_mobile_convert_rgba_tex_2_gray8_buffer(handle, textureId, &input_image);
     }
     env->ReleasePrimitiveArrayCritical(pOutputImage, dstdata, 0);
 

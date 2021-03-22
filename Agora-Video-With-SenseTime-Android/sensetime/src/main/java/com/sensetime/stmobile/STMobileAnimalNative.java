@@ -38,5 +38,5 @@ public class STMobileAnimalNative {
 
     public static native STAnimalFace[] animalRotate(int width, int height, int orientation, STAnimalFace[] animalFace, int faceCount);
 
-    public static native STAnimalFace[] animalResize(float width, STAnimalFace[] animalFace, int faceCount);
+    public static native STAnimalFace[] animalResize(float scale, STAnimalFace[] animalFace, int faceCount);
 }

@@ -18,6 +18,7 @@ public class STBeautyParamsType {
     public final static int ST_BEAUTIFY_ROUND_EYE_RATIO = 12;       /// 圆眼比例, [0,1.0], 默认值0.0, 0.0不做圆眼
     public final static int ST_BEAUTIFY_SHRINK_CHEEKBONE_RATIO = 13; /// 瘦颧骨比例， [0, 1.0], 默认值0.0， 0.0不做瘦颧骨
     public final static int ST_BEAUTIFY_SHARPEN_STRENGTH = 14;      /// 锐化强度，[0, 1.0], 默认值0.0， 0.0不做锐化
+    public final static int ST_BEAUTIFY_THINNER_HEAD_RATIO = 15;    /// 小头比例, [0, 1.0], 默认值0.0, 0.0不做小头效果
 
     public final static int ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20;    // 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
     public final static int ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21;     // 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
@@ -35,4 +36,5 @@ public class STBeautyParamsType {
     public final static int ST_BEAUTIFY_3D_REMOVE_NASOLABIAL_FOLDS_RATIO = 33;  /// 去法令纹比例，[0, 1.0]，默认值为0.0，0.0不做去法令纹
     public final static int ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 34;              /// 白牙比例，[0, 1.0]，默认值为0.0，0.0不做白牙
     public final static int ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 35;              /// 苹果肌比例，[0, 1.0]，默认值为0.0，0.0不做苹果肌
+    public final static int ST_BEAUTIFY_3D_OPEN_EXTERNAL_CANTHUS_RATIO  = 36;             /// 开外眼角比例，[0, 1.0]，默认值为0.0， 0.0不做开外眼角
 }

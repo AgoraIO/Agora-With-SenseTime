@@ -39,7 +39,7 @@ public class STMobileColorConvertNative {
     public native int nv21BufferToRgbaTexture(int width, int height, int orientation, boolean needMirror, byte[] imageData, int textureId);
 
     /**
-     * 对输入的nv21格式的buffer转换成RGBA格式，并输出到texId对应的OpenGL纹理中，需要在OpenGL Context中调用
+     * 对输入的纹理转换为nv21格式，并输出到buffer，需要在OpenGL Context中调用
      *
      * @param textureId RGBA格式输入纹理，需要在调用层预先创建
      * @param width 纹理的宽度
@@ -64,7 +64,7 @@ public class STMobileColorConvertNative {
     public native int nv12BufferToRgbaTexture(int width, int height, int orientation, boolean needMirror, byte[] imageData, int textureId);
 
     /**
-     * 对输入的nv12格式的buffer转换成RGBA格式，并输出到texId对应的OpenGL纹理中，需要在OpenGL Context中调用
+     * 对输入的纹理转换为nv12格式，并输出到buffer，需要在OpenGL Context中调用
      *
      * @param textureId RGBA格式输入纹理，需要在调用层预先创建
      * @param width 纹理的宽度
@@ -74,6 +74,18 @@ public class STMobileColorConvertNative {
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
     public native int rgbaTextureToNv12Buffer(int textureId, int width, int height, byte[] nv21ImageData);
+
+    /**
+     * 对输入的纹理转换为灰度格式，并输出到buffer，需要在OpenGL Context中调用
+     *
+     * @param textureId RGBA格式输入纹理，需要在调用层预先创建
+     * @param width 纹理的宽度
+     * @param height 纹理的高度
+     * @param gray8ImageData 输出gray8格式的图像buffer，需要在应用层分配内存
+
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int rgbaTextureToGray8Buffer(int textureId, int width, int height, byte[] gray8ImageData);
 
     /**
      * 销毁实例

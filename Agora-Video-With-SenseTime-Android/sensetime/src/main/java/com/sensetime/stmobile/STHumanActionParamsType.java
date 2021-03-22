@@ -59,5 +59,31 @@ public class STHumanActionParamsType {
     public final static int ST_HUMAN_ACTION_PARAM_SEGMENT_MAX_THRESHOLD = 26;
     /// 设置背景分割边界区域下限阈值，默认值是0
     public final static int ST_HUMAN_ACTION_PARAM_SEGMENT_MIN_THRESHOLD = 27;
+
     public final static int ST_HUMAN_ACTION_PARAM_STATURE = 28;   // 身高，单位为米，3D骨架乘以身高（整体缩放），得到真实的物理尺度
+
+    public final static int ST_HUMAN_ACTION_PARAM_FACE_MESH_MODE = 29; // face mesh mode, 0: render only face, 1: render face + eye, 2: render face + mouth, 3: render face + mouth + eye
+    /// 设置头发分割边界区域上限阈值.
+    public final static int ST_HUMAN_ACTION_PARAM_HAIR_SEGMENT_MAX_THRESHOLD = 30;
+    /// 设置头发分割边界区域下限阈值
+    public final static int ST_HUMAN_ACTION_PARAM_HAIR_SEGMENT_MIN_THRESHOLD = 31;
+    /// 输出的皮肤分割结果中长边的长度.
+    public final static int ST_HUMAN_ACTION_PARAM_SKIN_SEGMENT_MAX_SIZE = 32;
+    /// 设置皮肤分割边界区域上限阈值.
+    public final static int ST_HUMAN_ACTION_PARAM_SKIN_SEGMENT_MAX_THRESHOLD = 33;
+    /// 设置皮肤分割边界区域下限阈值
+    public final static int ST_HUMAN_ACTION_PARAM_SKIN_SEGMENT_MIN_THRESHOLD = 34;
+    /// 设置皮肤分割检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
+    public final static int ST_HUMAN_ACTION_PARAM_SKIN_SEGMENT_RESULT_ROTATE = 35;
+    /// 设置头部分割检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
+    public final static int ST_HUMAN_ACTION_PARAM_HEAD_SEGMENT_RESULT_ROTATE = 36;
+
+    /// 设置嘴唇分割检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
+    public final static int ST_HUMAN_ACTION_PARAM_MOUTH_PARSE_RESULT_ROTATE = 37;
+
+    // 设置face mesh额头点扩展scale范围起始值（小于终止值，默认是2）
+    public final static int ST_HUMAN_ACTION_PARAM_FACE_MESH_START_SCALE = 38;
+    // 设置face mesh额头点扩展scale范围终止值（大于起始值，默认是3）
+    public final static int ST_HUMAN_ACTION_PARAM_FACE_MESH_END_SCALE = 39;
+
 }

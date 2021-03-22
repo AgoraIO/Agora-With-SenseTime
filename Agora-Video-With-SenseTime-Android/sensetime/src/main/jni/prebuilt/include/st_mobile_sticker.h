@@ -64,6 +64,8 @@ typedef enum {
     ST_MODULE_SKYBOX = 12,          ///< 天空盒模块
     ST_MODULE_CATCH_BUTTERFLY = 13, ///< 捕蝴蝶模块
     ST_MODULE_FACE_STRETCH = 14,    ///< 人脸拖拽模块
+    ST_MODULE_DOUBLEGANGER = 15,
+    ST_MODULE_MASK_FILL = 16
 } st_module_type;
 
 /// @brief 创建贴纸句柄
@@ -245,6 +247,25 @@ st_mobile_sticker_process_texture_both(
 								  unsigned int texture_dst
 								  );
 
+
+
+
+/// @brief 更新贴纸需要的Mask纹理, 必须在opengl环境中运行. 典型地, old_human_action为美颜之前的检测结果, new_hunman_action为美颜之后的检测结果
+/// @parma[in] handle 已初始化的贴纸句柄
+/// @param[in] old_hunman_action 检测结果
+/// @param[in] new_hunman_action 变形之后的检测结果
+/// @param[in] width 原始图像的宽
+/// @param[in] height 原始图像的高
+/// @param[in] rotate 人脸朝向
+/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_sticker_update_internal_mask(
+    st_handle_t handle,
+    const st_mobile_human_action_t* old_human_action,
+    const st_mobile_human_action_t* new_human_action,
+    int width, int height,
+    st_rotate_type rotate
+);
 
 /// @brief 对OpenGLES中的纹理进行贴纸处理, 必须在opengl环境中运行, 仅支持RGBA图像格式.
 /// @parma[in] handle 已初始化的贴纸句柄

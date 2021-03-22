@@ -64,7 +64,7 @@ typedef int   st_result_t;
 
 #define ST_E_MODEL_NOT_IN_MEMORY            -31 ///< 模型不在内存中
 #define ST_E_UNSUPPORTED_ZIP                -32 ///< 当前sdk不支持的素材包
-#define ST_E_PACKAGE_EXIST_IN_MEMORY        -33 ///< 素材包已存在在内存中，不重复加载
+#define ST_E_PACKAGE_EXIST_IN_MEMORY        -33 ///< 素材包已存在在内存中，不重复加载，或相同动画正在播放，不重复播放
 
 #define ST_E_NOT_CONNECT_TO_NETWORK         -34 ///< 设备没有联网
 #define ST_E_OTHER_LINK_ERRORS_IN_HTTPS     -35 ///< https中的其他链接错误
@@ -77,9 +77,11 @@ typedef int   st_result_t;
 #define ST_E_API_UNSUPPORTED                -39 ///< 该API暂不支持
 #define ST_E_API_DEPRECATED                 -40 ///< 该API已标记为废弃，应替换其他API或停止使用
 #define ST_E_ARG_UNSUPPORTED                -41 ///< 该参数不支持
+#define ST_E_PRECONDITION                   -42 ///< 前置条件不满足
 
 // rendering related errors.
 #define ST_E_INVALID_GL_CONTEXT             -100 ///< OpenGL Context错误，当前为空，或不一致
+#define ST_E_RENDER_DISABLED                -101 ///< 创建句柄时候没有开启渲染
 
 #ifndef CHECK_FLAG
 #define CHECK_FLAG(action,flag) (((action)&(flag)) == flag)
@@ -130,13 +132,6 @@ typedef struct st_hand_dynamic_gesture_t {
     st_hand_dynamic_gesture_type_t dynamic_gesture; ///< 动态手势类别
     float score;                                    ///< 动态手势得分
 } st_hand_dynamic_gesture_t;
-
-/// 3D rigid transform structure.
-typedef struct st_mobile_transform_t {
-    float position[3];
-    float eulerAngle[3];
-    float scale[3];
-} st_mobile_transform_t;
 
 // st color definition
 typedef struct st_color_t {
@@ -203,6 +198,16 @@ typedef struct st_mobile_forehead_t {
 	int forehead_points_count;          ///< 额头点个数
 } st_mobile_forehead_t, *p_st_mobile_forehead_t;
 
+/// @brief 3d mesh关键点信息
+typedef struct st_mobile_face_mesh_t {
+	st_point3f_t * p_face_mesh_points;     ///< 3DMesh关键点数组
+	st_point3f_t * p_face_mesh_normal;     ///< 3DMesh法线，每个法线对应一个关键点
+	int face_mesh_points_count;            ///< 3DMesh关键点的数目
+	float transform_mat[4][4];             ///< 旋转变换矩阵
+	float view_mat[4][4];                  ///< 视角矩阵
+	float project_mat[4][4];               ///< 投影矩阵
+} st_mobile_face_mesh_t, *p_st_mobile_face_mesh_t;
+
 /// @brief 多平面image数据结构，支持单平面（RGBA、BGRA），双平面（NV21/NV12)、三平面（YUV420）
 typedef struct
 {
@@ -212,6 +217,12 @@ typedef struct
     int height;                 /// image height 图像高度
     st_pixel_format format;     /// input image format 图像的格式
 } st_multiplane_image_t;
+
+/// 人脸检测内部参数
+typedef struct st_mobile_face_extra_info {
+	float affine_mat[3][3];				   ///< 仿射变换矩阵
+	int model_input_size;                  ///< 内部模型输入大小
+} st_mobile_face_extra_info;
 
 /// @brief track106配置选项,对应st_mobile_tracker_106_create和st_mobile_human_action_create中的config参数,具体配置如下：
 // 使用单线程或双线程track：处理图片必须使用单线程,处理视频建议使用多线程 (创建human_action handle建议使用ST_MOBILE_DETECT_MODE_VIDEO/ST_MOBILE_DETECT_MODE_IMAGE)
@@ -234,6 +245,7 @@ typedef struct st_mobile_face_t {
     st_pointf_t * p_tongue_points;         ///< 舌头关键点数组
     float * p_tongue_points_score;         ///< 舌头关键点对应的置信度
     int tongue_points_count;               ///< 舌头关键点的数目
+    st_mobile_face_mesh_t * p_face_mesh;   ///< 3d mesh信息，包括3d mesh关键点及个数
     st_pointf_t *p_eyeball_center;         ///< 眼球中心关键点. 没有检测到时为NULL
     int eyeball_center_points_count;       ///< 眼球中心关键点个数. 检测到时为ST_MOBILE_EYEBALL_CENTER_POINTS_COUNT, 没有检测到时为0
     st_pointf_t *p_eyeball_contour;        ///< 眼球轮廓关键点. 没有检测到时为NULL
@@ -244,13 +256,14 @@ typedef struct st_mobile_face_t {
     st_point3f_t *p_gaze_direction;        ///< 左眼和右眼视线方向，没有检测到是为NULL
     float *p_gaze_score;                   ///< 视线置信度: [0.0, 1.0], 建议阈值为0.5
     unsigned long long face_action;        ///< 脸部动作
-    float affine_mat[3][3];				   ///< 仿射变换矩阵
     unsigned char *p_avatar_help_info;     ///< avatar辅助信息,仅限内部使用，严禁修改
     int avatar_help_info_length;           ///< avatar辅助信息字节长度
     int skin_type;                         ///< 肤色类型
     float *p_face_action_score;            ///< 脸部动作置信度, eye, mouth, pitch, yaw, brow
     int face_action_score_count;           ///< 脸部动作数目
     st_mobile_forehead_t* p_face_forehead; ///< 额头点信息，包括额头点坐标和个数
+    st_color_t hair_color;                 ///< avatar发色, rgb取值范围[0.0, 1.0]; 其中a(alpha)值不必要，设置默认值为1.0
+    st_mobile_face_extra_info face_extra_info;///< 人脸检测模型内部参数
 } st_mobile_face_t, *p_st_mobile_face_t;
 
 /// @brief 设置眨眼动作的阈值,置信度为[0,1], 默认阈值为0.5
@@ -398,6 +411,25 @@ st_mobile_image_resize(
 );
 
 /// @}
+
+/// 3D rigid transform structure.
+typedef struct st_mobile_transform_t {
+    float position[3];
+    float eulerAngle[3];    // euler in angle.
+    float scale[3];
+} st_mobile_transform_t;
+
+/// @brief 将Translation，Rotation，Scale分量合成为一个4X4矩阵（列优先），右手坐标系。
+/// @param[in] p_trs st_mobile_transform_t结构体表示的TRS分量
+/// @param[out] mat4x4 转换之后的列优先存储的4X4齐次变换矩阵
+/// @return true - 转换成功，false - 转换失败
+ST_SDK_API bool st_mobile_convert_trs_to_matrix(const st_mobile_transform_t *p_trs, float mat4x4[16]);
+
+/// @brief 将4X4矩阵（列优先）分解为Translation，Rotation，Scale分量，右手坐标系。
+/// @param[in] mat4x4 列优先存储的4X4齐次变换矩阵
+/// @param[out] p_trs st_mobile_transform_t结构体表示的分解之后的TRS分量
+/// @return true - 分解成功，false - 分解失败
+ST_SDK_API bool st_mobile_convert_matrix_to_trs(const float mat4x4[16], st_mobile_transform_t *p_trs);
 
 /// @brief 性能/效果优先级
 typedef enum {
