@@ -26,6 +26,8 @@ public class STMobileFaceInfo {
     public byte[] avatarHelpInfo;          ///< avatar辅助信息,仅限内部使用，严禁修改
     public int avatarHelpInfoLength;       ///< avatar辅助信息字节长度
 
+    public STFaceExtraInfo faceExtraInfo;
+
     public STMobile106 getFace() {
         return face106;
     }

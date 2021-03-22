@@ -110,4 +110,13 @@ ST_SDK_API st_result_t st_mobile_rgba_tex_to_nv12_buffer(st_handle_t handle, int
 ST_SDK_API st_result_t
 st_mobile_convert_rgba_tex_2_yuv_buffer(st_handle_t handle, int src_tex, st_multiplane_image_t *p_image);
 
+/// @brief 对输入的RGBA格式texture转换成GRAY8格式的buffer，并输出到p_image中，需要在OpenGL Context中调用
+///        注意：需要在OpenGL Context中调用！！！
+/// @param[in] handle 已初始化的颜色格式转换句柄
+/// @param[in] src_tex 输入纹理
+/// @param[out] p_image 输出图像buffer，需要保证plane[0]有效
+/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_convert_rgba_tex_2_gray8_buffer(st_handle_t handle, int src_tex, st_multiplane_image_t *p_image);
+
 #endif //INCLUDE_STMOBILE_ST_MOBILE_COLOR_CONVERT_H_

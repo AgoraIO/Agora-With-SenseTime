@@ -452,7 +452,7 @@ public class STMobileStickerNative {
      * @param textureOut     处理后的纹理ID，用来做渲染
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTextureWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut);
+    public native int processTextureNative(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut);
 
     /**
      * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式.支持buffer输出
@@ -469,7 +469,7 @@ public class STMobileStickerNative {
      * @param imageOut       输出图像的buffer，需要从外部创建
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTextureAndOutputBufferWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut, int outFmt, byte[] imageOut);
+    public native int processTextureAndOutputBufferNative(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, int textureOut, int outFmt, byte[] imageOut);
 
     /**
      * 对OpenGL ES 中的纹理进行贴纸处理，必须在opengl环境中运行，仅支持RGBA图像格式
@@ -484,6 +484,30 @@ public class STMobileStickerNative {
      * @param textureOut     处理后的纹理ID，用来做渲染
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int processTextureBothWithNativePtr(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, STAnimalFace[] animalFace, int animalFaceCount, int textureOut);
+    public native int processTextureBothNative(int textureIn, long humanActionPtr, int rotate, int frontRotate, int imageWidth, int imageHeight, boolean needsMirroring, STStickerInputParams inputParams, STAnimalFace[] animalFace, int animalFaceCount, int textureOut);
+
+    /**
+     * 更新贴纸需要的Mask纹理, 必须在opengl环境中运行. 典型地, humanActionOld为美颜之前的检测结果, humanActionNew为美颜之后的检测结果
+     *
+     * @param humanActionOld    检测结果
+     * @param humanActionNew    变形之后的检测结果
+     * @param width             原始图像的宽
+     * @param height            原始图像的高
+     * @param orientation       人脸朝向
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int updateInternalMask(STHumanAction humanActionOld, STHumanAction humanActionNew, int width, int height, int orientation);
+
+    /**
+     * 更新贴纸需要的Mask纹理, 必须在opengl环境中运行. 典型地, humanActionOld为美颜之前的检测结果, humanActionNew为美颜之后的检测结果
+     *
+     * @param humanActionOld    检测结果
+     * @param humanActionNew    变形之后的检测结果
+     * @param width             原始图像的宽
+     * @param height            原始图像的高
+     * @param orientation       人脸朝向
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int updateInternalMaskNative(long humanActionOld, long humanActionNew, int width, int height, int orientation);
 
 }

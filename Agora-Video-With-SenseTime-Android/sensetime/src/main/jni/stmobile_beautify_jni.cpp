@@ -9,10 +9,10 @@
 extern "C" {
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_createInstance(JNIEnv * env, jobject obj);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_setParam(JNIEnv * env, jobject obj, jint type, jfloat value);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNotInGLContext(JNIEnv * env, jobject obj,
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBuffer(JNIEnv * env, jobject obj,
                                                                                                 jbyteArray pInputImage, jint informat, jint outputWidth, jint outputHeight, jint rotate, jobject humanActionInput,
                                                                                                 jbyteArray pOutputImage, jint outformat, jobject humanActionOutput);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferInGLContext(JNIEnv * env, jobject obj,jbyteArray pInputImage,
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processPicture(JNIEnv * env, jobject obj,jbyteArray pInputImage,
                                                                                              jint informat, jint outputWidth, jint outputHeight, jint rotate, jobject humanActionInput, jbyteArray pOutputImage,
                                                                                              jint outformat, jobject humanActionOutput);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTexture(JNIEnv * env, jobject obj,jint textureIn, jint outputWidth, jint outputHeight, jint rotate,
@@ -22,18 +22,38 @@ extern "C" {
                                                                                                   jint outputFormat, jobject humanActionOutput);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_destroyBeautify(JNIEnv * env, jobject obj);
 
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureWithNativePtr(JNIEnv * env, jobject obj,jint textureIn, jint outputWidth, jint outputHeight, jint rotate,
-                                                                                                jint textureOut, jlong humanActionNativePtr);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNotInGLContextWithNativePtr(JNIEnv * env, jobject obj,
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureNative(JNIEnv * env, jobject obj, jint textureIn, jint outputWidth, jint outputHeight, jint rotate,
+                                                                                             jint textureOut, jlong humanActionNativePtr);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNative(JNIEnv * env, jobject obj,
                                                                                                 jbyteArray pInputImage, jint informat, jint outputWidth, jint outputHeight, jint rotate,
                                                                                                 jbyteArray pOutputImage, jint outformat, jlong humanActionNativePtr);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferInGLContextWithNativePtr(JNIEnv * env, jobject obj,jbyteArray pInputImage,
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processPictureNative(JNIEnv * env, jobject obj, jbyteArray pInputImage,
                                                                                              jint informat, jint outputWidth, jint outputHeight, jint rotate, jbyteArray pOutputImage,
                                                                                              jint outformat, jlong humanActionNativePtr);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureAndOutputBufferWithNativePtr(JNIEnv * env, jobject obj,jint textureIn,
-                                                                                                  jint outputWidth, jint outputHeight, jint rotate, jint textureOut, jbyteArray outputArray,
-                                                                                                  jint outputFormat, jlong humanActionNativePtr);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureAndOutputBufferNative(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                                            jint outputWidth, jint outputHeight, jint rotate, jint textureOut, jbyteArray outputArray,
+                                                                                                            jint outputFormat, jlong humanActionNativePtr);
+    JNIEXPORT jlong JNICALL Java_com_sensetime_stmobile_STBeautifyNative_getDetectConfig(JNIEnv * env, jobject obj);
 };
+
+static inline jfieldID getBeautyOutHumanActionField(JNIEnv *env, jobject obj){
+    jclass c = env->GetObjectClass(obj);
+    return env->GetFieldID(c, "nativeBeautyOutHumanActionPtr", "J");
+}
+
+void setBeautyOutHumanAction(JNIEnv *env, jobject obj, st_mobile_human_action_t * h){
+    jlong handle = reinterpret_cast<jlong>(h);
+    env->SetLongField(obj, getBeautyOutHumanActionField(env, obj), handle);
+}
+
+st_mobile_human_action_t* getBeautyOutHumanAction(JNIEnv *env, jobject obj){
+    jlong handle = env->GetLongField(obj, getBeautyOutHumanActionField(env, obj));
+    if(handle <= 0){
+        return NULL;
+    }
+    return reinterpret_cast<st_mobile_human_action_t *>(handle);
+}
+/////
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_createInstance(JNIEnv * env, jobject obj)
 {
@@ -47,6 +67,11 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_createInstan
     }
     setHandle(env, obj, handle);
     LOGE("createInstance Exit");
+
+    st_mobile_human_action_t* human_action_beauty_out = new st_mobile_human_action_t;
+    memset(human_action_beauty_out, 0, sizeof(st_mobile_human_action_t));
+    setBeautyOutHumanAction(env, obj, human_action_beauty_out);
+
     return result;
 }
 
@@ -91,7 +116,7 @@ void afterProcess(JNIEnv *env, int facesArrayLen, st_mobile_106_t *p_faces_array
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferInGLContext(JNIEnv * env, jobject obj,jbyteArray pInputImage,
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBuffer(JNIEnv * env, jobject obj,jbyteArray pInputImage,
                                                                                              jint informat, jint outputWidth, jint outputHeight, jint rotate, jobject humanActionInput, jbyteArray pOutputImage,
                                                                                              jint outformat, jobject humanActionOutput)
 {
@@ -138,7 +163,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBuffe
     return result;
 }
 
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNotInGLContext(JNIEnv * env, jobject obj,
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processPicture(JNIEnv * env, jobject obj,
                                                                                                 jbyteArray pInputImage, jint informat, jint outputWidth, jint outputHeight, jint rotate, jobject humanActionInput,
                                                                                                 jbyteArray pOutputImage, jint outformat, jobject humanActionOutput)
 {
@@ -279,39 +304,53 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_destroyBeaut
     }
     setHandle<st_handle_t>(env, obj, NULL);
     st_mobile_beautify_destroy(handle);
+
+    st_mobile_human_action_t* human_action_beauty_out = getBeautyOutHumanAction(env, obj);
+    if(human_action_beauty_out != NULL){
+        LOGI(" human_action_beauty_out destroy");
+        setBeautyOutHumanAction(env,obj,NULL);
+        st_mobile_human_action_delete(human_action_beauty_out);
+        delete human_action_beauty_out;
+        human_action_beauty_out = nullptr;
+    }
+
     return JNI_TRUE;
 }
 
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureWithNativePtr(JNIEnv * env, jobject obj,jint textureIn, jint outputWidth, jint outputHeight, jint rotate,
-                                                                                    jint textureOut, jlong humanActionNativePtr)
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureNative(JNIEnv * env, jobject obj, jint textureIn, jint outputWidth, jint outputHeight, jint rotate,
+                                                                                         jint textureOut, jlong humanActionNativePtr)
 {
-    LOGI("Enter Java_com_sensetime_stmobile_STBeautifyNative_processTextureWithNativePtr, the texture in ID is %d, out: %d",textureIn, textureOut);
+    LOGI("Enter processTextureNative, the texture in ID is %d, out: %d",textureIn, textureOut);
     st_handle_t handle = getHandle<st_handle_t>(env, obj);
 
     if(handle == NULL){
-        LOGE("Java_com_sensetime_stmobile_STBeautifyNative_processTextureWithNativePtr---handle is null");
+        LOGE("processTextureNative---handle is null");
         return ST_E_HANDLE;
     }
 
     st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionNativePtr);
+    st_mobile_human_action_t* human_action_beauty_out = getBeautyOutHumanAction(env, obj);
+    st_mobile_human_action_copy(human_action, human_action_beauty_out);
 
     int result = (int)st_mobile_beautify_process_texture(handle, textureIn,
-                                                         outputWidth, outputHeight, (st_rotate_type)rotate, human_action, textureOut, human_action);
+                                                         outputWidth, outputHeight, (st_rotate_type)rotate, human_action, textureOut, human_action_beauty_out);
 
-    LOGI("Exit processTexture, the result is %d", result);
+    setBeautyOutHumanAction(env, obj, human_action_beauty_out);
+
+    LOGI("Exit processTextureNative, the result is %d", result);
 
     return result;
 }
 
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNotInGLContextWithNativePtr(JNIEnv * env, jobject obj,
-                                                                                                             jbyteArray pInputImage, jint informat, jint outputWidth, jint outputHeight, jint rotate,
-                                                                                                             jbyteArray pOutputImage, jint outformat, jlong humanActionNativePtr)
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferNative(JNIEnv * env, jobject obj,
+                                                                                        jbyteArray pInputImage, jint informat, jint outputWidth, jint outputHeight, jint rotate,
+                                                                                        jbyteArray pOutputImage, jint outformat, jlong humanActionNativePtr)
 {
-    LOGE("Enter processBufferNotInGLContextWithNativePtr");
+    LOGE("Enter processBufferNative");
     st_handle_t handle = getHandle<st_handle_t>(env, obj);
 
     if(handle == NULL){
-        LOGE("processBufferNotInGLContextWithNativePtr---handle is null");
+        LOGE("processBufferNative---handle is null");
         return ST_E_HANDLE;
     }
 
@@ -322,26 +361,30 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBuffe
     int stride = getImageStride(pixel_format, outputWidth);
 
     st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionNativePtr);
+    st_mobile_human_action_t* human_action_beauty_out = getBeautyOutHumanAction(env, obj);
+    st_mobile_human_action_copy(human_action, human_action_beauty_out);
 
     int result = (int)st_mobile_beautify_process_buffer(handle,(unsigned char *)srcdata, (st_pixel_format)pixel_format,
-                                                        outputWidth, outputHeight, stride, (st_rotate_type)rotate, human_action, (unsigned char*)dstdata,(st_pixel_format)outformat, human_action);
+                                                        outputWidth, outputHeight, stride, (st_rotate_type)rotate, human_action, (unsigned char*)dstdata,(st_pixel_format)outformat, human_action_beauty_out);
+
+    setBeautyOutHumanAction(env, obj, human_action_beauty_out);
 
     env->ReleaseByteArrayElements(pInputImage, srcdata, 0);
     env->ReleaseByteArrayElements(pOutputImage, dstdata, 0);
 
-    LOGE("Exit processBuffer");
+    LOGE("Exit processBufferNative");
     return result;
 }
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBufferInGLContextWithNativePtr(JNIEnv * env, jobject obj,jbyteArray pInputImage,
-                                                                                                          jint informat, jint outputWidth, jint outputHeight, jint rotate, jbyteArray pOutputImage,
-                                                                                                          jint outformat, jlong humanActionNativePtr)
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processPictureNative(JNIEnv * env, jobject obj, jbyteArray pInputImage,
+                                                                                         jint informat, jint outputWidth, jint outputHeight, jint rotate, jbyteArray pOutputImage,
+                                                                                         jint outformat, jlong humanActionNativePtr)
 {
-    LOGE("Enter processBufferInGLContextWithNativePtr");
+    LOGE("Enter processPictureNative");
     st_handle_t handle = getHandle<st_handle_t>(env, obj);
 
     if(handle == NULL)
     {
-        LOGE("processBufferInGLContextWithNativePtr---handle is null");
+        LOGE("processPictureNative---handle is null");
         return ST_E_HANDLE;
     }
 
@@ -352,25 +395,28 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processBuffe
     int stride = getImageStride(pixel_format, outputWidth);
 
     st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionNativePtr);
+    st_mobile_human_action_t* human_action_beauty_out = getBeautyOutHumanAction(env, obj);
+    st_mobile_human_action_copy(human_action, human_action_beauty_out);
 
     int result = (int)st_mobile_beautify_process_picture(handle,(unsigned char *)srcdata, (st_pixel_format)pixel_format, outputWidth, outputHeight, stride, (st_rotate_type)rotate,
-                                                         human_action, (unsigned char*)dstdata,(st_pixel_format)outformat, human_action);
+                                                         human_action, (unsigned char*)dstdata,(st_pixel_format)outformat, human_action_beauty_out);
+    setBeautyOutHumanAction(env, obj, human_action_beauty_out);
 
     env->ReleaseByteArrayElements(pInputImage, srcdata, 0);
     env->ReleaseByteArrayElements(pOutputImage, dstdata, 0);
-    LOGE("Exit processPicture");
+    LOGE("Exit processPictureNative");
     return result;
 }
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureAndOutputBufferWithNativePtr(JNIEnv * env, jobject obj,jint textureIn,
-                                                                                                               jint outputWidth, jint outputHeight, jint rotate, jint textureOut, jbyteArray outputArray,
-                                                                                                               jint outputFormat, jlong humanActionNativePtr)
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextureAndOutputBufferNative(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                                        jint outputWidth, jint outputHeight, jint rotate, jint textureOut, jbyteArray outputArray,
+                                                                                                        jint outputFormat, jlong humanActionNativePtr)
 {
-    LOGI("Enter processTextureAndOutputBufferWithNativePtr, the texture in ID is %d, out: %d",textureIn, textureOut);
+    LOGI("Enter processTextureAndOutputBufferNative, the texture in ID is %d, out: %d",textureIn, textureOut);
     st_handle_t handle = getHandle<st_handle_t>(env, obj);
 
     if(handle == NULL)
     {
-        LOGE("processTextureAndOutputBufferWithNativePtr---handle is null");
+        LOGE("processTextureAndOutputBufferNative---handle is null");
         return ST_E_HANDLE;
     }
 
@@ -380,10 +426,31 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STBeautifyNative_processTextu
     }
 
     st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionNativePtr);
+    st_mobile_human_action_t* human_action_beauty_out = getBeautyOutHumanAction(env, obj);
+    st_mobile_human_action_copy(human_action, human_action_beauty_out);
 
     int result = (int)st_mobile_beautify_process_and_output_texture(handle, textureIn,
                                                                     outputWidth, outputHeight, (st_rotate_type)rotate, human_action, textureOut, outputInfo,
-                                                                    (st_pixel_format)outputFormat, human_action);
-    LOGI("Exit processTexture, the result is %d", result);
+                                                                    (st_pixel_format)outputFormat, human_action_beauty_out);
+
+    setBeautyOutHumanAction(env, obj, human_action_beauty_out);
+
+    LOGI("Exit processTextureAndOutputBufferNative, the result is %d", result);
     return result;
+}
+
+JNIEXPORT jlong JNICALL Java_com_sensetime_stmobile_STBeautifyNative_getDetectConfig(JNIEnv * env, jobject obj)
+{
+    st_handle_t handle = getHandle<st_handle_t>(env, obj);
+    if(handle != NULL)
+    {
+        unsigned long long action = -1;
+        int result = st_mobile_beautify_get_detect_config(handle, &action);
+        if (result == ST_OK) {
+            LOGE("ACTIONACTION : %ld", action);
+            return action;
+        }
+    }
+
+    return 0;
 }

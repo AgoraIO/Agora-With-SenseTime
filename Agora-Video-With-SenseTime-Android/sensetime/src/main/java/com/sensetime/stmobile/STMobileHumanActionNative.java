@@ -55,6 +55,11 @@ public class STMobileHumanActionNative {
     public final static long ST_MOBILE_DETECT_DYNAMIC_GESTURE = 0x200000000000L; ///< 检测动态手势
     public final static long ST_MOBILE_DETECT_AVATAR_HELPINFO = 0x800000000000L; ///< 检测avatar辅助信息
 
+    public final static long ST_MOBILE_SEG_HAIR = 0x20000000;        ///< 头发分割
+    public final static long ST_MOBILE_SEG_HEAD = 0x0100000000L;    /// 检测头部分割
+    public final static long ST_MOBILE_SEG_SKIN = 0x0200000000L;    /// 检测皮肤分割
+    public final static long ST_MOBILE_DETECT_MOUTH_PARSE = 0x80000000000000L; ///< 检测嘴部遮挡
+
     // 创建人体行为检测句柄配置选项
     /// 支持的检测类型
     public final static int ST_MOBILE_ENABLE_FACE_DETECT = 0x00000040;            ///< 检测人脸
@@ -74,6 +79,10 @@ public class STMobileHumanActionNative {
     public final static int ST_MOBILE_ENABLE_GAZE_DETECT = 0x08000000;  ///< 检测视线方向
     public final static int ST_MOBILE_ENABLE_DYNAMIC_GESTURE = 0x10000000;  ///< 检测动态手势
     public final static int ST_MOBILE_ENABLE_AVATAR_HELPER = 0x20000000;  ///< 检测avatar辅助信息开关
+
+    public final static long ST_MOBILE_ENABLE_HEAD_SEGMENT = 0x200000000L; ///< 检测头部分割
+    public final static long ST_MOBILE_ENABLE_SKIN_SEGMENT = 0x400000000L; ///< 检测皮肤分割
+    public final static long ST_MOBILE_ENABLE_MOUTH_PARSE_DETECT = 0x800000000L; ///< 嘴部遮挡开关
 
 
     public final static long ST_MOBILE_BODY_ACTION1 = (long)1 << 32;    /// 龙拳
@@ -104,6 +113,11 @@ public class STMobileHumanActionNative {
     // 使用多线程，可最大限度的提高速度，并减少卡顿,根据可根据具体需求修改默认配置
     // 对视频进行检测推荐使用多线程检
     public final static int ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO = STCommon.ST_MOBILE_TRACKING_MULTI_THREAD
+            | STCommon.ST_MOBILE_TRACKING_ENABLE_DEBOUNCE | STCommon.ST_MOBILE_TRACKING_ENABLE_FACE_ACTION
+            | ST_MOBILE_ENABLE_FACE_DETECT | ST_MOBILE_ENABLE_HAND_DETECT
+            | ST_MOBILE_ENABLE_SEGMENT_DETECT | ST_MOBILE_DETECT_MODE_VIDEO;
+
+    public final static int ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO_SINGLE_THREAD = STCommon.ST_MOBILE_TRACKING_SINGLE_THREAD
             | STCommon.ST_MOBILE_TRACKING_ENABLE_DEBOUNCE | STCommon.ST_MOBILE_TRACKING_ENABLE_FACE_ACTION
             | ST_MOBILE_ENABLE_FACE_DETECT | ST_MOBILE_ENABLE_HAND_DETECT
             | ST_MOBILE_ENABLE_SEGMENT_DETECT | ST_MOBILE_DETECT_MODE_VIDEO;
@@ -239,7 +253,7 @@ public class STMobileHumanActionNative {
      * @param config 要删除的子模型对应的config，config为创建人体行为检测句柄配置选项（例如：ST_MOBILE_ENABLE_BODY_KEYPOINTS）
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
-    public native int removeSubModelByConfig(int config);
+    public native int removeSubModelByConfig(long config);
 
     /**
      * @param type  要设置Human Action参数的类型
@@ -322,7 +336,7 @@ public class STMobileHumanActionNative {
     /**
      * 获取faceAction动作阈值
      *
-     * @param faceAction 需要获取阈值的检测动作. 目前仅支持face相关的阈值，可以配置为
+     * @param config 需要获取阈值的检测动作. 目前仅支持face相关的阈值，可以配置为
      * ///             ST_MOBILE_EYE_BLINK 眨眼动作
      * ///             ST_MOBILE_MOUTH_AH 张嘴动作
      * ///             ST_MOBILE_HEAD_YAW 摇头动作
@@ -333,12 +347,20 @@ public class STMobileHumanActionNative {
      *
      * @return 成功返回阈值数值
      */
-    public native float getFaceActionThreshold(long faceAction);
+    public native float getFaceActionThreshold(long config);
 
     /**
      * HumanAction检测结果对应指针，detect检测结果会保存到其对应的结构体
      */
     private long nativeHumanActionResultPtr;
+    private long nativeHumanActionResultPtrCopy;
+
+    public native void nativeHumanActionPtrCopy();
+
+    public long getNativeHumanActionPtrCopy(){
+        return nativeHumanActionResultPtrCopy;
+    }
+
 
     /**
      * 获取HumanAction检测结果对应指针
@@ -384,6 +406,12 @@ public class STMobileHumanActionNative {
      * @param rotation      方向,例如STRotateType.ST_CLOCKWISE_ROTATE_0
      */
     public native void nativeHumanActionRotatePtr(int width, int height, int rotation, boolean rotateBackground);
+
+    /**
+     * 获取native humanaction 检测数据到java结构体
+     *
+     */
+    public native STHumanAction getNativeHumanAction();
 
 
 }

@@ -306,18 +306,18 @@ JNIEXPORT jobjectArray JNICALL Java_com_sensetime_stmobile_STMobileAnimalNative_
 
     jclass animal_face_cls = env->FindClass("com/sensetime/stmobile/model/STAnimalFace");
 
-    jobjectArray animalFaces = env->NewObjectArray(faceCount, animal_face_cls, 0);
+    jobjectArray oututAnimalFaces = env->NewObjectArray(faceCount, animal_face_cls, 0);
     for(int i = 0; i < faceCount; i++){
         jobject animalFace = env->AllocObject(animal_face_cls);
         animalFace = convert2AnimalFace(env, animal_face + i);
-        env->SetObjectArrayElement(animalFaces, i, animalFace);
+        env->SetObjectArrayElement(oututAnimalFaces, i, animalFace);
         env->DeleteLocalRef(animalFace);
     }
     env->DeleteLocalRef(animal_face_cls);
 
     releaseAnimal(animal_face, faceCount);
 
-    return animalfaces;
+    return oututAnimalFaces;
 }
 
 

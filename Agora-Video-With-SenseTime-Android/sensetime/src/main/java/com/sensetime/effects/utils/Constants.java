@@ -1,7 +1,7 @@
 package com.sensetime.effects.utils;
 
 import com.sensetime.stmobile.STBeautyParamsType;
-import com.sensetime.stmobile.model.STMobileType;
+import com.sensetime.stmobile.model.STMobileMakeupType;
 
 public class Constants {
     public static final int[] beautyTypes = {
@@ -60,13 +60,13 @@ public class Constants {
     public final static int ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 24;
     public final static int ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 25;
 
-    public static final int ST_MAKEUP_LIP = STMobileType.ST_MAKEUP_TYPE_LIP;
-    public static final int ST_MAKEUP_HIGHLIGHT = STMobileType.ST_MAKEUP_TYPE_HIGHLIGHT;
-    public static final int ST_MAKEUP_BLUSH = STMobileType.ST_MAKEUP_TYPE_BLUSH;
-    public static final int ST_MAKEUP_BROW = STMobileType.ST_MAKEUP_TYPE_BROW;
-    public static final int ST_MAKEUP_EYE = STMobileType.ST_MAKEUP_TYPE_EYE;
-    public static final int ST_MAKEUP_EYELINER = STMobileType.ST_MAKEUP_TYPE_EYELINER;
-    public static final int ST_MAKEUP_EYELASH = STMobileType.ST_MAKEUP_TYPE_EYELASH;
+    public static final int ST_MAKEUP_LIP = STMobileMakeupType.ST_MAKEUP_TYPE_LIP;
+    public static final int ST_MAKEUP_HIGHLIGHT = STMobileMakeupType.ST_MAKEUP_TYPE_HIGHLIGHT;
+    public static final int ST_MAKEUP_BLUSH = STMobileMakeupType.ST_MAKEUP_TYPE_BLUSH;
+    public static final int ST_MAKEUP_BROW = STMobileMakeupType.ST_MAKEUP_TYPE_BROW;
+    public static final int ST_MAKEUP_EYE = STMobileMakeupType.ST_MAKEUP_TYPE_EYE;
+    public static final int ST_MAKEUP_EYELINER = STMobileMakeupType.ST_MAKEUP_TYPE_EYELINER;
+    public static final int ST_MAKEUP_EYELASH = STMobileMakeupType.ST_MAKEUP_TYPE_EYELASH;
 
     public static final String ST_MAKEUP_LIP_NAME = "makeup_lip";
     public static final String ST_MAKEUP_HIGHLIGHT_NAME = "makeup_highlight";

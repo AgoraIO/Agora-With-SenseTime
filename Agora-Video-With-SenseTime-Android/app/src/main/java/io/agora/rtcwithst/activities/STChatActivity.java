@@ -34,8 +34,8 @@ import static com.sensetime.effects.utils.Constants.ST_MAKEUP_EYELINER_NAME;
 import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_ENLARGE_EYE_RATIO;
 import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_REDDEN_STRENGTH;
 import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_WHITEN_STRENGTH;
-import static com.sensetime.stmobile.model.STMobileType.ST_MAKEUP_TYPE_BLUSH;
-import static com.sensetime.stmobile.model.STMobileType.ST_MAKEUP_TYPE_BROW;
+import static com.sensetime.stmobile.model.STMobileMakeupType.ST_MAKEUP_TYPE_BLUSH;
+import static com.sensetime.stmobile.model.STMobileMakeupType.ST_MAKEUP_TYPE_BROW;
 
 public class STChatActivity extends RtcBasedActivity {
     private static final String TAG = STChatActivity.class.getSimpleName();
@@ -109,7 +109,7 @@ public class STChatActivity extends RtcBasedActivity {
     }
 
     private void setStickerItem(boolean selected) {
-        preprocessor.onStickerSelected(selected ? "newEngine" + File.separator + "maozi_uv_01.zip" : null);
+        preprocessor.onStickerSelected(selected ? "newEngine" + File.separator + "ceshilvjing.zip" : null);
     }
 
     private void setFilter(boolean selected) {
@@ -198,6 +198,11 @@ public class STChatActivity extends RtcBasedActivity {
                     // be stopped to reset the internal states.
                     mCameraVideoManager.stopCapture();
                 }
+            }
+
+            @Override
+            public void onCameraClosed() {
+                Log.i(TAG, "onCameraClosed!");
             }
         });
 

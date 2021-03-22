@@ -47,6 +47,11 @@ jobject getEventObjInSticker(JNIEnv* env)
         return NULL;
     }
     jfieldID fieldId = env->GetFieldID(cls, "mStickerEvent", "Lcom/sensetime/stmobile/STStickerEvent;");
+
+    if(!gStickerObject){
+        LOGE("JNI OnLoad: gStickerObject is null");
+        return NULL;
+    }
     jobject obj = env->GetObjectField(gStickerObject, fieldId);
 
     env->DeleteLocalRef(cls);

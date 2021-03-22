@@ -24,9 +24,9 @@ JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNa
     LOGI("-->> 111generateActiveCode: start genrate active code");
 //    const char *targetProductName = env->GetStringUTFChars(productName, 0);
     const char *targetLicensePath = env->GetStringUTFChars(licensePath, 0);
-    char * activationCode = new char[1024];
-    memset(activationCode, 0, 1024);
-    int len = 1024;
+    char * activationCode = new char[10240];
+    memset(activationCode, 0, 10240);
+    int len = 10240;
     //	jint *len = (jint*) (env->GetPrimitiveArrayCritical(activeCodeLen, 0));
     LOGI("-->> targetLicensePath=%x, targetActivationCode=%x, activeCodeLen=%x", targetLicensePath, activationCode, len);
     int res = st_mobile_generate_activecode(env, context, targetLicensePath, activationCode, &len);
@@ -41,7 +41,7 @@ JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNa
 }
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNative_checkActiveCode(JNIEnv * env, jobject obj, jobject context, jstring licensePath, jstring activationCode, jint codeSize) {
-    if(codeSize>1023) {
+    if(codeSize>10239) {
         LOGE("checkActiveCode too long");
         return ST_JNI_ERROR_ACTIVE_CODE;
     }
@@ -60,9 +60,9 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNativ
 JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNative_generateActiveCodeFromBuffer(JNIEnv * env, jobject obj, jobject context, jstring licenseBuffer, jint licenseSize) {
     LOGI("-->> 222generateActiveCodeFromBuffer: start genrate active code");
     const char *targetLicenseBuffer = env->GetStringUTFChars(licenseBuffer, 0);
-    char * activationCode = new char[1024];
-    memset(activationCode, 0, 1024);
-    int len = 1024;
+    char * activationCode = new char[10240];
+    memset(activationCode, 0, 10240);
+    int len = 10240;
     int res = st_mobile_generate_activecode_from_buffer(env, context, targetLicenseBuffer, licenseSize, activationCode, &len);
     LOGI("-->> targetLicenseBuffer=%s, license_size=%d, targetActivationCode=%s",targetLicenseBuffer, licenseSize, activationCode);
     LOGI("-->> generateActiveCode: res=%d",res);
@@ -74,7 +74,7 @@ JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNa
 }
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNative_checkActiveCodeFromBuffer(JNIEnv * env, jobject obj, jobject context, jstring licenseBuffer, jint licenseSize, jstring activationCode, jint codeSize) {
-    if(codeSize>1023) {
+    if(codeSize>10239) {
         LOGE("checkActiveCode too long");
        return ST_JNI_ERROR_ACTIVE_CODE;
     }
@@ -83,8 +83,8 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNativ
     const char *targetLicenseBuffer = env->GetStringUTFChars(licenseBuffer, 0);
     const char *targetActiveCode = env->GetStringUTFChars(activationCode, 0);
 
-    char * activationCodeString = new char[1024];
-    memset(activationCodeString, 0, 1024);
+    char * activationCodeString = new char[10240];
+    memset(activationCodeString, 0, 10240);
     memcpy(activationCodeString,targetActiveCode, codeSize);
 
 //    int license_size = licenseSize;
@@ -101,9 +101,9 @@ JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNa
     LOGI("-->> 111generateActiveCode: start genrate active code");
 //    const char *targetProductName = env->GetStringUTFChars(productName, 0);
     const char *targetLicensePath = env->GetStringUTFChars(licensePath, 0);
-    char * activationCode = new char[1024];
-    memset(activationCode, 0, 1024);
-    int len = 1024;
+    char * activationCode = new char[10240];
+    memset(activationCode, 0, 10240);
+    int len = 10240;
     //	jint *len = (jint*) (env->GetPrimitiveArrayCritical(activeCodeLen, 0));
     LOGI("-->> targetLicensePath=%x, targetActivationCode=%x, activeCodeLen=%x", targetLicensePath, activationCode, len);
     int res = st_mobile_generate_activecode_online(env, context, targetLicensePath, activationCode, &len);
@@ -120,9 +120,9 @@ JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNa
 JNIEXPORT jstring JNICALL Java_com_sensetime_stmobile_STMobileAuthentificationNative_generateActiveCodeFromBufferOnline(JNIEnv * env, jobject obj, jobject context, jstring licenseBuffer, jint licenseSize) {
     LOGI("-->> 222generateActiveCodeFromBuffer: start genrate active code");
     const char *targetLicenseBuffer = env->GetStringUTFChars(licenseBuffer, 0);
-    char * activationCode = new char[1024];
-    memset(activationCode, 0, 1024);
-    int len = 1024;
+    char * activationCode = new char[10240];
+    memset(activationCode, 0, 10240);
+    int len = 10240;
     int res = st_mobile_generate_activecode_from_buffer_online(env, context, targetLicenseBuffer, licenseSize, activationCode, &len);
     LOGE("-->> targetLicenseBuffer=%s, license_size=%d, targetActivationCode=%s",targetLicenseBuffer, licenseSize, activationCode);
     LOGE("-->> generateActiveCode: res=%d",res);

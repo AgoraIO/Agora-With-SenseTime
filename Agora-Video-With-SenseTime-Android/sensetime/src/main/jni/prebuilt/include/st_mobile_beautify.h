@@ -34,7 +34,8 @@ typedef enum {
     ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光，注意，此功能只用于图片处理，预览或视频处理均设为0.0
 	ST_BEAUTIFY_NARROW_FACE_STRENGTH = 11,  /// 窄脸强度, [0,1.0], 默认值0.0, 0.0不做窄脸
     ST_BEAUTIFY_ROUND_EYE_RATIO = 12,       /// 圆眼比例, [0,1.0], 默认值0.0, 0.0不做圆眼
-    ST_BEAUTIFY_SHARPEN_STRENGTH = 14,      /// 锐化强度，[0, 1.0], 默认值0.0， 0.0不做锐化
+    ST_BEAUTIFY_SHARPEN_STRENGTH = 14,      /// 锐化强度, [0, 1.0], 默认值0.0, 0.0不做锐化
+    ST_BEAUTIFY_THINNER_HEAD_RATIO = 15,     /// 小头比例, [0, 1.0], 默认值0.0, 0.0不做小头效果
 
     ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,              /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
     ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,              /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
@@ -52,6 +53,7 @@ typedef enum {
     ST_BEAUTIFY_3D_REMOVE_NASOLABIAL_FOLDS_RATIO = 33,  /// 去法令纹比例，[0, 1.0]，默认值为0.0，0.0不做去法令纹
     ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 34,              /// 白牙比例，[0, 1.0]，默认值为0.0，0.0不做白牙
     ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 35,              /// 苹果肌比例，[0, 1.0]，默认值为0.0，0.0不做苹果肌
+    ST_BEAUTIFY_3D_OPEN_EXTERNAL_CANTHUS_RATIO = 36,    /// 开外眼角比例，[0, 1.0]，默认值为0.0， 0.0不做开外眼角
     ST_BEAUTIFY_SHRINK_CHEEKBONE_RATIO = 13,            /// 瘦颧骨比例， [0, 1.0], 默认值0.0， 0.0不做瘦颧骨
 } st_beautify_type;
 
@@ -65,6 +67,16 @@ st_mobile_beautify_setparam(
     st_handle_t handle,
     st_beautify_type type,
     float value
+);
+
+/// @brief 获取当前打开的美颜功能需要的检测配置选项
+/// @param[in] handle 已初始化的美化句柄
+/// @param[out] detect_config 返回检测配置选项, 每一位分别代表该位对应检测选项, 对应状态详见st_mobile_human_action.h中, 如ST_MOBILE_FACE_DETECT等
+/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_beautify_get_detect_config(
+    st_handle_t handle,
+    unsigned long long *detect_config
 );
 
 /// @brief 对图像buffer做美化处理, 需要在OpenGL环境中调用
