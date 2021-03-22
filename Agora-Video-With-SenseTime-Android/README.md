@@ -27,7 +27,7 @@ There are two ways to add Agora Video SDK to the project:
 
 **The first method** will download Agora Video SDK automatically from JCenter when the project is building. Add the following line to "app/build.gradle" (which is default in the project):
 ```
-implementation 'io.agora.rtc:full-sdk:2.9.2'
+implementation 'io.agora.rtc:full-sdk:3.3.1'
 ```
 
 **The second method** needs developers to download SDK and copy the unzipped library files to proper project folders (acquires knowledge of the project structure):
@@ -59,7 +59,7 @@ Other native code and JNI interfaces are all in the jni folder. If you have prob
 #### 1.2.2 SenseTime Resources
 
 Copy all resource files to **"app/src/main/assets"** from the download link.
-
+Note: Current version is aligned with SenseAR SDK 7.5 version. And sample has assign some default filter and stickers. If these resources are not available on your SDK, you may need to replace them with yours.
 
 #### 1.2.3 SenseTime Licence
 
