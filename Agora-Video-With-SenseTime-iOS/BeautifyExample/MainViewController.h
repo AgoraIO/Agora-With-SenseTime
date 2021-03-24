@@ -1,13 +1,17 @@
 //
 //  MainViewController.h
-//  Agora-With-SenseTime
+//  BeautifyExample
 //
-//  Created by SRS on 2019/11/11.
-//  Copyright © 2019 agora. All rights reserved.
+//  Created by support on 2020/9/16.
+//  Copyright © 2020 Agora. All rights reserved.
 //
+
 #import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

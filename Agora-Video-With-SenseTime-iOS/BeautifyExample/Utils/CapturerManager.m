@@ -12,7 +12,6 @@
 
 @interface CapturerManager ()
 @property (nonatomic, strong) AGMCameraCapturer *cameraCapturer;
-@property (nonatomic, strong) AGMVideoAdapterFilter *videoAdapterFilter;
 @property (nonatomic, strong) AGMCapturerVideoConfig *videoConfig;
 @property (nonatomic, weak) id<CapturerManagerDelegate> delegate;
 @end
@@ -22,48 +21,42 @@
 
 - (void)initCapturer {
     self.cameraCapturer = [[AGMCameraCapturer alloc] initWithConfig:self.videoConfig];
-    self.videoAdapterFilter = [[AGMVideoAdapterFilter alloc] init];
-    self.videoAdapterFilter.ignoreAspectRatio = YES;
-    [self.cameraCapturer addVideoSink:self.videoAdapterFilter];
-    __weak typeof(self) weakSelf = self;
-    [self.videoAdapterFilter setFrameProcessingCompletionBlock:^(AGMVideoSource * _Nonnull videoSource, CMTime time) {
-        CVPixelBufferRef pixelBuffer = videoSource.framebufferForOutput.pixelBuffer;
-        [weakSelf didOutputPixelBuffer:pixelBuffer frameTime:time];
-    }];
+    self.cameraCapturer.delegate = self;
 }
 
 - (void)didOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer frameTime:(CMTime)time {
-    if ([self.delegate respondsToSelector:@selector(processFrame:frameTime:)]) {
-        CVPixelBufferRef outputPixelBuffer = [self.delegate processFrame:pixelBuffer frameTime:time];
+    if ([self.delegate respondsToSelector:@selector(processFrame:)]) {
+        CVPixelBufferRef outputPixelBuffer = [self.delegate processFrame:pixelBuffer];
         if (!outputPixelBuffer) return;
         [self.consumer consumePixelBuffer:outputPixelBuffer withTimestamp:time rotation:AgoraVideoRotationNone];
     }
 }
 
-- (void)applicationDidChangeStatusBar {
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    [self updateOrientation:orientation];
-}
-
-- (void)updateOrientation:(UIInterfaceOrientation)orientation {
-    CGAffineTransform rotation = CGAffineTransformMakeRotation(CM_DEGREES_TO_RADIANS(90));
-    switch (orientation) {
-        case UIInterfaceOrientationPortrait:
-            rotation = CGAffineTransformMakeRotation(CM_DEGREES_TO_RADIANS(90));
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            break;
-        case UIInterfaceOrientationLandscapeLeft:
-            rotation = CGAffineTransformMakeRotation(CM_DEGREES_TO_RADIANS(180));
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            rotation = CGAffineTransformMakeRotation(CM_DEGREES_TO_RADIANS(0));
-            break;
-
-        default:
-            break;
+- (void)didOutputVideoFrame:(id<AGMVideoFrame>)frame {
+    if ([frame isKindOfClass:AGMCVPixelBuffer.class]) {
+        if ([self.delegate respondsToSelector:@selector(processFrame:)]) {
+            AGMCVPixelBuffer *agmPixelBuffer = frame;
+            CVPixelBufferRef outputPixelBuffer = [self.delegate processFrame:agmPixelBuffer.pixelBuffer];
+            if (!outputPixelBuffer) return;
+            [self.consumer consumePixelBuffer:outputPixelBuffer withTimestamp:CMTimeMake(CACurrentMediaTime() * 1000, 1000) rotation:AgoraVideoRotationNone];
+            if (self.videoView) {
+                AGMCVPixelBuffer *newPixelBuffer = [[AGMCVPixelBuffer alloc] initWithPixelBuffer:outputPixelBuffer];
+                [newPixelBuffer setParamWithWidth:agmPixelBuffer.width height:agmPixelBuffer.height rotation:agmPixelBuffer.rotation timeStampMs:agmPixelBuffer.timeStampMs];
+                [self.videoView renderFrame:newPixelBuffer];
+            }
+        }
+    } else if ([frame isKindOfClass:AGMNV12Texture.class]) {
+        AGMNV12Texture *nv12Texture = frame;
+        CVPixelBufferRef outputPixelBuffer = [self.delegate processFrame:nv12Texture.pixelBuffer];
+        if (!outputPixelBuffer) return;
+        [self.consumer consumePixelBuffer:outputPixelBuffer withTimestamp:CMTimeMake(1, (int32_t)frame.timeStampMs) rotation:AgoraVideoRotationNone];
+        if (self.videoView) {
+            AGMNV12Texture *newTexture = [[AGMNV12Texture alloc] init];
+            [newTexture uploadPixelBufferToTextures:outputPixelBuffer];
+            [newTexture setParamWithWidth:nv12Texture.width height:nv12Texture.height rotation:nv12Texture.rotation timeStampMs:nv12Texture.timeStampMs];
+            [self.videoView renderFrame:nv12Texture];
+        }
     }
-    self.videoAdapterFilter.affineTransform = rotation;
 }
 
 #pragma mark Public
@@ -73,11 +66,6 @@
         self.videoConfig = config;
         self.delegate = delegate;
         [self initCapturer];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBar) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-           UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-            [self updateOrientation:orientation];
-        });
     }
     return self;
 }
@@ -115,8 +103,8 @@
     
 }
 
-- (AgoraVideoCaptureType)captureType{
 
+- (AgoraVideoCaptureType)captureType {
     return AgoraVideoCaptureTypeCamera;
 }
 

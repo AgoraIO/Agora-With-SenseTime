@@ -1,42 +1,64 @@
 //
 //  MainViewController.m
-//  Agora-With-SenseTime
+//  BeautifyExample
 //
-//  Created by SRS on 2019/11/11.
-//  Copyright © 2019 agora. All rights reserved.
+//  Created by support on 2020/9/16.
+//  Copyright © 2020 Agora. All rights reserved.
 //
 
 #import "MainViewController.h"
+
 #import "ViewController.h"
-#import <AgoraRtcKit/AgoraRtcEngineKit.h>
-#import "KeyCenter.h"
+
 
 @interface MainViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *channelNameTF;
 
-@property (strong, nonatomic) AgoraRtcEngineKit *agoraKit;
+
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self onClickJoin:nil];
-    self.agoraKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter agoraAppId] delegate: nil];
+
+//    self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
-- (IBAction)onClickJoin:(id)sender {
-    if(self.channelNameTF.text == nil || self.channelNameTF.text.length == 0){
+/// 输入房间号开始跳转
+
+- (IBAction)joinBtnClick:(UIButton *)sender {
+    
+    if (self.channelNameTF.text.length <= 0) {
+        
+        NSLog(@"请先输入房间号");
         return;
     }
     
-    ViewController *vc = [ViewController new];
-    vc.channelName = self.channelNameTF.text;
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:vc  animated:YES completion:nil];
 }
 
 
-@end
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSString *segueid = segue.identifier;
+    
+    if ([segueid isEqualToString: @"showRoom"]) {
+        if (self.channelNameTF.text == nil) {
+            return;
+        }
+        ViewController *roomVC = segue.destinationViewController;
+        roomVC.channelName = self.channelNameTF.text;
+    }
+}
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+    [self.channelNameTF resignFirstResponder];
+    
+}
+
+
+
+@end
