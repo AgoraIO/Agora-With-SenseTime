@@ -38,17 +38,17 @@ public class FileUtils {
     private static final int DEFAULT_BUFFER_SIZE = 256;
     private static final byte[] DEFAULT_READ_BUFFER = new byte[256];
 
-    public static final String MODEL_NAME_ACTION = "M_SenseME_Face_Video_5.3.3.model";
+    public static final String MODEL_NAME_ACTION = "M_SenseME_Face_Video_7.0.0.model";
     public static final String MODEL_NAME_FACE_ATTRIBUTE = "M_SenseME_Attribute_1.0.1.model";
     public static final String MODEL_NAME_EYEBALL_CENTER = "M_Eyeball_Center.model";
     public static final String MODEL_NAME_EYEBALL_CONTOUR = "M_SenseME_Iris_2.0.0.model";
-    public static final String MODEL_NAME_FACE_EXTRA = "M_SenseME_Face_Extra_5.22.0.model";
+    public static final String MODEL_NAME_FACE_EXTRA = "M_SenseME_Face_Extra_5.23.4.model";
     public static final String MODEL_NAME_HAND = "M_SenseME_Hand_5.4.0.model";
-    public static final String MODEL_NAME_SEGMENT = "M_SenseME_Segment_1.5.0.model";
+    public static final String MODEL_NAME_SEGMENT = "M_SenseME_Segment_4.10.8.model";
     public static final String MODEL_NAME_BODY_FOURTEEN = "M_SenseME_Body_Fourteen_1.2.0.model";
     public static final String MODEL_NAME_AVATAR_CORE = "M_SenseME_Avatar_Core_2.0.0.model";
-    public static final String MODEL_NAME_CATFACE_CORE = "M_SenseME_CatFace_2.0.0.model";
-    public static final String MODEL_NAME_AVATAR_HELP = "M_SenseME_Avatar_Help_2.0.0.model";
+    public static final String MODEL_NAME_CATFACE_CORE = "M_SenseME_CatFace_3.0.0.model";
+    public static final String MODEL_NAME_AVATAR_HELP = "M_SenseME_Avatar_Help_2.2.0.model";
     public static final String MODEL_NAME_TONGUE = "M_Align_DeepFace_Tongue_1.0.0.model";
 
     public static String getActionModelName() {

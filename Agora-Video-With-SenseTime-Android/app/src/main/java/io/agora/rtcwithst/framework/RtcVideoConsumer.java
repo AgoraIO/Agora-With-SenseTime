@@ -3,6 +3,7 @@ package io.agora.rtcwithst.framework;
 import android.opengl.GLES20;
 import android.util.Log;
 
+import io.agora.capture.framework.modules.channels.ChannelManager;
 import io.agora.capture.framework.modules.channels.VideoChannel;
 import io.agora.capture.framework.modules.consumers.IVideoConsumer;
 import io.agora.capture.video.camera.VideoCaptureFrame;
@@ -19,6 +20,8 @@ import io.agora.rtc.video.AgoraVideoFrame;
  * of rtc engine.
  */
 public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
+    private static final String TAG = RtcVideoConsumer.class.getSimpleName();
+
     private volatile IVideoFrameConsumer mRtcConsumer;
     private volatile boolean mValidInRtc;
 
@@ -26,22 +29,27 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     private VideoChannel mVideoChannel;
     private int mChannelId;
 
-    public RtcVideoConsumer(VideoModule videoModule, int channelId) {
-        mVideoModule = videoModule;
+
+    public RtcVideoConsumer() {
+        this(ChannelManager.ChannelID.CAMERA);
+    }
+
+    private RtcVideoConsumer(int channelId) {
+        mVideoModule = VideoModule.instance();
         mChannelId = channelId;
     }
 
     @Override
     public void onConsumeFrame(VideoCaptureFrame frame, VideoChannel.ChannelContext context) {
-        if (mRtcConsumer != null && mValidInRtc) {
+        if (mValidInRtc) {
             int format = frame.format.getTexFormat() == GLES20.GL_TEXTURE_2D
                     ? AgoraVideoFrame.FORMAT_TEXTURE_2D
                     : AgoraVideoFrame.FORMAT_TEXTURE_OES;
-
-            mRtcConsumer.consumeTextureFrame(frame.textureId,
-                    format, frame.format.getWidth(),
-                    frame.format.getHeight(), frame.rotation,
-                    frame.timestamp, frame.textureTransform);
+            if (mRtcConsumer != null) {
+                mRtcConsumer.consumeTextureFrame(frame.textureId, format,
+                        frame.format.getWidth(), frame.format.getHeight(),
+                        frame.rotation, frame.timestamp, frame.textureTransform);
+            }
         }
     }
 
@@ -119,5 +127,15 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     @Override
     public int getBufferType() {
         return MediaIO.BufferType.TEXTURE.intValue();
+    }
+
+    @Override
+    public int getCaptureType() {
+        return MediaIO.CaptureType.CAMERA.intValue();
+    }
+
+    @Override
+    public int getContentHint() {
+        return MediaIO.ContentHint.NONE.intValue();
     }
 }

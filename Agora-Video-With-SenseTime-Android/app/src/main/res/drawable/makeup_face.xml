@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_activated="true" android:drawable="@drawable/makeup_face_selected"/>
-    <item android:drawable="@drawable/makeup_face_unselected"/>
-</selector>

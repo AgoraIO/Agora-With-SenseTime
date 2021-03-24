@@ -1,6 +1,10 @@
 package com.sensetime.stmobile;
 
+/**
+ * 定义美颜支持的图片格式
+ */
 public class STCommon {
+
     static {
         System.loadLibrary("st_mobile");
         System.loadLibrary("stmobile_jni");

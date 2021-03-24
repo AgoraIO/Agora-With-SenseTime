@@ -105,6 +105,10 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
 
     @Override
     public void onFilterSelected(String filterPath, float strength) {
+
+        if (filterPath == null || filterPath.isEmpty()) {
+            return;
+        }
         if (mSTRenderer != null) {
             mSTRenderer.setFilterStyle(filterPath, strength);
         }

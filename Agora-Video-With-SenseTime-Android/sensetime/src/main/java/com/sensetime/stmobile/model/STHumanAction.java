@@ -2,6 +2,17 @@ package com.sensetime.stmobile.model;
 
 import android.hardware.Camera;
 
+import com.sensetime.stmobile.STMobileHumanActionNative;
+import com.sensetime.stmobile.STRotateType;
+import com.sensetime.stmobile.model.STImage;
+import com.sensetime.stmobile.model.STMobile106;
+import com.sensetime.stmobile.model.STMobileFaceInfo;
+import com.sensetime.stmobile.model.STMobileHandInfo;
+
+/**
+ * 人脸信息定义（包括人脸信息及人脸行为），
+ * 作为STMobileHumanActionNative.humanActionDetect的返回值
+ */
 public class STHumanAction {
     public int bufIndex;             ///< 对应的图像数据缓冲区索引，用于双缓冲渲染时使用
 
@@ -11,14 +22,15 @@ public class STHumanAction {
     public STMobileHandInfo[] hands; ///< 检测到的手的信息
     public int handCount;            ///< 检测到的手的数目 (目前仅支持检测一只手)
 
-    public STImage image;            ///< 前后背景分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
-    public float backGroundScore;    ///< 置信度
+    public STSegment image;            ///< 前后背景分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
 
-    public STImage hair;             ///< 头发分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
-    public float hairScore;          ///< 置信度
+    public STSegment hair;             ///< 头发分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
+    public STSegment skin;             ///< 皮肤分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
+    public STSegment head;             ///< 头部分割图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
+    public STSegment[] mouthParses;
+    public int mouthParseCount;
 
-    public STImage multiSegment; ///多类分割结果图片信息,背景0，手1，头发2，眼镜3，躯干4，上臂5，下臂6，大腿7，小腿8，脚9，帽子10，随身物品11，脸12，上衣13，下装14，输出图像大小可以调节
-    public float multiSegmentScore;   ///多类分割置信度
+    public STSegment multiSegment; ///多类分割结果图片信息,背景0，手1，头发2，眼镜3，躯干4，上臂5，下臂6，大腿7，小腿8，脚9，帽子10，随身物品11，脸12，上衣13，下装14，输出图像大小可以调节
 
     public STMobileBodyInfo[] bodys; ///< 检测到的人体信息
     public int bodyCount;            ///< 检测到的人体的数目
@@ -64,12 +76,26 @@ public class STHumanAction {
         return hands;
     }
 
-    public STImage getImage(){
+    public STSegment getImage(){
         return image;
     }
 
-    public STImage getHair(){
+    public STSegment getHair(){
         return hair;
+    }
+    public STSegment getSkin(){
+        return skin;
+    }
+    public STSegment getHead(){
+        return head;
+    }
+
+    public STSegment[] getMouthParses(){
+        return mouthParses;
+    }
+
+    public int getMouthParseCount(){
+        return mouthParseCount;
     }
 
     /**
@@ -109,34 +135,80 @@ public class STHumanAction {
      * @param height       图像高度
      * @param cameraId     摄像头ID
      * @param cameraOrientation  摄像头方向
+     * @param deviceOrientation  设备方向
      * @return  旋转或镜像后的HumanAction
      */
-    public static STHumanAction humanActionRotateAndMirror(STHumanAction humanAction, int width, int height, int cameraId, int cameraOrientation){
-        if (humanAction == null) {
+    public static STHumanAction humanActionRotateAndMirror(STHumanAction humanAction, int width, int height, int cameraId, int cameraOrientation, int deviceOrientation){
+        if(humanAction == null){
             return null;
         }
-
-        if (cameraId != Camera.CameraInfo.CAMERA_FACING_FRONT && cameraId != Camera.CameraInfo.CAMERA_FACING_BACK) {
+        if(cameraId != Camera.CameraInfo.CAMERA_FACING_FRONT && cameraId != Camera.CameraInfo.CAMERA_FACING_BACK){
             return humanAction;
         }
 
-        switch (cameraOrientation) {
+        //flip
+        if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT && (deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_0 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_180)){
+            if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT){
+                humanAction = humanActionMirror(height, humanAction);
+            }
+        }
+
+        //前置摄像头一般是270，后置是90
+        switch (cameraOrientation){
             case 90:
                 humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_90, false, humanAction);
                 break;
-            case 0:
-            case 180:
             case 270:
-                humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false, humanAction);
+                if(deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_0 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_180){
+                    humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_90, false, humanAction);
+                }else {
+                    humanAction = humanActionRotate(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false, humanAction);
+                }
                 break;
             default:
                 return humanAction;
         }
 
-        if (cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+        //mirror
+        if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT && (deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_90 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_270)){
             humanAction = humanActionMirror(width, humanAction);
         }
 
         return humanAction;
+    }
+
+    public static void nativeHumanActionRotateAndMirror(STMobileHumanActionNative humanActionHandle, long humanAction, int width, int height, int cameraId, int cameraOrientation, int deviceOrientation){
+
+        if(cameraId != Camera.CameraInfo.CAMERA_FACING_FRONT && cameraId != Camera.CameraInfo.CAMERA_FACING_BACK){
+            return;
+        }
+
+        //flip
+        if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT && (deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_0 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_180)){
+            if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT){
+                humanActionHandle.nativeHumanActionMirrorPtr(height);
+            }
+        }
+
+        //前置摄像头一般是270，后置是90
+        switch (cameraOrientation){
+            case 90:
+                humanActionHandle.nativeHumanActionRotatePtr(height, width, STRotateType.ST_CLOCKWISE_ROTATE_90, false);
+                break;
+            case 270:
+                if(deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_0 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_180){
+                    humanActionHandle.nativeHumanActionRotatePtr(height, width, STRotateType.ST_CLOCKWISE_ROTATE_90, false);
+                }else {
+                    humanActionHandle.nativeHumanActionRotatePtr(height, width, STRotateType.ST_CLOCKWISE_ROTATE_270, false);
+                }
+                break;
+            default:
+                return;
+        }
+
+        //mirror
+        if(cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT && (deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_90 || deviceOrientation == STRotateType.ST_CLOCKWISE_ROTATE_270)){
+            humanActionHandle.nativeHumanActionMirrorPtr(width);
+        }
     }
 }

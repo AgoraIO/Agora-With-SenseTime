@@ -1,70 +1,81 @@
 package io.agora.rtcwithst.activities;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import io.agora.rtcwithst.Constant;
-import io.agora.rtcwithst.R;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-public class MainActivity extends BaseActivity implements TextWatcher {
-    private EditText mChannelNameEdit;
-    private Button mStartBroadcast;
+import io.agora.rtcwithst.R;
+import io.agora.rtcwithst.utils.Constant;
+
+public class MainActivity extends Activity {
+    private static final int REQUEST_CODE_ALL_PERMISSIONS = 999;
+    private EditText mChannelName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUI();
+        setContentView(R.layout.activity_navigation);
+        mChannelName = findViewById(R.id.edt_channel);
+        checkPermissions();
     }
 
-    private void initUI() {
-        setContentView(R.layout.activity_main);
-        mChannelNameEdit = findViewById(R.id.edit_channel_name);
-        mChannelNameEdit.addTextChangedListener(this);
-        mStartBroadcast = findViewById(R.id.start_broadcast_btn);
-        mStartBroadcast.setEnabled(!mChannelNameEdit.getText().toString().isEmpty());
-    }
-
-    @Override
-    protected void onPermissionsGranted() {
-        String channelName = mChannelNameEdit.getText().toString();
-        if (!channelName.isEmpty()) {
-            Intent intent = new Intent(this, LiveActivity.class);
-            intent.putExtra(Constant.ACTION_KEY_ROOM_NAME, channelName);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, R.string.empty_channel_name,
-                    Toast.LENGTH_SHORT).show();
+    private void checkPermissions() {
+        if (!permissionsGranted()) {
+            requestPermissions();
         }
     }
 
+    private boolean permissionsGranted() {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(this,
+                new String[] { Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.RECORD_AUDIO },
+                REQUEST_CODE_ALL_PERMISSIONS);
+    }
+
     @Override
-    protected void onPermissionsFailed() {
-        Toast.makeText(this, R.string.need_permissions,
-                Toast.LENGTH_SHORT).show();
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        boolean granted = true;
+        if (requestCode == REQUEST_CODE_ALL_PERMISSIONS) {
+            for (int result : grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    granted = false;
+                    break;
+                }
+            }
+
+            if (!granted) {
+                requestPermissions();
+                Toast.makeText(this, getString(R.string.msg_permission_granted),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public void onStartBroadcastClick(View view) {
-        checkPermission();
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        mStartBroadcast.setEnabled(!s.toString().isEmpty());
+        String name = mChannelName.getText().toString();
+        if (name.isEmpty()) {
+            Toast.makeText(this, R.string.empty_room_name_toast, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, STChatActivity.class);
+            intent.putExtra(Constant.ACTION_KEY_ROOM_NAME, name);
+            startActivity(intent);
+        }
     }
 }
