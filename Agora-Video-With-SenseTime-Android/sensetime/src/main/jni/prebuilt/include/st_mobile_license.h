@@ -6,7 +6,7 @@
 
 /// @brief 根据授权文件生成激活码, 在使用新的license文件时使用. Android建议使用st_mobile_generate_activecode_from_buffer
 /// @param[in] license_path license文件路径
-/// @param[out] activation_code 返回当前设备的激活码,由用户分配内存, 建议分配1024字节
+/// @param[out] activation_code 返回当前设备的激活码,由用户分配内存, 建议分配10240字节
 /// @param[in,out] activation_code_len 输入为active_code的内存大小, 返回当前设备的激活码字节长度（包含激活码字符串结束符'\0'）
 /// @return 正常返回ST_OK,否则返回错误类型
 ST_SDK_API st_result_t
@@ -31,11 +31,17 @@ st_mobile_check_activecode(
     const char* activation_code,
     int activation_code_len
 );
+/// @brief 检查进程中是否已包含相应的license 如果希望复用在其他动态库或静态库中加载的license, 必须使用这个接口
+/// @param[in] product_name 已在其他动态库或静态库中加载的license产品名称
+ST_SDK_API bool
+st_mobile_check_has_license(
+const char* product_name
+);
 
 /// @brief 根据授权文件缓存生成激活码, 在使用新的license文件时调用
 /// @param[in] license_buf license文件缓存地址
 /// @param[in] license_size license文件缓存大小
-/// @param[out] activation_code 返回当前设备的激活码, 由用户分配内存; 建议分配1024字节
+/// @param[out] activation_code 返回当前设备的激活码, 由用户分配内存; 建议分配10240字节
 /// @param[in, out] activation_code_len 输入为activation_code分配的内存大小, 返回生成的设备激活码的字节长度（包含激活码字符串结束符'\0'）
 /// @return 正常返回ST_OK, 否则返回错误类型
 ST_SDK_API st_result_t
@@ -66,7 +72,7 @@ st_mobile_check_activecode_from_buffer(
 
 /// @brief 根据授权文件在线生成激活码, 需要使用在线license和联网
 /// @param[in] license_path license文件路径
-/// @param[out] activation_code 返回当前设备的激活码,由用户分配内存, 建议分配1024字节
+/// @param[out] activation_code 返回当前设备的激活码,由用户分配内存, 建议分配10240字节
 /// @param[in,out] activation_code_len 输入为active_code的内存大小, 返回当前设备的激活码字节长度（包含激活码字符串结束符'\0'）
 /// @return 正常返回ST_OK,否则返回错误类型
 ST_SDK_API st_result_t
@@ -82,7 +88,7 @@ st_mobile_generate_activecode_online(
 /// @brief 根据授权文件buffer在线生成激活码, 需要使用在线license和联网
 /// @param[in] license_buf license文件缓存地址
 /// @param[in] license_size license文件缓存大小
-/// @param[out] activation_code 返回当前设备的激活码, 由用户分配内存; 建议分配1024字节
+/// @param[out] activation_code 返回当前设备的激活码, 由用户分配内存; 建议分配10240字节
 /// @param[in, out] activation_code_len 输入为activation_code分配的内存大小, 返回生成的设备激活码的字节长度（包含激活码字符串结束符'\0'）
 /// @return 正常返回ST_OK, 否则返回错误类型
 ST_SDK_API st_result_t

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Beauty Options -->
-    <color name="beauty_option_panel_background">#80000000</color>
-    <color name="beauty_option_selected_text_color">#bc47ff</color>
-    <color name="beauty_option_divider_color">#80efefef</color>
 
-    <!-- Filter Options -->
-    <color name="filter_item_image_cover_selected">#88000000</color>
-    
-    <!-- LiveActivity -->
-    <color name="light_gray">#55efefef</color>
+    <color name="faceUnityYellow">#ffcb15</color>
+    <color name="warmGrayColor">#857570</color>
+    <color name="brickRedColor">#971b10</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="percent15translucentBlack">#26000000</color>
+    <color name="percent30translucentBlack">#4D000000</color>
+    <color name="percent40translucentBlack">#66000000</color>
+    <color name="percent50translucentBlack">#80000000</color>
+    <color name="percent60translucentBlack">#99000000</color>
+    <color name="percent70translucentWhite">#00FFFFFF</color>
 </resources>

@@ -26,7 +26,7 @@ public class STMobileMakeupNative {
      *
      * @param type    制定素材包所属的type, 定义如st_makeup_type
      * @param typePath 素材包路径
-     * @return 成功返回packageId，错误返回-1
+     * @return 成功返回packageId，错误返回错误码，参考STCommon.ResultCode
      */
     public native int setMakeupForType(int type, String typePath);
 
@@ -45,7 +45,7 @@ public class STMobileMakeupNative {
      *
      * @param type    制定素材包所属的type, 定义如st_makeup_type
      * @param typePath 素材包路径
-     * @return 成功返回packageId，错误返回-1
+     * @return 成功返回packageId，错误返回错误码，参考STCommon.ResultCode
      */
     public native int addMakeupForType(int type, String typePath);
 
@@ -55,7 +55,7 @@ public class STMobileMakeupNative {
      * @param type    制定素材包所属的type, 定义如st_makeup_type
      * @param typePath 素材包路径
      * @param assetManager 资源文件管理器
-     * @return 成功返回packageId，错误返回-1
+     * @return 成功返回packageId，错误返回错误码，参考STCommon.ResultCode
      */
     public native int addMakeupForTypeFromAssetsFile(int type, String typePath, AssetManager assetManager);
 
@@ -150,4 +150,64 @@ public class STMobileMakeupNative {
      * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
      */
     public native int destroyInstance();
+
+    /**
+     * 设置性能/效果优先级倾向，引擎内部会根据设置调整渲染策略
+     * @param hint 性能/效果优先级，参看STPerformanceHintType
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int setPerformanceHint(int hint);
+
+    /**
+     * 美妆处理，运行在gl线程
+     *
+     * @param textureIn    输入纹理
+     * @param humanActionPtr  humanAction检测结果对应指针
+     * @param rotate       人脸在humanAction中的方向
+     * @param imageWidth   输入纹理宽度
+     * @param imageHeight  输入纹理高度
+     * @param textureOut   输出纹理
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureNative(int textureIn, long humanActionPtr, int rotate, int imageWidth, int imageHeight, int textureOut);
+
+    /**
+     * 美妆处理并输出buffer，运行在gl线程
+     *
+     * @param textureIn    输入纹理
+     * @param humanActionPtr  humanAction检测结果
+     * @param rotate       人脸在humanAction中的方向
+     * @param imageWidth   输入纹理宽度
+     * @param imageHeight  输入纹理高度
+     * @param textureOut   输出纹理
+     * @param outFmt       输出buffer格式
+     * @param imageOut     输出buffer数据
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int processTextureAndOutputBufferNative(int textureIn, long humanActionPtr, int rotate, int imageWidth, int imageHeight, int textureOut, int outFmt, byte[] imageOut);
+
+    /**
+     * 更新贴纸需要的Mask纹理, 必须在opengl环境中运行. 典型地, humanActionOld为美颜之前的检测结果, humanActionNew为美颜之后的检测结果
+     *
+     * @param humanActionOld    检测结果
+     * @param humanActionNew    变形之后的检测结果
+     * @param width             原始图像的宽
+     * @param height            原始图像的高
+     * @param orientation       人脸朝向
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int updateInternalMask(STHumanAction humanActionOld, STHumanAction humanActionNew, int width, int height, int orientation);
+
+    /**
+     * 更新贴纸需要的Mask纹理, 必须在opengl环境中运行. 典型地, humanActionOld为美颜之前的检测结果, humanActionNew为美颜之后的检测结果
+     *
+     * @param humanActionOld    检测结果
+     * @param humanActionNew    变形之后的检测结果
+     * @param width             原始图像的宽
+     * @param height            原始图像的高
+     * @param orientation       人脸朝向
+     * @return 成功返回0，错误返回其他，参考STCommon.ResultCode
+     */
+    public native int updateInternalMaskNative(long humanActionOld, long humanActionNew, int width, int height, int orientation);
+
 }

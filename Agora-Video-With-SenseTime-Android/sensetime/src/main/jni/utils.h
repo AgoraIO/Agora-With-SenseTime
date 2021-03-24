@@ -12,6 +12,7 @@
 #include <android/log.h>
 #include <string.h>
 #include <st_mobile_sticker_transition.h>
+#include <st_mobile_human_action.h>
 
 #define LOGGABLE 0
 
@@ -67,25 +68,31 @@ void convert2HumanAction(JNIEnv *env, const st_mobile_human_action_t *human_acti
 jobject convert2MobileFace106(JNIEnv *env, const st_mobile_106_t &mobile_106);
 jobject convert2FaceAttribute(JNIEnv *env, const st_mobile_attributes_t *faceAttribute);
 jobject convert2Image(JNIEnv *env, const st_image_t *image);
+jobject convert2Segment(JNIEnv *env, const st_mobile_segment_t *segment);
 jobject convert2HandInfo(JNIEnv *env, const st_mobile_hand_t *hand_info);
 jobject convert2FaceInfo(JNIEnv *env, const st_mobile_face_t *face_info);
 jobject convert2BodyInfo(JNIEnv *env, const st_mobile_body_t *body_info);
 jobject convert2ModuleInfo(JNIEnv *env, const st_module_info *module_info);
 jobject convert2AnimalFace(JNIEnv *env, const st_mobile_animal_face_t *animal_face);
+jobject convert2FaceExtraInfo(JNIEnv *env, const st_mobile_face_extra_info &face_extra_info);
+//jobject convert2MouthParse(JNIEnv *env, const st_mobile_mouth_parse_t *mouth_parse);
 
 // convert java object to c object
 bool convert2st_rect_t(JNIEnv *env, jobject rectObject, st_rect_t &rect);
 bool convert2HumanAction(JNIEnv *env, jobject humanActionObject, st_mobile_human_action_t *human_action);
 bool convert2mobile_106(JNIEnv *env, jobject face106, st_mobile_106_t &mobile_106);
 bool convert2Image(JNIEnv *env, jobject image, st_image_t *background);
+bool convert2Segment(JNIEnv *env, jobject segmentObj, st_mobile_segment_t *segment);
 bool convert2HandInfo(JNIEnv *env, jobject handInfoObject, st_mobile_hand_t *hand_info);
 bool convert2FaceInfo(JNIEnv *env, jobject faceInfoObject, st_mobile_face_t *face_info);
 bool convert2BodyInfo(JNIEnv *env, jobject bodyInfoObject, st_mobile_body_t *body_info);
+
 bool convert2Condition(JNIEnv *env, jobject conditionObject, st_condition &condition);
 bool convert2TransParam(JNIEnv *env, jobject paramObject, st_trans_param &param);
 bool convert2TriggerEvent(JNIEnv *env, jobject triggerEventObject, st_trigger_event &trigger_event);
 bool convert2StickerInputParams(JNIEnv *env, jobject eventObject, st_mobile_input_params &input_params);
 bool convert2AnimalFace(JNIEnv *env, jobject animalFace, st_mobile_animal_face_t *animal_face);
+bool convert2FaceExtraInfo(JNIEnv *env, jobject faceExtraInfoObject, st_mobile_face_extra_info *face_extra_info);
 
 //for release human_action
 void releaseHumanAction(st_mobile_human_action_t *human_action);

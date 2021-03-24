@@ -2,7 +2,13 @@ package com.sensetime.stmobile;
 
 import android.content.Context;
 
+/**
+ * Licence验证JNI定义
+ */
+
 public class STMobileAuthentificationNative {
+
+
     static {
         System.loadLibrary("st_mobile");
         System.loadLibrary("stmobile_jni");
@@ -68,4 +74,5 @@ public class STMobileAuthentificationNative {
      * @return 返回当前设备的激活码
      */
     public static native String generateActiveCodeFromBufferOnline(Context context, String licenseBuffer, int licenseSize);
+
 }

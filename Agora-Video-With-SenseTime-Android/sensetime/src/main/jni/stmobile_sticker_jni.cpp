@@ -41,9 +41,6 @@ extern "C" {
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setMaxMemory(JNIEnv * env, jobject obj, jint value);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setSoundPlayDone(JNIEnv *env, jobject obj, jstring name);
 //    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setMinInterval(JNIEnv * env, jobject obj, jfloat value);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_loadAvatarModel(JNIEnv * env, jobject obj, jstring modelpath);
-    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_loadAvatarModelFromAssetFile(JNIEnv * env, jobject obj, jstring model_path, jobject assetManager);
-    JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_removeAvatarModel(JNIEnv * env, jobject obj);
 
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_createModule(JNIEnv * env, jobject obj, jint moduleType, jint packageId, jint moudleId);
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_moveModuleToPackage(JNIEnv * env, jobject obj, jint packageId, jint moudleId);
@@ -60,7 +57,20 @@ extern "C" {
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setParamStr(JNIEnv * env, jobject obj, jint moduleId, jint paramType, jstring value);
 
     JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getParamInt(JNIEnv * env, jobject obj, jint moduleId, jint paramType);
-    JNIEXPORT jlong JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getNeededInputParams(JNIEnv * env, jobject obj);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getNeededInputParams(JNIEnv * env, jobject obj);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPerformanceHint(JNIEnv * env, jobject obj, jint hint);
+
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureNative(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                         jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight, jboolean needsMirroring, jobject inputParams, jint textureOut);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureAndOutputBufferNative(JNIEnv * env, jobject obj,
+                                jint textureIn, jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight, jboolean needsMirroring, jobject inputParams,
+                                jint textureOut, jint outFmt, jbyteArray imageOut);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureBothNative(JNIEnv * env, jobject obj, jint textureIn, jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight,
+                                    jboolean needsMirroring, jobject inputParams, jobjectArray animalFace, jint animalFaceCount, jint textureOut);
+
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_updateInternalMask(JNIEnv * env, jobject obj, jobject humanAction1, jobject humanAction2, jint width, jint height, jint orientation);
+    JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_updateInternalMaskNative(JNIEnv * env, jobject obj, jlong humanAction1, jlong humanAction2, jint width, jint height, jint orientation);
+
 };
 
 //void item_callback(const char* material_name, st_material_status statusCode) {
@@ -679,7 +689,7 @@ JNIEXPORT jlong JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getAni
     return 0;
 }
 
-JNIEXPORT jlong JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getNeededInputParams(JNIEnv * env, jobject obj)
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getNeededInputParams(JNIEnv * env, jobject obj)
 {
     st_handle_t stickerhandle = getStickerHandle(env, obj);
     if(stickerhandle != NULL)
@@ -756,117 +766,6 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setSoun
 //    return result;
 //}
 
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_loadAvatarModel(JNIEnv * env, jobject obj, jstring modelpath)
-{
-    st_handle_t stickerHandle = getStickerHandle(env, obj);
-    if(stickerHandle == NULL) {
-        LOGE("handle is null");
-        return ST_E_HANDLE;
-    }
-
-    if (modelpath == NULL) {
-        LOGE("model path is null");
-        return ST_JNI_ERROR_INVALIDARG;
-    }
-    const char *modelpathChars = env->GetStringUTFChars(modelpath, 0);
-    int result = st_mobile_sticker_load_avatar_model(stickerHandle, modelpathChars);
-
-    LOGE("load avatar model result: %d", result);
-    env->ReleaseStringUTFChars(modelpath, modelpathChars);
-    return result;
-}
-
-JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_loadAvatarModelFromAssetFile(JNIEnv * env, jobject obj, jstring model_path, jobject assetManager)
-{
-    st_handle_t stickerHandle = getStickerHandle(env, obj);
-    if(stickerHandle == NULL) {
-        LOGE("handle is null");
-        return ST_E_HANDLE;
-    }
-
-    if(NULL == model_path){
-        LOGE("model_file_name is null");
-        return ST_JNI_ERROR_INVALIDARG;
-    }
-
-    if(NULL == assetManager){
-        LOGE("assetManager is null");
-        return ST_JNI_ERROR_INVALIDARG;
-    }
-
-    const char* model_file_name_str = env->GetStringUTFChars(model_path, 0);
-    if(NULL == model_file_name_str) {
-        LOGE("change model_file_name to c_str failed");
-        return ST_JNI_ERROR_INVALIDARG;
-    }
-
-    AAssetManager* mgr = AAssetManager_fromJava(env, assetManager);
-    if(NULL == mgr) {
-        LOGE("native assetManager is null");
-        return ST_JNI_ERROR_INVALIDARG;
-    }
-
-    AAsset* asset = AAssetManager_open(mgr, model_file_name_str, AASSET_MODE_UNKNOWN);
-    env->ReleaseStringUTFChars(model_path, model_file_name_str);
-    if (NULL == asset) {
-        LOGE("open asset file failed");
-        return ST_JNI_ERROR_FILE_OPEN_FIALED;
-    }
-
-    unsigned char* buffer = NULL;
-    long size = 0;
-    size = AAsset_getLength(asset);
-    buffer = new unsigned char[size];
-    memset(buffer, '\0', size);
-
-    long readSize = AAsset_read(asset, buffer, size);
-    if (readSize != size) {
-        AAsset_close(asset);
-        if(buffer){
-            delete[] buffer;
-            buffer = NULL;
-        }
-        return ST_JNI_ERROR_FILE_SIZE;
-    }
-
-    AAsset_close(asset);
-
-    if (size < 1000) {
-        LOGE("Model file is too short");
-        if (buffer) {
-            delete[] buffer;
-            buffer = NULL;
-        }
-        return ST_JNI_ERROR_FILE_SIZE;
-    }
-
-    int result = st_mobile_sticker_load_avatar_model_from_buffer(stickerHandle, (const char*)buffer, size);
-    if(buffer){
-        delete[] buffer;
-        buffer = NULL;
-    }
-
-    if(result != 0){
-        LOGE("load avatar model failed, %d",result);
-        return result;
-    }
-
-    return result;
-}
-
-JNIEXPORT void JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_removeAvatarModel(JNIEnv * env, jobject obj)
-{
-    st_handle_t stickerhandle = getStickerHandle(env, obj);
-    if(stickerhandle != NULL) {
-        int result = st_mobile_sticker_remove_avatar_model(stickerhandle);
-
-        if(result != ST_OK){
-            LOGE("remove avatar model failed, %d",result);
-        }
-    }
-
-}
-
 JNIEXPORT jobjectArray JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getModules(JNIEnv * env, jobject obj)
 {
     int result = ST_JNI_ERROR_DEFAULT;
@@ -942,6 +841,7 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
         if(result != ST_OK){
             LOGE("set param int failed, %d",result);
         }
+        return result;
     }
 }
 
@@ -960,6 +860,8 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
         if(result != ST_OK){
             LOGE("set param long failed, %d",result);
         }
+
+        return result;
     }
 }
 
@@ -978,6 +880,8 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
         if(result != ST_OK){
             LOGE("set param float failed, %d",result);
         }
+
+        return result;
     }
 }
 
@@ -996,6 +900,8 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
         if(result != ST_OK){
             LOGE("set param bool failed, %d",result);
         }
+
+        return result;
     }
 }
 
@@ -1013,8 +919,9 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
         pathChars = env->GetStringUTFChars(value, 0);
     }
 
+    int result = ST_JNI_ERROR_DEFAULT;
     if(stickerHandle != NULL) {
-        int result = st_mobile_sticker_set_param_str(stickerHandle, moduleId, paramType, pathChars);
+        result = st_mobile_sticker_set_param_str(stickerHandle, moduleId, paramType, pathChars);
 
         if(result != ST_OK){
             LOGE("set param str failed, %d",result);
@@ -1024,6 +931,8 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPara
     if (pathChars != NULL) {
         env->ReleaseStringUTFChars(value, pathChars);
     }
+
+    return result;
 }
 
 JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_getParamInt(JNIEnv * env, jobject obj, jint moduleId, jint paramType)
@@ -1121,6 +1030,196 @@ JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_clearMo
 
     if(stickerhandle != NULL) {
         result = st_mobile_sticker_clear_module_transition(stickerhandle, moduleId);
+    }
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_setPerformanceHint(JNIEnv * env, jobject obj, jint hint){
+    int result = ST_JNI_ERROR_DEFAULT;
+    st_handle_t stickerhandle = getStickerHandle(env, obj);
+
+    if (stickerhandle == NULL) {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    if(stickerhandle != NULL) {
+        result = st_mobile_sticker_set_performance_hint(stickerhandle, (st_performance_hint_t)hint);
+    }
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureNative(JNIEnv * env, jobject obj, jint textureIn,
+                                                                                         jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight, jboolean needsMirroring, jobject inputParams, jint textureOut)
+{
+    LOGI("processTexture, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t stickerhandle = getStickerHandle(env, obj);
+
+    if(stickerhandle == NULL)
+    {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionPtr);
+
+    st_mobile_input_params_t input_params = {0};
+
+    if (!convert2StickerInputParams(env, inputParams, input_params)) {
+        memset(&input_params, 0, sizeof(st_mobile_input_params_t));
+    }
+
+    long startTime = getCurrentTime();
+    if(stickerhandle != NULL && human_action != NULL)
+    {
+        result  = st_mobile_sticker_process_texture(stickerhandle, textureIn, imageWidth, imageHeight, (st_rotate_type)rotate, (st_rotate_type)frontRotate, needsMirroring, human_action, &input_params, textureOut);
+        LOGI("-->>st_mobile_sticker_process_texture --- result is %d", result);
+    }
+
+    long afterStickerTime = getCurrentTime();
+    LOGI("process sticker time is %ld", (afterStickerTime - startTime));
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureAndOutputBufferNative(JNIEnv * env, jobject obj,
+                                        jint textureIn, jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight, jboolean needsMirroring, jobject inputParams,
+                                        jint textureOut, jint outFmt, jbyteArray imageOut)
+{
+    LOGI("processTexture, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t stickerhandle = getStickerHandle(env, obj);
+
+    if (stickerhandle == NULL) {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    jbyte *dstdata = NULL;
+    if (imageOut != NULL) {
+        dstdata = (jbyte *) (env->GetByteArrayElements(imageOut, 0));
+    }
+
+    st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionPtr);
+
+    st_mobile_input_params_t input_params = {0};
+
+    if (!convert2StickerInputParams(env, inputParams, input_params)) {
+        memset(&input_params, 0, sizeof(st_mobile_input_params_t));
+    }
+
+    long startTime = getCurrentTime();
+    if (stickerhandle != NULL) {
+        result = st_mobile_sticker_process_and_output_texture(stickerhandle,
+                                                              textureIn, imageWidth, imageHeight, (st_rotate_type) rotate, (st_rotate_type) frontRotate, needsMirroring,
+                                                              human_action, &input_params, textureOut, (unsigned char *) dstdata, (st_pixel_format) outFmt);
+        LOGI("-->>st_mobile_sticker_process_and_output_texture --- result is %d", result);
+    }
+
+    long afterStickerTime = getCurrentTime();
+    LOGI("process sticker time is %ld", (afterStickerTime - startTime));
+    if (dstdata != NULL) {
+        env->ReleaseByteArrayElements(imageOut, dstdata, 0);
+    }
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_processTextureBothNative(JNIEnv * env, jobject obj, jint textureIn, jlong humanActionPtr, jint rotate, jint frontRotate, jint imageWidth, jint imageHeight,
+                                                jboolean needsMirroring, jobject inputParams, jobjectArray animalFace, jint animalFaceCount, jint textureOut)
+{
+    LOGI("processTexture, the width is %d, the height is %d, the rotate is %d",imageWidth, imageHeight, rotate);
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t stickerhandle = getStickerHandle(env, obj);
+
+    if (stickerhandle == NULL) {
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    st_mobile_human_action_t* human_action = reinterpret_cast<st_mobile_human_action_t *>(humanActionPtr);
+    st_mobile_input_params_t input_params = {0};
+
+    if (!convert2StickerInputParams(env, inputParams, input_params)) {
+        memset(&input_params, 0, sizeof(st_mobile_input_params_t));
+    }
+
+    st_mobile_animal_face_t *animal_face = new st_mobile_animal_face_t[animalFaceCount];
+    for(int i = 0; i < animalFaceCount; i++){
+        if(!convert2AnimalFace(env, env->GetObjectArrayElement(animalFace, i), &animal_face[i])){
+            memset(&animal_face[i], 0, sizeof(st_mobile_animal_face_t));
+        }
+    }
+
+    long startTime = getCurrentTime();
+    if (stickerhandle != NULL) {
+        result = st_mobile_sticker_process_texture_both(stickerhandle,
+                                                        textureIn, imageWidth, imageHeight, (st_rotate_type) rotate, (st_rotate_type) frontRotate, needsMirroring,
+                                                        human_action, &input_params, animal_face, animalFaceCount, textureOut);
+        LOGI("-->>st_mobile_sticker_process_and_output_texture --- result is %d", result);
+    }
+
+    releaseAnimal(animal_face, animalFaceCount);
+
+    long afterStickerTime = getCurrentTime();
+    LOGI("process sticker time is %ld", (afterStickerTime - startTime));
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_updateInternalMask(JNIEnv * env, jobject obj, jobject humanAction1, jobject humanAction2, jint width, jint height, jint orientation)
+{
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t handle = getStickerHandle(env, obj);
+
+    if(handle == NULL){
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    st_mobile_human_action_t human_action1 = {0};
+    if (!convert2HumanAction(env, humanAction1, &human_action1)) {
+        memset(&human_action1, 0, sizeof(st_mobile_human_action_t));
+    }
+
+    st_mobile_human_action_t human_action2 = {0};
+    if (!convert2HumanAction(env, humanAction2, &human_action2)) {
+        memset(&human_action2, 0, sizeof(st_mobile_human_action_t));
+    }
+
+    if(handle != NULL) {
+        result = st_mobile_sticker_update_internal_mask(handle, &human_action1,&human_action2, width, height,(st_rotate_type)orientation);
+    }
+
+    releaseHumanAction(&human_action1);
+    releaseHumanAction(&human_action2);
+
+    return result;
+}
+
+JNIEXPORT jint JNICALL Java_com_sensetime_stmobile_STMobileStickerNative_updateInternalMaskNative(JNIEnv * env, jobject obj, jlong humanAction1, jlong humanAction2, jint width, jint height, jint orientation)
+{
+    int result = ST_JNI_ERROR_DEFAULT;
+
+    st_handle_t handle = getStickerHandle(env, obj);
+
+    if(handle == NULL){
+        LOGE("handle is null");
+        return ST_E_HANDLE;
+    }
+
+    st_mobile_human_action_t* human_action_old = reinterpret_cast<st_mobile_human_action_t *>(humanAction1);
+    st_mobile_human_action_t* human_action_new = reinterpret_cast<st_mobile_human_action_t *>(humanAction2);
+
+    if(handle != NULL) {
+        result = st_mobile_sticker_update_internal_mask(handle, human_action_old, human_action_new, width, height,(st_rotate_type)orientation);
     }
 
     return result;
