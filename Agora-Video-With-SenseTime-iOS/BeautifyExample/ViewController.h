@@ -1,13 +1,18 @@
 //
 //  ViewController.h
+//  BeautifyExample
 //
-//  Created by HaifengMay on 16/11/7.
-//  Copyright © 2016年 SenseTime. All rights reserved.
+//  Created by LSQ on 2020/8/3.
+//  Copyright © 2020 Agora. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 @interface ViewController : UIViewController
 
-@property (copy, nonatomic) NSString *channelName;  //Agora Engine
+/// 房间号
+@property (copy, nonatomic) NSString *channelName;
+
 
 @end
+

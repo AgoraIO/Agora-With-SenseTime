@@ -1,17 +1,16 @@
 //
 //  AppDelegate.h
-//  Agora-With-SenseTime
+//  BeautifyExample
 //
-//  Created by SRS on 2019/11/11.
-//  Copyright © 2019 agora. All rights reserved.
+//  Created by LSQ on 2020/8/3.
+//  Copyright © 2020 Agora. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) UIWindow * window;
 
 @end
 

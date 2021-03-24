@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol CapturerManagerDelegate <NSObject>
 
-- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer frameTime:(CMTime)time;
+- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer;
 
 @end
 

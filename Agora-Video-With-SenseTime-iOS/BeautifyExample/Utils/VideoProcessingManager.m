@@ -38,11 +38,12 @@
 }
 
 #pragma mark - CapturerManagerDelegate
-- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer frameTime:(CMTime)time {
+- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer {
     CVPixelBufferRef outputPixelBuffer = pixelBuffer;
+    
     if (self.enableFilter) {
         for (id<VideoFilterDelegate> filter in self.filterArray) {
-            outputPixelBuffer = [filter processFrame:outputPixelBuffer frameTime:time];
+            outputPixelBuffer = [filter processFrame:outputPixelBuffer];
         }
     }
     return outputPixelBuffer;;

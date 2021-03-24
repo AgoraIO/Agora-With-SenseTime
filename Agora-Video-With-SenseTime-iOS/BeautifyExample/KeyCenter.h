@@ -1,9 +1,9 @@
 //
 //  KeyCenter.h
-//  Agora-With-SenseTime
+//  BeautifyExample
 //
-//  Created by SRS on 2019/11/26.
-//  Copyright © 2019 agora. All rights reserved.
+//  Created by 张乾泽 on 2020/8/10.
+//  Copyright © 2020 Agora. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,13 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KeyCenter : NSObject
-
-+ (NSString*)agoraAppId;
-+ (NSString*)agoraAppToken;
-
-+ (NSString*)senseAppId;
-+ (NSString*)senseAppKey;
-
++ (NSString *)AppId;
 @end
 
 NS_ASSUME_NONNULL_END
