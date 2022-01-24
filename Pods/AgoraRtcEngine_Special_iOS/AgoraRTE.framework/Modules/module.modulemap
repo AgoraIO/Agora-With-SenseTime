@@ -1,0 +1,4 @@
+framework module AgoraRTE {
+  umbrella header "AgoraRTE.h"
+  export *
+}

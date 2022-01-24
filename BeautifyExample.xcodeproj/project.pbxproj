@@ -1,0 +1,1127 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		031D6012251CD0CD000934AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031D600C251CD0CD000934AB /* Assets.xcassets */; };
+		03F8196324E1371B004F7F36 /* KeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F8196224E1371B004F7F36 /* KeyCenter.m */; };
+		09C6666424D7BC89001D7AE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6666324D7BC89001D7AE2 /* AppDelegate.m */; };
+		09C6666A24D7BC89001D7AE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6666924D7BC89001D7AE2 /* ViewController.m */; };
+		09C6666D24D7BC89001D7AE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C6666B24D7BC89001D7AE2 /* Main.storyboard */; };
+		09C6666F24D7BC8B001D7AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C6666E24D7BC8B001D7AE2 /* Assets.xcassets */; };
+		09C6667224D7BC8B001D7AE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C6667024D7BC8B001D7AE2 /* LaunchScreen.storyboard */; };
+		09C6667524D7BC8B001D7AE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6667424D7BC8B001D7AE2 /* main.m */; };
+		2D8ABD2F2511B63200D28745 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ABD2E2511B63200D28745 /* MainViewController.m */; };
+		5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
+		610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
+		8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */; };
+		8B061142260B6AB0004795A4 /* STBmpStrengthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */; };
+		8B061143260B6AB0004795A4 /* STBMPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E3260B6AAF004795A4 /* STBMPModel.m */; };
+		8B061144260B6AB0004795A4 /* STViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0610E6260B6AAF004795A4 /* STViewButton.xib */; };
+		8B061145260B6AB0004795A4 /* STLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E7260B6AAF004795A4 /* STLock.m */; };
+		8B061146260B6AB0004795A4 /* STGLPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E8260B6AAF004795A4 /* STGLPreview.m */; };
+		8B061147260B6AB0004795A4 /* STSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0610E9260B6AAF004795A4 /* STSliderView.xib */; };
+		8B061148260B6AB0004795A4 /* SaveToastUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */; };
+		8B061149260B6AB0004795A4 /* STButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610EB260B6AAF004795A4 /* STButton.m */; };
+		8B06114A260B6AB0004795A4 /* STCommonObjectContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */; };
+		8B06114B260B6AB0004795A4 /* STTriggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F2260B6AAF004795A4 /* STTriggerView.m */; };
+		8B06114C260B6AB0004795A4 /* STTitleViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */; };
+		8B06114D260B6AB0004795A4 /* STCustomMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */; };
+		8B06114E260B6AB0004795A4 /* STParamUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FA260B6AAF004795A4 /* STParamUtil.m */; };
+		8B06114F260B6AB0004795A4 /* STCustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */; };
+		8B061150260B6AB0004795A4 /* STEffectsTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */; };
+		8B061151260B6AB0004795A4 /* STAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061100260B6AAF004795A4 /* STAudioManager.m */; };
+		8B061152260B6AB0004795A4 /* STGLPreview2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061104260B6AAF004795A4 /* STGLPreview2.m */; };
+		8B061153260B6AB0004795A4 /* STBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061105260B6AAF004795A4 /* STBeautySlider.m */; };
+		8B061154260B6AB0004795A4 /* STFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061109260B6AAF004795A4 /* STFilterView.m */; };
+		8B061155260B6AB0004795A4 /* STViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110A260B6AAF004795A4 /* STViewButton.m */; };
+		8B061156260B6AB0004795A4 /* STEffectsAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */; };
+		8B061157260B6AB0004795A4 /* STSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110C260B6AAF004795A4 /* STSliderView.m */; };
+		8B061158260B6AB0004795A4 /* STScrollTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110D260B6AAF004795A4 /* STScrollTitleView.m */; };
+		8B061159260B6AB0004795A4 /* STPlayerControlBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061112260B6AAF004795A4 /* STPlayerControlBar.m */; };
+		8B06115A260B6AB0004795A4 /* SenseMEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061113260B6AAF004795A4 /* SenseMEUtils.m */; };
+		8B06115B260B6AB0004795A4 /* STBMPDetailColV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061115260B6AAF004795A4 /* STBMPDetailColV.m */; };
+		8B06115C260B6AB0004795A4 /* STBMPDetailColVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */; };
+		8B06115D260B6AB0004795A4 /* STCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061118260B6AAF004795A4 /* STCollectionView.m */; };
+		8B06115E260B6AB0004795A4 /* EffectsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */; };
+		8B06115F260B6AB0004795A4 /* EffectsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */; };
+		8B061160260B6AB0004795A4 /* STCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */; };
+		8B061161260B6AB0004795A4 /* STBMPCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */; };
+		8B061162260B6AB0004795A4 /* STCommonObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111E260B6AAF004795A4 /* STCommonObjectView.m */; };
+		8B061163260B6AB0004795A4 /* EffectsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061123260B6AAF004795A4 /* EffectsCollectionView.m */; };
+		8B061164260B6AB0004795A4 /* SenseTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061124260B6AAF004795A4 /* SenseTimeUtil.m */; };
+		8B061165260B6AB0004795A4 /* STCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061127260B6AAF004795A4 /* STCamera.m */; };
+		8B061166260B6AB0004795A4 /* STVFShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061128260B6AAF004795A4 /* STVFShader.m */; };
+		8B061167260B6AB0004795A4 /* STMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061129260B6AAF004795A4 /* STMovieRecorder.m */; };
+		8B061168260B6AB0004795A4 /* STBMPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */; };
+		8B061169260B6AB0004795A4 /* SenseEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */; };
+		8B06116A260B6AB0004795A4 /* SenseBeautifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */; };
+		8B06116B260B6AB0004795A4 /* SenseTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061131260B6AB0004795A4 /* SenseTimeManager.m */; };
+		8B63F063260A3E790040C3A8 /* SenseMeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B63F062260A3E790040C3A8 /* SenseMeFilter.m */; };
+		E79EBA702795415700FE703A /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA5D2795415700FE703A /* PortraitFilters.bundle */; };
+		E79EBA712795415700FE703A /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA5E2795415700FE703A /* SceneryFilters.bundle */; };
+		E79EBA722795415700FE703A /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA5F2795415700FE703A /* StillLifeFilters.bundle */; };
+		E79EBA732795415700FE703A /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA602795415700FE703A /* DeliciousFoodFilters.bundle */; };
+		E79EBA742795415700FE703A /* whiten_gif.zip in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA622795415700FE703A /* whiten_gif.zip */; };
+		E79EBA752795415700FE703A /* eyeliner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA642795415700FE703A /* eyeliner.bundle */; };
+		E79EBA762795415700FE703A /* eyelash.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA652795415700FE703A /* eyelash.bundle */; };
+		E79EBA772795415700FE703A /* lips.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA662795415700FE703A /* lips.bundle */; };
+		E79EBA782795415700FE703A /* brow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA672795415700FE703A /* brow.bundle */; };
+		E79EBA792795415700FE703A /* wholemakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA682795415700FE703A /* wholemakeup.bundle */; };
+		E79EBA7A2795415700FE703A /* face.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA692795415700FE703A /* face.bundle */; };
+		E79EBA7B2795415700FE703A /* eyeshadow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA6A2795415700FE703A /* eyeshadow.bundle */; };
+		E79EBA7C2795415700FE703A /* maskhair.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA6B2795415700FE703A /* maskhair.bundle */; };
+		E79EBA7D2795415700FE703A /* blush.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA6C2795415700FE703A /* blush.bundle */; };
+		E79EBA7E2795415700FE703A /* eyeball.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA6D2795415700FE703A /* eyeball.bundle */; };
+		E79EBA7F2795415700FE703A /* my_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA6F2795415700FE703A /* my_sticker.bundle */; };
+		E79EBA8B2795452E00FE703A /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = E79EBA872795452E00FE703A /* VERSION */; };
+		E79EBA8C2795452E00FE703A /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79EBA8A2795452E00FE703A /* libSenseArSourceService.a */; };
+		E79EBBBA2795A0D900FE703A /* M_SenseME_CatFace_3.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBA62795A0D900FE703A /* M_SenseME_CatFace_3.0.0.model */; };
+		E79EBBBB2795A0D900FE703A /* M_SenseME_Segment_Head_1.0.3.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBA72795A0D900FE703A /* M_SenseME_Segment_Head_1.0.3.model */; };
+		E79EBBBC2795A0D900FE703A /* M_SenseME_MouthOcclusion_1.1.2.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBA82795A0D900FE703A /* M_SenseME_MouthOcclusion_1.1.2.model */; };
+		E79EBBBD2795A0D900FE703A /* M_SenseME_Segment_4.12.8.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBA92795A0D900FE703A /* M_SenseME_Segment_4.12.8.model */; };
+		E79EBBBE2795A0D900FE703A /* M_SenseME_Iris_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAA2795A0D900FE703A /* M_SenseME_Iris_2.0.0.model */; };
+		E79EBBBF2795A0D900FE703A /* M_SenseME_Face_Video_5.3.4.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAB2795A0D900FE703A /* M_SenseME_Face_Video_5.3.4.model */; };
+		E79EBBC02795A0D900FE703A /* M_SenseME_Hand_5.4.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAC2795A0D900FE703A /* M_SenseME_Hand_5.4.0.model */; };
+		E79EBBC12795A0D900FE703A /* M_SenseME_Face_Extra_Advanced_6.0.11.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAD2795A0D900FE703A /* M_SenseME_Face_Extra_Advanced_6.0.11.model */; };
+		E79EBBC22795A0D900FE703A /* M_SenseME_Face_Video_7.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAE2795A0D900FE703A /* M_SenseME_Face_Video_7.0.0.model */; };
+		E79EBBC32795A0D900FE703A /* SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBAF2795A0D900FE703A /* SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf */; };
+		E79EBBC42795A0D900FE703A /* M_SenseME_Segment_Hair_1.3.4.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB02795A0D900FE703A /* M_SenseME_Segment_Hair_1.3.4.model */; };
+		E79EBBC52795A0D900FE703A /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB12795A0D900FE703A /* M_SenseME_Attribute_1.0.1.model */; };
+		E79EBBC62795A0D900FE703A /* M_SenseME_Avatar_Help_2.2.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB22795A0D900FE703A /* M_SenseME_Avatar_Help_2.2.0.model */; };
+		E79EBBC72795A0D900FE703A /* SenseMEEffects集成文档ios.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB42795A0D900FE703A /* SenseMEEffects集成文档ios.pdf */; };
+		E79EBBC82795A0D900FE703A /* SenseAR_v7.7.0Effects).pdf in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB52795A0D900FE703A /* SenseAR_v7.7.0Effects).pdf */; };
+		E79EBBC92795A0D900FE703A /* how_to_use_license.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E79EBBB62795A0D900FE703A /* how_to_use_license.pdf */; };
+		E79EBBCA2795A0D900FE703A /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79EBBB92795A0D900FE703A /* libst_mobile.a */; };
+		E7C09CBF2796A9A900C9199D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C09CBE2796A9A900C9199D /* TestController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E79EBB882795956500FE703A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		031D600C251CD0CD000934AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03F8196124E1371B004F7F36 /* KeyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCenter.h; sourceTree = "<group>"; };
+		03F8196224E1371B004F7F36 /* KeyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyCenter.m; sourceTree = "<group>"; };
+		09C6665F24D7BC89001D7AE2 /* BeautifyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeautifyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C6666224D7BC89001D7AE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		09C6666324D7BC89001D7AE2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		09C6666824D7BC89001D7AE2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		09C6666924D7BC89001D7AE2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		09C6666C24D7BC89001D7AE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		09C6666E24D7BC8B001D7AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09C6667124D7BC8B001D7AE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		09C6667324D7BC8B001D7AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09C6667424D7BC8B001D7AE2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2D8ABD2D2511B63200D28745 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2D8ABD2E2511B63200D28745 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeautifyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.debug.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.debug.xcconfig"; sourceTree = "<group>"; };
+		8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		8B0610E0260B6AAF004795A4 /* STBMPDetailColVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColVCell.h; sourceTree = "<group>"; };
+		8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBmpStrengthView.m; sourceTree = "<group>"; };
+		8B0610E2260B6AAF004795A4 /* STBMPDetailColV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColV.h; sourceTree = "<group>"; };
+		8B0610E3260B6AAF004795A4 /* STBMPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPModel.m; sourceTree = "<group>"; };
+		8B0610E4260B6AAF004795A4 /* STPlayerControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayerControlBar.h; sourceTree = "<group>"; };
+		8B0610E5260B6AAF004795A4 /* SenseMEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseMEUtils.h; sourceTree = "<group>"; };
+		8B0610E6260B6AAF004795A4 /* STViewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STViewButton.xib; sourceTree = "<group>"; };
+		8B0610E7260B6AAF004795A4 /* STLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLock.m; sourceTree = "<group>"; };
+		8B0610E8260B6AAF004795A4 /* STGLPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGLPreview.m; sourceTree = "<group>"; };
+		8B0610E9260B6AAF004795A4 /* STSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STSliderView.xib; sourceTree = "<group>"; };
+		8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveToastUtil.m; sourceTree = "<group>"; };
+		8B0610EB260B6AAF004795A4 /* STButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STButton.m; sourceTree = "<group>"; };
+		8B0610EC260B6AAF004795A4 /* STScrollTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STScrollTitleView.h; sourceTree = "<group>"; };
+		8B0610ED260B6AAF004795A4 /* STSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSliderView.h; sourceTree = "<group>"; };
+		8B0610EE260B6AAF004795A4 /* STViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STViewButton.h; sourceTree = "<group>"; };
+		8B0610EF260B6AAF004795A4 /* STEffectsAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEffectsAudioPlayer.h; sourceTree = "<group>"; };
+		8B0610F0260B6AAF004795A4 /* STFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STFilterView.h; sourceTree = "<group>"; };
+		8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCommonObjectContainerView.m; sourceTree = "<group>"; };
+		8B0610F2260B6AAF004795A4 /* STTriggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTriggerView.m; sourceTree = "<group>"; };
+		8B0610F3260B6AAF004795A4 /* STBMPCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPCollectionView.h; sourceTree = "<group>"; };
+		8B0610F4260B6AAF004795A4 /* STCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollectionViewCell.h; sourceTree = "<group>"; };
+		8B0610F5260B6AAF004795A4 /* EffectsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsCollectionViewCell.h; sourceTree = "<group>"; };
+		8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTitleViewItem.m; sourceTree = "<group>"; };
+		8B0610F7260B6AAF004795A4 /* STCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollectionView.h; sourceTree = "<group>"; };
+		8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCustomMemoryCache.m; sourceTree = "<group>"; };
+		8B0610F9260B6AAF004795A4 /* EffectsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsCollectionView.h; sourceTree = "<group>"; };
+		8B0610FA260B6AAF004795A4 /* STParamUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STParamUtil.m; sourceTree = "<group>"; };
+		8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCustomCollectionView.m; sourceTree = "<group>"; };
+		8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEffectsTimer.m; sourceTree = "<group>"; };
+		8B0610FD260B6AAF004795A4 /* STCommonObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCommonObjectView.h; sourceTree = "<group>"; };
+		8B0610FE260B6AAF004795A4 /* STBMPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPCollectionViewCell.h; sourceTree = "<group>"; };
+		8B0610FF260B6AAF004795A4 /* STMobileLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMobileLog.h; sourceTree = "<group>"; };
+		8B061100260B6AAF004795A4 /* STAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAudioManager.m; sourceTree = "<group>"; };
+		8B061101260B6AAF004795A4 /* STVFShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STVFShader.h; sourceTree = "<group>"; };
+		8B061102260B6AAF004795A4 /* STMovieRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMovieRecorder.h; sourceTree = "<group>"; };
+		8B061103260B6AAF004795A4 /* STCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCamera.h; sourceTree = "<group>"; };
+		8B061104260B6AAF004795A4 /* STGLPreview2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGLPreview2.m; sourceTree = "<group>"; };
+		8B061105260B6AAF004795A4 /* STBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBeautySlider.m; sourceTree = "<group>"; };
+		8B061106260B6AAF004795A4 /* SenseTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseTimeUtil.h; sourceTree = "<group>"; };
+		8B061107260B6AAF004795A4 /* STCommonObjectContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCommonObjectContainerView.h; sourceTree = "<group>"; };
+		8B061108260B6AAF004795A4 /* STTriggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTriggerView.h; sourceTree = "<group>"; };
+		8B061109260B6AAF004795A4 /* STFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFilterView.m; sourceTree = "<group>"; };
+		8B06110A260B6AAF004795A4 /* STViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STViewButton.m; sourceTree = "<group>"; };
+		8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEffectsAudioPlayer.m; sourceTree = "<group>"; };
+		8B06110C260B6AAF004795A4 /* STSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSliderView.m; sourceTree = "<group>"; };
+		8B06110D260B6AAF004795A4 /* STScrollTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STScrollTitleView.m; sourceTree = "<group>"; };
+		8B06110E260B6AAF004795A4 /* STButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STButton.h; sourceTree = "<group>"; };
+		8B06110F260B6AAF004795A4 /* SaveToastUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveToastUtil.h; sourceTree = "<group>"; };
+		8B061110260B6AAF004795A4 /* STLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLock.h; sourceTree = "<group>"; };
+		8B061111260B6AAF004795A4 /* STGLPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGLPreview.h; sourceTree = "<group>"; };
+		8B061112260B6AAF004795A4 /* STPlayerControlBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPlayerControlBar.m; sourceTree = "<group>"; };
+		8B061113260B6AAF004795A4 /* SenseMEUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseMEUtils.m; sourceTree = "<group>"; };
+		8B061114260B6AAF004795A4 /* STBMPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPModel.h; sourceTree = "<group>"; };
+		8B061115260B6AAF004795A4 /* STBMPDetailColV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPDetailColV.m; sourceTree = "<group>"; };
+		8B061116260B6AAF004795A4 /* STBmpStrengthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBmpStrengthView.h; sourceTree = "<group>"; };
+		8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPDetailColVCell.m; sourceTree = "<group>"; };
+		8B061118260B6AAF004795A4 /* STCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollectionView.m; sourceTree = "<group>"; };
+		8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EffectsCollectionViewCell.xib; sourceTree = "<group>"; };
+		8B06111A260B6AAF004795A4 /* STTitleViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTitleViewItem.h; sourceTree = "<group>"; };
+		8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCollectionViewCell.m; sourceTree = "<group>"; };
+		8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollectionViewCell.m; sourceTree = "<group>"; };
+		8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPCollectionView.m; sourceTree = "<group>"; };
+		8B06111E260B6AAF004795A4 /* STCommonObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCommonObjectView.m; sourceTree = "<group>"; };
+		8B06111F260B6AAF004795A4 /* STEffectsTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEffectsTimer.h; sourceTree = "<group>"; };
+		8B061120260B6AAF004795A4 /* STCustomCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCustomCollectionView.h; sourceTree = "<group>"; };
+		8B061121260B6AAF004795A4 /* STParamUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STParamUtil.h; sourceTree = "<group>"; };
+		8B061122260B6AAF004795A4 /* STCustomMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCustomMemoryCache.h; sourceTree = "<group>"; };
+		8B061123260B6AAF004795A4 /* EffectsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCollectionView.m; sourceTree = "<group>"; };
+		8B061124260B6AAF004795A4 /* SenseTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseTimeUtil.m; sourceTree = "<group>"; };
+		8B061125260B6AAF004795A4 /* STBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBeautySlider.h; sourceTree = "<group>"; };
+		8B061126260B6AAF004795A4 /* STGLPreview2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGLPreview2.h; sourceTree = "<group>"; };
+		8B061127260B6AAF004795A4 /* STCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCamera.m; sourceTree = "<group>"; };
+		8B061128260B6AAF004795A4 /* STVFShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STVFShader.m; sourceTree = "<group>"; };
+		8B061129260B6AAF004795A4 /* STMovieRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMovieRecorder.m; sourceTree = "<group>"; };
+		8B06112A260B6AB0004795A4 /* STAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAudioManager.h; sourceTree = "<group>"; };
+		8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPCollectionViewCell.m; sourceTree = "<group>"; };
+		8B06112D260B6AB0004795A4 /* SenseBeautifyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseBeautifyManager.h; sourceTree = "<group>"; };
+		8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseEffectsManager.m; sourceTree = "<group>"; };
+		8B06112F260B6AB0004795A4 /* SenseTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseTimeManager.h; sourceTree = "<group>"; };
+		8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseBeautifyManager.m; sourceTree = "<group>"; };
+		8B061131260B6AB0004795A4 /* SenseTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseTimeManager.m; sourceTree = "<group>"; };
+		8B061132260B6AB0004795A4 /* SenseEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseEffectsManager.h; sourceTree = "<group>"; };
+		8B63F061260A3E790040C3A8 /* SenseMeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseMeFilter.h; sourceTree = "<group>"; };
+		8B63F062260A3E790040C3A8 /* SenseMeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseMeFilter.m; sourceTree = "<group>"; };
+		AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.release.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.release.xcconfig"; sourceTree = "<group>"; };
+		E79EBA5D2795415700FE703A /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
+		E79EBA5E2795415700FE703A /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
+		E79EBA5F2795415700FE703A /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
+		E79EBA602795415700FE703A /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
+		E79EBA622795415700FE703A /* whiten_gif.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = whiten_gif.zip; sourceTree = "<group>"; };
+		E79EBA642795415700FE703A /* eyeliner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeliner.bundle; sourceTree = "<group>"; };
+		E79EBA652795415700FE703A /* eyelash.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyelash.bundle; sourceTree = "<group>"; };
+		E79EBA662795415700FE703A /* lips.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lips.bundle; sourceTree = "<group>"; };
+		E79EBA672795415700FE703A /* brow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = brow.bundle; sourceTree = "<group>"; };
+		E79EBA682795415700FE703A /* wholemakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = wholemakeup.bundle; sourceTree = "<group>"; };
+		E79EBA692795415700FE703A /* face.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = face.bundle; sourceTree = "<group>"; };
+		E79EBA6A2795415700FE703A /* eyeshadow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeshadow.bundle; sourceTree = "<group>"; };
+		E79EBA6B2795415700FE703A /* maskhair.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = maskhair.bundle; sourceTree = "<group>"; };
+		E79EBA6C2795415700FE703A /* blush.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blush.bundle; sourceTree = "<group>"; };
+		E79EBA6D2795415700FE703A /* eyeball.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeball.bundle; sourceTree = "<group>"; };
+		E79EBA6F2795415700FE703A /* my_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = my_sticker.bundle; sourceTree = "<group>"; };
+		E79EBA822795452E00FE703A /* SenseArMaterialAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialAction.h; sourceTree = "<group>"; };
+		E79EBA832795452E00FE703A /* SenseArMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterial.h; sourceTree = "<group>"; };
+		E79EBA842795452E00FE703A /* SenseArSourceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArSourceService.h; sourceTree = "<group>"; };
+		E79EBA852795452E00FE703A /* SenseArMaterialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialService.h; sourceTree = "<group>"; };
+		E79EBA862795452E00FE703A /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
+		E79EBA872795452E00FE703A /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		E79EBA8A2795452E00FE703A /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSenseArSourceService.a; sourceTree = "<group>"; };
+		E79EBB932795A0D900FE703A /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
+		E79EBB942795A0D900FE703A /* st_mobile_sticker_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_module.h; sourceTree = "<group>"; };
+		E79EBB952795A0D900FE703A /* st_mobile_beautify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_beautify.h; sourceTree = "<group>"; };
+		E79EBB962795A0D900FE703A /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
+		E79EBB972795A0D900FE703A /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
+		E79EBB982795A0D900FE703A /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
+		E79EBB992795A0D900FE703A /* st_mobile_makeup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_makeup.h; sourceTree = "<group>"; };
+		E79EBB9A2795A0D900FE703A /* st_mobile_attribute_face_feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_attribute_face_feature.h; sourceTree = "<group>"; };
+		E79EBB9B2795A0D900FE703A /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
+		E79EBB9C2795A0D900FE703A /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
+		E79EBB9D2795A0D900FE703A /* st_mobile_slam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_slam.h; sourceTree = "<group>"; };
+		E79EBB9E2795A0D900FE703A /* st_mobile_filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_filter.h; sourceTree = "<group>"; };
+		E79EBB9F2795A0D900FE703A /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
+		E79EBBA02795A0D900FE703A /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
+		E79EBBA12795A0D900FE703A /* st_mobile_gen_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_gen_avatar.h; sourceTree = "<group>"; };
+		E79EBBA22795A0D900FE703A /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
+		E79EBBA32795A0D900FE703A /* st_mobile_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_renderer.h; sourceTree = "<group>"; };
+		E79EBBA42795A0D900FE703A /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
+		E79EBBA62795A0D900FE703A /* M_SenseME_CatFace_3.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_3.0.0.model; sourceTree = "<group>"; };
+		E79EBBA72795A0D900FE703A /* M_SenseME_Segment_Head_1.0.3.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_Head_1.0.3.model; sourceTree = "<group>"; };
+		E79EBBA82795A0D900FE703A /* M_SenseME_MouthOcclusion_1.1.2.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_MouthOcclusion_1.1.2.model; sourceTree = "<group>"; };
+		E79EBBA92795A0D900FE703A /* M_SenseME_Segment_4.12.8.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_4.12.8.model; sourceTree = "<group>"; };
+		E79EBBAA2795A0D900FE703A /* M_SenseME_Iris_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Iris_2.0.0.model; sourceTree = "<group>"; };
+		E79EBBAB2795A0D900FE703A /* M_SenseME_Face_Video_5.3.4.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Video_5.3.4.model; sourceTree = "<group>"; };
+		E79EBBAC2795A0D900FE703A /* M_SenseME_Hand_5.4.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Hand_5.4.0.model; sourceTree = "<group>"; };
+		E79EBBAD2795A0D900FE703A /* M_SenseME_Face_Extra_Advanced_6.0.11.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Extra_Advanced_6.0.11.model; sourceTree = "<group>"; };
+		E79EBBAE2795A0D900FE703A /* M_SenseME_Face_Video_7.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Video_7.0.0.model; sourceTree = "<group>"; };
+		E79EBBAF2795A0D900FE703A /* SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf"; sourceTree = "<group>"; };
+		E79EBBB02795A0D900FE703A /* M_SenseME_Segment_Hair_1.3.4.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_Hair_1.3.4.model; sourceTree = "<group>"; };
+		E79EBBB12795A0D900FE703A /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
+		E79EBBB22795A0D900FE703A /* M_SenseME_Avatar_Help_2.2.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Help_2.2.0.model; sourceTree = "<group>"; };
+		E79EBBB42795A0D900FE703A /* SenseMEEffects集成文档ios.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseMEEffects集成文档ios.pdf"; sourceTree = "<group>"; };
+		E79EBBB52795A0D900FE703A /* SenseAR_v7.7.0Effects).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v7.7.0Effects).pdf"; sourceTree = "<group>"; };
+		E79EBBB62795A0D900FE703A /* how_to_use_license.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = how_to_use_license.pdf; sourceTree = "<group>"; };
+		E79EBBB92795A0D900FE703A /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
+		E7C09CBD2796A9A800C9199D /* BeautifyExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeautifyExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		E7C09CBE2796A9A900C9199D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09C6665C24D7BC89001D7AE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */,
+				E79EBBCA2795A0D900FE703A /* libst_mobile.a in Frameworks */,
+				E79EBA8C2795452E00FE703A /* libSenseArSourceService.a in Frameworks */,
+				610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */,
+				5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		031D600A251CD0CD000934AB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				031D600C251CD0CD000934AB /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		09C6665624D7BC89001D7AE2 = {
+			isa = PBXGroup;
+			children = (
+				8B63F060260A3B250040C3A8 /* SenseMe */,
+				09C6666124D7BC89001D7AE2 /* BeautifyExample */,
+				09C6666024D7BC89001D7AE2 /* Products */,
+				42A85BEAC6A36FA392D1839E /* Pods */,
+				6559BDE7DAD51B36F91DD89D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		09C6666024D7BC89001D7AE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09C6665F24D7BC89001D7AE2 /* BeautifyExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		09C6666124D7BC89001D7AE2 /* BeautifyExample */ = {
+			isa = PBXGroup;
+			children = (
+				031D600A251CD0CD000934AB /* Resource */,
+				09C6666224D7BC89001D7AE2 /* AppDelegate.h */,
+				09C6666324D7BC89001D7AE2 /* AppDelegate.m */,
+				2D8ABD2D2511B63200D28745 /* MainViewController.h */,
+				2D8ABD2E2511B63200D28745 /* MainViewController.m */,
+				09C6666824D7BC89001D7AE2 /* ViewController.h */,
+				09C6666924D7BC89001D7AE2 /* ViewController.m */,
+				E7C09CBE2796A9A900C9199D /* TestController.swift */,
+				09C6666B24D7BC89001D7AE2 /* Main.storyboard */,
+				09C6666E24D7BC8B001D7AE2 /* Assets.xcassets */,
+				09C6667024D7BC8B001D7AE2 /* LaunchScreen.storyboard */,
+				09C6667324D7BC8B001D7AE2 /* Info.plist */,
+				09C6667424D7BC8B001D7AE2 /* main.m */,
+				03F8196124E1371B004F7F36 /* KeyCenter.h */,
+				03F8196224E1371B004F7F36 /* KeyCenter.m */,
+				E7C09CBD2796A9A800C9199D /* BeautifyExample-Bridging-Header.h */,
+			);
+			path = BeautifyExample;
+			sourceTree = "<group>";
+		};
+		42A85BEAC6A36FA392D1839E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */,
+				AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6559BDE7DAD51B36F91DD89D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */,
+				3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B0610DF260B6AAF004795A4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8B0610E0260B6AAF004795A4 /* STBMPDetailColVCell.h */,
+				8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */,
+				8B0610E2260B6AAF004795A4 /* STBMPDetailColV.h */,
+				8B0610E3260B6AAF004795A4 /* STBMPModel.m */,
+				8B0610E4260B6AAF004795A4 /* STPlayerControlBar.h */,
+				8B0610E5260B6AAF004795A4 /* SenseMEUtils.h */,
+				8B0610E6260B6AAF004795A4 /* STViewButton.xib */,
+				8B0610E7260B6AAF004795A4 /* STLock.m */,
+				8B0610E8260B6AAF004795A4 /* STGLPreview.m */,
+				8B0610E9260B6AAF004795A4 /* STSliderView.xib */,
+				8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */,
+				8B0610EB260B6AAF004795A4 /* STButton.m */,
+				8B0610EC260B6AAF004795A4 /* STScrollTitleView.h */,
+				8B0610ED260B6AAF004795A4 /* STSliderView.h */,
+				8B0610EE260B6AAF004795A4 /* STViewButton.h */,
+				8B0610EF260B6AAF004795A4 /* STEffectsAudioPlayer.h */,
+				8B0610F0260B6AAF004795A4 /* STFilterView.h */,
+				8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */,
+				8B0610F2260B6AAF004795A4 /* STTriggerView.m */,
+				8B0610F3260B6AAF004795A4 /* STBMPCollectionView.h */,
+				8B0610F4260B6AAF004795A4 /* STCollectionViewCell.h */,
+				8B0610F5260B6AAF004795A4 /* EffectsCollectionViewCell.h */,
+				8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */,
+				8B0610F7260B6AAF004795A4 /* STCollectionView.h */,
+				8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */,
+				8B0610F9260B6AAF004795A4 /* EffectsCollectionView.h */,
+				8B0610FA260B6AAF004795A4 /* STParamUtil.m */,
+				8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */,
+				8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */,
+				8B0610FD260B6AAF004795A4 /* STCommonObjectView.h */,
+				8B0610FE260B6AAF004795A4 /* STBMPCollectionViewCell.h */,
+				8B0610FF260B6AAF004795A4 /* STMobileLog.h */,
+				8B061100260B6AAF004795A4 /* STAudioManager.m */,
+				8B061101260B6AAF004795A4 /* STVFShader.h */,
+				8B061102260B6AAF004795A4 /* STMovieRecorder.h */,
+				8B061103260B6AAF004795A4 /* STCamera.h */,
+				8B061104260B6AAF004795A4 /* STGLPreview2.m */,
+				8B061105260B6AAF004795A4 /* STBeautySlider.m */,
+				8B061106260B6AAF004795A4 /* SenseTimeUtil.h */,
+				8B061107260B6AAF004795A4 /* STCommonObjectContainerView.h */,
+				8B061108260B6AAF004795A4 /* STTriggerView.h */,
+				8B061109260B6AAF004795A4 /* STFilterView.m */,
+				8B06110A260B6AAF004795A4 /* STViewButton.m */,
+				8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */,
+				8B06110C260B6AAF004795A4 /* STSliderView.m */,
+				8B06110D260B6AAF004795A4 /* STScrollTitleView.m */,
+				8B06110E260B6AAF004795A4 /* STButton.h */,
+				8B06110F260B6AAF004795A4 /* SaveToastUtil.h */,
+				8B061110260B6AAF004795A4 /* STLock.h */,
+				8B061111260B6AAF004795A4 /* STGLPreview.h */,
+				8B061112260B6AAF004795A4 /* STPlayerControlBar.m */,
+				8B061113260B6AAF004795A4 /* SenseMEUtils.m */,
+				8B061114260B6AAF004795A4 /* STBMPModel.h */,
+				8B061115260B6AAF004795A4 /* STBMPDetailColV.m */,
+				8B061116260B6AAF004795A4 /* STBmpStrengthView.h */,
+				8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */,
+				8B061118260B6AAF004795A4 /* STCollectionView.m */,
+				8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */,
+				8B06111A260B6AAF004795A4 /* STTitleViewItem.h */,
+				8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */,
+				8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */,
+				8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */,
+				8B06111E260B6AAF004795A4 /* STCommonObjectView.m */,
+				8B06111F260B6AAF004795A4 /* STEffectsTimer.h */,
+				8B061120260B6AAF004795A4 /* STCustomCollectionView.h */,
+				8B061121260B6AAF004795A4 /* STParamUtil.h */,
+				8B061122260B6AAF004795A4 /* STCustomMemoryCache.h */,
+				8B061123260B6AAF004795A4 /* EffectsCollectionView.m */,
+				8B061124260B6AAF004795A4 /* SenseTimeUtil.m */,
+				8B061125260B6AAF004795A4 /* STBeautySlider.h */,
+				8B061126260B6AAF004795A4 /* STGLPreview2.h */,
+				8B061127260B6AAF004795A4 /* STCamera.m */,
+				8B061128260B6AAF004795A4 /* STVFShader.m */,
+				8B061129260B6AAF004795A4 /* STMovieRecorder.m */,
+				8B06112A260B6AB0004795A4 /* STAudioManager.h */,
+				8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8B06112C260B6AB0004795A4 /* SenseManager */ = {
+			isa = PBXGroup;
+			children = (
+				8B06112D260B6AB0004795A4 /* SenseBeautifyManager.h */,
+				8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */,
+				8B06112F260B6AB0004795A4 /* SenseTimeManager.h */,
+				8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */,
+				8B061131260B6AB0004795A4 /* SenseTimeManager.m */,
+				8B061132260B6AB0004795A4 /* SenseEffectsManager.h */,
+			);
+			path = SenseManager;
+			sourceTree = "<group>";
+		};
+		8B63F060260A3B250040C3A8 /* SenseMe */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBB912795A0D900FE703A /* st_models */,
+				E79EBA802795452E00FE703A /* SenseArSourceService */,
+				E79EBA5B2795415700FE703A /* resources */,
+				8B06112C260B6AB0004795A4 /* SenseManager */,
+				8B0610DF260B6AAF004795A4 /* Util */,
+				8B63F061260A3E790040C3A8 /* SenseMeFilter.h */,
+				8B63F062260A3E790040C3A8 /* SenseMeFilter.m */,
+			);
+			path = SenseMe;
+			sourceTree = "<group>";
+		};
+		E79EBA5B2795415700FE703A /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA5C2795415700FE703A /* Filters */,
+				E79EBA612795415700FE703A /* Color */,
+				E79EBA632795415700FE703A /* Makeup */,
+				E79EBA6E2795415700FE703A /* StickerZipAndIcons */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		E79EBA5C2795415700FE703A /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA5D2795415700FE703A /* PortraitFilters.bundle */,
+				E79EBA5E2795415700FE703A /* SceneryFilters.bundle */,
+				E79EBA5F2795415700FE703A /* StillLifeFilters.bundle */,
+				E79EBA602795415700FE703A /* DeliciousFoodFilters.bundle */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		E79EBA612795415700FE703A /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA622795415700FE703A /* whiten_gif.zip */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		E79EBA632795415700FE703A /* Makeup */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA642795415700FE703A /* eyeliner.bundle */,
+				E79EBA652795415700FE703A /* eyelash.bundle */,
+				E79EBA662795415700FE703A /* lips.bundle */,
+				E79EBA672795415700FE703A /* brow.bundle */,
+				E79EBA682795415700FE703A /* wholemakeup.bundle */,
+				E79EBA692795415700FE703A /* face.bundle */,
+				E79EBA6A2795415700FE703A /* eyeshadow.bundle */,
+				E79EBA6B2795415700FE703A /* maskhair.bundle */,
+				E79EBA6C2795415700FE703A /* blush.bundle */,
+				E79EBA6D2795415700FE703A /* eyeball.bundle */,
+			);
+			path = Makeup;
+			sourceTree = "<group>";
+		};
+		E79EBA6E2795415700FE703A /* StickerZipAndIcons */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA6F2795415700FE703A /* my_sticker.bundle */,
+			);
+			path = StickerZipAndIcons;
+			sourceTree = "<group>";
+		};
+		E79EBA802795452E00FE703A /* SenseArSourceService */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA812795452E00FE703A /* include */,
+				E79EBA872795452E00FE703A /* VERSION */,
+				E79EBA882795452E00FE703A /* lib */,
+			);
+			path = SenseArSourceService;
+			sourceTree = "<group>";
+		};
+		E79EBA812795452E00FE703A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA822795452E00FE703A /* SenseArMaterialAction.h */,
+				E79EBA832795452E00FE703A /* SenseArMaterial.h */,
+				E79EBA842795452E00FE703A /* SenseArSourceService.h */,
+				E79EBA852795452E00FE703A /* SenseArMaterialService.h */,
+				E79EBA862795452E00FE703A /* SenseArMaterialGroup.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E79EBA882795452E00FE703A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA892795452E00FE703A /* ios_universal */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E79EBA892795452E00FE703A /* ios_universal */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBA8A2795452E00FE703A /* libSenseArSourceService.a */,
+			);
+			path = ios_universal;
+			sourceTree = "<group>";
+		};
+		E79EBB912795A0D900FE703A /* st_models */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBB922795A0D900FE703A /* include */,
+				E79EBBA52795A0D900FE703A /* models */,
+				E79EBBB32795A0D900FE703A /* docs */,
+				E79EBBB72795A0D900FE703A /* lib */,
+			);
+			path = st_models;
+			sourceTree = "<group>";
+		};
+		E79EBB922795A0D900FE703A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBB932795A0D900FE703A /* st_mobile_common.h */,
+				E79EBB942795A0D900FE703A /* st_mobile_sticker_module.h */,
+				E79EBB952795A0D900FE703A /* st_mobile_beautify.h */,
+				E79EBB962795A0D900FE703A /* st_mobile_animal.h */,
+				E79EBB972795A0D900FE703A /* st_mobile_human_action.h */,
+				E79EBB982795A0D900FE703A /* st_mobile_object.h */,
+				E79EBB992795A0D900FE703A /* st_mobile_makeup.h */,
+				E79EBB9A2795A0D900FE703A /* st_mobile_attribute_face_feature.h */,
+				E79EBB9B2795A0D900FE703A /* st_mobile_face_attribute.h */,
+				E79EBB9C2795A0D900FE703A /* st_mobile_license.h */,
+				E79EBB9D2795A0D900FE703A /* st_mobile_slam.h */,
+				E79EBB9E2795A0D900FE703A /* st_mobile_filter.h */,
+				E79EBB9F2795A0D900FE703A /* st_mobile_color_convert.h */,
+				E79EBBA02795A0D900FE703A /* st_mobile_avatar.h */,
+				E79EBBA12795A0D900FE703A /* st_mobile_gen_avatar.h */,
+				E79EBBA22795A0D900FE703A /* st_mobile_sticker.h */,
+				E79EBBA32795A0D900FE703A /* st_mobile_renderer.h */,
+				E79EBBA42795A0D900FE703A /* st_mobile_sticker_transition.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E79EBBA52795A0D900FE703A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBBA62795A0D900FE703A /* M_SenseME_CatFace_3.0.0.model */,
+				E79EBBA72795A0D900FE703A /* M_SenseME_Segment_Head_1.0.3.model */,
+				E79EBBA82795A0D900FE703A /* M_SenseME_MouthOcclusion_1.1.2.model */,
+				E79EBBA92795A0D900FE703A /* M_SenseME_Segment_4.12.8.model */,
+				E79EBBAA2795A0D900FE703A /* M_SenseME_Iris_2.0.0.model */,
+				E79EBBAB2795A0D900FE703A /* M_SenseME_Face_Video_5.3.4.model */,
+				E79EBBAC2795A0D900FE703A /* M_SenseME_Hand_5.4.0.model */,
+				E79EBBAD2795A0D900FE703A /* M_SenseME_Face_Extra_Advanced_6.0.11.model */,
+				E79EBBAE2795A0D900FE703A /* M_SenseME_Face_Video_7.0.0.model */,
+				E79EBBAF2795A0D900FE703A /* SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf */,
+				E79EBBB02795A0D900FE703A /* M_SenseME_Segment_Hair_1.3.4.model */,
+				E79EBBB12795A0D900FE703A /* M_SenseME_Attribute_1.0.1.model */,
+				E79EBBB22795A0D900FE703A /* M_SenseME_Avatar_Help_2.2.0.model */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E79EBBB32795A0D900FE703A /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBBB42795A0D900FE703A /* SenseMEEffects集成文档ios.pdf */,
+				E79EBBB52795A0D900FE703A /* SenseAR_v7.7.0Effects).pdf */,
+				E79EBBB62795A0D900FE703A /* how_to_use_license.pdf */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		E79EBBB72795A0D900FE703A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBBB82795A0D900FE703A /* ios_os */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E79EBBB82795A0D900FE703A /* ios_os */ = {
+			isa = PBXGroup;
+			children = (
+				E79EBBB92795A0D900FE703A /* libst_mobile.a */,
+			);
+			path = ios_os;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		09C6665E24D7BC89001D7AE2 /* BeautifyExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09C6668324D7BC8B001D7AE2 /* Build configuration list for PBXNativeTarget "BeautifyExample" */;
+			buildPhases = (
+				A1EBB42BE36B3239F94E3017 /* [CP] Check Pods Manifest.lock */,
+				09C6665B24D7BC89001D7AE2 /* Sources */,
+				09C6665C24D7BC89001D7AE2 /* Frameworks */,
+				09C6665D24D7BC89001D7AE2 /* Resources */,
+				E79EBB882795956500FE703A /* Embed Frameworks */,
+				CF9636DFA572EE946CF38EEB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeautifyExample;
+			productName = BeautifyExample;
+			productReference = 09C6665F24D7BC89001D7AE2 /* BeautifyExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		09C6665724D7BC89001D7AE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Agora;
+				TargetAttributes = {
+					09C6665E24D7BC89001D7AE2 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1300;
+					};
+				};
+			};
+			buildConfigurationList = 09C6665A24D7BC89001D7AE2 /* Build configuration list for PBXProject "BeautifyExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 09C6665624D7BC89001D7AE2;
+			productRefGroup = 09C6666024D7BC89001D7AE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				09C6665E24D7BC89001D7AE2 /* BeautifyExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		09C6665D24D7BC89001D7AE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E79EBA742795415700FE703A /* whiten_gif.zip in Resources */,
+				09C6667224D7BC8B001D7AE2 /* LaunchScreen.storyboard in Resources */,
+				E79EBBC42795A0D900FE703A /* M_SenseME_Segment_Hair_1.3.4.model in Resources */,
+				E79EBBC02795A0D900FE703A /* M_SenseME_Hand_5.4.0.model in Resources */,
+				E79EBA7E2795415700FE703A /* eyeball.bundle in Resources */,
+				E79EBA702795415700FE703A /* PortraitFilters.bundle in Resources */,
+				E79EBA7C2795415700FE703A /* maskhair.bundle in Resources */,
+				E79EBA7F2795415700FE703A /* my_sticker.bundle in Resources */,
+				8B061147260B6AB0004795A4 /* STSliderView.xib in Resources */,
+				E79EBA772795415700FE703A /* lips.bundle in Resources */,
+				E79EBA7B2795415700FE703A /* eyeshadow.bundle in Resources */,
+				E79EBBBB2795A0D900FE703A /* M_SenseME_Segment_Head_1.0.3.model in Resources */,
+				E79EBBBF2795A0D900FE703A /* M_SenseME_Face_Video_5.3.4.model in Resources */,
+				E79EBA7A2795415700FE703A /* face.bundle in Resources */,
+				E79EBA762795415700FE703A /* eyelash.bundle in Resources */,
+				E79EBBC22795A0D900FE703A /* M_SenseME_Face_Video_7.0.0.model in Resources */,
+				E79EBBC12795A0D900FE703A /* M_SenseME_Face_Extra_Advanced_6.0.11.model in Resources */,
+				E79EBA782795415700FE703A /* brow.bundle in Resources */,
+				E79EBBC52795A0D900FE703A /* M_SenseME_Attribute_1.0.1.model in Resources */,
+				E79EBBBD2795A0D900FE703A /* M_SenseME_Segment_4.12.8.model in Resources */,
+				E79EBBC32795A0D900FE703A /* SenseAR_v7.7.0(Effects)_Model_Usage_Instructions的.pdf in Resources */,
+				E79EBBBC2795A0D900FE703A /* M_SenseME_MouthOcclusion_1.1.2.model in Resources */,
+				E79EBBC72795A0D900FE703A /* SenseMEEffects集成文档ios.pdf in Resources */,
+				E79EBBBE2795A0D900FE703A /* M_SenseME_Iris_2.0.0.model in Resources */,
+				09C6666F24D7BC8B001D7AE2 /* Assets.xcassets in Resources */,
+				E79EBA792795415700FE703A /* wholemakeup.bundle in Resources */,
+				E79EBBC82795A0D900FE703A /* SenseAR_v7.7.0Effects).pdf in Resources */,
+				E79EBA7D2795415700FE703A /* blush.bundle in Resources */,
+				8B06115E260B6AB0004795A4 /* EffectsCollectionViewCell.xib in Resources */,
+				E79EBA752795415700FE703A /* eyeliner.bundle in Resources */,
+				E79EBA712795415700FE703A /* SceneryFilters.bundle in Resources */,
+				E79EBBBA2795A0D900FE703A /* M_SenseME_CatFace_3.0.0.model in Resources */,
+				E79EBA8B2795452E00FE703A /* VERSION in Resources */,
+				09C6666D24D7BC89001D7AE2 /* Main.storyboard in Resources */,
+				E79EBA722795415700FE703A /* StillLifeFilters.bundle in Resources */,
+				E79EBBC62795A0D900FE703A /* M_SenseME_Avatar_Help_2.2.0.model in Resources */,
+				E79EBBC92795A0D900FE703A /* how_to_use_license.pdf in Resources */,
+				8B061144260B6AB0004795A4 /* STViewButton.xib in Resources */,
+				E79EBA732795415700FE703A /* DeliciousFoodFilters.bundle in Resources */,
+				031D6012251CD0CD000934AB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1EBB42BE36B3239F94E3017 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeautifyExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF9636DFA572EE946CF38EEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		09C6665B24D7BC89001D7AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B06115C260B6AB0004795A4 /* STBMPDetailColVCell.m in Sources */,
+				8B06114B260B6AB0004795A4 /* STTriggerView.m in Sources */,
+				8B061151260B6AB0004795A4 /* STAudioManager.m in Sources */,
+				8B061166260B6AB0004795A4 /* STVFShader.m in Sources */,
+				8B061162260B6AB0004795A4 /* STCommonObjectView.m in Sources */,
+				8B061160260B6AB0004795A4 /* STCollectionViewCell.m in Sources */,
+				8B061146260B6AB0004795A4 /* STGLPreview.m in Sources */,
+				8B061161260B6AB0004795A4 /* STBMPCollectionView.m in Sources */,
+				8B061149260B6AB0004795A4 /* STButton.m in Sources */,
+				8B63F063260A3E790040C3A8 /* SenseMeFilter.m in Sources */,
+				2D8ABD2F2511B63200D28745 /* MainViewController.m in Sources */,
+				8B061167260B6AB0004795A4 /* STMovieRecorder.m in Sources */,
+				8B061159260B6AB0004795A4 /* STPlayerControlBar.m in Sources */,
+				8B061145260B6AB0004795A4 /* STLock.m in Sources */,
+				8B061164260B6AB0004795A4 /* SenseTimeUtil.m in Sources */,
+				8B06116B260B6AB0004795A4 /* SenseTimeManager.m in Sources */,
+				8B06114D260B6AB0004795A4 /* STCustomMemoryCache.m in Sources */,
+				8B061168260B6AB0004795A4 /* STBMPCollectionViewCell.m in Sources */,
+				8B061154260B6AB0004795A4 /* STFilterView.m in Sources */,
+				8B061163260B6AB0004795A4 /* EffectsCollectionView.m in Sources */,
+				8B061165260B6AB0004795A4 /* STCamera.m in Sources */,
+				8B061156260B6AB0004795A4 /* STEffectsAudioPlayer.m in Sources */,
+				8B061155260B6AB0004795A4 /* STViewButton.m in Sources */,
+				8B06114C260B6AB0004795A4 /* STTitleViewItem.m in Sources */,
+				8B06116A260B6AB0004795A4 /* SenseBeautifyManager.m in Sources */,
+				8B061157260B6AB0004795A4 /* STSliderView.m in Sources */,
+				8B06114E260B6AB0004795A4 /* STParamUtil.m in Sources */,
+				8B06114A260B6AB0004795A4 /* STCommonObjectContainerView.m in Sources */,
+				8B06115D260B6AB0004795A4 /* STCollectionView.m in Sources */,
+				8B06114F260B6AB0004795A4 /* STCustomCollectionView.m in Sources */,
+				8B06115F260B6AB0004795A4 /* EffectsCollectionViewCell.m in Sources */,
+				8B061142260B6AB0004795A4 /* STBmpStrengthView.m in Sources */,
+				8B061153260B6AB0004795A4 /* STBeautySlider.m in Sources */,
+				E7C09CBF2796A9A900C9199D /* TestController.swift in Sources */,
+				03F8196324E1371B004F7F36 /* KeyCenter.m in Sources */,
+				8B061169260B6AB0004795A4 /* SenseEffectsManager.m in Sources */,
+				8B061143260B6AB0004795A4 /* STBMPModel.m in Sources */,
+				09C6666A24D7BC89001D7AE2 /* ViewController.m in Sources */,
+				8B061148260B6AB0004795A4 /* SaveToastUtil.m in Sources */,
+				8B06115B260B6AB0004795A4 /* STBMPDetailColV.m in Sources */,
+				09C6666424D7BC89001D7AE2 /* AppDelegate.m in Sources */,
+				8B06115A260B6AB0004795A4 /* SenseMEUtils.m in Sources */,
+				8B061152260B6AB0004795A4 /* STGLPreview2.m in Sources */,
+				8B061150260B6AB0004795A4 /* STEffectsTimer.m in Sources */,
+				09C6667524D7BC8B001D7AE2 /* main.m in Sources */,
+				8B061158260B6AB0004795A4 /* STScrollTitleView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		09C6666B24D7BC89001D7AE2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09C6666C24D7BC89001D7AE2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		09C6667024D7BC8B001D7AE2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09C6667124D7BC8B001D7AE2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		09C6668124D7BC8B001D7AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		09C6668224D7BC8B001D7AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		09C6668424D7BC8B001D7AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS397FG5PA;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/AgoraRtcEngine_iOS_Preview\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/libyuv",
+				);
+				INFOPLIST_FILE = BeautifyExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_os",
+					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_sim",
+					"$(PROJECT_DIR)/SenseMe/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/st_models/lib/ios_os",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"resolv\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AgoraRtcKit\"",
+					"-framework",
+					"\"Agoraffmpeg\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"VideoToolbox\"",
+					"-lsqlite3",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BeautifyExample/BeautifyExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		09C6668524D7BC8B001D7AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/AgoraRtcEngine_iOS_Preview\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/libyuv",
+				);
+				INFOPLIST_FILE = BeautifyExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_os",
+					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_sim",
+					"$(PROJECT_DIR)/SenseMe/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/st_models/lib/ios_os",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"resolv\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AgoraRtcKit\"",
+					"-framework",
+					"\"Agoraffmpeg\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"VideoToolbox\"",
+					"-lsqlite3",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BeautifyExample/BeautifyExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09C6665A24D7BC89001D7AE2 /* Build configuration list for PBXProject "BeautifyExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C6668124D7BC8B001D7AE2 /* Debug */,
+				09C6668224D7BC8B001D7AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09C6668324D7BC8B001D7AE2 /* Build configuration list for PBXNativeTarget "BeautifyExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C6668424D7BC8B001D7AE2 /* Debug */,
+				09C6668524D7BC8B001D7AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 09C6665724D7BC89001D7AE2 /* Project object */;
+}

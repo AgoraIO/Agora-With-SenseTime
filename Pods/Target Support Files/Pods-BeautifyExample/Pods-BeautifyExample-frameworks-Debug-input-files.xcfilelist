@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks.sh
+${PODS_ROOT}/AgoraRtcEngine_Special_iOS/AgoraRTE.framework
+${PODS_ROOT}/AgoraRtcEngine_Special_iOS/AgoraRtcCryptoLoader.framework
+${PODS_ROOT}/AgoraRtcEngine_Special_iOS/AgoraRtcKit.framework
+${PODS_ROOT}/AgoraRtcEngine_Special_iOS/AgoraVideoProcess.framework
+${PODS_ROOT}/AgoraRtcEngine_Special_iOS/Agoraffmpeg.framework
