@@ -18,7 +18,7 @@ import java.util.Locale;
  * Created by leiwang on 2016/12/2.
  */
 
-public class STLicenseUtils2 {
+public class STLicenseUtils {
     private final static String TAG = "STLicenseUtils";
 
 
@@ -185,7 +185,7 @@ public class STLicenseUtils2 {
             }
 
 
-            return STLicenseUtils2.checkLicenseFromBuffer(context, licData, false);
+            return STLicenseUtils.checkLicenseFromBuffer(context, licData, false);
         }
 
         SenseArMaterialService.shareInstance().authorizeWithAppId(context, Constants.APPID, Constants.APPKEY, new SenseArMaterialService.OnAuthorizedListener() {
@@ -202,7 +202,7 @@ public class STLicenseUtils2 {
                     Log.e(TAG, "onSuccess: licData is null " );
                 }
 
-                mCheckLicenseRet = STLicenseUtils2.checkLicenseFromBuffer(context, licData, false);
+                mCheckLicenseRet = STLicenseUtils.checkLicenseFromBuffer(context, licData, false);
                 IsChecked = true;
             }
 
@@ -218,7 +218,7 @@ public class STLicenseUtils2 {
                     Log.e(TAG, "onFailure: licData is null " );
                 }
 
-                mCheckLicenseRet = STLicenseUtils2.checkLicenseFromBuffer(context, licData, false);
+                mCheckLicenseRet = STLicenseUtils.checkLicenseFromBuffer(context, licData, false);
                 IsChecked = true;
             }
         });
@@ -237,11 +237,11 @@ public class STLicenseUtils2 {
     //从本地读取License文件，并检查授权
     public static boolean checkLicenseFromLocal(final Context context){
         if(USING_ASSETS_ONLINE_LICENSE){
-            if (!STLicenseUtils2.checkLicenseFromAssetFile(context, ONLINE_LICENSE_NAME, true)) {
+            if (!STLicenseUtils.checkLicenseFromAssetFile(context, ONLINE_LICENSE_NAME, true)) {
                 return false;
             }
         }else {
-            if (!STLicenseUtils2.checkLicenseFromAssetFile(context, LOCAL_LICENSE_NAME, false)) {
+            if (!STLicenseUtils.checkLicenseFromAssetFile(context, LOCAL_LICENSE_NAME, false)) {
                 return false;
             }
         }
