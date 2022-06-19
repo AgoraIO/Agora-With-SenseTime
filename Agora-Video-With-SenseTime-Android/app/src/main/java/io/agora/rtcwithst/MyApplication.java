@@ -1,19 +1,15 @@
 package io.agora.rtcwithst;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import io.agora.capture.video.camera.CameraVideoManager;
-import io.agora.capture.video.camera.VideoModule;
-import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
-import io.agora.rtcwithst.rtc.IRtcEventHandler;
-import io.agora.rtcwithst.rtc.RtcEventHandler;
-
-import static android.content.ContentValues.TAG;
 
 public class MyApplication extends Application {
     private CameraVideoManager mVideoManager;
@@ -45,7 +41,7 @@ public class MyApplication extends Application {
 
     private void initVideoCapture() {
         Context application = getApplicationContext();
-        mVideoManager = new CameraVideoManager(application,
+        mVideoManager = CameraVideoManager.create(application,
                 new PreprocessorSenseTime(application));
         Log.i(TAG, mVideoManager.toString());
     }

@@ -46,6 +46,7 @@
         android:onClick="onEffectEnabled"
         android:text="Effect"
         android:visibility="invisible" />
+
     <io.agora.rtcwithst.activities.EffectOptionContainer
         android:id="@+id/effect_container"
         android:layout_width="match_parent"

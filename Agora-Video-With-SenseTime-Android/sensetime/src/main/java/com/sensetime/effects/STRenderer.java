@@ -1,9 +1,8 @@
 package com.sensetime.effects;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.graphics.SurfaceTexture;
-import android.hardware.SensorEvent;
+import android.hardware.Camera;
+import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -16,378 +15,228 @@ import com.sensetime.effects.glutils.GlUtil;
 import com.sensetime.effects.glutils.STUtils;
 import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
-import com.sensetime.effects.utils.STLicenceUtils;
-import com.sensetime.stmobile.STBeautifyNative;
-import com.sensetime.stmobile.STBeautyParamsType;
-import com.sensetime.stmobile.STCommon;
-import com.sensetime.stmobile.STFilterParamsType;
-import com.sensetime.stmobile.STHumanActionParamsType;
+import com.sensetime.effects.utils.STLicenseUtils2;
+import com.sensetime.stmobile.STCommonNative;
+import com.sensetime.stmobile.STEffectInImage;
+import com.sensetime.stmobile.STMobileAnimalNative;
+import com.sensetime.stmobile.STMobileEffectNative;
+import com.sensetime.stmobile.STMobileEffectParams;
 import com.sensetime.stmobile.STMobileHumanActionNative;
-import com.sensetime.stmobile.STMobileMakeupNative;
 import com.sensetime.stmobile.STMobileObjectTrackNative;
-import com.sensetime.stmobile.STMobileStickerNative;
-import com.sensetime.stmobile.STMobileStreamFilterNative;
-import com.sensetime.stmobile.STRotateType;
+import com.sensetime.stmobile.model.STAnimalFace;
+import com.sensetime.stmobile.model.STAnimalFaceInfo;
+import com.sensetime.stmobile.model.STEffectRenderInParam;
+import com.sensetime.stmobile.model.STEffectRenderOutParam;
+import com.sensetime.stmobile.model.STEffectTexture;
+import com.sensetime.stmobile.model.STFaceMeshList;
 import com.sensetime.stmobile.model.STHumanAction;
-import com.sensetime.stmobile.model.STRect;
-import com.sensetime.stmobile.model.STStickerInputParams;
+import com.sensetime.stmobile.model.STImage;
+import com.sensetime.stmobile.params.STBeautyParamsType;
+import com.sensetime.stmobile.params.STEffectBeautyType;
+import com.sensetime.stmobile.params.STEffectParam;
+import com.sensetime.stmobile.params.STHumanActionParamsType;
+import com.sensetime.stmobile.params.STRotateType;
 
-import java.nio.ByteBuffer;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class STRenderer {
     private static final String TAG = STRenderer.class.getSimpleName();
+    public static final float MAKEUP_HAIRDYE_STRENGTH_RATIO = 0.22f;
+    // Messages for submodule and sticker handler threads
+    private static final int MESSAGE_NEED_CHANGE_STICKER = 1003;
+    private static final int MESSAGE_NEED_REMOVE_STICKER = 1004;
 
-    private boolean mInDebugMode = false;
-
-    private Context mContext;
-
-    private final Object mHumanActionHandleLock = new Object();
-
-    private int mHumanActionCreateConfig = STMobileHumanActionNative.ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO;
-    private boolean mIsCreateHumanActionHandleSucceeded = false;
-    private STMobileHumanActionNative mSTHumanActionNative = new STMobileHumanActionNative();
-    private STHumanAction mHumanActionBeautyOutput = new STHumanAction();
-    private STBeautifyNative mStBeautifyNative = new STBeautifyNative();
-    private STMobileStickerNative mStStickerNative = new STMobileStickerNative();
-    private STMobileStreamFilterNative mSTMobileStreamFilterNative = new STMobileStreamFilterNative();
-    private STMobileObjectTrackNative mSTMobileObjectTrackNative = new STMobileObjectTrackNative();
-    private STMobileMakeupNative mSTMobileMakeupNative = new STMobileMakeupNative();
-
-    private long mDetectConfig = 0;
+    private final Context mContext;
 
     // Handler threads
-    private HandlerThread mSubModelsManagerThread;
-    private Handler mSubModelsManagerHandler;
-
     private HandlerThread mChangeStickerManagerThread;
     private Handler mChangeStickerManagerHandler;
 
-    // Messages for submodule and sticker handler threads
-    private static final int MESSAGE_ADD_SUB_MODEL = 1001;
-    private static final int MESSAGE_REMOVE_SUB_MODEL = 1002;
-    private static final int MESSAGE_NEED_CHANGE_STICKER = 1003;
-    private static final int MESSAGE_NEED_REMOVE_STICKER = 1004;
-    private static final int MESSAGE_NEED_REMOVE_ALL_STICKERS = 1005;
-    private static final int MESSAGE_NEED_ADD_STICKER = 1006;
+    // Sense Tang Native Modules
+    public STMobileEffectNative mSTMobileEffectNative = new STMobileEffectNative();
+    protected STMobileHumanActionNative mSTHumanActionNative = new STMobileHumanActionNative();
+    protected STMobileAnimalNative mStAnimalNative = new STMobileAnimalNative();
+    protected STMobileObjectTrackNative mSTMobileObjectTrackNative = new STMobileObjectTrackNative();
 
     private boolean mAuthorized;
 
-    // switches of effects
-    private volatile boolean mShowOriginal;
-    private boolean mNeedObject = false;
-    private boolean mNeedSetObjectTarget = false;
-    private boolean mNeedDistance = false;
-    private boolean mNeedSticker = false;
-    private boolean mNeedBeautify = false;
-    private boolean mNeedMakeup = false;
-    private boolean mNeedFilter = false;
-
-    // Object tracking states b
-    private Rect mTargetRect = new Rect();
-    private boolean mIsObjectTracking = false;
-    private boolean mNeedShowRect = false;
-    private float mFaceDistance = 0f;
-
-    // Sticker states
-    private String mCurrentSticker;
-    // private TreeMap<Integer, String> mCurrentStickerMaps = new TreeMap<>();
-
-    // Filter states
-    private String mCurrentFilterStyle;
-    private float mCurrentFilterStrength = 0.65f;  // ranges of [0,1]
-    private float mFilterStrength = 0.65f;
-    private String mFilterStyle;
-    private boolean mNeedFilterOutputBuffer;
-
-    // Makeup states
-    // Records makeup package ids, makeup type as the index.
-    private Map<String, Integer> mMakeupPackageIds = new HashMap<>();
-    private Map<String, String> mMakeupPaths = new HashMap<>();
-
-    // States changing
-    private boolean mIsPaused = false;
-    private boolean mCameraChanging = false;
+    private final Object mHumanActionHandleLock = new Object();
+    private final int mHumanActionCreateConfig = STMobileHumanActionNative.ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO;
+    private boolean mIsCreateHumanActionHandleSucceeded = false;
+    private long mDetectConfig = -1;
 
     private STGLRender mGLRender;
-    private ByteBuffer mRGBABuffer;
-    private int[] mBeautifyTextureId;
-    private int[] mMakeupTextureId;
     private int[] mTextureOutId;
-    private int[] mFilterTextureOutId;
-    private int mImageWidth;
-    private int mImageHeight;
+    private byte[] mImageDataBuffer = null;
+    protected STHumanAction[] mSTHumanAction = new STHumanAction[2];
 
-    private int mCustomEvent = 0;
-    private SensorEvent mSensorEvent;
+    protected STAnimalFaceInfo[] mAnimalFaceInfo = new STAnimalFaceInfo[2];
+    private boolean mNeedAnimalDetect = false;
 
-    private STEffectParameters mParams = new STEffectParameters();
+    private String mCurrentSticker;
+    private final LinkedHashMap<Integer, String> mCurrentStickerMaps = new LinkedHashMap<>();
 
-    public void setDebugMode(boolean enabled) {
-        mInDebugMode = enabled;
-    }
+    private final STEffectParameters mEffectParams = new STEffectParameters();
+
+    private STFaceMeshList faceMeshList;
 
     public STRenderer(Context context) {
         mContext = context;
+        mSTHumanAction[0] = new STHumanAction();
+        init();
     }
 
     private void init() {
         checkLicense();
         initGLRender();
+        initMobileEffect();
         initHumanAction();
-        initObjectTrack();
         initHandlerManager();
-        initBeauty();
-        initSticker();
-        initFilter();
-        initMakeup();
     }
 
     private void checkLicense() {
-        mAuthorized = STLicenceUtils.checkLicense(mContext);
+        mAuthorized = STLicenseUtils2.checkLicense(mContext);
     }
+
+    private void initHumanAction() {
+        //初始化非OpengGL相关的句柄，包括人脸检测及人脸属性
+        new Thread(() -> {
+            synchronized (mHumanActionHandleLock) {
+                long startLoadHumanActionModel = System.currentTimeMillis();
+
+                //从asset资源文件夹读取model到内存，再使用底层st_mobile_human_action_create_from_buffer接口创建handle
+                int result = mSTHumanActionNative.createInstanceFromAssetFile(FileUtils.getActionModelName(), mHumanActionCreateConfig, mContext.getAssets());
+                LogUtils.i(TAG, "the result for createInstance for human_action is %d", result);
+                Log.e(TAG, "load model name: " + FileUtils.getActionModelName() + " cost time: " + (System.currentTimeMillis() - startLoadHumanActionModel));
+
+                if (result == 0) {
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_HAND, mContext.getAssets());
+                    LogUtils.i(TAG, "add hand model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_SEGMENT, mContext.getAssets());
+                    LogUtils.i(TAG, "add figure segment model result: %d", result);
+
+                    mIsCreateHumanActionHandleSucceeded = true;
+
+                    mSTHumanActionNative.setParam(STHumanActionParamsType.ST_HUMAN_ACTION_PARAM_BACKGROUND_BLUR_STRENGTH, 0.35f);
+
+                    //240
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_FACE_EXTRA, mContext.getAssets());
+                    LogUtils.i(TAG, "add face extra model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_HAIR, mContext.getAssets());
+                    LogUtils.i(TAG, "add hair model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_LIPS_PARSING, mContext.getAssets());
+                    LogUtils.i(TAG, "add lips parsing model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.HEAD_SEGMENT_MODEL_NAME, mContext.getAssets());
+                    LogUtils.i(TAG, "add head segment model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.HEAD_SEGMENT_DBL, mContext.getAssets());
+                    LogUtils.i(TAG, "add dbl segment model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_SEGMENT_SKY, mContext.getAssets());
+                    LogUtils.i(TAG, "add sky segment model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_HELP, mContext.getAssets());
+                    LogUtils.i(TAG, "add avatar help model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_FOOT, mContext.getAssets());
+                    LogUtils.i(TAG, "add foot model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_PANT, mContext.getAssets());
+                    LogUtils.i(TAG, "add pant model result: %d", result);
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_SEGMENT_SKIN, mContext.getAssets());
+                    LogUtils.i(TAG, "add skin segment model result: %d", result);
+                    //setHasSkinCapability(result != STResultCode.ST_E_NO_CAPABILITY.getResultCode());
+
+                    result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_3DMESH, mContext.getAssets());
+                    LogUtils.i(TAG, "add 3d mesh model result: %d", result);
+
+                    // 开启face mesh的边缘线检测功能
+                    mSTHumanActionNative.setParam(STHumanActionParamsType.ST_HUMAN_ACTION_PARAM_FACE_MESH_CONTOUR, 1.0f);
+                    // 设置face mesh检测类别
+                    mSTHumanActionNative.setParam(STHumanActionParamsType.ST_HUMAN_ACTION_PARAM_FACE_MESH_MODE, 0x111000);
+
+                    this.faceMeshList = mSTHumanActionNative.getMeshList(STHumanActionParamsType.STMeshType.ST_MOBILE_FACE_MESH);
+                }
+
+            }
+        }).start();
+    }
+
+
+    private void initMobileEffect() {
+        int result = mSTMobileEffectNative.createInstance(mContext, STMobileEffectNative.EFFECT_CONFIG_NONE);
+        mSTMobileEffectNative.setParam(STMobileEffectParams.EFFECT_PARAM_QUATERNION_SMOOTH_FRAME, 5);
+        LogUtils.i(TAG, "the result is for initEffect:" + result);
+    }
+
 
     private void initGLRender() {
         mGLRender = new STGLRender();
     }
 
-    private void initHumanAction() {
-        // The initialization of HumanAction interface needs to be
-        // loaded asynchronously, cause it needs to read files
-        // and time-consuming.
-        // Core modules can be loaded using a worker thread,
-        // then sub modules can be loaded later when needed.
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (mHumanActionHandleLock) {
-                    // Read resource file into memory from assets folder, then use low-level api
-                    // st_mobile_human_action_create_from_buffer to create the handle
-                    int result = mSTHumanActionNative.createInstanceFromAssetFile(
-                            FileUtils.getActionModelName(), mHumanActionCreateConfig, mContext.getAssets());
-                    LogUtils.i(TAG, "the result for createInstance for human_action is %d", result);
-
-                    if (result == 0) {
-                        result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_HAND, mContext.getAssets());
-                        LogUtils.i(TAG, "add hand model result: %d", result);
-                        result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_SEGMENT, mContext.getAssets());
-                        LogUtils.i(TAG, "add figure segment model result: %d", result);
-
-                        mIsCreateHumanActionHandleSucceeded = true;
-                        mSTHumanActionNative.setParam(STHumanActionParamsType.ST_HUMAN_ACTION_PARAM_BACKGROUND_BLUR_STRENGTH, 0.35f);
-
-                        //for test face morph
-                        result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_FACE_EXTRA, mContext.getAssets());
-                        mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS;
-                        LogUtils.i(TAG, "add face extra model result: %d", result);
-
-                        //for test avatar
-                        result = mSTHumanActionNative.addSubModelFromAssetFile(FileUtils.MODEL_NAME_EYEBALL_CONTOUR, mContext.getAssets());
-                        LogUtils.i(TAG, "add eyeball contour model result: %d", result);
-                    }
-                }
-            }
-        }).start();
-    }
-
-    private void initObjectTrack() {
-        mSTMobileObjectTrackNative.createInstance();
-    }
 
     private void initHandlerManager() {
-        mSubModelsManagerThread = new HandlerThread("SubModelManagerThread");
-        mSubModelsManagerThread.start();
-        mSubModelsManagerHandler = new Handler(mSubModelsManagerThread.getLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                if (!mIsPaused && !mCameraChanging &&
-                        mIsCreateHumanActionHandleSucceeded) {
-                    switch (msg.what) {
-                        case MESSAGE_ADD_SUB_MODEL:
-                            String modelName = (String) msg.obj;
-                            if (modelName != null) {
-                                addSubModel(modelName);
-                            }
-                            break;
-                        case MESSAGE_REMOVE_SUB_MODEL:
-                            int config = (int) msg.obj;
-                            if (config != 0) {
-                                removeSubModel(config);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        };
-
         mChangeStickerManagerThread = new HandlerThread("ChangeStickerManagerThread");
         mChangeStickerManagerThread.start();
         mChangeStickerManagerHandler = new Handler(mChangeStickerManagerThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                if (!mIsPaused && !mCameraChanging) {
-                    switch (msg.what) {
-                        case MESSAGE_NEED_CHANGE_STICKER:
-                            mCurrentSticker = (String) msg.obj;
-                            int result = mStStickerNative.changeSticker(mCurrentSticker);
-                            LogUtils.i(TAG, "change sticker result: %d", result);
-                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
-                            break;
-                        case MESSAGE_NEED_REMOVE_ALL_STICKERS:
-                            mStStickerNative.removeAllStickers();
-                            mCurrentSticker = null;
-                            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
-                            break;
-                        default:
-                            break;
-                    }
+                switch (msg.what) {
+                    case MESSAGE_NEED_CHANGE_STICKER:
+                        String sticker = (String) msg.obj;
+                        mCurrentSticker = sticker;
+                        int packageId1 = mSTMobileEffectNative.changePackage(mCurrentSticker);
+                        Log.d(TAG, "ST_XCZ STMobileEffectNative changePackage sticker=" + mCurrentSticker + ",packageId=" + packageId1);
+
+                        Log.d(TAG, "change_package: packageId1:" + packageId1);
+                        if (packageId1 > 0) {
+                            Iterator<LinkedHashMap.Entry<Integer, String>> iterator = mCurrentStickerMaps.entrySet().iterator();
+                            while (iterator.hasNext()) {
+                                if (sticker.equals(iterator.next().getValue())) {
+                                    iterator.remove();
+                                }
+                            }
+
+                            mCurrentStickerMaps.put(packageId1, sticker);
+                        }
+                        updateAnimalDetectConfig();
+                        break;
+                    case MESSAGE_NEED_REMOVE_STICKER:
+                        int packageId = (int) msg.obj;
+                        int result = mSTMobileEffectNative.removeEffect(packageId);
+                        Log.d(TAG, "ST_XCZ STMobileEffectNative removeEffect packageId=" + packageId);
+
+                        if (mCurrentStickerMaps != null && result == 0) {
+                            mCurrentStickerMaps.remove(packageId);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         };
     }
 
-    private void addSubModel(final String modelName) {
-        synchronized (mHumanActionHandleLock) {
-            int result = mSTHumanActionNative.addSubModelFromAssetFile(modelName, mContext.getAssets());
-            LogUtils.i(TAG, "add sub model result: %d", result);
-
-            if (result == 0) {
-                if (modelName.equals(FileUtils.MODEL_NAME_BODY_FOURTEEN)) {
-                    mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_BODY_KEYPOINTS;
-                    mSTHumanActionNative.setParam(STHumanActionParamsType.ST_HUMAN_ACTION_PARAM_BODY_LIMIT, 3.0f);
-                } else if (modelName.equals(FileUtils.MODEL_NAME_FACE_EXTRA)) {
-                    mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS;
-                } else if (modelName.equals(FileUtils.MODEL_NAME_EYEBALL_CONTOUR)) {
-                    mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_DETECT_EYEBALL_CONTOUR |
-                            STMobileHumanActionNative.ST_MOBILE_DETECT_EYEBALL_CENTER;
-                } else if (modelName.equals(FileUtils.MODEL_NAME_HAND)) {
-                    mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_HAND_DETECT_FULL;
-                }
-            }
-        }
-    }
-
-    private void removeSubModel(final int config) {
-        synchronized (mHumanActionHandleLock) {
-            int result = mSTHumanActionNative.removeSubModelByConfig(config);
-            LogUtils.i(TAG, "remove sub model result: %d", result);
-
-            if (config == STMobileHumanActionNative.ST_MOBILE_ENABLE_BODY_KEYPOINTS) {
-                mDetectConfig &= ~STMobileHumanActionNative.ST_MOBILE_BODY_KEYPOINTS;
-            } else if (config == STMobileHumanActionNative.ST_MOBILE_ENABLE_FACE_EXTRA_DETECT) {
-                mDetectConfig &= ~STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS;
-            } else if (config == STMobileHumanActionNative.ST_MOBILE_ENABLE_EYEBALL_CONTOUR_DETECT) {
-                mDetectConfig &= ~(STMobileHumanActionNative.ST_MOBILE_DETECT_EYEBALL_CONTOUR |
-                        STMobileHumanActionNative.ST_MOBILE_DETECT_EYEBALL_CENTER);
-            } else if (config == STMobileHumanActionNative.ST_MOBILE_ENABLE_HAND_DETECT) {
-                mDetectConfig &= ~STMobileHumanActionNative.ST_MOBILE_HAND_DETECT_FULL;
-            }
-        }
-    }
-
-    public STEffectParameters getSTEffectParameters() {
-        return mParams;
+    public void updateAnimalDetectConfig() {
+        mNeedAnimalDetect = mSTMobileEffectNative.getAnimalDetectConfig() > 0;
     }
 
     /**
-     * human action detect的配置选项,根据Sticker的TriggerAction和是否需要美颜配置
-     *
-     * @param needFaceDetect  是否需要开启face detect
-     * @param stickerConfig  sticker的TriggerAction
-     * @param makeupConfig  makeup的TriggerAction
+     * human action detect的配置选项,根据渲染接口需要配置
      */
-    private void setHumanActionDetectConfig(boolean needFaceDetect, long stickerConfig, long makeupConfig){
-        if(!mNeedSticker || mCurrentSticker == null){
-            stickerConfig = 0;
-        }
-
-        if(!mNeedMakeup){
-            makeupConfig = 0;
-        }
-
-        if(needFaceDetect){
-            mDetectConfig = (stickerConfig | makeupConfig |STMobileHumanActionNative.ST_MOBILE_FACE_DETECT);
-        }else{
-            mDetectConfig = stickerConfig | makeupConfig;
-        }
-    }
-
-    private void initBeauty() {
-        int result = mStBeautifyNative.createInstance();
-        LogUtils.i(TAG, "the result is for initBeautify " + result);
-
-        if (result == 0) {
-            mParams.initDefaultBeautyParams(mStBeautifyNative);
-        }
-    }
-
-    private void initSticker() {
-        mStStickerNative.createInstance(mContext);
-        if (mNeedSticker) {
-            mStStickerNative.changeSticker(mCurrentSticker);
-        }
-
-//        mStStickerNative.loadAvatarModelFromAssetFile(FileUtils.MODEL_NAME_AVATAR_CORE, mContext.getAssets());
-        addSubModel(FileUtils.MODEL_NAME_AVATAR_HELP);
-        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
-    }
-
-    private void initFilter() {
-        mSTMobileStreamFilterNative.createInstance();
-        mSTMobileStreamFilterNative.setStyle(mCurrentFilterStyle);
-        mCurrentFilterStrength = mFilterStrength;
-
-        // Currently there is only 1 parameter for filters
-        mSTMobileStreamFilterNative.setParam(
-                STFilterParamsType.ST_FILTER_STRENGTH, mCurrentFilterStrength);
-    }
-
-    private void initMakeup() {
-        int result = mSTMobileMakeupNative.createInstance();
-        LogUtils.i(TAG, "makeup create instance result %d", result);
-    }
-
-    public void setFilterStyle(String filter, float strength) {
-
-        String absPath = FileUtils.copyToDataFromAssetIfNotExist(mContext, filter);
-        mFilterStyle = absPath;
-        mFilterStrength = strength;
-        mParams.setFilter(absPath, strength);
-    }
-
-    private void initBuffers() {
-        if (mRGBABuffer == null) {
-            mRGBABuffer = ByteBuffer.allocate(mImageHeight * mImageWidth * 4);
-        }
-
-        if (mBeautifyTextureId == null) {
-            mBeautifyTextureId = new int[1];
-            GlUtil.initEffectTexture(mImageWidth, mImageHeight, mBeautifyTextureId, GLES20.GL_TEXTURE_2D);
-        }
-
-        if (mMakeupTextureId == null) {
-            mMakeupTextureId = new int[1];
-            GlUtil.initEffectTexture(mImageWidth, mImageHeight, mMakeupTextureId, GLES20.GL_TEXTURE_2D);
-        }
-
-        if (mTextureOutId == null) {
-            mTextureOutId = new int[1];
-            GlUtil.initEffectTexture(mImageWidth, mImageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
-        }
-    }
-
-    private void adjustImageSize(int width, int height, int resizeWidth, int resizeHeight) {
-        if (mImageWidth != width || mImageHeight != height) {
-            mImageWidth = width;
-            mImageHeight = height;
-
-            mGLRender.adjustPreProcessImageSize(mImageWidth, mImageHeight);
-            mGLRender.adjustRotateImageSize(resizeWidth, resizeHeight);
+    public void updateHumanActionDetectConfig() {
+        long humanActionDetectConfig = mSTMobileEffectNative.getHumanActionDetectConfig();
+        if(humanActionDetectConfig != mDetectConfig){
+            mDetectConfig = humanActionDetectConfig;
+            Log.d(TAG, "ST_XCZ updateHumanActionDetectConfig mDetectConfig=" + mDetectConfig);
         }
     }
 
@@ -410,29 +259,181 @@ public class STRenderer {
         }
     }
 
-    public void enableBeautify(boolean needBeautify) {
-        mNeedBeautify = needBeautify;
-        setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
-    }
 
-    public void enableSticker(boolean needSticker) {
-        mNeedSticker = needSticker;
-        if (!needSticker) {
-            setHumanActionDetectConfig(mNeedBeautify, mStStickerNative.getTriggerAction(), mSTMobileMakeupNative.getTriggerAction());
+    /**
+     * @param width           camera preview width
+     * @param height          camera preview height
+     * @param orientation     camera preview orientation
+     * @param mirror          camera preview mirror
+     * @param cameraPixel     camera preview pixel data
+     * @param pixelFormat     {@link STCommonNative#ST_PIX_FMT_NV21} and etc.
+     * @param cameraTextureId camera preview texture id
+     * @param texFormat       {@link android.opengl.GLES11Ext#GL_TEXTURE_EXTERNAL_OES} or {@link GLES20#GL_TEXTURE_2D}
+     * @param texMatrix       float[16]
+     * @return new Texture ID to render
+     */
+    public int preProcess(
+            int cameraId,
+            int width, int height, int orientation, boolean mirror,
+            byte[] cameraPixel, int pixelFormat,
+            int cameraTextureId, int texFormat, float[] texMatrix) {
+
+        if (!mAuthorized) {
+            return -1;
         }
+
+        int imageWidth = width;
+        int imageHeight = height;
+        if (orientation == 90 || orientation == 270) {
+            imageWidth = height;
+            imageHeight = width;
+        }
+
+        int orientationType = getCurrentOrientation(orientation);
+
+        // >>>>>> 1. detect human point info using cameraData
+        if (mIsCreateHumanActionHandleSucceeded) {
+            if (mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length) {
+                mImageDataBuffer = new byte[cameraPixel.length];
+            }
+            System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
+
+            long startHumanAction = System.currentTimeMillis();
+
+            // prepare params
+            updateHumanActionDetectConfig();
+            int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
+                    pixelFormat,
+                    mDetectConfig,
+                    orientationType,
+                    width,
+                    height);
+            STHumanAction nativeHumanAction = mSTHumanActionNative.getNativeHumanAction();
+            //LogUtils.i(TAG, "human action detect cost time: %d, ret: %d", System.currentTimeMillis() - startHumanAction, ret);
+            if (ret == 0) {
+                //nv21数据为横向，相对于预览方向需要旋转处理，前置摄像头还需要镜像
+                STHumanAction.nativeHumanActionRotateAndMirror(mSTHumanActionNative,
+                        mSTHumanActionNative.getNativeHumanActionResultPtr(),
+                        imageWidth, imageHeight,
+                        cameraId, orientation, orientationType);
+                if (mNeedAnimalDetect) {
+                    animalDetect(cameraId, orientation, mImageDataBuffer, STCommonNative.ST_PIX_FMT_NV21, orientationType, width, height, 0);
+                } else {
+                    mAnimalFaceInfo[0] = new STAnimalFaceInfo(null, 0);
+                }
+            }
+        }
+
+        //2 >>>>>> deal camera texture to fit the effect
+        if (mTextureOutId == null) {
+            mTextureOutId = new int[1];
+            GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
+        }
+
+        // OES纹理转成2D纹理
+        int textureId = cameraTextureId;
+        if (texFormat == GLES11Ext.GL_TEXTURE_EXTERNAL_OES) {
+            mGLRender.adjustOESImageSize(imageWidth, imageHeight, -1 * orientation, mirror, true);
+            textureId = mGLRender.processOES(cameraTextureId, texMatrix);
+        }
+
+        //输入纹理，纹理只支持2D
+        STEffectTexture stEffectTexture = new STEffectTexture(textureId, imageWidth, imageHeight, 0);
+        //输出纹理，需要在上层初始化
+        STEffectTexture stEffectTextureOut = new STEffectTexture(mTextureOutId[0], imageWidth, imageHeight, 0);
+
+        //用户自定义参数设置
+//        STEffectCustomParam customParam = new STEffectCustomParam(
+//                new STQuaternion(0f, 0f, 0f, 1f),
+//                cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT,
+//                0);
+
+        //渲染接口输入参数
+        STEffectRenderInParam sTEffectRenderInParam = new STEffectRenderInParam(
+                mSTHumanActionNative.getNativeHumanActionPtrCopy(),
+                mAnimalFaceInfo[0],
+                0,
+                0,
+                false,
+                null,
+                stEffectTexture,
+                new STEffectInImage(new STImage(mImageDataBuffer, pixelFormat, width, height), orientationType, mirror));
+        //渲染接口输出参数
+        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, mSTHumanAction[0]);
+        long mStartRenderTime = System.currentTimeMillis();
+        mSTMobileEffectNative.setParam(STEffectParam.EFFECT_PARAM_USE_INPUT_TIMESTAMP, 1);
+        int ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, true);
+        //LogUtils.i(TAG, "render cost time total: %d", System.currentTimeMillis() - mStartRenderTime);
+        // CostTimeUtils.printAverage("CostTimeUtils",  System.currentTimeMillis() - mStartRenderTime);
+        if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {
+            textureId = stEffectRenderOutParam.getTexture().getId();
+        }
+
+        // Transform the image to the ideal direction according
+        // to the texture matrix.
+        return textureId;
     }
 
-    public void enableFilter(boolean needFilter) {
-        mNeedFilter = needFilter;
-    }
+    protected void animalDetect(int cameraId, int cameraOrientaion, byte[] imageData, int format, int orientation, int width, int height, int index) {
+        if (mNeedAnimalDetect) {
+            long catDetectStartTime = System.currentTimeMillis();
+            int animalDetectConfig = (int) mSTMobileEffectNative.getAnimalDetectConfig();
+            Log.d(TAG, "test_animalDetect: " + animalDetectConfig);
+            STAnimalFace[] animalFaces = mStAnimalNative.animalDetect(imageData, format, orientation, animalDetectConfig, width, height);
+            LogUtils.i(TAG, "animal detect cost time: %d", System.currentTimeMillis() - catDetectStartTime);
 
-    public void enableMakeup(boolean needMakeup) {
-        mNeedMakeup = needMakeup;
-        if (mNeedMakeup) {
-            mDetectConfig |= STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS;
+            if (animalFaces != null && animalFaces.length > 0) {
+                Log.d(TAG, "animalDetect: " + animalFaces.length);
+                animalFaces = processAnimalFaceResult(width, height, animalFaces, cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT, cameraOrientaion);
+            }
+
+            mAnimalFaceInfo[index] = new STAnimalFaceInfo(animalFaces, animalFaces == null ? 0 : animalFaces.length);
         } else {
-            mDetectConfig &= ~STMobileHumanActionNative.ST_MOBILE_DETECT_EXTRA_FACE_POINTS;
+            mAnimalFaceInfo[index] = new STAnimalFaceInfo(null, 0);
         }
+    }
+
+    protected STAnimalFace[] processAnimalFaceResult(int width, int height, STAnimalFace[] animalFaces, boolean isFrontCamera, int cameraOrientation) {
+        if (animalFaces == null) {
+            return null;
+        }
+        if (isFrontCamera && cameraOrientation == 90) {
+            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_90, animalFaces, animalFaces.length);
+            animalFaces = STMobileAnimalNative.animalMirror(height, animalFaces, animalFaces.length);
+        } else if (isFrontCamera && cameraOrientation == 270) {
+            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_270, animalFaces, animalFaces.length);
+            animalFaces = STMobileAnimalNative.animalMirror(height, animalFaces, animalFaces.length);
+        } else if (!isFrontCamera && cameraOrientation == 270) {
+            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_270, animalFaces, animalFaces.length);
+        } else if (!isFrontCamera && cameraOrientation == 90) {
+            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_90, animalFaces, animalFaces.length);
+        }
+        return animalFaces;
+    }
+
+    public STEffectParameters getSTEffectParameters() {
+        return mEffectParams;
+    }
+
+
+    public void setFilterStyle(String filterType, String filterName, String modelPath) {
+        int ret = mSTMobileEffectNative.setBeauty(STEffectBeautyType.EFFECT_BEAUTY_FILTER, modelPath);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setFilterStyle() called with: filterType = [" + filterType + "], filterName = [" + filterName + "], modelPath = [" + modelPath + "], ret=" + ret);
+
+    }
+
+    public void setFilterStrength(float strength) {
+        mSTMobileEffectNative.setBeautyStrength(STEffectBeautyType.EFFECT_BEAUTY_FILTER, strength);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setBeautyStrength type=" + STEffectBeautyType.EFFECT_BEAUTY_FILTER + ",strength=" + strength);
+
+    }
+
+
+    public int setBeautyMode(int param, int value) {
+        int ret = mSTMobileEffectNative.setBeautyMode(param, value);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setBeautyMode param=" + param + ",value=" + value);
+
+        return ret;
     }
 
     /**
@@ -443,36 +444,21 @@ public class STRenderer {
      * @param value
      */
     public void setBeautyParam(int param, float value) {
-        Log.i("beauty", "param:" + param + " value:" + value);
-        mParams.setBeautyParam(param, value);
-        mStBeautifyNative.setParam(param, value);
+        mEffectParams.setBeautyParam(param, value);
+        int ret = mSTMobileEffectNative.setParam(param, value);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setParam param=" + param + ",value=" + value);
     }
 
-    public void setShowOriginal(boolean isShow) {
-        // may be called outside the current OpenGL thread
-        mShowOriginal = isShow;
+    public void setBeautyStrength(int type, float value) {
+        mSTMobileEffectNative.setBeautyStrength(type, value);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setBeautyStrength type=" + type + ",value=" + value);
     }
 
-    public void setMakeupType(int type, String index, String path) {
-        if (path == null || path.isEmpty() ||
-                index == null || index.isEmpty()) {
-            return;
-        }
-
-        if (mMakeupPaths.containsKey(index) &&
-                path.equals(mMakeupPaths.get(index))) {
-            return;
-        }
-
-        String absPath = FileUtils.copyToDataFromAssetIfNotExist(mContext, path);
-        int packageId = setMakeupForType(type, absPath);
-        if (packageId == -1) {
-            return;
-        }
-
-        mMakeupPackageIds.put(index, packageId);
-        mMakeupPaths.put(index, path);
+    public void setPackageBeautyGroupStrength(int packageId, int beautyGroup, float strength) {
+        mSTMobileEffectNative.setPackageBeautyGroupStrength(packageId, beautyGroup, strength);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setPackageBeautyGroupStrength packageId=" + packageId + ",beautyGroup=" + beautyGroup + ",strength=" + strength);
     }
+
 
     /**
      * Set makeup effect for a type from STMobileType
@@ -481,43 +467,58 @@ public class STRenderer {
      * @param typePath sub path of this type
      * @return package id for this effect
      */
-    private int setMakeupForType(int type, String typePath) {
-        return mSTMobileMakeupNative.setMakeupForType(type, typePath);
-    }
+    public void setMakeupForType(int type, String typePath) {
+        try {
+            int ret = mSTMobileEffectNative.setBeauty(STUtils.convertMakeupTypeToNewType(type), typePath);
+            Log.d(TAG, "ST_XCZ STMobileEffectNative setBeauty type=" + STUtils.convertMakeupTypeToNewType(type) + ",typePath=" + typePath + ",ret=" + ret);
 
-    public void removeMakeupByType(String type) {
-        if (mMakeupPaths.containsKey(type) &&
-                mMakeupPackageIds.containsKey(type)) {
-            Integer id = mMakeupPackageIds.get(type);
-            int result = 0;
-            if (id != null) {
-                result = mSTMobileMakeupNative.removeMakeup(id);
-            }
-
-            if (result == 0) {
-                mMakeupPackageIds.remove(type);
-                mMakeupPaths.remove(type);
-            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
     }
 
-    public void setMakeupStrength(int type, float strength) {
-        // if (type == Constants.ST_MAKEUP_HIGHLIGHT) {
-        //     mSTMobileMakeupNative.setStrengthForType(type, strength * mMakeUpStrength);
-        // } else {
-        mSTMobileMakeupNative.setStrengthForType(type, 1.0f);
-        // }
+    public void removeMakeupByType(int type) {
+        int ret = mSTMobileEffectNative.setBeauty(STUtils.convertMakeupTypeToNewType(type), null);
+        Log.d(TAG, "ST_XCZ STMobileEffectNative setBeauty type=" + STUtils.convertMakeupTypeToNewType(type) + ",path=" + null + ",ret=" + ret);
     }
 
-    public void changeSticker(String path) {
-        if (path == null) {
-            mChangeStickerManagerHandler.sendEmptyMessage(MESSAGE_NEED_REMOVE_ALL_STICKERS);
-        } else {
-            String absPath = FileUtils.copyToDataFromAssetIfNotExist(mContext, path);
-            if (!path.equals(mCurrentSticker)) {
-                Message.obtain(mChangeStickerManagerHandler,
-                        MESSAGE_NEED_CHANGE_STICKER, absPath).sendToTarget();
+    public void setMakeupStrength(int type, float strength) {
+        if (strength >= 0) {
+            if (STUtils.convertMakeupTypeToNewType(type) == STEffectBeautyType.EFFECT_BEAUTY_HAIR_DYE) {
+                strength = strength * MAKEUP_HAIRDYE_STRENGTH_RATIO;
             }
+            int ret = mSTMobileEffectNative.setBeautyStrength(STUtils.convertMakeupTypeToNewType(type), strength);
+            Log.d(TAG, "ST_XCZ STMobileEffectNative setBeautyStrength type=" + STUtils.convertMakeupTypeToNewType(type) + ",strength=" + strength + ",ret=" + ret);
+
+        }
+    }
+
+    public void changeSticker(String sticker) {
+        mChangeStickerManagerHandler.removeMessages(MESSAGE_NEED_CHANGE_STICKER);
+        Message msg = mChangeStickerManagerHandler.obtainMessage(MESSAGE_NEED_CHANGE_STICKER);
+        msg.obj = sticker;
+
+        mChangeStickerManagerHandler.sendMessage(msg);
+    }
+
+    public void removeSticker(String path) {
+        int packageId = -1;
+        for (Map.Entry<Integer, String> entry : mCurrentStickerMaps.entrySet()) {
+            if (entry.getValue().equals(path)) {
+                packageId = entry.getKey();
+                break;
+            }
+        }
+        if(packageId != -1){
+            removeSticker(packageId);
+        }
+    }
+
+    public void removeSticker(int packageId) {
+        int result = mSTMobileEffectNative.removeEffect(packageId);
+
+        if (mCurrentStickerMaps != null && result == 0) {
+            mCurrentStickerMaps.remove(packageId);
         }
     }
 
@@ -527,14 +528,11 @@ public class STRenderer {
             mSTHumanActionNative.destroyInstance();
         }
 
-        mSTMobileObjectTrackNative.destroyInstance();
         mSTHumanActionNative.reset();
 
-        mStBeautifyNative.destroyBeautify();
-//        mStStickerNative.removeAvatarModel();
-        mStStickerNative.destroyInstance();
-        mSTMobileStreamFilterNative.destroyInstance();
-        mRGBABuffer = null;
+        mChangeStickerManagerHandler.removeCallbacksAndMessages(null);
+        mChangeStickerManagerThread.quit();
+        mChangeStickerManagerThread = null;
         deleteTextures();
         mGLRender.destroyPrograms();
     }
@@ -545,298 +543,9 @@ public class STRenderer {
     }
 
     private void deleteInternalTextures() {
-        if (mBeautifyTextureId != null) {
-            GLES20.glDeleteTextures(1, mBeautifyTextureId, 0);
-            mBeautifyTextureId = null;
-        }
-
-        if (mMakeupTextureId != null) {
-            GLES20.glDeleteTextures(1, mMakeupTextureId, 0);
-            mMakeupTextureId = null;
-        }
-
         if (mTextureOutId != null) {
             GLES20.glDeleteTextures(1, mTextureOutId, 0);
             mTextureOutId = null;
-        }
-
-        if (mFilterTextureOutId != null) {
-            GLES20.glDeleteTextures(1, mFilterTextureOutId, 0);
-            mFilterTextureOutId = null;
-        }
-    }
-
-    private void adjustTexture(int orientation, boolean flipHorizontal, boolean flipVertical) {
-        mGLRender.adjustTextureBuffer(orientation, flipHorizontal, flipVertical);
-    }
-
-    public int preProcess(int textureId, SurfaceTexture surfaceTexture,
-                          int width, int height, int orientation, float[] texMatrix) {
-        return preProcess(textureId, surfaceTexture, width, height,
-                -1, -1, orientation, texMatrix);
-    }
-
-    public int preProcess(int textureId, SurfaceTexture surfaceTexture,
-                          int width, int height,
-                          int resizeWidth, int resizeHeight,
-                          int orientation, float[] texMatrix) {
-
-        if (!mAuthorized || mIsPaused ||
-                mCameraChanging || surfaceTexture == null) {
-            return 0;
-        }
-
-        adjustImageSize(width, height, resizeWidth, resizeHeight);
-        adjustTexture(orientation, false, false);
-
-        // init buffers here cause we need the image size info
-        initBuffers();
-
-        GLES20.glEnable(GL10.GL_DITHER);
-        GLES20.glClearColor(0f, 0f, 0f, 0f);
-        GLES20.glEnable(GL10.GL_DEPTH_TEST);
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
-
-        mRGBABuffer.rewind();
-
-        int processedTextureId = mGLRender.preProcess(textureId, mRGBABuffer);
-
-        if (mShowOriginal) {
-            return processedTextureId;
-        }
-
-        int stOrientation = getCurrentOrientation(orientation);
-        int result;
-
-        // Begins effect rendering
-        if (mNeedObject) {
-            if (mNeedSetObjectTarget) {
-                STRect inputRect = new STRect(mTargetRect.left, mTargetRect.top,
-                        mTargetRect.right, mTargetRect.bottom);
-                mSTMobileObjectTrackNative.setTarget(mRGBABuffer.array(),
-                        STCommon.ST_PIX_FMT_RGBA8888, mImageWidth, mImageHeight, inputRect);
-                mNeedSetObjectTarget = false;
-                mIsObjectTracking = true;
-            }
-
-            Rect rect = new Rect(0, 0, 0, 0);
-
-            if (mIsObjectTracking) {
-                float[] score = new float[1];
-                STRect outputRect = mSTMobileObjectTrackNative.objectTrack(mRGBABuffer.array(),
-                        STCommon.ST_PIX_FMT_RGBA8888, mImageWidth, mImageHeight, score);
-                //if (outputRect != null && score != null && score.length > 0) {
-                //    rect = STUtils.adjustToScreenRectMin(outputRect.getRect(), mSurfaceWidth, mSurfaceHeight, mImageWidth, mImageHeight);
-                //}
-                //mIndexRect = rect;
-            }
-        }
-
-        if (mNeedBeautify || mNeedSticker || mNeedMakeup) {
-            STHumanAction humanAction;
-
-            if (mIsCreateHumanActionHandleSucceeded) {
-                final byte[] face = mRGBABuffer.array();
-                humanAction = mSTHumanActionNative.humanActionDetect(face,
-                        STCommon.ST_PIX_FMT_RGBA8888, mDetectConfig,
-                        stOrientation, mImageWidth, mImageHeight);
-
-                // Log.i("STRenderer", "face count:" + humanAction.faceCount);
-
-                if (mNeedDistance) {
-                    if (humanAction.faceCount > 0) {
-                        mFaceDistance = mSTHumanActionNative.getFaceDistance(humanAction.faces[0],
-                                0, mImageWidth, mImageHeight, 270);
-                    } else {
-                        // no face info found
-                        mFaceDistance = 0f;
-                    }
-                }
-
-                if (mNeedBeautify) {
-                    result = mStBeautifyNative.processTexture(processedTextureId, mImageWidth,
-                            mImageHeight, stOrientation, humanAction,
-                            mBeautifyTextureId[0], mHumanActionBeautyOutput);
-                    if (result == 0) {
-                        processedTextureId = mBeautifyTextureId[0];
-                        humanAction = mHumanActionBeautyOutput;
-                    }
-                }
-
-                if (mNeedMakeup && needMakeupProcess(humanAction)) {
-                    result = mSTMobileMakeupNative.processTexture(processedTextureId, humanAction,
-                            stOrientation, mImageWidth, mImageHeight, mMakeupTextureId[0]);
-                    if (result == 0) {
-                        processedTextureId = mMakeupTextureId[0];
-                    }
-                }
-
-                if (mNeedSticker) {
-                    /**
-                     * 1.在切换贴纸时，调用STMobileStickerNative的changeSticker函数，传入贴纸路径(参考setShowSticker函数的使用)
-                     * 2.切换贴纸后，使用STMobileStickerNative的getTriggerAction函数获取当前贴纸支持的手势和前后背景等信息，返回值为int类型
-                     * 3.根据getTriggerAction函数返回值，重新配置humanActionDetect函数的config参数，使detect更高效
-                     *
-                     * 例：只检测人脸信息和当前贴纸支持的手势等信息时，使用如下配置：
-                     * mDetectConfig = mSTMobileStickerNative.getTriggerAction()|STMobileHumanActionNative.ST_MOBILE_FACE_DETECT;
-                     */
-                    int event = mCustomEvent;
-                    STStickerInputParams inputParams;
-
-                    // Note: we take it as back-facing camera first
-                    if (mSensorEvent != null && mSensorEvent.values != null && mSensorEvent.values.length > 0) {
-                        inputParams = new STStickerInputParams(mSensorEvent.values, false, event);
-                    } else {
-                        inputParams = new STStickerInputParams(new float[]{0, 0, 0, 1}, false, event);
-                    }
-
-                    // 如果需要输出buffer推流或其他，设置该开关为true
-                    if (!mNeedFilterOutputBuffer) {
-                        result = mStStickerNative.processTexture(processedTextureId, humanAction,
-                                stOrientation, stOrientation, mImageWidth, mImageHeight,
-                                false, inputParams, mTextureOutId[0]);
-                    } else {
-                        byte[] imageOut = new byte[mImageWidth * mImageHeight * 4];
-                        result = mStStickerNative.processTextureAndOutputBuffer(processedTextureId,
-                                humanAction, stOrientation, stOrientation, mImageWidth,
-                                mImageHeight, false, inputParams, mTextureOutId[0],
-                                STCommon.ST_PIX_FMT_RGBA8888, imageOut);
-                    }
-
-                    if (event == mCustomEvent) {
-                        mCustomEvent = 0;
-                    }
-
-                    if (result == 0) {
-                        Log.i("sticker", "process sticker success");
-                        processedTextureId = mTextureOutId[0];
-                    }
-                }
-
-                if (mInDebugMode) {
-                    if (humanAction != null) {
-                        if (humanAction.faceCount > 0) {
-                            for (int i = 0; i < humanAction.faceCount; i++) {
-                                float[] points = STUtils.getExtraPoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-                        }
-
-                        if (humanAction.faceCount > 0) {
-                            for (int i = 0; i < humanAction.faceCount; i++) {
-                                float[] points = STUtils.getTonguePoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-                        }
-
-                        if (humanAction.bodyCount > 0) {
-                            for (int i = 0; i < humanAction.bodyCount; i++) {
-                                float[] points = STUtils.getBodyKeyPoints(humanAction, i, mImageWidth, mImageHeight);
-                                if (points != null && points.length > 0) {
-                                    mGLRender.drawPoints(processedTextureId, points, mImageWidth, mImageHeight);
-                                }
-                            }
-
-                            // print body[0] action
-                            LogUtils.i(TAG, "human action body count: %d", humanAction.bodyCount);
-                            LogUtils.i(TAG, "human action body[0] action: %d", humanAction.bodys[0].bodyAction);
-                        }
-                    }
-                }
-            }
-
-            if (mCurrentFilterStyle == null && mFilterStyle != null ||
-                    mCurrentFilterStyle != null && !mCurrentFilterStyle.equals(mFilterStyle)) {
-                mCurrentFilterStyle = mFilterStyle;
-                mSTMobileStreamFilterNative.setStyle(mCurrentFilterStyle);
-            }
-
-            if (mCurrentFilterStrength != mFilterStrength) {
-                mCurrentFilterStrength = mFilterStrength;
-                mSTMobileStreamFilterNative.setParam(STFilterParamsType.ST_FILTER_STRENGTH, mCurrentFilterStrength);
-            }
-
-            if (mFilterTextureOutId == null) {
-                mFilterTextureOutId = new int[1];
-                GlUtil.initEffectTexture(mImageWidth, mImageHeight, mFilterTextureOutId, GLES20.GL_TEXTURE_2D);
-            }
-
-            if (mNeedFilter) {
-                int ret = mSTMobileStreamFilterNative.processTexture(processedTextureId,
-                        mImageWidth, mImageHeight, mFilterTextureOutId[0]);
-                if (ret == 0) {
-                    processedTextureId = mFilterTextureOutId[0];
-                }
-            }
-        }
-
-        // Transform the image to the ideal direction according
-        // to the texture matrix.
-        return mGLRender.transform(processedTextureId, texMatrix);
-    }
-
-    /**
-     * 通过是否检测到240点来判断是否需要美妆处理，如果只有106点也可以做美妆，但是效果不好
-     */
-    private boolean needMakeupProcess(STHumanAction humanAction) {
-        if (humanAction == null || humanAction.faceCount == 0) {
-            return false;
-        }
-
-        return humanAction.faces != null && humanAction.faces[0] != null;
-    }
-
-    public static class Builder {
-        private Context mContext;
-        private boolean mNeedSticker = false;
-        private boolean mNeedBeautify = false;
-        private boolean mNeedFilter = false;
-        private boolean mNeedMakeup = false;
-        private boolean mInDebugMode = false;
-
-        public Builder setContext(Context context) {
-            mContext = context;
-            return this;
-        }
-
-        public Builder enableSticker(boolean enabled) {
-            mNeedSticker = enabled;
-            return this;
-        }
-
-        public Builder enableBeauty(boolean enabled) {
-            mNeedBeautify = enabled;
-            return this;
-        }
-
-        public Builder enableFilter(boolean enabled) {
-            mNeedFilter = enabled;
-            return this;
-        }
-
-        public Builder enableMakeup(boolean enabled) {
-            mNeedMakeup = enabled;
-            return this;
-        }
-
-        public Builder enableDebug(boolean enabled) {
-            mInDebugMode = enabled;
-            return this;
-        }
-
-        public STRenderer build() {
-            STRenderer renderer = new STRenderer(mContext);
-            renderer.enableBeautify(mNeedBeautify);
-            renderer.enableFilter(mNeedFilter);
-            renderer.enableSticker(mNeedSticker);
-            renderer.enableMakeup(mNeedMakeup);
-            renderer.setDebugMode(mInDebugMode);
-            renderer.init();
-            return renderer;
         }
     }
 
@@ -904,7 +613,7 @@ public class STRenderer {
             mBeautyParams.append(param, value);
         }
 
-        void initDefaultBeautyParams(STBeautifyNative handle) {
+        void initDefaultBeautyParams(STMobileEffectNative handle) {
             if (DEFAULT_BEAUTY_PARAMS.length != DEFAULT_BEAUTY_PARAMS_VALUES.length) {
                 return;
             }

@@ -1,14 +1,18 @@
 package io.agora.rtcwithst.framework;
 
 import android.content.Context;
+import android.graphics.ImageFormat;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
-import android.view.Display;
 import android.view.WindowManager;
 
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
+import com.sensetime.effects.utils.FileUtils;
+import com.sensetime.stmobile.STCommonNative;
+
+import java.io.File;
 
 import io.agora.capture.framework.modules.channels.VideoChannel;
 import io.agora.capture.framework.modules.processors.IPreprocessor;
@@ -34,14 +38,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     @Override
     public void initPreprocessor() {
         Log.i(TAG, "initPreprocessor");
-        STRenderer.Builder builder = new STRenderer.Builder();
-        builder.setContext(mContext)
-                .enableSticker(true)
-                .enableBeauty(true)
-                .enableFilter(true)
-                .enableMakeup(true)
-                .enableDebug(false);
-        mSTRenderer = builder.build();
+        mSTRenderer = new STRenderer(mContext);
         Matrix.setIdentityM(mIdentityMatrix, 0);
     }
 
@@ -65,22 +62,21 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             return outFrame;
         }
 
-        Display defaultDisplay = mWindowManager.getDefaultDisplay();
-        int surfaceRotation = defaultDisplay != null ? defaultDisplay.getRotation() : 0;
-        int rotation = surfaceRotation * 360 / 4;
-        rotation = outFrame.rotation - rotation;
 
         // SenseTime library will rotate the target
         // image automatically to upright.
-        outFrame.textureId = mSTRenderer.preProcess(
-                outFrame.textureId,
-                outFrame.surfaceTexture,
+        int textureId = mSTRenderer.preProcess(
+                outFrame.format.getCameraId(),
                 outFrame.format.getWidth(),
                 outFrame.format.getHeight(),
-                outFrame.format.getWidth(),
-                outFrame.format.getHeight(),
-                rotation,
-                outFrame.textureTransform);
+                outFrame.rotation,
+                outFrame.mirrored,
+                outFrame.image, outFrame.format.getPixelFormat() == ImageFormat.NV21 ? STCommonNative.ST_PIX_FMT_NV21 : STCommonNative.ST_PIX_FMT_BGRA8888,
+                outFrame.textureId, outFrame.format.getTexFormat(), outFrame.textureTransform);
+        if (textureId < 0) {
+            return outFrame;
+        }
+
 
         if (outFrame.rotation == 90 || outFrame.rotation == 270) {
             int width = outFrame.format.getWidth();
@@ -88,12 +84,29 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
             outFrame.format.setWidth(height);
             outFrame.format.setHeight(width);
         }
-
+        outFrame.textureId = textureId;
         outFrame.rotation = 0;
         outFrame.textureTransform = mIdentityMatrix;
+        outFrame.mirrored = false;
+        outFrame.image = null;
+        outFrame.format.setPixelFormat(ImageFormat.UNKNOWN);
         outFrame.format.setTexFormat(GLES20.GL_TEXTURE_2D);
 
         return outFrame;
+    }
+
+    @Override
+    public void onBeautyModeSelected(int mode, int value) {
+        if (mSTRenderer != null) {
+            mSTRenderer.setBeautyMode(mode, value);
+        }
+    }
+
+    @Override
+    public void onBeautyStrengthSelected(int mode, float strength) {
+        if (mSTRenderer != null) {
+            mSTRenderer.setBeautyStrength(mode, strength);
+        }
     }
 
     @Override
@@ -105,31 +118,48 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
 
     @Override
     public void onFilterSelected(String filterPath, float strength) {
-
-        if (filterPath == null || filterPath.isEmpty()) {
-            return;
-        }
         if (mSTRenderer != null) {
-            mSTRenderer.setFilterStyle(filterPath, strength);
+            String[] split = filterPath.split(File.separator);
+            String className = split[0];
+            String fileName = split[1];
+            String filterName = split[1].split("_")[2].split("\\.")[0];
+            String path = FileUtils.getFilePath(mContext, className + File.separator + fileName);
+            FileUtils.copyFileIfNeed(mContext, fileName, className);
+            mSTRenderer.setFilterStyle(className, filterName, path);
+            mSTRenderer.setFilterStrength(strength);
         }
     }
 
     @Override
-    public void onMakeupSelected(int type, String index, String path) {
+    public void onMakeupSelected(int type, String path, float strength) {
         if (mSTRenderer != null) {
             if (path != null) {
-                mSTRenderer.setMakeupType(type, index, path);
-                mSTRenderer.setMakeupStrength(type, 1.0f);
+                String[] split = path.split(File.separator);
+                String className = split[0];
+                String fileName = split[1];
+                String _path = FileUtils.getFilePath(mContext, className + File.separator + fileName);
+                FileUtils.copyFileIfNeed(mContext, fileName, className);
+                mSTRenderer.setMakeupForType(type, _path);
+                mSTRenderer.setMakeupStrength(type, strength);
             } else {
-                mSTRenderer.removeMakeupByType(index);
+                mSTRenderer.removeMakeupByType(type);
             }
         }
     }
 
     @Override
-    public void onStickerSelected(String path) {
+    public void onStickerSelected(String path, boolean attach) {
+        String[] split = path.split(File.separator);
+        String className = split[0];
+        String fileName = split[1];
+        String _path = FileUtils.getFilePath(mContext, className + File.separator + fileName);
+        FileUtils.copyFileIfNeed(mContext, fileName, className);
         if (mSTRenderer != null) {
-            mSTRenderer.changeSticker(path);
+            if(!attach){
+                mSTRenderer.removeSticker(_path);
+            }else{
+                mSTRenderer.changeSticker(_path);
+            }
         }
     }
 
