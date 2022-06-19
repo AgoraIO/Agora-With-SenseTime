@@ -15,7 +15,7 @@ import com.sensetime.effects.glutils.GlUtil;
 import com.sensetime.effects.glutils.STUtils;
 import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
-import com.sensetime.effects.utils.STLicenseUtils2;
+import com.sensetime.effects.utils.STLicenseUtils;
 import com.sensetime.stmobile.STCommonNative;
 import com.sensetime.stmobile.STEffectInImage;
 import com.sensetime.stmobile.STMobileAnimalNative;
@@ -98,7 +98,7 @@ public class STRenderer {
     }
 
     private void checkLicense() {
-        mAuthorized = STLicenseUtils2.checkLicense(mContext);
+        mAuthorized = STLicenseUtils.checkLicense(mContext);
     }
 
     private void initHumanAction() {
