@@ -1,47 +1,55 @@
 package com.sensetime.effects.display;
 
-import java.nio.ByteBuffer;
+import android.opengl.Matrix;
 
 public class STGLRender {
     private final static String TAG = "STGLRender";
+    private float[] oesMVPMatrix = new float[16];
 
-    private PreProcessProgram mProcessProgram;
-    private RotateProgram mRotateProgram;
-    private PointProgram mPointProgram;
+    private OESProgram mOESProgram;
 
     public STGLRender() {
-        mProcessProgram = new PreProcessProgram();
-        mRotateProgram = new RotateProgram();
-        mPointProgram = new PointProgram();
+        mOESProgram = new OESProgram();
     }
 
-    public void adjustPreProcessImageSize(int width, int height) {
-        mProcessProgram.resize(width, height);
+    public void adjustOESImageSize(int width, int height, int rotation, boolean flipH, boolean flipV) {
+        boolean resize = mOESProgram.resize(width, height);
+        if (resize) {
+            float[] tmp = new float[16];
+            Matrix.setIdentityM(tmp, 0);
+
+            boolean _flipH = flipH;
+            boolean _flipV = flipV;
+            if(rotation % 180 != 0){
+                _flipH = flipV;
+                _flipV = flipH;
+            }
+
+            if (_flipH) {
+                Matrix.rotateM(tmp, 0, tmp, 0, 180, 0, 1f, 0);
+            }
+            if (_flipV) {
+                Matrix.rotateM(tmp, 0, tmp, 0, 180, 1f, 0f, 0);
+            }
+
+            float _rotation = rotation;
+            if (_rotation != 0) {
+                if(_flipH != _flipV){
+                    _rotation *= -1;
+                }
+                Matrix.rotateM(tmp, 0, tmp, 0, _rotation, 0, 0, 1);
+            }
+
+            Matrix.setIdentityM(oesMVPMatrix, 0);
+            Matrix.multiplyMM(oesMVPMatrix, 0, tmp, 0, oesMVPMatrix, 0);
+        }
     }
 
-    public int preProcess(int textureId, ByteBuffer buffer) {
-        return mProcessProgram.preProcess(textureId, buffer);
-    }
-
-    public void adjustTextureBuffer(int orientation, boolean flipHorizontal, boolean flipVertical) {
-        mProcessProgram.adjustTextureBuffer(orientation, flipHorizontal, flipVertical);
-    }
-
-    public void adjustRotateImageSize(int width, int height) {
-        mRotateProgram.resize(width, height);
-    }
-
-    public int transform(int textureId, float[] texMatrix) {
-        return mRotateProgram.rotate(textureId, texMatrix);
-    }
-
-    public void drawPoints(int textureId, float[] points, int width, int height) {
-        mPointProgram.drawPoints(textureId, points, width, height);
+    public int processOES(int textureId, float[] texMatrix) {
+        return mOESProgram.process(textureId, texMatrix, oesMVPMatrix);
     }
 
     public void destroyPrograms() {
-        mProcessProgram.destroyProgram();
-        mRotateProgram.destroyProgram();
-        mPointProgram.destroyProgram();
+        mOESProgram.destroyProgram();
     }
 }

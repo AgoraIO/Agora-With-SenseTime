@@ -15,27 +15,21 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.sensetime.stmobile.model.STMobileMakeupType;
+import com.sensetime.stmobile.params.STEffectBeautyType;
+
 import java.io.File;
+import java.util.List;
 
 import io.agora.capture.video.camera.CameraVideoManager;
 import io.agora.capture.video.camera.VideoCapture;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
+import io.agora.rtcwithst.R;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 import io.agora.rtcwithst.framework.RtcVideoConsumer;
-import io.agora.rtcwithst.R;
 import io.agora.rtcwithst.utils.Constant;
-
-import static com.sensetime.effects.utils.Constants.ST_MAKEUP_BLUSH_NAME;
-import static com.sensetime.effects.utils.Constants.ST_MAKEUP_BROW_NAME;
-import static com.sensetime.effects.utils.Constants.ST_MAKEUP_EYELINER;
-import static com.sensetime.effects.utils.Constants.ST_MAKEUP_EYELINER_NAME;
-import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_ENLARGE_EYE_RATIO;
-import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_REDDEN_STRENGTH;
-import static com.sensetime.stmobile.STBeautyParamsType.ST_BEAUTIFY_WHITEN_STRENGTH;
-import static com.sensetime.stmobile.model.STMobileMakeupType.ST_MAKEUP_TYPE_BLUSH;
-import static com.sensetime.stmobile.model.STMobileMakeupType.ST_MAKEUP_TYPE_BROW;
 
 public class STChatActivity extends RtcBasedActivity {
     private static final String TAG = STChatActivity.class.getSimpleName();
@@ -47,7 +41,6 @@ public class STChatActivity extends RtcBasedActivity {
     private EffectOptionContainer mEffectContainer;
     private TextureView mVideoSurface;
     private boolean mPermissionGranted;
-    private boolean mIsMirrored = true;
     private int mRemoteUid = -1;
     private FrameLayout mRemoteViewContainer;
 
@@ -109,7 +102,7 @@ public class STChatActivity extends RtcBasedActivity {
     }
 
     private void setStickerItem(boolean selected) {
-        preprocessor.onStickerSelected(selected ? "newEngine" + File.separator + "maozi_uv_01.zip" : null);
+        preprocessor.onStickerSelected("sticker_face_shape" + File.separator + "lianxingface.zip", selected);
     }
 
     private void setFilter(boolean selected) {
@@ -123,27 +116,21 @@ public class STChatActivity extends RtcBasedActivity {
 
     private void setMakeupItemParam(boolean selected) {
         if(selected){
-            preprocessor.onMakeupSelected(ST_MAKEUP_TYPE_BROW, ST_MAKEUP_BROW_NAME, "makeup_brow" + File.separator + "browA.zip");
-            preprocessor.onMakeupSelected(ST_MAKEUP_TYPE_BLUSH, ST_MAKEUP_BLUSH_NAME, "makeup_blush" + File.separator + "blusha.zip");
-            preprocessor.onMakeupSelected(ST_MAKEUP_EYELINER, ST_MAKEUP_EYELINER_NAME, "makeup_eyeliner" + File.separator + "eyelinera.zip");
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROW,  "makeup_brow" + File.separator + "browA.zip", 1);
         }
         else{
-            preprocessor.onMakeupSelected(ST_MAKEUP_TYPE_BROW, ST_MAKEUP_BROW_NAME, null);
-            preprocessor.onMakeupSelected(ST_MAKEUP_TYPE_BLUSH, ST_MAKEUP_BLUSH_NAME, null);
-            preprocessor.onMakeupSelected(ST_MAKEUP_EYELINER, ST_MAKEUP_EYELINER_NAME, null);
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROW, null, 0);
         }
     }
 
     private void setBeautificationOn(boolean selected) {
         if(selected){
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_WHITEN_STRENGTH, 1);
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_ENLARGE_EYE_RATIO, 1);
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_REDDEN_STRENGTH, 1);
+            preprocessor.onBeautyModeSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, STEffectBeautyType.WHITENING1_MODE);
+            preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, 100f);
         }
         else{
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_WHITEN_STRENGTH, 0);
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_ENLARGE_EYE_RATIO, 0);
-            preprocessor.onBeautyParamSelected(ST_BEAUTIFY_REDDEN_STRENGTH, 0);
+            preprocessor.onBeautyModeSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, STEffectBeautyType.WHITENING1_MODE);
+            preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, 0f);
         }
     }
 
@@ -204,13 +191,17 @@ public class STChatActivity extends RtcBasedActivity {
             public void onCameraClosed() {
                 Log.i(TAG, "onCameraClosed!");
             }
+
+            @Override
+            public VideoCapture.FrameRateRange onSelectCameraFpsRange(List<VideoCapture.FrameRateRange> list, VideoCapture.FrameRateRange frameRateRange) {
+                return null;
+            }
         });
 
         // Set camera capture configuration
         mCameraVideoManager.setPictureSize(640, 480);
         mCameraVideoManager.setFrameRate(24);
         mCameraVideoManager.setFacing(io.agora.capture.video.camera.Constant.CAMERA_FACING_FRONT);
-        mCameraVideoManager.setLocalPreviewMirror(toMirrorMode(mIsMirrored));
 
         // The preview surface is actually considered as
         // an on-screen consumer under the hood.
@@ -229,9 +220,6 @@ public class STChatActivity extends RtcBasedActivity {
         mEffectContainer.setItemViewStyles(2, false, true);
     }
 
-    private int toMirrorMode(boolean isMirrored) {
-        return isMirrored ? io.agora.capture.video.camera.Constant.MIRROR_MODE_ENABLED : io.agora.capture.video.camera.Constant.MIRROR_MODE_DISABLED;
-    }
 
     public void onCameraChange(View view) {
         if (mCameraVideoManager != null) {

@@ -20,3 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class io.agora.**{*;}
+
+-keep class com.sensetime.stmobile.* { *;}
+-keep class com.sensetime.stmobile.model.* { *;}

@@ -1,0 +1,2 @@
+-keep class com.sensetime.stmobile.* { *;}
+-keep class com.sensetime.stmobile.model.* { *;}

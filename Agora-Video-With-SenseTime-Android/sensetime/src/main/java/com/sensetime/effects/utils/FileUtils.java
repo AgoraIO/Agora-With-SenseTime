@@ -1,25 +1,29 @@
 package com.sensetime.effects.utils;
 
+import android.annotation.SuppressLint;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+import android.text.TextUtils;
 
-import com.sensetime.effects.R;
-import com.sensetime.effects.view.FilterItem;
-import com.sensetime.effects.view.MakeupItem;
-import com.sensetime.effects.view.ObjectItem;
-import com.sensetime.effects.view.StickerItem;
+import com.sensetime.effects.glutils.STUtils;
+import com.sensetime.sensearsourcemanager.SenseArMaterial;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,40 +31,40 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class FileUtils {
-    private static final int DEFAULT_BUFFER_SIZE = 256;
-    private static final byte[] DEFAULT_READ_BUFFER = new byte[256];
+/**
+ * Created by sensetime on 16-11-16.
+ */
 
-    public static final String MODEL_NAME_ACTION = "M_SenseME_Face_Video_7.0.0.model";
-    public static final String MODEL_NAME_FACE_ATTRIBUTE = "M_SenseME_Attribute_1.0.1.model";
-    public static final String MODEL_NAME_EYEBALL_CENTER = "M_Eyeball_Center.model";
-    public static final String MODEL_NAME_EYEBALL_CONTOUR = "M_SenseME_Iris_2.0.0.model";
-    public static final String MODEL_NAME_FACE_EXTRA = "M_SenseME_Face_Extra_5.23.4.model";
-    public static final String MODEL_NAME_HAND = "M_SenseME_Hand_5.4.0.model";
-    public static final String MODEL_NAME_SEGMENT = "M_SenseME_Segment_4.10.8.model";
-    public static final String MODEL_NAME_BODY_FOURTEEN = "M_SenseME_Body_Fourteen_1.2.0.model";
-    public static final String MODEL_NAME_AVATAR_CORE = "M_SenseME_Avatar_Core_2.0.0.model";
-    public static final String MODEL_NAME_CATFACE_CORE = "M_SenseME_CatFace_3.0.0.model";
-    public static final String MODEL_NAME_AVATAR_HELP = "M_SenseME_Avatar_Help_2.2.0.model";
-    public static final String MODEL_NAME_TONGUE = "M_Align_DeepFace_Tongue_1.0.0.model";
+public class FileUtils {
+    public static final String MODEL_NAME_FACE_ATTRIBUTE = "models/M_SenseME_Attribute_1.0.1.model";
+    public static final String MODEL_NAME_AVATAR_HELP = "models/M_SenseME_Avatar_Help_2.2.0.model";
+    public static final String MODEL_NAME_CATFACE_CORE = "models/M_SenseME_CatFace_3.0.0.model";
+    public static final String MODEL_NAME_FACE_EXTRA = "models/M_SenseME_Face_Extra_Advanced_6.0.13.model";// 282
+    public static final String MODEL_NAME_LIPS_PARSING = "models/M_SenseME_Segment_MouthOcclusion_FastV1_1.1.3.model";//嘴唇分割
+
+    public static final String MODEL_NAME_ACTION = "models/M_SenseME_Face_Video_7.0.0.model";
+    public static final String MODEL_NAME_HAND = "models/M_SenseME_Hand_5.4.0.model";
+    public static final String MODEL_NAME_SEGMENT = "models/M_SenseME_Segment_4.14.1.model";// 前后背景
+    public static final String MODEL_NAME_HAIR = "models/M_SenseME_Segment_Hair_1.3.4.model";
+    public static final String HEAD_SEGMENT_MODEL_NAME = "models/M_SenseME_Segment_Head_1.0.3.model";
+
+    public static final String HEAD_SEGMENT_DBL = "models/M_SenseME_Segment_DBL_Face_1.0.7.model";// 妆容遮挡
+    public static final String MODEL_SEGMENT_SKY = "models/M_SenseME_Segment_Sky_1.0.3.model";// 天空分割
+    public static final String MODEL_NAME_DOG = "models/M_SenseME_DogFace_2.0.0.model";// 狗脸关键点
+    public static final String MODEL_SEGMENT_SKIN = "models/M_SenseME_Segment_Skin_1.1.1.model";// 皮肤分割
+    public static final String MODEL_3DMESH = "models/M_SenseME_3DMesh_Face_2.0.2.model";// 3DMesh
+
+    public static final String MODEL_FOOT = "models/M_SenseME_Foot_1.0.2.model";// 脚的检测
+    public static final String MODEL_PANT = "models/M_Segment_DBLV2_Pant_1.1.6.model";// 裤腿的检测
 
     public static String getActionModelName() {
         return MODEL_NAME_ACTION;
-    }
-
-    public static String getEyeBallCenterModelName() {
-        return MODEL_NAME_EYEBALL_CENTER;
-    }
-
-    public static String getEyeBallContourModelName() {
-        return MODEL_NAME_EYEBALL_CONTOUR;
     }
 
     public static String getFaceExtraModelName() {
@@ -149,7 +153,7 @@ public class FileUtils {
                 try {
                     if (file.exists())
                         file.delete();
-
+                    file.getParentFile().mkdirs();
                     file.createNewFile();
 
                     InputStream in = context.getAssets().open(className + File.separator + fileName);
@@ -209,7 +213,6 @@ public class FileUtils {
         //action模型会从asset直接读取
         //copyFileIfNeed(context, MODEL_NAME_ACTION);
         copyFileIfNeed(context, MODEL_NAME_FACE_ATTRIBUTE);
-        copyFileIfNeed(context, MODEL_NAME_AVATAR_CORE);
         copyFileIfNeed(context, MODEL_NAME_CATFACE_CORE);
     }
 
@@ -223,27 +226,14 @@ public class FileUtils {
         return getFilePath(context, MODEL_NAME_FACE_ATTRIBUTE);
     }
 
-    public static String getAvatarCoreModelPath(Context context) {
-        return getFilePath(context, MODEL_NAME_AVATAR_CORE);
-    }
-
-//    public static List<ObjectItem> getObjectList() {
-//        List<ObjectItem> objectList = new ArrayList<>();
-//
-//        objectList.add(new ObjectItem("object_hi", R.drawable.object_hi));
-//        objectList.add(new ObjectItem("object_happy", R.drawable.object_happy));
-//        objectList.add(new ObjectItem("object_star", R.drawable.object_star));
-//
-//        objectList.add(new ObjectItem("object_sticker", R.drawable.object_sticker));
-//        objectList.add(new ObjectItem("object_love", R.drawable.object_love));
-//        objectList.add(new ObjectItem("object_sun", R.drawable.object_sun));
-//
-//        return objectList;
-//    }
 
     public static void copyStickerFiles(Context context, String index) {
         copyStickerZipFiles(context, index);
         copyStickerIconFiles(context, index);
+    }
+
+    public static void copyModelsFiles(Context context, String index) {
+        copyStickerZipFiles(context, index);
     }
 
     public static void copyFilterFiles(Context context, String index) {
@@ -251,25 +241,6 @@ public class FileUtils {
         copyFilterIconFiles(context, index);
     }
 
-//    public static ArrayList<StickerItem> getStickerFiles(Context context, String index) {
-//        ArrayList<StickerItem> stickerFiles = new ArrayList<StickerItem>();
-//        //Bitmap iconClose = BitmapFactory.decodeResource(context.getResources(), R.drawable.close_sticker);
-//        Bitmap iconNone = BitmapFactory.decodeResource(context.getResources(), R.drawable.none);
-//
-//        List<String> stickerModels = getStickerZipFilesFromSd(context, index);
-//        Map<String, Bitmap> stickerIcons = getStickerIconFilesFromSd(context, index);
-//        List<String> stickerNames = getStickerNames(context, index);
-//
-//        for (int i = 0; i < stickerModels.size(); i++) {
-//            if (stickerIcons.get(stickerNames.get(i)) != null)
-//                stickerFiles.add(new StickerItem(stickerNames.get(i), stickerIcons.get(stickerNames.get(i)), stickerModels.get(i)));
-//            else {
-//                stickerFiles.add(new StickerItem(stickerNames.get(i), iconNone, stickerModels.get(i)));
-//            }
-//        }
-//
-//        return stickerFiles;
-//    }
 
     public static List<String> copyStickerZipFiles(Context context, String className) {
         String files[] = null;
@@ -439,7 +410,45 @@ public class FileUtils {
                 // 判断是否为png结尾
                 if (filename.trim().toLowerCase().endsWith(".png") && filename.indexOf("mode_") == -1) {
                     String name = subFile[i].getName();
-                    iconFiles.put(getFileNameNoEx(name), BitmapFactory.decodeFile(filename));
+                    iconFiles.put(getFileNameNoEx(name), STUtils.scaleBitmap(BitmapFactory.decodeFile(filename), 100, 100));
+                }
+            }
+        }
+
+        return iconFiles;
+    }
+
+    public static Map<String, String> getStickerIconUrlFilesFromSd(Context context, String className) {
+        TreeMap<String, String> iconFiles = new TreeMap<String, String>();
+
+        String folderpath = null;
+        File dataDir = context.getExternalFilesDir(null);
+        if (dataDir != null) {
+            folderpath = dataDir.getAbsolutePath() + File.separator + className;
+
+            File folder = new File(folderpath);
+
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+        }
+
+        File file = new File(folderpath);
+        File[] subFile = file.listFiles();
+
+        if (subFile == null || subFile.length == 0) {
+            return iconFiles;
+        }
+
+        for (int i = 0; i < subFile.length; i++) {
+            // 判断是否为文件夹
+            if (!subFile[i].isDirectory()) {
+                String filename = subFile[i].getAbsolutePath();
+                String path = subFile[i].getPath();
+                // 判断是否为png结尾
+                if (filename.trim().toLowerCase().endsWith(".png") && filename.indexOf("mode_") == -1) {
+                    String name = subFile[i].getName();
+                    iconFiles.put(getFileNameNoEx(name), filename);
                 }
             }
         }
@@ -482,40 +491,6 @@ public class FileUtils {
         return modelNames;
     }
 
-//    public static ArrayList<FilterItem> getFilterFiles(Context context, String index) {
-//        ArrayList<FilterItem> filterFiles = new ArrayList<FilterItem>();
-//        Bitmap iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.mode_original);
-//
-//        if (index.equals("filter_portrait")) {
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.filter_portrait_nature);
-//        } else if (index.equals("filter_scenery")) {
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.filter_scenery_nature);
-//        } else if (index.equals("filter_still_life")) {
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.filter_still_life_nature);
-//        } else if (index.equals("filter_food")) {
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.filter_food_nature);
-//        }
-//        filterFiles.add(new FilterItem("original", iconNature, null));
-//        //filterFiles.add(new FilterItem("null", iconNature, null));
-//
-//        List<String> filterModels = copyFilterModelFiles(context, index);
-//        Map<String, Bitmap> filterIcons = copyFilterIconFiles(context, index);
-//        List<String> filterNames = getFilterNames(context, index);
-//
-//        if (filterModels == null || filterModels.size() == 0) {
-//            return filterFiles;
-//        }
-//
-//        for (int i = 0; i < filterModels.size(); i++) {
-//            if (filterIcons.get(filterNames.get(i)) != null)
-//                filterFiles.add(new FilterItem(filterNames.get(i), filterIcons.get(filterNames.get(i)), filterModels.get(i)));
-//            else {
-//                filterFiles.add(new FilterItem(filterNames.get(i), iconNature, filterModels.get(i)));
-//            }
-//        }
-//
-//        return filterFiles;
-//    }
 
     public static List<String> copyFilterModelFiles(Context context, String index) {
         String files[] = null;
@@ -531,6 +506,7 @@ public class FileUtils {
         File dataDir = context.getExternalFilesDir(null);
         if (dataDir != null) {
             folderpath = dataDir.getAbsolutePath() + File.separator + index;
+
             File folder = new File(folderpath);
 
             if (!folder.exists()) {
@@ -617,6 +593,57 @@ public class FileUtils {
         return iconFiles;
     }
 
+    public static Map<String, String> copyFilterIconFiles2(Context context, String index) {
+        String files[] = null;
+        TreeMap<String, String> iconFiles = new TreeMap<String, String>();
+
+        try {
+            files = context.getAssets().list(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String folderpath = null;
+        File dataDir = context.getExternalFilesDir(null);
+        if (dataDir != null) {
+            folderpath = dataDir.getAbsolutePath() + File.separator + index;
+
+            File folder = new File(folderpath);
+
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+        }
+        for (int i = 0; i < files.length; i++) {
+            String str = files[i];
+            if (str.indexOf(".png") != -1) {
+                copyFileIfNeed(context, str, index);
+            }
+        }
+
+        File file = new File(folderpath);
+        File[] subFile = file.listFiles();
+
+        if (subFile == null || subFile.length == 0) {
+            return iconFiles;
+        }
+
+        for (int i = 0; i < subFile.length; i++) {
+            // 判断是否为文件夹
+            if (!subFile[i].isDirectory()) {
+                String filename = subFile[i].getAbsolutePath();
+                String path = subFile[i].getPath();
+                // 判断是否为png结尾
+                if (filename.trim().toLowerCase().endsWith(".png") && filename.indexOf("filter") != -1) {
+                    String name = subFile[i].getName().substring(13);
+                    iconFiles.put(getFileNameNoEx(name), filename);
+                }
+            }
+        }
+
+        return iconFiles;
+    }
+
     public static List<String> getFilterNames(Context context, String index) {
         ArrayList<String> modelNames = new ArrayList<String>();
         String folderpath = null;
@@ -662,107 +689,78 @@ public class FileUtils {
         return filename;
     }
 
-//    public static void writeMaterialsToJsonFile(List<SenseArMaterial> materials, String groupId, String rootPath) {
-//        if (materials != null && materials.size() > 0) {
-//            JSONObject jsonObject = new JSONObject();
-//            JSONArray materialsJson = new JSONArray();
-//            try {
-//                for (SenseArMaterial material : materials) {
-//                    JSONObject jsonMaterial = new JSONObject();
-//                    jsonMaterial.put("type", material.type);
-//                    jsonMaterial.put("id", material.id);
-//                    jsonMaterial.put("materialFileId", material.materialFileId);
-//                    jsonMaterial.put("materialInstructions", material.materialInstructions);
-//                    jsonMaterial.put("extend_info", material.extend_info);
-//                    jsonMaterial.put("extend_info2", material.extend_info2);
-//                    jsonMaterial.put("thumbnail", material.thumbnail);
-//                    jsonMaterial.put("name", material.name);
-//                    jsonMaterial.put("cachedPath", material.cachedPath);
-//                    materialsJson.put(jsonMaterial);
-//                }
-//                jsonObject.put("materials", materialsJson);
-//                String jsonStr = jsonObject.toString();
-//                File file = new File(rootPath + "/" + groupId);
-//                file.createNewFile();
-//                FileOutputStream fileOutputStream = new FileOutputStream(file);
-//                fileOutputStream.write(jsonStr.getBytes());
-//                fileOutputStream.close();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    public static void writeMaterialsToJsonFile(List<SenseArMaterial> materials, String groupId, String rootPath) {
+        if (materials != null && materials.size() > 0) {
+            JSONObject jsonObject = new JSONObject();
+            JSONArray materialsJson = new JSONArray();
+            try {
+                for (SenseArMaterial material : materials) {
+                    JSONObject jsonMaterial = new JSONObject();
+                    jsonMaterial.put("type", material.type);
+                    jsonMaterial.put("id", material.id);
+                    jsonMaterial.put("materialFileId", material.materialFileId);
+                    jsonMaterial.put("materialInstructions", material.materialInstructions);
+                    jsonMaterial.put("extend_info", material.extend_info);
+                    jsonMaterial.put("extend_info2", material.extend_info2);
+                    jsonMaterial.put("thumbnail", material.thumbnail);
+                    jsonMaterial.put("name", material.name);
+                    jsonMaterial.put("cachedPath", material.cachedPath);
+                    materialsJson.put(jsonMaterial);
+                }
+                jsonObject.put("materials", materialsJson);
+                String jsonStr = jsonObject.toString();
+                File file = new File(rootPath + "/" + groupId);
+                file.createNewFile();
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                fileOutputStream.write(jsonStr.getBytes());
+                fileOutputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-//    public static List<SenseArMaterial> getMaterialsFromJsonFile(String groupId, String rootPath) {
-//        List<SenseArMaterial> result = new ArrayList<>();
-//        File file = new File(rootPath + "/" + groupId);
-//        if (file.exists()) {
-//            try {
-//                FileInputStream fileInputStream = new FileInputStream(file);
-//                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-//                BufferedReader br = new BufferedReader(inputStreamReader);
-//                String line;
-//                StringBuilder builder = new StringBuilder();
-//                while ((line = br.readLine()) != null) {
-//                    builder.append(line);
-//                }
-//                br.close();
-//                inputStreamReader.close();
-//                fileInputStream.close();
-//
-//                JSONObject jsonObject = new JSONObject(builder.toString());
-//                JSONArray array = jsonObject.optJSONArray("materials");
-//                if (array != null && array.length() > 0) {
-//                    for (int i = 0; i < array.length(); i++) {
-//                        SenseArMaterial senseArMaterial = new SenseArMaterial();
-//                        JSONObject jsonMaterial = array.getJSONObject(i);
-//                        senseArMaterial.type = jsonMaterial.optInt("type");
-//                        senseArMaterial.id = jsonMaterial.optString("id");
-//                        senseArMaterial.materialFileId = jsonMaterial.optString("materialFileId");
-//                        senseArMaterial.materialInstructions = jsonMaterial.optString("materialInstructions");
-//                        senseArMaterial.extend_info = jsonMaterial.optString("extend_info");
-//                        senseArMaterial.extend_info2 = jsonMaterial.optString("extend_info2");
-//                        senseArMaterial.thumbnail = jsonMaterial.optString("thumbnail");
-//                        senseArMaterial.name = jsonMaterial.optString("name");
-//                        senseArMaterial.cachedPath = jsonMaterial.optString("cachedPath");
-//                        result.add(senseArMaterial);
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return result;
-//    }
+    public static List<SenseArMaterial> getMaterialsFromJsonFile(String groupId, String rootPath) {
+        List<SenseArMaterial> result = new ArrayList<>();
+        File file = new File(rootPath + "/" + groupId);
+        if (file.exists()) {
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                BufferedReader br = new BufferedReader(inputStreamReader);
+                String line;
+                StringBuilder builder = new StringBuilder();
+                while ((line = br.readLine()) != null) {
+                    builder.append(line);
+                }
+                br.close();
+                inputStreamReader.close();
+                fileInputStream.close();
 
-//    public static ArrayList<MakeupItem> getMakeupFilesFromAssets(Context context, String index){
-//        ArrayList<MakeupItem> makeupFiles = new ArrayList<MakeupItem>();
-//        Bitmap iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//
-//        if(index.equals("makeup_lip")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_highlight")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_blush")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_brow")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_eye")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }
-//        makeupFiles.add(new MakeupItem("original", iconNature, null));
-//
-//        List<String> makeupZips = getMakeupFilePathFromAssets(context, index);
-//        List<String> makeupNames = getMakeupNamesFromAssets(context, index);
-//
-//        for(int i = 0;i< makeupZips.size(); i++){
-//            if(makeupNames.get(i) != null) {
-//                makeupFiles.add(new MakeupItem(makeupNames.get(i), getImageFromAssetsFile(context, index + File.separator+ makeupNames.get(i)+".png"), makeupZips.get(i)));
-//            }
-//        }
-//
-//        return  makeupFiles;
-//    }
+                JSONObject jsonObject = new JSONObject(builder.toString());
+                JSONArray array = jsonObject.optJSONArray("materials");
+                if (array != null && array.length() > 0) {
+                    for (int i = 0; i < array.length(); i++) {
+                        SenseArMaterial senseArMaterial = new SenseArMaterial();
+                        JSONObject jsonMaterial = array.getJSONObject(i);
+                        senseArMaterial.type = jsonMaterial.optInt("type");
+                        senseArMaterial.id = jsonMaterial.optString("id");
+                        senseArMaterial.materialFileId = jsonMaterial.optString("materialFileId");
+                        senseArMaterial.materialInstructions = jsonMaterial.optString("materialInstructions");
+                        senseArMaterial.extend_info = jsonMaterial.optString("extend_info");
+                        senseArMaterial.extend_info2 = jsonMaterial.optString("extend_info2");
+                        senseArMaterial.thumbnail = jsonMaterial.optString("thumbnail");
+                        senseArMaterial.name = jsonMaterial.optString("name");
+                        senseArMaterial.cachedPath = jsonMaterial.optString("cachedPath");
+                        result.add(senseArMaterial);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 
     public static List<String> getMakeupFilePathFromAssets(Context context, String className){
         String files[] = null;
@@ -804,130 +802,261 @@ public class FileUtils {
         return modelFiles;
     }
 
-//    private static Bitmap getImageFromAssetsFile(Context context, String fileName)
-//    {
-//        Bitmap image = null;
-//        AssetManager am = context.getResources().getAssets();
-//        try {
-//            InputStream is = am.open(fileName);
-//            image = BitmapFactory.decodeStream(is);
-//            is.close();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//
-//            image = BitmapFactory.decodeResource(context.getResources(), R.drawable.none);
-//        }
-//
-//        return image;
-//    }
+    private static Bitmap getImageFromAssetsFile(Context context, String fileName)
+    {
+        Bitmap image = null;
+        AssetManager am = context.getResources().getAssets();
+        try {
+            InputStream is = am.open(fileName);
+            image = BitmapFactory.decodeStream(is);
+            is.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
-//    public static ArrayList<MakeupItem> getMakeupFiles(Context context, String index){
-//        ArrayList<MakeupItem> makeupFiles = new ArrayList<MakeupItem>();
-//        Bitmap iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//
-//        if(index.equals("makeup_lip")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_highlight")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_blush")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_brow")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }else if(index.equals("makeup_eye")){
-//            iconNature = BitmapFactory.decodeResource(context.getResources(), R.drawable.makeup_null);
-//        }
-//        makeupFiles.add(new MakeupItem("original", iconNature, null));
-//        //filterFiles.add(new FilterItem("null", iconNature, null));
-//
-//        List<String> makeupZips = getStickerZipFilesFromSd(context, index);
-//        Map<String, Bitmap> makeupIcons = getStickerIconFilesFromSd(context, index);
-//        List<String> makeupNames = getStickerNames(context, index);
-//
-//        if(makeupZips == null || makeupZips.size() == 0){
-//            return makeupFiles;
-//        }
-//
-//        if(makeupZips != null || makeupZips.size() > 1){
-//            Collections.sort(makeupZips);
-//            Collections.sort(makeupNames);
-//        }
-//
-//        for(int i = 0;i< makeupZips.size(); i++){
-//            if(makeupIcons.get(makeupNames.get(i)) != null)
-//                makeupFiles.add(new MakeupItem(makeupNames.get(i), makeupIcons.get(makeupNames.get(i)), makeupZips.get(i)));
-//            else{
-//                makeupFiles.add(new MakeupItem(makeupNames.get(i), iconNature, makeupZips.get(i)));
-//            }
-//        }
-//
-//        return  makeupFiles;
-//    }
+        return image;
+    }
+
+
+    @SuppressLint("NewApi")
+    public static String getPath(final Context context, final Uri uri) {
+
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+        // DocumentProvider
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            // ExternalStorageProvider
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+
+                // TODO handle non-primary volumes
+            }
+            // DownloadsProvider
+            else if (isDownloadsDocument(uri)) {
+
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+
+                return getDataColumn(context, contentUri, null, null);
+            }
+            // MediaProvider
+            else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[]{split[1]};
+
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        // MediaStore (and general)
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            if (isQQMediaDocument(uri)) {
+                String path = uri.getPath();
+                File fileDir = Environment.getExternalStorageDirectory();
+                File file = new File(fileDir, path.substring("/QQBrowser".length()));
+                return file.exists() ? file.toString() : null;
+            }
+            return getDataColumn(context, uri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        return null;
+    }
 
     /**
-     * Check if the data directory has already have the file
-     * of the relative path. If not, copy file from asset folders.
-     * @param context context
-     * @param path file path relative to root path. The root path may be
-     *             the asset root path, or Data dir path
-     * @return absolute path of the file
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param context       The context.
+     * @param uri           The Uri to query.
+     * @param selection     (Optional) Filter used in the query.
+     * @param selectionArgs (Optional) Selection arguments used in the query.
+     * @return The value of the _data column, which is typically a file path.
      */
-    public static String copyToDataFromAssetIfNotExist(Context context, String path) {
-        // Copy to the root of the files directory
-        File fileDir = context.getExternalFilesDir(null);
-        File targetFile = new File(fileDir, path);
+    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
 
-        if (targetFile.exists()) {
-            return targetFile.getAbsolutePath();
-        }
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {column};
 
         try {
-            if (!targetFile.getParentFile().exists() &&
-                    !targetFile.getParentFile().mkdirs()) {
-                return null;
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
             }
-
-            if (!targetFile.createNewFile()) {
-                return null;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        AssetManager am = context.getAssets();
-        BufferedInputStream bis = null;
-        BufferedOutputStream bos = null;
-        try {
-            bis = new BufferedInputStream(am.open(path));
-            bos = new BufferedOutputStream(new FileOutputStream(targetFile));
-
-            int read;
-            while ((read = bis.read(DEFAULT_READ_BUFFER,
-                    0, DEFAULT_BUFFER_SIZE)) != -1) {
-                bos.write(DEFAULT_READ_BUFFER, 0, read);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
         } finally {
-            if (bos != null) {
-                try {
-                    bos.flush();
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
 
-            if (bis != null) {
-                try {
-                    bis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is ExternalStorageProvider.
+     */
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is DownloadsProvider.
+     */
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is MediaProvider.
+     */
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static String getBaseFolder(Context context) {
+        String baseFolder = Environment.getExternalStorageDirectory() + "/DCIM/";
+        File f = new File(baseFolder);
+        if (!f.exists()) {
+            boolean b = f.mkdirs();
+            if (!b) {
+                baseFolder = context.getExternalFilesDir(null).getAbsolutePath() + "/";
             }
         }
-
-        return targetFile.getAbsolutePath();
+        return baseFolder;
     }
+
+    //获取VideoPath
+    public static String getPath(Context context, String path, String fileName) {
+        String p = getBaseFolder(context) + path;
+        File f = new File(p);
+        if (!f.exists() && !f.mkdirs()) {
+            return getBaseFolder(context) + fileName;
+        }
+        return p + fileName;
+    }
+
+    public static boolean isQQMediaDocument(Uri uri) {
+        return "com.tencent.mtt.fileprovider".equals(uri.getAuthority());
+    }
+
+
+    private static final String SEPARATOR = File.separator;
+
+    public static void copyFilesFromAssets(Context context, String assetsPath, String storagePath) {
+        String temp = "";
+
+        if (TextUtils.isEmpty(storagePath)) {
+            return;
+        } else if (storagePath.endsWith(SEPARATOR)) {
+            storagePath = storagePath.substring(0, storagePath.length() - 1);
+        }
+
+        if (TextUtils.isEmpty(assetsPath) || assetsPath.equals(SEPARATOR)) {
+            assetsPath = "";
+        } else if (assetsPath.endsWith(SEPARATOR)) {
+            assetsPath = assetsPath.substring(0, assetsPath.length() - 1);
+        }
+
+        AssetManager assetManager = context.getAssets();
+        try {
+            File file = new File(storagePath);
+            if (!file.exists()) {//如果文件夹不存在，则创建新的文件夹
+                file.mkdirs();
+            }
+
+            // 获取assets目录下的所有文件及目录名
+            String[] fileNames = assetManager.list(assetsPath);
+            if (fileNames.length > 0) {//如果是目录 apk
+                for (String fileName : fileNames) {
+                    if (!TextUtils.isEmpty(assetsPath)) {
+                        temp = assetsPath + SEPARATOR + fileName;//补全assets资源路径
+                    }
+
+                    String[] childFileNames = assetManager.list(temp);
+                    if (!TextUtils.isEmpty(temp) && childFileNames.length > 0) {//判断是文件还是文件夹：如果是文件夹
+                        copyFilesFromAssets(context, temp, storagePath + SEPARATOR + fileName);
+                    } else {//如果是文件
+                        InputStream inputStream = assetManager.open(temp);
+                        readInputStream(storagePath + SEPARATOR + fileName, inputStream);
+                    }
+                }
+            } else {//如果是文件 doc_test.txt或者apk/app_test.apk
+                InputStream inputStream = assetManager.open(assetsPath);
+                if (assetsPath.contains(SEPARATOR)) {//apk/app_test.apk
+                    assetsPath = assetsPath.substring(assetsPath.lastIndexOf(SEPARATOR), assetsPath.length());
+                }
+                readInputStream(storagePath + SEPARATOR + assetsPath, inputStream);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 读取输入流中的数据写入输出流
+     *
+     * @param storagePath 目标文件路径
+     * @param inputStream 输入流
+     */
+    public static void readInputStream(String storagePath, InputStream inputStream) {
+        File file = new File(storagePath);
+        try {
+            if (!file.exists()) {
+                // 1.建立通道对象
+                FileOutputStream fos = new FileOutputStream(file);
+                // 2.定义存储空间
+                byte[] buffer = new byte[inputStream.available()];
+                // 3.开始读文件
+                int lenght = 0;
+                while ((lenght = inputStream.read(buffer)) != -1) {// 循环从输入流读取buffer字节
+                    // 将Buffer中的数据写到outputStream对象中
+                    fos.write(buffer, 0, lenght);
+                }
+                fos.flush();// 刷新缓冲区
+                // 4.关闭流
+                fos.close();
+                inputStream.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+
+
+
+
+
+
+
