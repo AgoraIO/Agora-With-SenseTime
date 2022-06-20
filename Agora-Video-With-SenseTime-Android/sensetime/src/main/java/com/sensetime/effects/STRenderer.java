@@ -302,13 +302,15 @@ public class STRenderer {
 
             // prepare params
             updateHumanActionDetectConfig();
+            mSTHumanActionNative.nativeHumanActionPtrCopy();
+
             int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
                     pixelFormat,
                     mDetectConfig,
                     orientationType,
                     width,
                     height);
-            STHumanAction nativeHumanAction = mSTHumanActionNative.getNativeHumanAction();
+            //STHumanAction nativeHumanAction = mSTHumanActionNative.getNativeHumanAction();
             //LogUtils.i(TAG, "human action detect cost time: %d, ret: %d", System.currentTimeMillis() - startHumanAction, ret);
             if (ret == 0) {
                 //nv21数据为横向，相对于预览方向需要旋转处理，前置摄像头还需要镜像
@@ -342,12 +344,6 @@ public class STRenderer {
         //输出纹理，需要在上层初始化
         STEffectTexture stEffectTextureOut = new STEffectTexture(mTextureOutId[0], imageWidth, imageHeight, 0);
 
-        //用户自定义参数设置
-//        STEffectCustomParam customParam = new STEffectCustomParam(
-//                new STQuaternion(0f, 0f, 0f, 1f),
-//                cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT,
-//                0);
-
         //渲染接口输入参数
         STEffectRenderInParam sTEffectRenderInParam = new STEffectRenderInParam(
                 mSTHumanActionNative.getNativeHumanActionPtrCopy(),
@@ -362,7 +358,7 @@ public class STRenderer {
         STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, mSTHumanAction[0]);
         long mStartRenderTime = System.currentTimeMillis();
         mSTMobileEffectNative.setParam(STEffectParam.EFFECT_PARAM_USE_INPUT_TIMESTAMP, 1);
-        int ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, true);
+        int ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, false);
         //LogUtils.i(TAG, "render cost time total: %d", System.currentTimeMillis() - mStartRenderTime);
         // CostTimeUtils.printAverage("CostTimeUtils",  System.currentTimeMillis() - mStartRenderTime);
         if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {

@@ -116,10 +116,10 @@ public class STChatActivity extends RtcBasedActivity {
 
     private void setMakeupItemParam(boolean selected) {
         if(selected){
-            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROW,  "makeup_brow" + File.separator + "browA.zip", 1);
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROWST_MAKEUP_TYPE_LIP,  "makeup_lip" + File.separator + "12自然.zip", 1);
         }
         else{
-            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROW, null, 0);
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROWST_MAKEUP_TYPE_LIP, null, 0);
         }
     }
 
@@ -127,10 +127,12 @@ public class STChatActivity extends RtcBasedActivity {
         if(selected){
             preprocessor.onBeautyModeSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, STEffectBeautyType.WHITENING1_MODE);
             preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, 100f);
+            preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_RESHAPE_ENLARGE_EYE, 1.0f);
         }
         else{
             preprocessor.onBeautyModeSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, STEffectBeautyType.WHITENING1_MODE);
             preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_BASE_WHITTEN, 0f);
+            preprocessor.onBeautyStrengthSelected(STEffectBeautyType.EFFECT_BEAUTY_RESHAPE_ENLARGE_EYE, 0.0f);
         }
     }
 
