@@ -44,7 +44,6 @@
 @property (nonatomic, strong) AgoraRtcVideoCanvas *videoCanvas;
 @property (nonatomic, assign) AgoraVideoMirrorMode localVideoMirrored;
 @property (nonatomic, assign) AgoraVideoMirrorMode remoteVideoMirrored;
-@property (nonatomic, strong) AGMEAGLVideoView *glVideoView;
 
 @end
 

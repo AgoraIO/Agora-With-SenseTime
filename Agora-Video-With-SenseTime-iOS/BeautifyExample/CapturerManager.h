@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AgoraRtcKit/AgoraRtcEngineKit.h>
-#import <AGMCapturer/AGMCapturer.h>
-#import <AGMBase/AGMBase.h>
-#import "CapturerManagerDelegate.h"
-#import <AGMRenderer/AGMRenderer.h>
 #import "EffectsCamera.h"
 #import "EffectsProcess.h"
 #import "EffectsGLPreview.h"
@@ -20,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CapturerManager : NSObject <AgoraVideoSourceProtocol, EffectsCameraDelegate>
 
-//- (instancetype)initWithVideoConfig:(AGMCapturerVideoConfig *)config process:(EffectsProcess *)process;
 - (void)startCapture;
 - (void)stopCapture;
 - (void)switchCamera;

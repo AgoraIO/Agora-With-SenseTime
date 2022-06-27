@@ -911,7 +911,7 @@
 		E789A4E428616E3700851463 /* closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closed.png; sourceTree = "<group>"; };
 		E789A4E528616E3700851463 /* structst__mobile__attributes__t__coll__graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structst__mobile__attributes__t__coll__graph.png; sourceTree = "<group>"; };
 		E789A4E628616E3700851463 /* structst__hand__dynamic__gesture__t-members.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "structst__hand__dynamic__gesture__t-members.html"; sourceTree = "<group>"; };
-		E789A4E728616E3700851463 /* md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC.html"; sourceTree = "<group>"; };
+		E789A4E728616E3700851463 /* md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC.html; sourceTree = "<group>"; };
 		E789A4E828616E3700851463 /* structst__mobile__animal__face__t__coll__graph.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = structst__mobile__animal__face__t__coll__graph.map; sourceTree = "<group>"; };
 		E789A4E928616E3700851463 /* structst__mobile__transform__t-members.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "structst__mobile__transform__t-members.html"; sourceTree = "<group>"; };
 		E789A4EA28616E3700851463 /* structst__effect__render__in__param__t.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = structst__effect__render__in__param__t.js; sourceTree = "<group>"; };
@@ -1138,7 +1138,7 @@
 		E789A5C828616E3700851463 /* structst__effect__tryon__info__t__coll__graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structst__effect__tryon__info__t__coll__graph.png; sourceTree = "<group>"; };
 		E789A5C928616E3700851463 /* structst__effect__in__image__t-members.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "structst__effect__in__image__t-members.html"; sourceTree = "<group>"; };
 		E789A5CA28616E3700851463 /* structst__mobile__face__mesh__t.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = structst__mobile__face__mesh__t.html; sourceTree = "<group>"; };
-		E789A5CB28616E3700851463 /* md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC8_8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC8_8.html"; sourceTree = "<group>"; };
+		E789A5CB28616E3700851463 /* md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC8_8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC8_8.html; sourceTree = "<group>"; };
 		E789A5CC28616E3700851463 /* structst__mobile__animal__face__t__coll__graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structst__mobile__animal__face__t__coll__graph.png; sourceTree = "<group>"; };
 		E789A5CD28616E3700851463 /* annotated.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = annotated.js; sourceTree = "<group>"; };
 		E789A5CE28616E3700851463 /* st__mobile__common_8h.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = st__mobile__common_8h.html; sourceTree = "<group>"; };
@@ -3562,7 +3562,6 @@
 				09C6665B24D7BC89001D7AE2 /* Sources */,
 				09C6665C24D7BC89001D7AE2 /* Frameworks */,
 				09C6665D24D7BC89001D7AE2 /* Resources */,
-				AB7B94B55A971FAC4E9EBF43 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4094,23 +4093,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB7B94B55A971FAC4E9EBF43 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -4533,12 +4515,6 @@
 					"-l\"c++\"",
 					"-l\"resolv\"",
 					"-framework",
-					"\"AGMBase\"",
-					"-framework",
-					"\"AGMCapturer\"",
-					"-framework",
-					"\"AGMRenderer\"",
-					"-framework",
 					"\"AVFoundation\"",
 					"-framework",
 					"\"AgoraAIDenoiseExtension\"",
@@ -4606,12 +4582,6 @@
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"resolv\"",
-					"-framework",
-					"\"AGMBase\"",
-					"-framework",
-					"\"AGMCapturer\"",
-					"-framework",
-					"\"AGMRenderer\"",
 					"-framework",
 					"\"AVFoundation\"",
 					"-framework",

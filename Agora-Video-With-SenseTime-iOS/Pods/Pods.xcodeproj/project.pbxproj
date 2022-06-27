@@ -6,126 +6,44 @@
 	objectVersion = 51;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		183C29DD6DE04D22CA29BAE61F5C530B /* AgoraRtcEngine_iOS */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = C2246126F4F4796E9AB8317EFC20FAB6 /* Build configuration list for PBXAggregateTarget "AgoraRtcEngine_iOS" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = AgoraRtcEngine_iOS;
-		};
-		FFBF1D3BAFF8E424D3D1136276D7ACFD /* AGMCapturer_iOS */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = FF000B716D05377337B66CC610D47689 /* Build configuration list for PBXAggregateTarget "AGMCapturer_iOS" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = AGMCapturer_iOS;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		3866FBEE66ADE5489ED2599288551EEE /* Pods-BeautifyExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4441CF75F0661F071D0A4371089BA99 /* Pods-BeautifyExample-dummy.m */; };
-		4A3CC9681D5B12432DC84F040D35DE40 /* Pods-BeautifyExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF0B2768A623A4CEE1E73649E0DA0BA /* Pods-BeautifyExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		999A8B4201498F3BB3F9AED4227D102F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		367EBF1B5FA13A3B0F7E9980D371742E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6A3A5CD4C783A7560EF43C2500F85846 /* Pods-BeautifyExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD5DFBE2E7EE1C25FCBD544CC4DBA86 /* Pods-BeautifyExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF74609B94302A518ACD558C8B37DC9F /* Pods-BeautifyExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B27880E345C258310B75F0DDB31B15E6 /* Pods-BeautifyExample-dummy.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1358A4EE938C4616605BF995804E7D3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 183C29DD6DE04D22CA29BAE61F5C530B;
-			remoteInfo = AgoraRtcEngine_iOS;
-		};
-		603214D4E7643943408F75F2B6FB1655 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FFBF1D3BAFF8E424D3D1136276D7ACFD;
-			remoteInfo = AGMCapturer_iOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		103E550EDAEFC0866E0335AAF3E5DFDF /* AgoraRtcEngine_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AgoraRtcEngine_iOS.release.xcconfig; sourceTree = "<group>"; };
-		1E2BDE3EAC1410DDA34C114A043A8F9B /* Pods-BeautifyExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BeautifyExample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		207FE9DE7F785BC1CBDC98BADDD0B07A /* AgoraDav1dExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraDav1dExtension.framework; sourceTree = "<group>"; };
-		21B1FC2E08EA07ACA9B3C377906B0FD7 /* AGMCapturer_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AGMCapturer_iOS.release.xcconfig; sourceTree = "<group>"; };
-		2AF0B2768A623A4CEE1E73649E0DA0BA /* Pods-BeautifyExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BeautifyExample-umbrella.h"; sourceTree = "<group>"; };
-		3D9C50BC40EFF01EF82597E6B3B211E9 /* Pods-BeautifyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BeautifyExample.debug.xcconfig"; sourceTree = "<group>"; };
-		4125C6DA4C3B76087BF2E23D04228753 /* Pods-BeautifyExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BeautifyExample-acknowledgements.plist"; sourceTree = "<group>"; };
-		4B5852149D08D470120D3E26CFC4455F /* Pods-BeautifyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BeautifyExample.release.xcconfig"; sourceTree = "<group>"; };
-		5065CD27782EB5CC2C72BE7A4F66D877 /* Pods-BeautifyExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BeautifyExample-Info.plist"; sourceTree = "<group>"; };
-		513DD2965DA67F8ADB5B5E4E5F549824 /* Pods-BeautifyExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BeautifyExample-frameworks.sh"; sourceTree = "<group>"; };
-		5C1053D23AD41E49222646E29BE517CB /* AgoraSuperResolutionExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraSuperResolutionExtension.framework; sourceTree = "<group>"; };
-		60674FA9D7F598A1A8DC64B082473F92 /* AGMCapturer_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AGMCapturer_iOS.debug.xcconfig; sourceTree = "<group>"; };
-		6EB885E3DC90E09A6B33D7A22A7AE901 /* Pods-BeautifyExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BeautifyExample.modulemap"; sourceTree = "<group>"; };
-		71CD57D5C60338467E9BF0B021A95355 /* AgoraRtcEngine_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AgoraRtcEngine_iOS.debug.xcconfig; sourceTree = "<group>"; };
+		007491664017E530E471F973B9220FF3 /* Pods-BeautifyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BeautifyExample.debug.xcconfig"; sourceTree = "<group>"; };
+		3D2AEC77705D589F328D44BD633013D7 /* Pods-BeautifyExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BeautifyExample.modulemap"; sourceTree = "<group>"; };
+		56A4796BF05882D7AFDE47318DBFCC54 /* Pods-BeautifyExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BeautifyExample-Info.plist"; sourceTree = "<group>"; };
+		6F95F35A5D72DAC6845DE4DCF06BFA61 /* Pods-BeautifyExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BeautifyExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73E82C5222DA6EB9874E32A0BC83894A /* AgoraRtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcKit.framework; sourceTree = "<group>"; };
-		73ECE47AB402F29FC4C22A33BBACCFB5 /* AGMCapturer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMCapturer.framework; sourceTree = "<group>"; };
-		8B9767452C6E5456CBD5BE1683952959 /* AgoraCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraCore.framework; sourceTree = "<group>"; };
+		7FD5DFBE2E7EE1C25FCBD544CC4DBA86 /* Pods-BeautifyExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BeautifyExample-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A369102C5B6EC088B9A3FBA60BC1E90E /* Pods-BeautifyExample */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BeautifyExample"; path = Pods_BeautifyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A38F08F41092464CDE6F37FE15CAA28C /* Agorafdkaac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Agorafdkaac.framework; sourceTree = "<group>"; };
-		CEC60BCFBF910D479B87948DE26B03AD /* AGMBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMBase.framework; sourceTree = "<group>"; };
-		D4441CF75F0661F071D0A4371089BA99 /* Pods-BeautifyExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BeautifyExample-dummy.m"; sourceTree = "<group>"; };
-		D691B165DAE8CB87DBCCFC1E06BBD78C /* Agoraffmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Agoraffmpeg.framework; sourceTree = "<group>"; };
-		DAE5714E65598A1C8A187866EDCC7B85 /* AGMRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGMRenderer.framework; sourceTree = "<group>"; };
-		EF04204B61B44480FB20E1C750174C3E /* AgoraSoundTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraSoundTouch.framework; sourceTree = "<group>"; };
-		F1897491D56199AD93FCFAC5B583D8F3 /* AgoraAIDenoiseExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraAIDenoiseExtension.framework; sourceTree = "<group>"; };
+		A4C03B3780A7DF9C87072BD307D53DBE /* Pods-BeautifyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BeautifyExample.release.xcconfig"; sourceTree = "<group>"; };
+		B27880E345C258310B75F0DDB31B15E6 /* Pods-BeautifyExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BeautifyExample-dummy.m"; sourceTree = "<group>"; };
+		B81CBF87A9C421C4CCB49FD63DEC17F5 /* Pods-BeautifyExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BeautifyExample-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A9716B07B97ABB8F1C03AAA2AABAD649 /* Frameworks */ = {
+		20A928CB4DC8B29F2B4CA7CBC7AFA456 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999A8B4201498F3BB3F9AED4227D102F /* Foundation.framework in Frameworks */,
+				367EBF1B5FA13A3B0F7E9980D371742E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1143D808C91580D819C70FE31AAA2C16 /* Support Files */ = {
+		34633155098E83A25C15FCB51FEFE5F0 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				71CD57D5C60338467E9BF0B021A95355 /* AgoraRtcEngine_iOS.debug.xcconfig */,
-				103E550EDAEFC0866E0335AAF3E5DFDF /* AgoraRtcEngine_iOS.release.xcconfig */,
+				6BEFD56E1CE50B4B1AFFFD84DAFBDA71 /* Pods-BeautifyExample */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/AgoraRtcEngine_iOS";
-			sourceTree = "<group>";
-		};
-		1173C080606AB2E4439B1116F907CE78 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F50D442B9F09D173CC3497BE5C5D66CB /* AGMCapturer_iOS */,
-				CC8E1CC16A0CEADE3F57705279EB7F71 /* AgoraRtcEngine_iOS */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		52E649598BAE72FA351ED75612542565 /* Pods-BeautifyExample */ = {
-			isa = PBXGroup;
-			children = (
-				6EB885E3DC90E09A6B33D7A22A7AE901 /* Pods-BeautifyExample.modulemap */,
-				1E2BDE3EAC1410DDA34C114A043A8F9B /* Pods-BeautifyExample-acknowledgements.markdown */,
-				4125C6DA4C3B76087BF2E23D04228753 /* Pods-BeautifyExample-acknowledgements.plist */,
-				D4441CF75F0661F071D0A4371089BA99 /* Pods-BeautifyExample-dummy.m */,
-				513DD2965DA67F8ADB5B5E4E5F549824 /* Pods-BeautifyExample-frameworks.sh */,
-				5065CD27782EB5CC2C72BE7A4F66D877 /* Pods-BeautifyExample-Info.plist */,
-				2AF0B2768A623A4CEE1E73649E0DA0BA /* Pods-BeautifyExample-umbrella.h */,
-				3D9C50BC40EFF01EF82597E6B3B211E9 /* Pods-BeautifyExample.debug.xcconfig */,
-				4B5852149D08D470120D3E26CFC4455F /* Pods-BeautifyExample.release.xcconfig */,
-			);
-			name = "Pods-BeautifyExample";
-			path = "Target Support Files/Pods-BeautifyExample";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -136,22 +54,20 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		797177FB931206B728BA3C6A404A6EBD /* Targets Support Files */ = {
+		6BEFD56E1CE50B4B1AFFFD84DAFBDA71 /* Pods-BeautifyExample */ = {
 			isa = PBXGroup;
 			children = (
-				52E649598BAE72FA351ED75612542565 /* Pods-BeautifyExample */,
+				3D2AEC77705D589F328D44BD633013D7 /* Pods-BeautifyExample.modulemap */,
+				6F95F35A5D72DAC6845DE4DCF06BFA61 /* Pods-BeautifyExample-acknowledgements.markdown */,
+				B81CBF87A9C421C4CCB49FD63DEC17F5 /* Pods-BeautifyExample-acknowledgements.plist */,
+				B27880E345C258310B75F0DDB31B15E6 /* Pods-BeautifyExample-dummy.m */,
+				56A4796BF05882D7AFDE47318DBFCC54 /* Pods-BeautifyExample-Info.plist */,
+				7FD5DFBE2E7EE1C25FCBD544CC4DBA86 /* Pods-BeautifyExample-umbrella.h */,
+				007491664017E530E471F973B9220FF3 /* Pods-BeautifyExample.debug.xcconfig */,
+				A4C03B3780A7DF9C87072BD307D53DBE /* Pods-BeautifyExample.release.xcconfig */,
 			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		86643914E000F6D28D6EC4601B92DF22 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				60674FA9D7F598A1A8DC64B082473F92 /* AGMCapturer_iOS.debug.xcconfig */,
-				21B1FC2E08EA07ACA9B3C377906B0FD7 /* AGMCapturer_iOS.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AGMCapturer_iOS";
+			name = "Pods-BeautifyExample";
+			path = "Target Support Files/Pods-BeautifyExample";
 			sourceTree = "<group>";
 		};
 		940B5F316C2AE32C8AB94864918DD2AB /* Products */ = {
@@ -162,39 +78,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9960812A78FD03F6445D3E6FB454817A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F1897491D56199AD93FCFAC5B583D8F3 /* AgoraAIDenoiseExtension.framework */,
-				8B9767452C6E5456CBD5BE1683952959 /* AgoraCore.framework */,
-				207FE9DE7F785BC1CBDC98BADDD0B07A /* AgoraDav1dExtension.framework */,
-				A38F08F41092464CDE6F37FE15CAA28C /* Agorafdkaac.framework */,
-				D691B165DAE8CB87DBCCFC1E06BBD78C /* Agoraffmpeg.framework */,
-				73E82C5222DA6EB9874E32A0BC83894A /* AgoraRtcKit.framework */,
-				EF04204B61B44480FB20E1C750174C3E /* AgoraSoundTouch.framework */,
-				5C1053D23AD41E49222646E29BE517CB /* AgoraSuperResolutionExtension.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CC8E1CC16A0CEADE3F57705279EB7F71 /* AgoraRtcEngine_iOS */ = {
-			isa = PBXGroup;
-			children = (
-				9960812A78FD03F6445D3E6FB454817A /* Frameworks */,
-				1143D808C91580D819C70FE31AAA2C16 /* Support Files */,
-			);
-			name = AgoraRtcEngine_iOS;
-			path = AgoraRtcEngine_iOS;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				1173C080606AB2E4439B1116F907CE78 /* Pods */,
 				940B5F316C2AE32C8AB94864918DD2AB /* Products */,
-				797177FB931206B728BA3C6A404A6EBD /* Targets Support Files */,
+				34633155098E83A25C15FCB51FEFE5F0 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,34 +96,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DCF6CF95B260D9DFDA3266C1E1E30BE9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CEC60BCFBF910D479B87948DE26B03AD /* AGMBase.framework */,
-				73ECE47AB402F29FC4C22A33BBACCFB5 /* AGMCapturer.framework */,
-				DAE5714E65598A1C8A187866EDCC7B85 /* AGMRenderer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F50D442B9F09D173CC3497BE5C5D66CB /* AGMCapturer_iOS */ = {
-			isa = PBXGroup;
-			children = (
-				DCF6CF95B260D9DFDA3266C1E1E30BE9 /* Frameworks */,
-				86643914E000F6D28D6EC4601B92DF22 /* Support Files */,
-			);
-			name = AGMCapturer_iOS;
-			path = AGMCapturer_iOS;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2AC6C3925D95F02B124379E507D7B0F1 /* Headers */ = {
+		8E0803FE6F1FAE5E879A73637BFA81D2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A3CC9681D5B12432DC84F040D35DE40 /* Pods-BeautifyExample-umbrella.h in Headers */,
+				6A3A5CD4C783A7560EF43C2500F85846 /* Pods-BeautifyExample-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,18 +112,16 @@
 /* Begin PBXNativeTarget section */
 		8C04F96B2103922D716991BC4CAB5A74 /* Pods-BeautifyExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F78ABD0CB9884266F642551F180375E0 /* Build configuration list for PBXNativeTarget "Pods-BeautifyExample" */;
+			buildConfigurationList = 78C2B4722A7127F18623DF1E02620876 /* Build configuration list for PBXNativeTarget "Pods-BeautifyExample" */;
 			buildPhases = (
-				2AC6C3925D95F02B124379E507D7B0F1 /* Headers */,
-				61BD601D0A4BE3463858E88B6FA04ECC /* Sources */,
-				A9716B07B97ABB8F1C03AAA2AABAD649 /* Frameworks */,
-				0BD263232762A47A339D2C6FD81B64A9 /* Resources */,
+				8E0803FE6F1FAE5E879A73637BFA81D2 /* Headers */,
+				591C92AB52072CA8ACFE326B0C47B5AD /* Sources */,
+				20A928CB4DC8B29F2B4CA7CBC7AFA456 /* Frameworks */,
+				005E88AC6672E7499BAA1108B2F2AB08 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C1F7D35985810FCC4B8D31D18B666B29 /* PBXTargetDependency */,
-				E2534BC39BAD6513CE7FDF0220F5D312 /* PBXTargetDependency */,
 			);
 			name = "Pods-BeautifyExample";
 			productName = Pods_BeautifyExample;
@@ -282,15 +150,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFBF1D3BAFF8E424D3D1136276D7ACFD /* AGMCapturer_iOS */,
-				183C29DD6DE04D22CA29BAE61F5C530B /* AgoraRtcEngine_iOS */,
 				8C04F96B2103922D716991BC4CAB5A74 /* Pods-BeautifyExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0BD263232762A47A339D2C6FD81B64A9 /* Resources */ = {
+		005E88AC6672E7499BAA1108B2F2AB08 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,65 +166,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		61BD601D0A4BE3463858E88B6FA04ECC /* Sources */ = {
+		591C92AB52072CA8ACFE326B0C47B5AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3866FBEE66ADE5489ED2599288551EEE /* Pods-BeautifyExample-dummy.m in Sources */,
+				AF74609B94302A518ACD558C8B37DC9F /* Pods-BeautifyExample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		C1F7D35985810FCC4B8D31D18B666B29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AGMCapturer_iOS;
-			target = FFBF1D3BAFF8E424D3D1136276D7ACFD /* AGMCapturer_iOS */;
-			targetProxy = 603214D4E7643943408F75F2B6FB1655 /* PBXContainerItemProxy */;
-		};
-		E2534BC39BAD6513CE7FDF0220F5D312 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AgoraRtcEngine_iOS;
-			target = 183C29DD6DE04D22CA29BAE61F5C530B /* AgoraRtcEngine_iOS */;
-			targetProxy = 1358A4EE938C4616605BF995804E7D3B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		0D7A3E4552BE86A9A60B1631B1FCF552 /* Debug */ = {
+		1353F13D9F1521318CB5AB7AA9B09733 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71CD57D5C60338467E9BF0B021A95355 /* AgoraRtcEngine_iOS.debug.xcconfig */;
+			baseConfigurationReference = 007491664017E530E471F973B9220FF3 /* Pods-BeautifyExample.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		115704FC959C34075AABB340F1BB6F03 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60674FA9D7F598A1A8DC64B082473F92 /* AGMCapturer_iOS.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+		2B9E26EAE2CD392AD762421F663075A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -411,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,114 +280,7 @@
 			};
 			name = Debug;
 		};
-		857447B99A4DE149AC9ED5FE7BB2C0DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 103E550EDAEFC0866E0335AAF3E5DFDF /* AgoraRtcEngine_iOS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9BDD328C7EA72A48E92C1ABA3755C300 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21B1FC2E08EA07ACA9B3C377906B0FD7 /* AGMCapturer_iOS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B540AABB2D4E6B9DD95B71F2D27B0B3E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B5852149D08D470120D3E26CFC4455F /* Pods-BeautifyExample.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BC82073361DC542E64F2CFBF24295C39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D9C50BC40EFF01EF82597E6B3B211E9 /* Pods-BeautifyExample.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+		63FAF33E1C55B71A5F5A8B3CC8749F99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -581,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,41 +342,61 @@
 			};
 			name = Release;
 		};
+		DC719F2FA876D395EA7A9C8379054196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4C03B3780A7DF9C87072BD307D53DBE /* Pods-BeautifyExample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
-				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+				2B9E26EAE2CD392AD762421F663075A1 /* Debug */,
+				63FAF33E1C55B71A5F5A8B3CC8749F99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2246126F4F4796E9AB8317EFC20FAB6 /* Build configuration list for PBXAggregateTarget "AgoraRtcEngine_iOS" */ = {
+		78C2B4722A7127F18623DF1E02620876 /* Build configuration list for PBXNativeTarget "Pods-BeautifyExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D7A3E4552BE86A9A60B1631B1FCF552 /* Debug */,
-				857447B99A4DE149AC9ED5FE7BB2C0DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F78ABD0CB9884266F642551F180375E0 /* Build configuration list for PBXNativeTarget "Pods-BeautifyExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BC82073361DC542E64F2CFBF24295C39 /* Debug */,
-				B540AABB2D4E6B9DD95B71F2D27B0B3E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF000B716D05377337B66CC610D47689 /* Build configuration list for PBXAggregateTarget "AGMCapturer_iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				115704FC959C34075AABB340F1BB6F03 /* Debug */,
-				9BDD328C7EA72A48E92C1ABA3755C300 /* Release */,
+				1353F13D9F1521318CB5AB7AA9B09733 /* Debug */,
+				DC719F2FA876D395EA7A9C8379054196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
