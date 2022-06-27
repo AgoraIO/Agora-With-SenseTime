@@ -116,10 +116,10 @@ public class STChatActivity extends RtcBasedActivity {
 
     private void setMakeupItemParam(boolean selected) {
         if(selected){
-            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROWST_MAKEUP_TYPE_LIP,  "makeup_lip" + File.separator + "12自然.zip", 1);
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_LIP,  "makeup_lip" + File.separator + "12自然.zip", 1);
         }
         else{
-            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_BROWST_MAKEUP_TYPE_LIP, null, 0);
+            preprocessor.onMakeupSelected(STMobileMakeupType.ST_MAKEUP_TYPE_LIP, null, 0);
         }
     }
 

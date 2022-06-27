@@ -48,7 +48,7 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
             if (mRtcConsumer != null) {
                 mRtcConsumer.consumeTextureFrame(frame.textureId, format,
                         frame.format.getWidth(), frame.format.getHeight(),
-                        frame.rotation, frame.timestamp, frame.textureTransform);
+                        frame.rotation + 180, frame.timestamp, frame.textureTransform);
             }
         }
     }
