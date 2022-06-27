@@ -1,0 +1,8 @@
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraAIDenoiseExtension.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraCore.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraDav1dExtension.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraRtcKit.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraSoundTouch.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AgoraSuperResolutionExtension.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Agorafdkaac.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Agoraffmpeg.framework

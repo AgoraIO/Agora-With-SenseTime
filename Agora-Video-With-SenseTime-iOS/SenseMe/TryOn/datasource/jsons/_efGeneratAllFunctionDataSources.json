@@ -1,0 +1,235 @@
+{
+  "all_categories" : [
+    [
+      {
+        "imageName" : "美白23",
+        "highlightImageName" : "美白1",
+        "name" : "美白1",
+        "type" : 3240
+      },
+      {
+        "path" : "whiten_gif.zip",
+        "imageName" : "美白23",
+        "highlightImageName" : "美白1",
+        "name" : "美白2",
+        "type" : 3248
+      },
+      {
+        "imageName" : "美白23",
+        "highlightImageName" : "美白1",
+        "name" : "美白3",
+        "type" : 3242
+      },
+      {
+        "imageName" : "红润",
+        "highlightImageName" : "红润liang",
+        "name" : "红润",
+        "type" : 3264
+      },
+      {
+        "imageName" : "磨皮12",
+        "highlightImageName" : "磨皮liang",
+        "name" : "磨皮1",
+        "type" : 3305
+      },
+      {
+        "imageName" : "磨皮12",
+        "highlightImageName" : "磨皮liang",
+        "name" : "磨皮2",
+        "type" : 3306
+      }
+    ],
+    [
+      {
+        "imageName" : "瘦脸hui",
+        "highlightImageName" : "瘦脸",
+        "name" : "瘦脸",
+        "type" : 6432
+      },
+      {
+        "imageName" : "大眼",
+        "highlightImageName" : "大眼liang",
+        "name" : "大眼",
+        "type" : 6464
+      },
+      {
+        "imageName" : "小脸",
+        "highlightImageName" : "小脸liang",
+        "name" : "小脸",
+        "type" : 6496
+      },
+      {
+        "imageName" : "窄脸",
+        "highlightImageName" : "窄脸liang",
+        "name" : "窄脸",
+        "type" : 6528
+      },
+      {
+        "imageName" : "圆眼",
+        "highlightImageName" : "圆眼liang",
+        "name" : "圆眼",
+        "type" : 6560
+      },
+      {
+        "imageName" : "圆眼",
+        "highlightImageName" : "圆眼liang",
+        "name" : "高阶瘦脸-长脸",
+        "type" : 10304
+      }
+    ],
+    [
+      {
+        "imageName" : "小头hui",
+        "highlightImageName" : "小头",
+        "name" : "小头",
+        "type" : 9632
+      },
+      {
+        "imageName" : "小头hui",
+        "highlightImageName" : "小头",
+        "name" : "小头2",
+        "type" : 10400
+      },
+      {
+        "imageName" : "窄脸",
+        "highlightImageName" : "窄脸liang",
+        "name" : "瘦脸型",
+        "type" : 9664
+      },
+      {
+        "imageName" : "下巴",
+        "highlightImageName" : "下巴liang",
+        "name" : "下巴",
+        "type" : 9696
+      },
+      {
+        "imageName" : "额头",
+        "highlightImageName" : "额头liang",
+        "name" : "额头",
+        "type" : 9728
+      },
+      {
+        "imageName" : "瘦下颌骨",
+        "highlightImageName" : "瘦下颌骨liang",
+        "name" : "瘦下颔",
+        "type" : 10240
+      },
+      {
+        "imageName" : "苹果肌",
+        "highlightImageName" : "苹果肌liang",
+        "name" : "苹果肌",
+        "type" : 9760
+      },
+      {
+        "imageName" : "瘦鼻翼",
+        "highlightImageName" : "瘦鼻翼liang",
+        "name" : "瘦鼻翼",
+        "type" : 9792
+      },
+      {
+        "imageName" : "长鼻",
+        "highlightImageName" : "长鼻liang",
+        "name" : "长鼻",
+        "type" : 9824
+      },
+      {
+        "imageName" : "侧脸隆鼻",
+        "highlightImageName" : "侧脸隆鼻liang",
+        "name" : "侧脸隆鼻",
+        "type" : 9856
+      },
+      {
+        "imageName" : "嘴型",
+        "highlightImageName" : "嘴型liang",
+        "name" : "嘴形",
+        "type" : 9888
+      },
+      {
+        "imageName" : "缩人中",
+        "highlightImageName" : "缩人中liang",
+        "name" : "缩人中",
+        "type" : 9920
+      },
+      {
+        "imageName" : "眼距",
+        "highlightImageName" : "眼距liang",
+        "name" : "眼距",
+        "type" : 9952
+      },
+      {
+        "imageName" : "眼睛角度",
+        "highlightImageName" : "眼睛角度liang",
+        "name" : "眼睛角度",
+        "type" : 9984
+      },
+      {
+        "imageName" : "开眼角",
+        "highlightImageName" : "开眼角liang",
+        "name" : "开眼角",
+        "type" : 10016
+      },
+      {
+        "imageName" : "亮眼",
+        "highlightImageName" : "亮眼liang",
+        "name" : "亮眼",
+        "type" : 10048
+      },
+      {
+        "imageName" : "祛黑眼圈",
+        "highlightImageName" : "祛黑眼圈liang",
+        "name" : "祛黑眼圈",
+        "type" : 10080
+      },
+      {
+        "imageName" : "祛法令纹",
+        "highlightImageName" : "祛法令纹liang",
+        "name" : "祛法令纹",
+        "type" : 10112
+      },
+      {
+        "imageName" : "白牙",
+        "highlightImageName" : "白牙liang",
+        "name" : "白牙",
+        "type" : 10144
+      },
+      {
+        "imageName" : "瘦颧骨",
+        "highlightImageName" : "瘦颧骨liang",
+        "name" : "瘦颧骨",
+        "type" : 10176
+      },
+      {
+        "imageName" : "开外眼角",
+        "highlightImageName" : "开外眼角liang",
+        "name" : "开外眼角",
+        "type" : 10208
+      }
+    ],
+    [
+      {
+        "imageName" : "对比度hui",
+        "highlightImageName" : "对比度",
+        "name" : "对比度",
+        "type" : 19232
+      },
+      {
+        "imageName" : "饱和度",
+        "highlightImageName" : "饱和度liang",
+        "name" : "饱和度",
+        "type" : 19264
+      },
+      {
+        "imageName" : "锐化",
+        "highlightImageName" : "锐化liang",
+        "name" : "锐化",
+        "type" : 19296
+      },
+      {
+        "imageName" : "清晰度",
+        "highlightImageName" : "清晰度liang",
+        "name" : "清晰度",
+        "type" : 19328
+      }
+    ]
+  ]
+}

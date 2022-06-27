@@ -1,0 +1,538 @@
+<!-- HTML header for doxygen 1.9.1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HumanAction SDK: 帮助文档</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HumanAction SDK
+   &#160;<span id="projectnumber">8.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md_include__xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3_xE5_x85_xA8____xE5_x89_xAF_xE6_x9C_xAC8_8.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">帮助文档 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md47"></a>
+1.人脸106点检测及追踪</h1>
+<p>人脸106点检测及追踪介绍</p>
+<p>人脸关键点检测是指在检测到的人脸框中，进一步定位人脸的五官和轮廓位置。在图片给定的人脸框中对关键点的坐标进行迭代收敛，返回迭代的结果。若框中没有人脸，依然会返回结果。人脸关键点跟踪是在检测的基础上，加入面部轨迹追踪与视频动态解析技术，极大地提高了人脸的检测速度，能够随着视频内容的变化迅速定位人脸所在的位置。</p>
+<p>人脸关键点跟踪技术，采用了最新的基于级联回归的算法，结合了深度学习的五官标定初始化，综合多个不同标准的多点数据集知识，使得同一个模型可以应用于不同数量的关键点跟踪，以保障更低的误差和更好的适应性。我们的人脸关键点定位算法可对各种表情、姿态、角度丰富多变的人脸进行精准关键点定位。</p>
+<p>产品功能：</p>
+<ol type="1">
+<li>静态图片中人脸106关键点检测功能</li>
+<li>动态视频中人脸106关键点的实时检测和跟踪功能</li>
+<li>支持最多32个人脸的多人脸实时检测和跟踪</li>
+<li>支持实时人脸的三维旋转角度输出</li>
+<li>可检测张嘴、点头、摇头、挑眉、眨眼、笑、嘟嘴共7个脸部动作</li>
+<li>支持360人脸检测（使用360度人脸检测模型）</li>
+</ol>
+<p>产品优势：</p>
+<ul>
+<li>支持人脸大角度变化场景</li>
+<li>支持人脸大表情变化场景</li>
+<li>支持人脸大小变化场景</li>
+<li>支持人脸遮挡场景</li>
+<li>支持极端光照变化场景</li>
+<li>支持场景抖动</li>
+<li>支持对面部遮挡的检测，输出106点遮挡信息</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md48"></a>
+1.2. 人脸检测及追踪效果展示</h2>
+<p>人脸检测及追踪功能可以迅速检测并追踪人脸的106个关键点。</p>
+<p><img src="http://file.intra.sensetime.com/f/ebbbd1d788/?raw=1" alt="eyes使用" style="zoom: 40%;" class="inline"/></p>
+<center>图1.1 人脸检测效果展示</center><p>人脸检测及追踪功能可以在检测出人脸106关键点的同时识别出106关键点的遮挡信息，如图所示，绿色点代表无遮挡，红色点代表被遮挡。</p>
+<p><img src="http://file.intra.sensetime.com/f/1fd60ffd71/?raw=1" alt="eyes使用" style="zoom: 40%;" class="inline"/></p>
+<center>图1.2 人脸检测遮挡效果展示</center><h2><a class="anchor" id="autotoc_md49"></a>
+1.3. 人脸检测及追踪位置定义</h2>
+<p>106 点每个序号的位置定义如图所示。106 点可以获取细微的面部结构信息，用于复杂的交互场景，并进行美容修改或趣味贴图。</p>
+<p><img src="http://file.intra.sensetime.com/f/2900857725/?raw=1" alt="eyes使用" style="zoom: 90%;" class="inline"/></p>
+<center>图 106点示意图</center><p> 以下为106 关键点数集合与位置对应</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">脸框   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脸框   </td><td class="markdownTableBodyNone">0-32   </td><td class="markdownTableBodyNone">鼻梁   </td><td class="markdownTableBodyNone">43-46    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眉毛   </td><td class="markdownTableBodyNone">33-37,64-67   </td><td class="markdownTableBodyNone">右眉毛   </td><td class="markdownTableBodyNone">38-42,68-71    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼眶   </td><td class="markdownTableBodyNone">52-57,72-73   </td><td class="markdownTableBodyNone">右眼眶   </td><td class="markdownTableBodyNone">58-63,75-76    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼眶中心点   </td><td class="markdownTableBodyNone">74,104   </td><td class="markdownTableBodyNone">右眼眶中心点   </td><td class="markdownTableBodyNone">77,105    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">鼻子下沿   </td><td class="markdownTableBodyNone">47-51   </td><td class="markdownTableBodyNone">鼻子外侧   </td><td class="markdownTableBodyNone">78-83    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">上嘴唇   </td><td class="markdownTableBodyNone">84-90,96-100   </td><td class="markdownTableBodyNone">下嘴唇   </td><td class="markdownTableBodyNone">91-95,101-103   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md50"></a>
+2. 人脸240点检测及追踪</h1>
+<h2><a class="anchor" id="autotoc_md51"></a>
+2.1 人脸240点检测及追踪介绍</h2>
+<p>人脸240点检测及追踪功能采用业内领先的人脸检测及追踪算法，保留了原SenseAR_106 SDK产品的鲁棒性强、稳定性高、准确率高、性能卓越等方面的诸多优点，并在人脸面部特征描述的精细与准确程度上有了极大提升，解决了眉毛眼睛嘴唇这些人脸部位在不同面部特征、不同角度的情况下存在的描述欠准确问题，提高了产品的可用性、可靠性，极大的丰富并拓宽了产品的支持场景。</p>
+<p>人脸240点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眉毛眼睛嘴唇部位更加准确细致的检测和跟踪：使用26个关键点对眉毛进行检测定位与实时跟踪；使用44个关键点对眼睛进行检测定位与实时跟踪；使用64个关键点对嘴唇进行检测定位与实时跟踪。</p>
+<h2><a class="anchor" id="autotoc_md52"></a>
+2.2 人脸240点检测及追踪位置定义</h2>
+<p>人脸240点检测及追踪功能中眉毛和眼睛的每个序号的位置定义如图2.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/5d4f0b1784/?raw=1" alt="eyes使用" style="zoom: 80%;" class="inline"/></p>
+<center>图2.1 眉毛眼睛的点位示意图</center><p> 人脸240点检测及追踪功能中上嘴唇的每个序号的位置定义如图2.2所示</p>
+<p><img src="http://file.intra.sensetime.com/f/2b1204ce78/?raw=1" alt="240-1" style="zoom: 80%;" class="inline"/></p>
+<p><img src="http://file.intra.sensetime.com/f/e9f62cd3da/?raw=1" alt="mouth1使用" style="zoom:80%;" class="inline"/></p>
+<center>图2.2 嘴巴的点位示意图</center><p>人脸240点检测及追踪功能中眉毛和眼睛的每个序号的位置定义见下表</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼睛上沿   </td><td class="markdownTableBodyNone">11-21   </td><td class="markdownTableBodyNone">左眼睛下沿   </td><td class="markdownTableBodyNone">0-10    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右眼睛上沿   </td><td class="markdownTableBodyNone">33-43   </td><td class="markdownTableBodyNone">右眼睛下沿   </td><td class="markdownTableBodyNone">22-32    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眉毛上沿   </td><td class="markdownTableBodyNone">44-50   </td><td class="markdownTableBodyNone">左眉毛下沿   </td><td class="markdownTableBodyNone">51-56    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右眉毛上沿   </td><td class="markdownTableBodyNone">57-63   </td><td class="markdownTableBodyNone">右眉毛下沿   </td><td class="markdownTableBodyNone">64-69    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">上嘴唇上沿   </td><td class="markdownTableBodyNone">70-86   </td><td class="markdownTableBodyNone">上嘴唇下沿   </td><td class="markdownTableBodyNone">87-103    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">下嘴唇上沿   </td><td class="markdownTableBodyNone">104-118   </td><td class="markdownTableBodyNone">下嘴唇下沿   </td><td class="markdownTableBodyNone">119-133   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md53"></a>
+3. 3Dmesh</h1>
+<h2><a class="anchor" id="autotoc_md54"></a>
+3.1 3Dmesh功能介绍</h2>
+<p>3Dmesh是指在检测到的人脸框中提供高精度人脸稠密点，能够完美贴合人脸并清晰描述人脸三维曲面信息。在图片给定的人脸框中对人脸稠密点进行回归，并返回人脸稠密点坐标、拓扑面片、法向量和三维空间变换矩阵。若框中没有人脸，依然会返回结果。</p>
+<p>3Dmesh技术采用了轻量级深度神经网络并使用多种真实场景下的三维人脸数据进行端到端学习，使其能在手机端实时运行并保障人脸稠密点效果的鲁棒性。我们的3Dmesh算法可对各种表情、姿态、角度丰富多变的人脸进行精准贴合，支持制作精良的美妆或贴纸特效。目前需要依赖106或240关键点使用。</p>
+<h2><a class="anchor" id="autotoc_md55"></a>
+3.2 3Dmesh效果展示</h2>
+<p><img src="http://file.intra.sensetime.com/f/2abfa6bcf0/?raw=1" alt="iris_38pts使用" style="zoom:60%;" class="inline"/></p>
+<p><img src="http://file.intra.sensetime.com/f/697a2fdbd4/?raw=1" alt="iris_38pts使用" style="zoom:50%;" class="inline"/></p>
+<center>图3.1 3Dmesh人脸拓扑示意图</center><p><img src="http://file.intra.sensetime.com/f/b9bf87d221/?raw=1" alt="iris_38pts使用" style="zoom:15%;" class="inline"/></p>
+<center>图3.2 3Dmesh效果展示</center><div class="cccc"></div><h1><a class="anchor" id="autotoc_md56"></a>
+4. 360°HeadMesh</h1>
+<h2><a class="anchor" id="autotoc_md57"></a>
+4.1 360°HeadMesh功能介绍</h2>
+<p>360°HeadMesh是在搭配轻量级跟踪模型的基础上，在人头360度Yaw旋转场景能够检测到人头框并提供高精度人头稠密点，输出人头曲面信息。在图像中检测人头框并对整个人头稠密点进行回归，返回人头稠密点坐标、拓扑面片和三维空间的变换矩阵。该算法能在手机端实时、准确、高鲁棒性的运行，能够贴合各种表情、姿态多变的人脸，支持制作正脸以及背面的美妆和贴纸特效。</p>
+<h2><a class="anchor" id="autotoc_md58"></a>
+4.2 360°HeadMesh效果展示</h2>
+<p><img src="http://file.intra.sensetime.com/f/119463ae56/?raw=1" alt="iris_38pts使用" style="zoom:60%;" class="inline"/></p>
+<p><img src="http://file.intra.sensetime.com/f/df235aacaf/?raw=1" alt="iris_38pts使用" style="zoom:40%;" class="inline"/></p>
+<center>图4.1 360°HeadMesh拓扑示意图</center><p><img src="http://file.intra.sensetime.com/f/4bd1539fdf/?raw=1" alt="iris_38pts使用" style="zoom:50%;" class="inline"/></p>
+<center>图4.2 360°HeadMesh效果展示</center><div class="cccc"></div><h1><a class="anchor" id="autotoc_md59"></a>
+5. 眼球轮廓点检测及追踪</h1>
+<p>眼球轮廓点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眼球轮廓更加准确细致的检测和跟踪：使用19个关键点对左眼球进行检测定位与实时跟踪；使用19个关键点对右眼球进行检测定位与实时跟踪。</p>
+<p>眼球轮廓点中的每个序号的位置定义如图3.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/69124877ae/?raw=1" alt="iris_38pts使用" style="zoom:80%;" class="inline"/></p>
+<center>图5.1 眼球轮廓点位置示意图</center><p>眼球轮廓点中的每个序号的位置定义见下表</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼   </td><td class="markdownTableBodyNone">0-18   </td><td class="markdownTableBodyNone">右眼   </td><td class="markdownTableBodyNone">19-37   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md60"></a>
+6. 眼球中心点检测及追踪</h1>
+<p>眼球中点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眼球中心点更加准确细致的检测和跟踪：使用1个关键点对左眼球中心点进行检测定位与实时跟踪；使用1个关键点对右眼球中心点进行检测定位与实时跟踪。</p>
+<p>眼球轮廓点中的每个序号的位置定义如图4.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/201ee723be/?raw=1" alt="eyecenter使用" style="zoom:80%;" class="inline"/></p>
+<center>图6.1 眼球中心点位置示意图</center><div class="cccc"></div> <h1><a class="anchor" id="autotoc_md61"></a>
+7. 视线检测</h1>
+<p>视线检测功能提供对人眼视线方向的检测功能。检测结果提供双眼的视线方向数据。</p>
+<h1><a class="anchor" id="autotoc_md62"></a>
+8. Expression检测</h1>
+<p>Expression检测功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，进一步对人脸的姿态、面部动作、面部表情进行检测，向使用者提供更加详细的面部信息。</p>
+<p>包含内容：</p>
+<ol type="1">
+<li>五个脸部动作（眨眼、嘴巴大张、摇头、点头、挑眉）</li>
+<li>十种手势（需要有手势检测功能）</li>
+<li>7种头部状态（正向，左转，右转，左倾，右倾，抬头，低头）</li>
+<li>4种眼部状态（两眼闭，两眼睁，左眼睁右眼闭，左眼闭右眼睁）</li>
+<li>6种嘴部动作（闭嘴，张嘴，嘴角上扬，嘟嘴，左撇嘴，右撇嘴）</li>
+</ol>
+<p>详细的对应的表情如下：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">动作   </th><th class="markdownTableHeadNone">示意图   </th><th class="markdownTableHeadNone">动作   </th><th class="markdownTableHeadNone">示意图    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">正常   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/28c176a6d8/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左转头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/eca2e31236/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右转头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f8cc54c191/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左倾头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f950fb8e4e/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">右倾头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/9027d92a2d/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">抬头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f0c2390262/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">低头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/644a5d65f3/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">闭眼   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/b1273ab152/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">睁眼   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/01eef7cbe4/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼睁右眼闭   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/c61d6efae4/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左眼闭右眼睁   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f99f242409/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">闭嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/4143a195c0/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">张嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/12e8d4fb1f/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">嘴角上扬   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/1f62aee2e2/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">嘟嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/c9201fbd02/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左撇嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/055b4c91f6/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">右撇嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/e32ae3f5ab/?raw=1" alt="" class="inline"/>   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md63"></a>
+9. 人脸属性检测</h1>
+<h2><a class="anchor" id="autotoc_md64"></a>
+9.1. 人脸属性检测介绍</h2>
+<p>SenseAR_HumanAction SDK采用商汤科技自主研发的人脸属性检测模型，可以检测数当前人脸的年龄、性别、颜值、是否戴眼镜、是否有胡子等属性值，速度快，检测准确，性能优良。</p>
+<h2><a class="anchor" id="autotoc_md65"></a>
+9.2. 人脸属性检测效果展示</h2>
+<p>人脸属性检测功能可迅速检测人脸属性，效果展示如下：</p>
+<p>检测结果：性别：女；年龄：21；颜值：90。</p>
+<p><img src="http://file.intra.sensetime.com/f/a1328f48dc/?raw=1" alt="插图00_1" class="inline"/></p>
+<center>图9.1 人脸属性检测效果展示<center> <div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md66"></a>
+10. 人脸比对功能</h1>
+<center><center> SenseAR人脸比对SDK能够快速、准确地将目标人脸与人脸比对库中的人脸进行比对，达到精准实现人脸比对，身份识别的目的。</center></center><center><center>人脸比对SDK通过人脸检测，提取人脸特征值，将该特征值与目标库(特征值目标库)进行比对，即可输出比对相似度。</center></center><center><center>可通过设置比对相似度阈值，在相似值达到阈值后返回人脸比对的结果。</center></center><center><center><img src="http://file.intra.sensetime.com/f/61dea3a25f/?raw=1" alt="" style="zoom:50%;" class="inline"/></center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md67"></a>
+11. 舌头关键点检测</h1>
+<center><center> SenseAR 舌头关键点检测 SDK采用商汤科技自主研发的的舌头关键点检测跟踪功能，可以实现在主流手机上实时的舌头关键点检测与跟踪。目前可检测出7个关键点，定义如下：</center></center><center><center><img src="http://file.intra.sensetime.com/f/eacf0e81d5/?raw=1" alt="" style="zoom:30%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">标号   </th><th class="markdownTableHeadNone">位置    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">舌尖中心点    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">舌头边缘与嘴唇边缘的左交界点    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">舌头边缘与嘴唇边缘的右交界点    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">舌根左侧点    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">舌根右侧点    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">舌头左边缘中点    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">舌头右边缘中点   </td></tr>
+</table>
+</center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md68"></a>
+12. 人脸距离检测</h1>
+<center><center> SenseAR 人脸距离检测 SDK采用商汤科技自主研发的的人脸距离检测功能，可以实现在主流手机上实时的人脸距离检测。检测结果单位为米。</center></center><center><center><img src="http://file.intra.sensetime.com/f/6beee469ea/?raw=1" alt="" style="zoom: 40%;" class="inline"/></center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md69"></a>
+13. 耳朵关键点检测</h1>
+<center><center> SenseAR 耳朵关键点检测 SDK采用商汤科技自主研发的的耳朵关键点检测跟踪功能，可以实现在主流手机上实时的耳朵关键点检测与跟踪，可用于更精准的特效制作。耳朵关键点检测需要和106点关键点检测同时使用。 耳朵左右各有18个关键点，共36个关键点，1-5为左耳靠近内耳区域的一条线，6-18为左耳外耳廓，19-23为右耳靠近内耳区域的一条线，24-36为右耳外耳廓点位，点位及编号如下图所示。</center></center><center><center><img src="http://file.intra.sensetime.com/f/ad1444bac9/?raw=1" alt="" style="zoom: 30%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左耳内耳廓   </td><td class="markdownTableBodyNone">1-5   </td><td class="markdownTableBodyNone">左耳外耳廓   </td><td class="markdownTableBodyNone">6-18    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右耳内耳廓   </td><td class="markdownTableBodyNone">19-23   </td><td class="markdownTableBodyNone">右耳外耳廓   </td><td class="markdownTableBodyNone">24-36   </td></tr>
+</table>
+</center></center><center><center>耳朵关键点检测效果如下图所示：</center></center><center><center><img src="http://file.intra.sensetime.com/f/6bae771c84/?raw=1" alt="" style="zoom:20%;" class="inline"/></center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md70"></a>
+14. 额头关键点检测</h1>
+<center><center> SenseAR 额头关键点检测 SDK采用商汤科技自主研发的的额头关键点检测跟踪功能，可以实现在主流手机上实时的额头关键点检测与跟踪，可用于更精准的特效制作。额头关键点检测需要和106关键点检测同时使用。 目前额头关键点检测支持18个额头点的检出，标号及检测效果如下图所示：</center></center><center><center><img src="http://file.intra.sensetime.com/f/65766bb3b9/?raw=1" alt="" style="zoom:70%;" class="inline"/></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md71"></a>
+15. 人脸遮挡</h1>
+<center><center> 人脸遮挡功能指的是依赖106模型检测跟踪人脸，分出人脸皮肤未被手指或话筒、杯子等物体遮挡的区域。适用于美妆特效等场景，可以更加真实准确，支持手机端实时运行。目前支持多人效果，遮挡效果如下图所示：</center></center><center><center><img src="http://file.intra.sensetime.com/f/eb95ec13d5/?raw=1" alt="aaaa" style="zoom:18%;" class="inline"/></center></center><center><center> <div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md72"></a>
+16. 猫脸关键点检测</h1>
+<center><center> SenseAR 猫脸关键点检测 SDK采用商汤科技自主研发的的猫脸关键点检测跟踪功能，可以实现在主流手机上实时的猫脸检测与跟踪。目前可检测出20个关键点。</center></center><center><center><img src="http://file.intra.sensetime.com/f/1bada0cb04/?raw=1" alt="aaaa" style="zoom:50%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">下巴   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">右猫脸颊   </td><td class="markdownTableBodyNone">8    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左猫脸颊   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">左眼内外眼角   </td><td class="markdownTableBodyNone">9,10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左猫耳根   </td><td class="markdownTableBodyNone">2,4   </td><td class="markdownTableBodyNone">右眼内外眼角   </td><td class="markdownTableBodyNone">11,12    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左猫耳尖   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">猫鼻尖   </td><td class="markdownTableBodyNone">13    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">右猫耳根   </td><td class="markdownTableBodyNone">5,7   </td><td class="markdownTableBodyNone">猫嘴唇   </td><td class="markdownTableBodyNone">14,15,16,17    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右猫耳尖   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">猫眼睛中心点   </td><td class="markdownTableBodyNone">18,19   </td></tr>
+</table>
+</center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md73"></a>
+17. 狗脸关键点检测</h1>
+<center><center> SenseAR 狗脸关键点检测 SDK采用商汤科技自主研发的狗脸关键点检测跟踪功能，可以实现在主流手机上实时的检测与跟踪。目前可检测出102个关键点。</center></center><center><center><img src="http://file.intra.sensetime.com/f/39a2189db5/?raw=1" alt="aaaa" style="zoom:20%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脸轮廓   </td><td class="markdownTableBodyNone">0~16   </td><td class="markdownTableBodyNone">额头轮廓   </td><td class="markdownTableBodyNone">17~27    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">鼻梁中轴线   </td><td class="markdownTableBodyNone">28~32   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼轮廓   </td><td class="markdownTableBodyNone">33~40   </td><td class="markdownTableBodyNone">右眼轮廓   </td><td class="markdownTableBodyNone">41~48    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼球中心点   </td><td class="markdownTableBodyNone">49   </td><td class="markdownTableBodyNone">右眼球中心点   </td><td class="markdownTableBodyNone">50    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">鼻子轮廓点   </td><td class="markdownTableBodyNone">51~58   </td><td class="markdownTableBodyNone">鼻子中心点   </td><td class="markdownTableBodyNone">60    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左鼻孔中心点   </td><td class="markdownTableBodyNone">59   </td><td class="markdownTableBodyNone">右鼻孔中心点   </td><td class="markdownTableBodyNone">61    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">上嘴唇   </td><td class="markdownTableBodyNone">62~70   </td><td class="markdownTableBodyNone">下嘴唇   </td><td class="markdownTableBodyNone">71~77    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左耳根   </td><td class="markdownTableBodyNone">87~89   </td><td class="markdownTableBodyNone">右耳根   </td><td class="markdownTableBodyNone">99~101    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左耳外轮廓   </td><td class="markdownTableBodyNone">78~86   </td><td class="markdownTableBodyNone">右耳外轮廓   </td><td class="markdownTableBodyNone">90~98   </td></tr>
+</table>
+</center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md74"></a>
+18. 手势检测及追踪</h1>
+<center><center> 我们目前在手势检测部分提供16种手势，分别为手掌、大拇哥、抱拳作揖、托手、爱心，单手比心，OK，Yeah，手枪，手指，拳头，666，双手合十，我爱你，数字”3“，数字“4”。并支持无分类手势检测。</center></center><center><center>支持多只手的手势检测，最大检测数量为32。</center></center><center><center>支持输出3个点，1个手掌中心点（下图红点（keypoint0）），2个方向点（下图手腕处绿点 （keypoint1）和中指根部蓝点（keypoint2）），其中抱拳作揖、双手比心、双手合十只输出一个点， 单手比心和食指输出两个点。</center></center><center><center><img src="http://file.intra.sensetime.com/f/3f9d8afc4b/?raw=1" alt="" class="inline"/></center></center><center><center><center>图18.1 可检测手势类型示意图<center> <div class="cccc"></div></center></center></center></center><center><center><center><center></center></center></center></center><h1><a class="anchor" id="autotoc_md75"></a>
+19. 手骨骼检测</h1>
+<center><center><center><center> SenseAR 手骨骼检测 SDK采用商汤科技自主研发的的手骨骼点检测跟踪功能，可以实现在主流手机上实时的手骨骼的检测与跟踪。目前可检测出20个手骨骼点。</center></center></center></center><center><center><center><center>位置与编号如图18.1所示：</center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/cce13b76ba/?raw=1" alt="手骨骼" class="inline"/></center></center></center></center><center><center><center><center><center>图19.1 手骨骼示意图<center></center></center></center></center></center></center><center><center><center><center><center><center>手骨骼点位置与编号如下表</center></center></center></center></center></center><center><center><center><center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">手掌   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">中指   </td><td class="markdownTableBodyNone">8-11    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">大拇指   </td><td class="markdownTableBodyNone">1-3   </td><td class="markdownTableBodyNone">无名指   </td><td class="markdownTableBodyNone">12-15    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">食指   </td><td class="markdownTableBodyNone">4-7   </td><td class="markdownTableBodyNone">小拇指   </td><td class="markdownTableBodyNone">16-19   </td></tr>
+</table>
+</center></center></center></center></center></center><center><center><center><center><center><center><div class="cccc"></div> </center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md76"></a>
+20. 3D手骨骼检测</h1>
+<center><center><center><center><center><center> SenseAR 手骨骼检测 SDK采用商汤科技自主研发的的手骨骼点检测跟踪功能，可以实现在主流手机上实时的手骨骼的检测与跟踪。目前可检测出20个3D手骨骼点，并输出左右手信息。</center></center></center></center></center></center><center><center><center><center><center><center>3D手骨骼点得到的是手在三维世界的坐标，其中三维世界的坐标原点为摄像机位置。</center></center></center></center></center></center><center><center><center><center><center><center>3D手骨骼点位置与编号如图19.1所示：</center></center></center></center></center></center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/cce13b76ba/?raw=1" alt="手骨骼" class="inline"/></center></center></center></center></center></center><center><center><center><center><center><center><center>图20.1 手骨骼示意图<center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>手骨骼点位置与编号如下表</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">手掌   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">中指   </td><td class="markdownTableBodyNone">8-11    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">大拇指   </td><td class="markdownTableBodyNone">1-3   </td><td class="markdownTableBodyNone">无名指   </td><td class="markdownTableBodyNone">12-15    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">食指   </td><td class="markdownTableBodyNone">4-7   </td><td class="markdownTableBodyNone">小拇指   </td><td class="markdownTableBodyNone">16-19   </td></tr>
+</table>
+</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><div class="cccc"></div> </center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md77"></a>
+21. 动态手势检测</h1>
+<center><center><center><center><center><center><center><center> 动态手势功能为在手势检测功能的基础上，提供额外的检测信息。目前包含的功能如下：</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><ul>
+<li>手掌手势：<ul>
+<li>支持手掌手势的左右移动检测。</li>
+<li>手掌手势上下移动检测。</li>
+</ul>
+</li>
+<li>食指手势：<ul>
+<li>支持食指点击动作检测。</li>
+<li>支持食指顺时针画圈动作检测。</li>
+<li>支持食指逆时针画圈动作检测</li>
+</ul>
+</li>
+</ul>
+</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md78"></a>
+22. 指甲轮廓点检测</h1>
+<center><center><center><center><center><center><center><center> 指甲检测功能支持检测图片中每个指甲的类别及轮廓点，轮廓点由16个组成，定义如下：</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/2a6ac85648/?raw=1" alt="" style="zoom: 25%;" class="inline"/></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>其中，输出类别0-4分别表示大拇指、食指、中指、无名指、小拇指，可用于给每个手指制作不同的美甲效果。</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/0e3be571b5/?raw=1" alt="" style="zoom: 25%;" class="inline"/></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><div class="cccc"></div></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md79"></a>
+23. 前后背景分割</h1>
+<center><center><center><center><center><center><center><center> 前后背景分割是指在图像中检测到人物和背景，通过检测出人物和背景的关系，将人物和背景分开。</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>提供新背景分割模型，新背景分割效果在单人半身场景保持效果良好不变的情况下，完善了全身及多人场景的效果，分割更加准确完整，稳定性更好。</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>Android端为了保证性能，sample中使用速度更快的模型，效果略逊于iOS端，iOS端模型也可以用于Android上，用户可根据实际需求进行方案选择。</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>HumanAction8.3.0及之后SDK中同时提供实时小模型和图片版、视频版大模型，大模型可分出更为精细的效果，用户可根据实际场景选择模型。</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center>前后背景分割效果显示如下图：</center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/2098f10df0/?raw=1" alt="" style="zoom: 33%;" class="inline"/></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center>图23.1 前后背景分割效果展示<center> <div class="cccc"></div></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md80"></a>
+24. 头发分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center> 头发分割功能是指在图像中检测到头发，通过检测出头发和其他内容的关系，将头发和其他内容分开。HumanAction8.1.0及之后SDK中同时提供实时小模型和图片版大模型，大模型可分出更为精细的发丝效果，用户可根据实际场景选择模型。</center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center>头发分割效果显示如下图：</center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/effaa8bc09/?raw=1" alt="头发分割效果" style="zoom: 15%;" class="inline"/></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center>图24.1 头发分割效果展示<center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"></div> </center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md81"></a>
+25. 多类分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center> 多类分割是指对图像中的人物和背景进行检测，并将人物中具体部位进行划分，总计可划分为14类，如头部，手臂上部，手臂下部，手，大腿，小腿，脚等。目前仅支持图片版本。</center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center>多类分割效果显示如下图：</center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/a1e45281b1/?raw=1" alt="多类分割效果" style="zoom: 40%;" class="inline"/></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center>图25.1 多类分割效果展示<center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>输出类别与对应序号如下：</center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">类别   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">类别   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">背景   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">大腿   </td><td class="markdownTableBodyNone">7    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">手掌   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">小腿   </td><td class="markdownTableBodyNone">8    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">头发   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">脚   </td><td class="markdownTableBodyNone">9    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">眼镜   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">附属物   </td><td class="markdownTableBodyNone">10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">躯干   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">脸   </td><td class="markdownTableBodyNone">11    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">上臂   </td><td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">衣服   </td><td class="markdownTableBodyNone">12    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">小臂   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">裤子   </td><td class="markdownTableBodyNone">13   </td></tr>
+</table>
+</center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md82"></a>
+26. 皮肤分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center> 多类分割功能是指在图像中检测到人体皮肤，将皮肤和其他内容分开，可用于针对皮肤部分做美颜特效，更加准确自然，可提供实时版本和图片后处理高精版本。</center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>皮肤分割效果显示如下图：</center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/2c88fadffc/?raw=1" alt="皮肤分割效果" style="zoom: 100%;" class="inline"/></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>图26.1 皮肤分割效果展示<center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md83"></a>
+27. 头部分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center> 头部分割功能是指在图像中检测到人脸框，将头部和其他内容分开，获得头部检测结果可用于制作大头等特效，需要依赖106使用，HumanAction8.5.0新版本支持多人实例输出，可获取多张mask制作不同效果。</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>HumanAction8.3.0及之后SDK中同时提供实时小模型和图片版大模型，大模型可分出更为精细的发丝效果，用户可根据实际场景选择模型。</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>头部分割效果显示如下图：</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/8b1f77b328/?raw=1" alt="皮肤分割效果" style="zoom: 40%;" class="inline"/></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>图27.1 头部分割效果展示<center> <div class="cccc"></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md84"></a>
+28. 绿幕分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center> 绿幕分割功能是指将画面中的绿色去除，实现前景主体与绿幕背景的分离，同时支持自主更改需抠除颜色，如蓝色等，绿色效果最佳。</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>绿幕分割结果显示如下图：</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/5f60c192ae/?raw=1" alt="皮肤分割效果" style="zoom: 40%;" class="inline"/></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>图28.1 绿幕分割效果展示<center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md85"></a>
+29. 天空分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center> 天空分割功能是指在图像中检测出天空轮廓，将天空与其他内容分离，获得天空结果mask，可进行二次处理如替换风格天空素材或制作特效等。</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>HumanAction8.3.0及之后SDK中同时提供实时小模型和图片版大模型，大模型可分出更为精细的效果，用户可根据实际场景选择模型。</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>天空分割检测结果如下图：</center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><img src="http://file.intra.sensetime.com/f/397523463b/?raw=1" alt="皮肤分割效果" style="zoom: 25%;" class="inline"/></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center>图29.1 天空分割效果展示<center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc">&lt;/div</div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md86"></a>
+30. 全身肢体关键点检测</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"> SenseAR 全身肢体关键点检测 SDK采用商汤科技自主研发的的肢体关键点检测跟踪功能，可以实现在主流手机上实时的全身肢体检测与跟踪。</div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc">全身场景目前可检测出17个关键点（适用于全身的场景）：人头（2个关键点），肩膀（2个关键点），左臂（2个关键点），右臂（2个关键点），胯骨（2个关键点），左腿（2个关键点），右腿（2个关键点），鼻尖点，胸椎中间点，盆骨中心点。</div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc">位置与编号如图28.1所示：</div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><img src="http://file.intra.sensetime.com/f/915d27de78/?raw=1" alt="17点示意图" class="inline"/></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center>图30.1 肢体检测示意图<center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>肢体检测17点位置与编号如下表</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">头顶   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">下巴   </td><td class="markdownTableBodyNone">1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左肩   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">右肩   </td><td class="markdownTableBodyNone">3    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左肘   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">右肘   </td><td class="markdownTableBodyNone">5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左手腕   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">右手腕   </td><td class="markdownTableBodyNone">7    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左胯   </td><td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone">右胯   </td><td class="markdownTableBodyNone">9    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左膝   </td><td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone">右膝   </td><td class="markdownTableBodyNone">11    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左脚踝   </td><td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone">右脚踝   </td><td class="markdownTableBodyNone">13    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">鼻尖点   </td><td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone">胸椎中间点   </td><td class="markdownTableBodyNone">15    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">盆骨中心点   </td><td class="markdownTableBodyNone">16   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div> </center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md87"></a>
+31. 半身肢体关键点检测</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>半身场景肢体检测目前可检测出13个关键点：人头（3个关键点），肩膀（2个关键点），左臂（2个关键点），右臂（2个关键点），胯骨（2个关键点），躯体中心（2个关键点）。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>半身肢体关键点检测点序与全身肢体关键点相同点部分点序相同，其中腿部模型没有输出的点置信度输出-1，其他关键点输出的置信度为[0,1]。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/6d4fd002d1/?raw=1" alt="" style="zoom: 5%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">头顶   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">颈部中心   </td><td class="markdownTableBodyNone">1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左肩   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">右肩   </td><td class="markdownTableBodyNone">3    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左肘   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">右肘   </td><td class="markdownTableBodyNone">5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左手腕   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">右手腕   </td><td class="markdownTableBodyNone">7    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左胯   </td><td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone">右胯   </td><td class="markdownTableBodyNone">9    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">鼻尖点   </td><td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone">胸椎中间点   </td><td class="markdownTableBodyNone">15    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">盆骨中心点   </td><td class="markdownTableBodyNone">16   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div> </center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md88"></a>
+32. 肢体轮廓点检测</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center> SenseAR 肢体检测 SDK采用商汤科技自主研发的的肢体轮廓点检测跟踪功能，可以实现在主流手机上实时的肢体 轮廓的检测与跟踪。目前可检测出59个轮廓点点（适用于全身的场景）。 位置与编号如图所示</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/b7ce2e4b95/?raw=1" alt="轮廓点定义" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>肢体轮廓点检测59点位置与编号如下表</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左肩   </td><td class="markdownTableBodyNone">0,1   </td><td class="markdownTableBodyNone">右肩   </td><td class="markdownTableBodyNone">57.58    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左臂外侧   </td><td class="markdownTableBodyNone">2-6   </td><td class="markdownTableBodyNone">右臂外侧   </td><td class="markdownTableBodyNone">52-56    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左手掌   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">右手掌   </td><td class="markdownTableBodyNone">51    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左臂内侧   </td><td class="markdownTableBodyNone">8-12   </td><td class="markdownTableBodyNone">右臂内侧   </td><td class="markdownTableBodyNone">46-50    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左侧身体轮廓   </td><td class="markdownTableBodyNone">13-27   </td><td class="markdownTableBodyNone">右侧身体轮廓   </td><td class="markdownTableBodyNone">41-45    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左侧腿外侧   </td><td class="markdownTableBodyNone">18-22   </td><td class="markdownTableBodyNone">右侧腿外侧   </td><td class="markdownTableBodyNone">36-40    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左足跟   </td><td class="markdownTableBodyNone">23   </td><td class="markdownTableBodyNone">右足跟   </td><td class="markdownTableBodyNone">34    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左足尖   </td><td class="markdownTableBodyNone">24   </td><td class="markdownTableBodyNone">右足尖   </td><td class="markdownTableBodyNone">35    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左侧腿内侧   </td><td class="markdownTableBodyNone">25-28   </td><td class="markdownTableBodyNone">右侧腿内侧   </td><td class="markdownTableBodyNone">30-33    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">裆部   </td><td class="markdownTableBodyNone">29   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div> </center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md89"></a>
+33. 深度估计</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center> 深度估计是指映射图像中每个像素点为其相对拍摄源的距离，从而得到稠密的相对或绝对深度图。深度估计可以提供场景中目标的距离、轮廓等三维结构信息，可应用于三维重建、相机拍摄景深效果以及其他AR场景应用。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/8d6127cfc9/?raw=1" alt="" style="zoom: 25%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md90"></a>
+34. 脚部检测+裤腿分割</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center> 脚部检测功能支持检测图片中每只脚的11个关键点，结合裤腿分割算法可用于制作虚拟试鞋特效。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>关键点点位检测结果示意如下：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/37766e86bb/?raw=1" alt="" style="zoom: 100%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>结合裤腿分割输出的遮挡信息能制作的虚拟试鞋效果如下：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/1f30e4ce5a/?raw=1" alt="" style="zoom: 50%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>脚部关键点检测11点位置与编号如下表：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">大脚趾脚尖最突出点   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">前脚掌外侧关节最突出点   </td><td class="markdownTableBodyNone">7    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">前脚掌内侧关节最突出点   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">前脚面和腿连接处最弯曲点   </td><td class="markdownTableBodyNone">8    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脚内侧足弓最弯曲点   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">脚踝内侧关节最突出点   </td><td class="markdownTableBodyNone">9    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">后脚掌内侧最突出点   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">后脚筋最弯曲点   </td><td class="markdownTableBodyNone">10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脚后跟后方最突出点   </td><td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">脚踝外侧关节最突出点   </td><td class="markdownTableBodyNone">11    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">后脚掌外侧最突出点   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md91"></a>
+35. 手腕检测</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center> 手腕检测功能支持检测图片中单个手腕的4个手腕点和轮廓点，结合椭圆遮挡体和手表素材可用于制作虚拟试表特效。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>手腕点点位检测结果示意如下：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/65fab5f936/?raw=1" alt="" style="zoom: 50%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>虚拟试表示意效果如下：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/afee1fda36/?raw=1" alt="" style="zoom: 30%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>手腕检测4个手腕点位置与编号如下表：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">手腕小拇指侧最突出处   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">手腕大拇指侧最突出处   </td><td class="markdownTableBodyNone">3    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">手腕手背侧中点   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">手腕手心侧中点   </td><td class="markdownTableBodyNone">4   </td></tr>
+</table>
+</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><div class="cccc"></div></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md92"></a>
+36. 衣服分割功能</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center> 衣服分割功能是指在图像中检测到人体所着衣物，将衣服和其他内容分开，输出衣服mask结果，用户可根据此结果用于添加各式各样的衣服特效。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>为提高衣服分割与人体运动的跟踪准确性，减少无人体时的误分，需要与106一起使用。</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center>衣服分割检测结果如下图：</center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><img src="http://file.intra.sensetime.com/f/d0b6ab1db8/?raw=1" alt="皮肤分割效果" style="zoom: 20%;" class="inline"/></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center>图30.1 衣服分割效果展示<center> <div class="cccc">&lt;/div</div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"></div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><h1><a class="anchor" id="autotoc_md93"></a>
+37. 平台支持说明</h1>
+<center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"> SDK的平台支持请下表格：</div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"><b>Android支持：</b></div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">CPU   </th><th class="markdownTableHeadNone">ARM V7或以上，支持NEON指令集    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">系统版本   </td><td class="markdownTableBodyNone">Android 4.4（API 21） or later   </td></tr>
+</table>
+</div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"><b>iOS支持：</b></div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">机型   </th><th class="markdownTableHeadNone">iPhone 5S or later    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">系统版本   </td><td class="markdownTableBodyNone">iOS 7.0 or later   </td></tr>
+</table>
+</div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc">注：iOS现已支持模拟器模式（需要用到摄像头的功能在模拟器下无法测试）iOS 编译架构包括: armv7, arm64, i386, x86_64。</div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><center><div class="cccc"><center><center><center><center><div class="cccc"><div class="cccc"></div> <img src="http://file.intra.sensetime.com/f/ceaf325910/?raw=1" alt="封底" class="inline"/> </div></center></center></center></center></div></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></center></div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

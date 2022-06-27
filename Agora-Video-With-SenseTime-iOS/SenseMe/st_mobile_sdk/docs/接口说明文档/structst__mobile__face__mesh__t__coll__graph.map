@@ -1,0 +1,5 @@
+<map id="st_mobile_face_mesh_t" name="st_mobile_face_mesh_t">
+<area shape="rect" id="node1" title="3d mesh关键点信息" alt="" coords="50,109,207,136"/>
+<area shape="rect" id="node2" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="5,5,95,32"/>
+<area shape="rect" id="node3" href="$structst__pointf__t.html" title="2d float点" alt="" coords="167,5,250,32"/>
+</map>

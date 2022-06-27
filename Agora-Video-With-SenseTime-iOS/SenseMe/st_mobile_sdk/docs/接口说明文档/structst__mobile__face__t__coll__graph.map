@@ -1,0 +1,12 @@
+<map id="st_mobile_face_t" name="st_mobile_face_t">
+<area shape="rect" id="node1" title="人脸检测结果" alt="" coords="592,237,711,264"/>
+<area shape="rect" id="node2" href="$structst__mobile__106__t.html" title="人脸106点信息" alt="" coords="299,7,415,33"/>
+<area shape="rect" id="node3" href="$structst__rect__t.html" title="矩形" alt="" coords="14,7,86,33"/>
+<area shape="rect" id="node4" href="$structst__pointf__t.html" title="2d float点" alt="" coords="9,137,91,164"/>
+<area shape="rect" id="node6" href="$structst__mobile__forehead__t.html" title="额头关键点信息" alt="" coords="283,164,430,191"/>
+<area shape="rect" id="node7" href="$structst__mobile__ear__t.html" title="耳朵关键点信息" alt="" coords="299,215,414,241"/>
+<area shape="rect" id="node10" href="$structst__mobile__face__mesh__t.html" title="3d mesh关键点信息" alt="" coords="278,265,435,292"/>
+<area shape="rect" id="node5" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="5,309,95,336"/>
+<area shape="rect" id="node8" href="$structst__mobile__face__extra__info.html" title="人脸检测内部参数" alt="" coords="271,393,443,420"/>
+<area shape="rect" id="node9" href="$structst__color__t.html" title=" " alt="" coords="317,444,396,471"/>
+</map>

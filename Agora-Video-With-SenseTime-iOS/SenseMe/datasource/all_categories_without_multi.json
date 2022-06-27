@@ -1,0 +1,797 @@
+{
+  "all_categories" : [
+    {
+      "subDataSources" : [
+        {
+          "subDataSources" : [
+            {
+              "imageName" : "whiten",
+              "highlightImageName" : "whiten_light",
+              "name" : "美白1",
+              "type" : 3240,
+              "route" : 16842753
+            },
+            {
+              "path" : "whiten_gif.zip",
+              "imageName" : "whiten",
+              "highlightImageName" : "whiten_light",
+              "name" : "美白2",
+              "type" : 3248,
+              "route" : 16842754
+            },
+            {
+              "imageName" : "whiten",
+              "highlightImageName" : "whiten_light",
+              "name" : "美白3",
+              "type" : 3242,
+              "route" : 16842755
+            },
+            {
+              "imageName" : "ruddy",
+              "highlightImageName" : "ruddy_light",
+              "name" : "红润",
+              "type" : 3264,
+              "route" : 16842756
+            },
+            {
+              "imageName" : "skin_grinding",
+              "highlightImageName" : "skin_grinding_light",
+              "name" : "磨皮1",
+              "type" : 3305,
+              "route" : 16842757
+            },
+            {
+              "imageName" : "skin_grinding",
+              "highlightImageName" : "skin_grinding_light",
+              "name" : "磨皮2",
+              "type" : 3306,
+              "route" : 16842758
+            }
+          ],
+          "imageName" : "basic_beauty",
+          "name" : "基础美颜",
+          "type" : 0,
+          "route" : 16842752
+        },
+        {
+          "subDataSources" : [
+            {
+              "imageName" : "thin_face_gray",
+              "highlightImageName" : "thin_face",
+              "name" : "瘦脸",
+              "type" : 6432,
+              "route" : 16908289
+            },
+            {
+              "subDataSources" : [
+                {
+                  "imageName" : "natural_thin_face",
+                  "highlightImageName" : "natural_thin_face_light",
+                  "name" : "自然",
+                  "type" : 10368,
+                  "route" : 16908298
+                },
+                {
+                  "imageName" : "goddess_thin_face",
+                  "highlightImageName" : "goddess_thin_face_light",
+                  "name" : "女神",
+                  "type" : 10336,
+                  "route" : 16908297
+                },
+                {
+                  "imageName" : "long_face_thin_face",
+                  "highlightImageName" : "long_face_thin_face_light",
+                  "name" : "长脸",
+                  "type" : 10304,
+                  "route" : 16908296
+                },
+                {
+                  "imageName" : "round_face_thin_face",
+                  "highlightImageName" : "round_face_thin_face_light",
+                  "name" : "圆脸",
+                  "type" : 10272,
+                  "route" : 16908295
+                }
+              ],
+              "imageName" : "high_order_thin_face",
+              "highlightImageName" : "high_order_thin_face_light",
+              "name" : "高阶瘦脸",
+              "type" : 0,
+              "route" : 16908290
+            },
+            {
+              "imageName" : "big_eyes",
+              "highlightImageName" : "big_eyes_light",
+              "name" : "大眼",
+              "type" : 6464,
+              "route" : 16908291
+            },
+            {
+              "imageName" : "small_face",
+              "highlightImageName" : "small_face_light",
+              "name" : "小脸",
+              "type" : 6496,
+              "route" : 16908292
+            },
+            {
+              "imageName" : "narrow_face",
+              "highlightImageName" : "narrow_face_light",
+              "name" : "窄脸",
+              "type" : 6528,
+              "route" : 16908293
+            },
+            {
+              "imageName" : "circular_eyes",
+              "highlightImageName" : "circular_eyes_light",
+              "name" : "圆眼",
+              "type" : 6560,
+              "route" : 16908294
+            }
+          ],
+          "imageName" : "advanced",
+          "name" : "美形",
+          "type" : 0,
+          "route" : 16908288
+        },
+        {
+          "subDataSources" : [
+            {
+              "imageName" : "small_head_gray",
+              "highlightImageName" : "small_head",
+              "name" : "小头",
+              "type" : 9632,
+              "route" : 16973825
+            },
+            {
+              "imageName" : "small_head_gray",
+              "highlightImageName" : "small_head",
+              "name" : "小头2",
+              "type" : 10400,
+              "route" : 16973826
+            },
+            {
+              "imageName" : "narrow_face",
+              "highlightImageName" : "narrow_face_light",
+              "name" : "瘦脸型",
+              "type" : 9664,
+              "route" : 16973827
+            },
+            {
+              "imageName" : "chin",
+              "highlightImageName" : "chin_light",
+              "name" : "下巴",
+              "type" : 9696,
+              "route" : 16973828
+            },
+            {
+              "imageName" : "forehead",
+              "highlightImageName" : "forehead_light",
+              "name" : "额头",
+              "type" : 9728,
+              "route" : 16973829
+            },
+            {
+              "imageName" : "thin_mandible",
+              "highlightImageName" : "thin_mandible_light",
+              "name" : "瘦下颔",
+              "type" : 10240,
+              "route" : 16973830
+            },
+            {
+              "imageName" : "apple_muscle",
+              "highlightImageName" : "apple_muscle_light",
+              "name" : "苹果肌",
+              "type" : 9760,
+              "route" : 16973831
+            },
+            {
+              "imageName" : "thin_alar",
+              "highlightImageName" : "thin_alar_light",
+              "name" : "瘦鼻翼",
+              "type" : 9792,
+              "route" : 16973832
+            },
+            {
+              "imageName" : "long_nose",
+              "highlightImageName" : "long_nose_light",
+              "name" : "长鼻",
+              "type" : 9824,
+              "route" : 16973833
+            },
+            {
+              "imageName" : "side_face_nose",
+              "highlightImageName" : "side_face_nose_light",
+              "name" : "侧脸隆鼻",
+              "type" : 9856,
+              "route" : 16973834
+            },
+            {
+              "imageName" : "mouth_type",
+              "highlightImageName" : "mouth_type_light",
+              "name" : "嘴形",
+              "type" : 9888,
+              "route" : 16973835
+            },
+            {
+              "imageName" : "thin_philtrum",
+              "highlightImageName" : "thin_philtrum_light",
+              "name" : "缩人中",
+              "type" : 9920,
+              "route" : 16973836
+            },
+            {
+              "imageName" : "eyes_distance",
+              "highlightImageName" : "eyes_distance_light",
+              "name" : "眼距",
+              "type" : 9952,
+              "route" : 16973837
+            },
+            {
+              "imageName" : "eyes_angle",
+              "highlightImageName" : "eyes_angle_light",
+              "name" : "眼睛角度",
+              "type" : 9984,
+              "route" : 16973838
+            },
+            {
+              "imageName" : "open_eyes_corner",
+              "highlightImageName" : "open_eyes_corner_light",
+              "name" : "开眼角",
+              "type" : 10016,
+              "route" : 16973839
+            },
+            {
+              "imageName" : "light_eyes",
+              "highlightImageName" : "light_eyes_light",
+              "name" : "亮眼",
+              "type" : 10048,
+              "route" : 16973840
+            },
+            {
+              "imageName" : "dispel_dark_circles",
+              "highlightImageName" : "dispel_dark_circles_light",
+              "name" : "祛黑眼圈",
+              "type" : 10080,
+              "route" : 16973841
+            },
+            {
+              "imageName" : "removing_wrinkles",
+              "highlightImageName" : "removing_wrinkles_light",
+              "name" : "祛法令纹",
+              "type" : 10112,
+              "route" : 16973842
+            },
+            {
+              "imageName" : "whighten_teeth",
+              "highlightImageName" : "whighten_teeth_light",
+              "name" : "白牙",
+              "type" : 10144,
+              "route" : 16973843
+            },
+            {
+              "imageName" : "thin_cheekbones",
+              "highlightImageName" : "thin_cheekbones_light",
+              "name" : "瘦颧骨",
+              "type" : 10176,
+              "route" : 16973844
+            },
+            {
+              "imageName" : "eyes_outer_corner",
+              "highlightImageName" : "eyes_outer_corner_light",
+              "name" : "开外眼角",
+              "type" : 10208,
+              "route" : 16973845
+            }
+          ],
+          "imageName" : "micro_surgery",
+          "name" : "微整形",
+          "type" : 0,
+          "route" : 16973824
+        },
+        {
+          "subDataSources" : [
+            {
+              "imageName" : "duduchun_n",
+              "highlightImageName" : "duduchun_s",
+              "name" : "嘟嘟唇",
+              "type" : 25632,
+              "route" : 17039361
+            },
+            {
+              "imageName" : "weixiaochun_n",
+              "highlightImageName" : "weixiaochun_s",
+              "name" : "微笑唇",
+              "type" : 25632,
+              "route" : 17039362
+            },
+            {
+              "imageName" : "zuibabili_n",
+              "highlightImageName" : "zuibabili_s",
+              "name" : "嘴巴比例",
+              "type" : 25632,
+              "route" : 17039363
+            },
+            {
+              "imageName" : "zuibakuandu_n",
+              "highlightImageName" : "zuibakuandu_s",
+              "name" : "嘴巴宽度",
+              "type" : 25632,
+              "route" : 17039364
+            },
+            {
+              "imageName" : "zuibagaodu_n",
+              "highlightImageName" : "zuibagaodu_s",
+              "name" : "嘴巴高度",
+              "type" : 25632,
+              "route" : 17039365
+            },
+            {
+              "imageName" : "zuibashendu_n",
+              "highlightImageName" : "zuibashendu_s",
+              "name" : "嘴巴深度",
+              "type" : 25632,
+              "route" : 17039366
+            },
+            {
+              "imageName" : "zuibahoudu_n",
+              "highlightImageName" : "zuibahoudu_s",
+              "name" : "嘴巴厚度",
+              "type" : 25632,
+              "route" : 17039367
+            },
+            {
+              "imageName" : "bigao_n",
+              "highlightImageName" : "bigao_s",
+              "name" : "鼻高",
+              "type" : 25633,
+              "route" : 17039368
+            },
+            {
+              "imageName" : "bigen_n",
+              "highlightImageName" : "bigen_s",
+              "name" : "鼻根",
+              "type" : 25633,
+              "route" : 17039369
+            },
+            {
+              "imageName" : "shangen_n",
+              "highlightImageName" : "shangen_s",
+              "name" : "鼻子驼峰",
+              "type" : 25633,
+              "route" : 17039370
+            },
+            {
+              "imageName" : "biyi_n",
+              "highlightImageName" : "biyi_s",
+              "name" : "鼻翼",
+              "type" : 25633,
+              "route" : 17039371
+            },
+            {
+              "imageName" : "waiyanjiao_n",
+              "highlightImageName" : "waiyanjiao_s",
+              "name" : "外眼角",
+              "type" : 25634,
+              "route" : 17039372
+            },
+            {
+              "imageName" : "yanjingshenqian_n",
+              "highlightImageName" : "yanjingshenqian_s",
+              "name" : "眼睛深浅",
+              "type" : 25634,
+              "route" : 17039373
+            },
+            {
+              "imageName" : "wocan_n",
+              "highlightImageName" : "wocan_s",
+              "name" : "卧蚕深浅",
+              "type" : 25634,
+              "route" : 17039374
+            },
+            {
+              "imageName" : "yanjingjiaodu_n",
+              "highlightImageName" : "yanjingjiaodu_s",
+              "name" : "眼睛角度",
+              "type" : 25634,
+              "route" : 17039375
+            },
+            {
+              "imageName" : "waiyanwei_n",
+              "highlightImageName" : "waiyanwei_s",
+              "name" : "外眼尾",
+              "type" : 25634,
+              "route" : 17039376
+            },
+            {
+              "imageName" : "neiyanjiaojian_n",
+              "highlightImageName" : "neiyanjiaojian_s",
+              "name" : "内眼角尖",
+              "type" : 25634,
+              "route" : 17039377
+            },
+            {
+              "imageName" : "Cheekbone_n",
+              "highlightImageName" : "Cheekbone_s",
+              "name" : "苹果肌",
+              "type" : 25635,
+              "route" : 17039378
+            },
+            {
+              "imageName" : "etou_icon_n",
+              "highlightImageName" : "etou_icon_s",
+              "name" : "额头",
+              "type" : 25635,
+              "route" : 17039379
+            },
+            {
+              "imageName" : "fadingwen_icon_n",
+              "highlightImageName" : "fadingwen_icon_s",
+              "name" : "法令纹",
+              "type" : 25635,
+              "route" : 17039380
+            },
+            {
+              "imageName" : "leigou_icon_n",
+              "highlightImageName" : "leigou_icon_s",
+              "name" : "泪沟",
+              "type" : 25635,
+              "route" : 17039381
+            },
+            {
+              "imageName" : "meigu_iocn_n",
+              "highlightImageName" : "meigu_iocn_s",
+              "name" : "眉骨",
+              "type" : 25635,
+              "route" : 17039382
+            },
+            {
+              "imageName" : "tiaomei_iocn_n",
+              "highlightImageName" : "tiaomei_iocn_s",
+              "name" : "挑眉",
+              "type" : 25635,
+              "route" : 17039383
+            },
+            {
+              "imageName" : "taiyangxue_icon_n",
+              "highlightImageName" : "taiyangxue_icon_s",
+              "name" : "太阳穴",
+              "type" : 25635,
+              "route" : 17039384
+            },
+            {
+              "imageName" : "etou_icon_n",
+              "highlightImageName" : "etou_icon_s",
+              "name" : "侧额头",
+              "type" : 25635,
+              "route" : 17039385
+            }
+          ],
+          "imageName" : "micro_3d",
+          "name" : "3D微整形",
+          "type" : 0,
+          "route" : 17039360
+        },
+        {
+          "subDataSources" : [
+            {
+              "imageName" : "ratio_gray",
+              "highlightImageName" : "ratio",
+              "name" : "对比度",
+              "type" : 19232,
+              "route" : 17104897
+            },
+            {
+              "imageName" : "saturation",
+              "highlightImageName" : "saturation_light",
+              "name" : "饱和度",
+              "type" : 19264,
+              "route" : 17104898
+            },
+            {
+              "imageName" : "charpening",
+              "highlightImageName" : "charpening_light",
+              "name" : "锐化",
+              "type" : 19296,
+              "route" : 17104899
+            },
+            {
+              "imageName" : "definition",
+              "highlightImageName" : "definition_light",
+              "name" : "清晰度",
+              "type" : 19328,
+              "route" : 17104900
+            }
+          ],
+          "imageName" : "ajustment",
+          "name" : "调整",
+          "type" : 0,
+          "route" : 17104896
+        }
+      ],
+      "imageName" : "meiyan_process",
+      "highlightImageName" : "",
+      "name" : "美颜",
+      "type" : 0,
+      "route" : 16777216
+    },
+    {
+      "subDataSources" : [
+        {
+          "imageName" : "character",
+          "name" : "人物",
+          "type" : 16048,
+          "route" : 33619968
+        },
+        {
+          "imageName" : "scenery",
+          "name" : "风景",
+          "type" : 16048,
+          "route" : 33685504
+        },
+        {
+          "imageName" : "still_things",
+          "name" : "静物",
+          "type" : 16048,
+          "route" : 33751040
+        },
+        {
+          "imageName" : "foods",
+          "name" : "美食",
+          "type" : 16048,
+          "route" : 33816576
+        }
+      ],
+      "imageName" : "lvjing_process",
+      "highlightImageName" : "",
+      "name" : "滤镜",
+      "type" : 16048,
+      "route" : 33554432
+    },
+    {
+      "subDataSources" : [
+        {
+          "imageName" : "hair_color",
+          "name" : "染发",
+          "type" : 12832,
+          "route" : 50397184
+        },
+        {
+          "imageName" : "lipstick_homepage",
+          "name" : "口红",
+          "type" : 12864,
+          "route" : 50462720
+        },
+        {
+          "imageName" : "blush",
+          "name" : "腮红",
+          "type" : 12896,
+          "route" : 50528256
+        },
+        {
+          "imageName" : "contour",
+          "name" : "修容",
+          "type" : 12928,
+          "route" : 50593792
+        },
+        {
+          "imageName" : "eyebrow",
+          "name" : "眉毛",
+          "type" : 12960,
+          "route" : 50659328
+        },
+        {
+          "imageName" : "eye_shadow",
+          "name" : "眼影",
+          "type" : 12992,
+          "route" : 50724864
+        },
+        {
+          "imageName" : "eye_liner",
+          "name" : "眼线",
+          "type" : 13024,
+          "route" : 50790400
+        },
+        {
+          "imageName" : "eyslash",
+          "name" : "眼睫毛",
+          "type" : 13056,
+          "route" : 50855936
+        },
+        {
+          "imageName" : "eye_color",
+          "name" : "美瞳",
+          "type" : 13088,
+          "route" : 50921472
+        }
+      ],
+      "imageName" : "meizhuang_process",
+      "highlightImageName" : "",
+      "name" : "美妆",
+      "type" : 2,
+      "route" : 50331648
+    },
+    {
+      "subDataSources" : [
+        {
+          "imageName" : "最新",
+          "name" : "最新",
+          "type" : 3,
+          "route" : 67174400
+        },
+        {
+          "imageName" : "sticker_2d",
+          "name" : "2D贴纸",
+          "type" : 3,
+          "route" : 67239936
+        },
+        {
+          "imageName" : "sticker_3d",
+          "name" : "3D贴纸",
+          "type" : 3,
+          "route" : 67305472
+        },
+        {
+          "imageName" : "gesture_stickers",
+          "name" : "手势贴纸",
+          "type" : 3,
+          "route" : 67371008
+        },
+        {
+          "imageName" : "segment",
+          "name" : "分割",
+          "type" : 3,
+          "route" : 67436544
+        },
+        {
+          "imageName" : "facial_deformation",
+          "name" : "脸部变形",
+          "type" : 3,
+          "route" : 67502080
+        },
+        {
+          "imageName" : "particle_effect",
+          "name" : "粒子效果",
+          "type" : 3,
+          "route" : 67567616
+        },
+        {
+          "imageName" : "animal",
+          "name" : "动物",
+          "type" : 3,
+          "route" : 67633152
+        },
+        {
+          "imageName" : "object_tracking",
+          "name" : "通用物体跟踪",
+          "type" : 3,
+          "route" : 67698688
+        },
+        {
+          "imageName" : "separation",
+          "name" : "影分身",
+          "type" : 3,
+          "route" : 67764224
+        },
+        {
+          "imageName" : "big_head_effect",
+          "name" : "大头特效",
+          "type" : 3,
+          "route" : 67829760
+        },
+        {
+          "imageName" : "pick_face",
+          "name" : "抠脸",
+          "type" : 3,
+          "route" : 67895296
+        },
+        {
+          "imageName" : "special_effects_play",
+          "name" : "特效玩法",
+          "type" : 3,
+          "route" : 67960832
+        },
+        {
+          "imageName" : "animals",
+          "name" : "动物类",
+          "type" : 3,
+          "route" : 68026368
+        },
+        {
+          "imageName" : "QE",
+          "name" : "二次元",
+          "type" : 3,
+          "route" : 68091904
+        },
+        {
+          "imageName" : "cartoons",
+          "name" : "卡通类",
+          "type" : 3,
+          "route" : 68157440
+        },
+        {
+          "imageName" : "cartoon_face",
+          "name" : "漫画脸",
+          "type" : 3,
+          "route" : 68222976
+        },
+        {
+          "imageName" : "TryOn",
+          "name" : "TryOn",
+          "type" : 3,
+          "route" : 68288512
+        },
+        {
+          "imageName" : "本地",
+          "name" : "本地",
+          "type" : 3,
+          "route" : 68354048
+        },
+        {
+          "imageName" : "同步",
+          "name" : "同步",
+          "type" : 3,
+          "route" : 68485120
+        }
+      ],
+      "imageName" : "texiao_process",
+      "highlightImageName" : "",
+      "name" : "特效",
+      "type" : 3,
+      "route" : 67108864
+    },
+    {
+      "subDataSources" : [
+        {
+          "imageName" : "nature",
+          "name" : "自然",
+          "type" : 4,
+          "route" : 83951616
+        },
+        {
+          "imageName" : "light_makeup",
+          "name" : "轻妆",
+          "type" : 4,
+          "route" : 84017152
+        },
+        {
+          "imageName" : "popular",
+          "name" : "流行",
+          "type" : 4,
+          "route" : 84082688
+        }
+      ],
+      "imageName" : "",
+      "highlightImageName" : "",
+      "name" : "风格",
+      "type" : 4,
+      "route" : 83886080
+    },
+    {
+      "subDataSources" : [
+        {
+          "imageName" : "animals",
+          "name" : "动物类",
+          "type" : 5,
+          "route" : 100728832
+        },
+        {
+          "imageName" : "QE",
+          "name" : "二次元",
+          "type" : 5,
+          "route" : 100794368
+        },
+        {
+          "imageName" : "cartoons",
+          "name" : "卡通类",
+          "type" : 5,
+          "route" : 100859904
+        }
+      ],
+      "imageName" : "Avatar_icon",
+      "highlightImageName" : "",
+      "name" : "Avatar",
+      "type" : 5,
+      "route" : 100663296
+    }
+  ]
+}

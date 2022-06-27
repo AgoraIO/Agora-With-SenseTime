@@ -1,0 +1,2468 @@
+<!-- HTML header for doxygen 1.9.1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Effects SDK: st_mobile_effect.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Effects SDK
+   &#160;<span id="projectnumber">8.7.4</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('st__mobile__effect_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">st_mobile_effect.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__texture__t.html">st_effect_texture_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__custom__param__t.html">st_effect_custom_param_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__in__image__t.html">st_effect_in_image_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__render__in__param__t.html">st_effect_render_in_param_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__render__out__param__t.html">st_effect_render_out_param_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__beauty__info__t.html">st_effect_beauty_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__3_d__beauty__part__info__t.html">st_effect_3D_beauty_part_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__tryon__region__info__t.html">st_effect_tryon_region_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__tryon__info__t.html">st_effect_tryon_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__package__info__t.html">st_effect_package_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:aa842fb3044b047acc4d3d424c7df7467"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#aa842fb3044b047acc4d3d424c7df7467">st_effect_module_state_change_callback</a>) (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *p_module_info)</td></tr>
+<tr class="separator:aa842fb3044b047acc4d3d424c7df7467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8337536a827e8db409426e162cb64e4e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a8337536a827e8db409426e162cb64e4e">st_effect_package_state_change_callback</a>) (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__package__info__t.html">st_effect_package_info_t</a> *p_package_info)</td></tr>
+<tr class="separator:a8337536a827e8db409426e162cb64e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a2556c6e242b46d940eb7cbf34f6172d0"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a2556c6e242b46d940eb7cbf34f6172d0">st_mobile_effect_create_handle</a> (uint32_t config, <a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> *p_handle)</td></tr>
+<tr class="separator:a2556c6e242b46d940eb7cbf34f6172d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05196d3c16b63fa368cb7a53513dd03"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ae05196d3c16b63fa368cb7a53513dd03">st_mobile_effect_destroy_handle</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle)</td></tr>
+<tr class="separator:ae05196d3c16b63fa368cb7a53513dd03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bce16d53184e65663a25f2a14b97e73"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a6bce16d53184e65663a25f2a14b97e73">st_mobile_effect_set_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a2969d5109d7bd3e1a0ce7ef5f462f258">st_effect_param_t</a> param, float val)</td></tr>
+<tr class="separator:a6bce16d53184e65663a25f2a14b97e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3922430d3e1968ff074868cc455b946e"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a3922430d3e1968ff074868cc455b946e">st_mobile_effect_get_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a2969d5109d7bd3e1a0ce7ef5f462f258">st_effect_param_t</a> param, float *val)</td></tr>
+<tr class="separator:a3922430d3e1968ff074868cc455b946e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2410b777a34130b480a27bb45d4a8eff"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a2410b777a34130b480a27bb45d4a8eff">st_mobile_effect_get_detect_config</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, uint64_t *p_detect_config)</td></tr>
+<tr class="separator:a2410b777a34130b480a27bb45d4a8eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e159fed7f02338cd912f6c842bfd2b2"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a4e159fed7f02338cd912f6c842bfd2b2">st_mobile_effect_get_custom_event_config</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, uint64_t *p_custom_event_config)</td></tr>
+<tr class="separator:a4e159fed7f02338cd912f6c842bfd2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f728e67e873e1e4f47997ccd7526462"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a6f728e67e873e1e4f47997ccd7526462">st_mobile_effect_get_default_camera_quaternion</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, bool b_front_camera, <a class="el" href="structst__quaternion__t.html">st_quaternion_t</a> *p_default_quat)</td></tr>
+<tr class="separator:a6f728e67e873e1e4f47997ccd7526462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8120ecf608712c8a44806bda58803db1"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a8120ecf608712c8a44806bda58803db1">st_mobile_effect_get_animal_detect_config</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, uint64_t *p_detect_config)</td></tr>
+<tr class="separator:a8120ecf608712c8a44806bda58803db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d0a36fb108d92f79b42f25975665cf"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a94d0a36fb108d92f79b42f25975665cf">st_mobile_effect_get_custom_param_config</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, uint64_t *p_custom_param_config)</td></tr>
+<tr class="separator:a94d0a36fb108d92f79b42f25975665cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24369d3059f56caf2a210b0bcf7a4a8e"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a24369d3059f56caf2a210b0bcf7a4a8e">st_mobile_effect_render</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__render__in__param__t.html">st_effect_render_in_param_t</a> *p_in_param, <a class="el" href="structst__effect__render__out__param__t.html">st_effect_render_out_param_t</a> *p_out_param)</td></tr>
+<tr class="separator:a24369d3059f56caf2a210b0bcf7a4a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af252cefb3f72ef91ef3d1f3536b4f7ff"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#af252cefb3f72ef91ef3d1f3536b4f7ff">st_mobile_effect_get_overlapped_beauty_count</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int *p_info_num)</td></tr>
+<tr class="separator:af252cefb3f72ef91ef3d1f3536b4f7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03626af06305013c7a7dbbe369f2c9e"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#af03626af06305013c7a7dbbe369f2c9e">st_mobile_effect_get_overlapped_beauty</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="structst__effect__beauty__info__t.html">st_effect_beauty_info_t</a> *p_infos, int info_num)</td></tr>
+<tr class="separator:af03626af06305013c7a7dbbe369f2c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399c46d273d7c2f91f8ceee87edf71e8"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a399c46d273d7c2f91f8ceee87edf71e8">st_mobile_effect_set_beauty_strength</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, float val)</td></tr>
+<tr class="separator:a399c46d273d7c2f91f8ceee87edf71e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22fbcada2bcaf1e06efd7159d534247c"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a22fbcada2bcaf1e06efd7159d534247c">st_mobile_effect_get_beauty_strength</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, float *val)</td></tr>
+<tr class="separator:a22fbcada2bcaf1e06efd7159d534247c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71afe2e7de8d3c0b0f633551252b1c9e"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a71afe2e7de8d3c0b0f633551252b1c9e">st_mobile_effect_set_beauty_mode</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, int mode)</td></tr>
+<tr class="separator:a71afe2e7de8d3c0b0f633551252b1c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289df0944179b18346e4ce0ddeb95e64"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a289df0944179b18346e4ce0ddeb95e64">st_mobile_effect_get_beauty_mode</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, int *mode)</td></tr>
+<tr class="separator:a289df0944179b18346e4ce0ddeb95e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae08bff6d1ccfcdcaf6989d1f80412290"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ae08bff6d1ccfcdcaf6989d1f80412290">st_mobile_effect_set_beauty_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a8a7fff6d7ba8f70ea231a4fa7a3dedce">st_effect_beauty_param_t</a> param, float val)</td></tr>
+<tr class="separator:ae08bff6d1ccfcdcaf6989d1f80412290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b9f14c5db6d42a7a4116e34d71efe1"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a94b9f14c5db6d42a7a4116e34d71efe1">st_mobile_effect_get_beauty_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a8a7fff6d7ba8f70ea231a4fa7a3dedce">st_effect_beauty_param_t</a> param, float *val)</td></tr>
+<tr class="separator:a94b9f14c5db6d42a7a4116e34d71efe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62dbdffdb30756d17728702fc710cfed"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a62dbdffdb30756d17728702fc710cfed">st_mobile_effect_set_tryon_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> tryon_type, const <a class="el" href="structst__effect__tryon__info__t.html">st_effect_tryon_info_t</a> *p_info)</td></tr>
+<tr class="separator:a62dbdffdb30756d17728702fc710cfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4613e100aca9f58d48c63d5fac7244a"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#af4613e100aca9f58d48c63d5fac7244a">st_mobile_effect_get_tryon_param</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> tryon_type, <a class="el" href="structst__effect__tryon__info__t.html">st_effect_tryon_info_t</a> *p_info)</td></tr>
+<tr class="separator:af4613e100aca9f58d48c63d5fac7244a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc45b206dc9a038aa3f24dcce65c6604"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#adc45b206dc9a038aa3f24dcce65c6604">st_mobile_effect_set_beauty</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, const char *path)</td></tr>
+<tr class="separator:adc45b206dc9a038aa3f24dcce65c6604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a699e2e295347d6a8e579d04a01cd80"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a7a699e2e295347d6a8e579d04a01cd80">st_mobile_effect_set_beauty_from_buffer</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a> param, const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *buffer)</td></tr>
+<tr class="separator:a7a699e2e295347d6a8e579d04a01cd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413ef931aa1e4b186b1b9cf3dfbaf141"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a413ef931aa1e4b186b1b9cf3dfbaf141">st_mobile_effect_add_package</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const char *p_package_path, int *p_package_id)</td></tr>
+<tr class="separator:a413ef931aa1e4b186b1b9cf3dfbaf141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4261ea663437abba421bda32ac1cdc0"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ab4261ea663437abba421bda32ac1cdc0">st_mobile_effect_add_package_from_buffer</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *p_package_buffer, int *p_package_id)</td></tr>
+<tr class="separator:ab4261ea663437abba421bda32ac1cdc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f602191184d6823478eff7efaa977d"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a39f602191184d6823478eff7efaa977d">st_mobile_effect_change_package</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const char *p_package_path, int *p_package_id)</td></tr>
+<tr class="separator:a39f602191184d6823478eff7efaa977d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9008052fc5dd6ee353b8758d35f09d"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a0c9008052fc5dd6ee353b8758d35f09d">st_mobile_effect_change_package_from_buffer</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *p_package_buffer, int *p_package_id)</td></tr>
+<tr class="separator:a0c9008052fc5dd6ee353b8758d35f09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70f6c9f0f9005693af14c6803cab70e9"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a70f6c9f0f9005693af14c6803cab70e9">st_mobile_effect_remove_package</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int package_id)</td></tr>
+<tr class="separator:a70f6c9f0f9005693af14c6803cab70e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae84f09d15df1687b6d22f03c06c41f5f"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ae84f09d15df1687b6d22f03c06c41f5f">st_mobile_effect_clear_packages</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle)</td></tr>
+<tr class="separator:ae84f09d15df1687b6d22f03c06c41f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678f96205ef51b5b69461dd7beb7afa1"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a678f96205ef51b5b69461dd7beb7afa1">st_mobile_effect_replay_package</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int package_id)</td></tr>
+<tr class="separator:a678f96205ef51b5b69461dd7beb7afa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af566f2e3ced1ad89d161b819d448e87a"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#af566f2e3ced1ad89d161b819d448e87a">st_mobile_effect_get_package_info</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int package_id, <a class="el" href="structst__effect__package__info__t.html">st_effect_package_info_t</a> *p_package_info)</td></tr>
+<tr class="separator:af566f2e3ced1ad89d161b819d448e87a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920617e408c55389bdba0e5ded2e2554"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a920617e408c55389bdba0e5ded2e2554">st_mobile_effect_get_modules_in_package</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int package_id, <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *p_modules, int module_num)</td></tr>
+<tr class="separator:a920617e408c55389bdba0e5ded2e2554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce53596fd848b5644efdadd467e7acc"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a5ce53596fd848b5644efdadd467e7acc">st_mobile_effect_get_module_info</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int module_id, <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *p_module_info)</td></tr>
+<tr class="separator:a5ce53596fd848b5644efdadd467e7acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a98fbba04d5398f1fc2359eeb2a9c47"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a5a98fbba04d5398f1fc2359eeb2a9c47">st_mobile_effect_set_module_info</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *p_module_info)</td></tr>
+<tr class="separator:a5a98fbba04d5398f1fc2359eeb2a9c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad00b47c71c0816e631bdeabe981d5e5d"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ad00b47c71c0816e631bdeabe981d5e5d">st_mobile_effect_set_package_beauty_group_strength</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int pkg_id, <a class="el" href="st__mobile__effect_8h.html#a4f48072afcfd3cff846392ad851341e7">st_effect_beauty_group_t</a> group, float strength)</td></tr>
+<tr class="separator:ad00b47c71c0816e631bdeabe981d5e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d3cf113bc1ddf146638159d26d51d56"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a9d3cf113bc1ddf146638159d26d51d56">st_mobile_effect_set_module_state_change_callback</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#aa842fb3044b047acc4d3d424c7df7467">st_effect_module_state_change_callback</a> callback)</td></tr>
+<tr class="separator:a9d3cf113bc1ddf146638159d26d51d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402c6cd112d8895e407ed2316846c0cd"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a402c6cd112d8895e407ed2316846c0cd">st_mobile_effect_set_packaged_state_change_callback</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="st__mobile__effect_8h.html#a8337536a827e8db409426e162cb64e4e">st_effect_package_state_change_callback</a> callback)</td></tr>
+<tr class="separator:a402c6cd112d8895e407ed2316846c0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae178366c4949f637974fac140ef14455"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ae178366c4949f637974fac140ef14455">st_mobile_effect_release_cached_resource</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle)</td></tr>
+<tr class="separator:ae178366c4949f637974fac140ef14455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3992285ff5e6f9ee740c04159b325f37"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#a3992285ff5e6f9ee740c04159b325f37">st_mobile_effect_reset_output_buffer_cache</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle)</td></tr>
+<tr class="separator:a3992285ff5e6f9ee740c04159b325f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc875366c723bfc7a13ed2a5c506dcba"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#afc875366c723bfc7a13ed2a5c506dcba">st_moobile_effect_get_3d_beauty_parts_count</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, int *parts_count)</td></tr>
+<tr class="separator:afc875366c723bfc7a13ed2a5c506dcba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b8a049f1d47c39a1df0fe3d23de4a7"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#ad8b8a049f1d47c39a1df0fe3d23de4a7">st_mobile_effect_get_3d_beauty_parts</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="structst__effect__3_d__beauty__part__info__t.html">st_effect_3D_beauty_part_info_t</a> *parts, int parts_count)</td></tr>
+<tr class="separator:ad8b8a049f1d47c39a1df0fe3d23de4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24bb56d8887615e22b8beba8a1d08e4"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#af24bb56d8887615e22b8beba8a1d08e4">st_mobile_effect_set_face_mesh_list</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="structst__mobile__face__mesh__list__t.html">st_mobile_face_mesh_list_t</a> *face_mesh_list)</td></tr>
+<tr class="separator:af24bb56d8887615e22b8beba8a1d08e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f89d63c05ac9b686dd02f498107858"><td class="memItemLeft" align="right" valign="top">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st__mobile__effect_8h.html#aa5f89d63c05ac9b686dd02f498107858">st_mobile_effect_set_3d_beauty_parts_strength</a> (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, <a class="el" href="structst__effect__3_d__beauty__part__info__t.html">st_effect_3D_beauty_part_info_t</a> *parts, int partSize)</td></tr>
+<tr class="separator:aa5f89d63c05ac9b686dd02f498107858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>调用示例： st_result_t ret = ST_OK; st_handle_t handle = NULL; ret = st_mobile_effect_create_handle(0x0, &amp;handle);</p>
+<p>st_mobile_effect_set_beauty_strength(handle, EFFECT_BEAUTY_RESHAPE_NARROW_FACE, 1.0f); st_mobile_effect_add_package(handle, "../makeup_lip.zip", nullptr);</p>
+<p><a class="el" href="structst__effect__texture__t.html" title="纹理信息">st_effect_texture_t</a> effect_in_tex = { in_tex, width, height, ST_PIX_FMT_RGBA8888 }; <a class="el" href="structst__effect__texture__t.html" title="纹理信息">st_effect_texture_t</a> effect_out_tex = { out_tex, width, height, ST_PIX_FMT_RGBA8888 };</p>
+<p><a class="el" href="structst__effect__render__in__param__t.html" title="渲染的输入参数">st_effect_render_in_param_t</a> in_param = {}; in_param.p_human =  in_param.p_tex = </p>
+<p><a class="el" href="structst__effect__render__out__param__t.html" title="渲染的输出参数">st_effect_render_out_param_t</a> out_param = {}; out_param.p_human =  out_param.p_tex = </p>
+<p>st_mobile_effect_render(handle, &amp;in_param, &amp;out_param);</p>
+<p>st_mobile_effect_destroy_handle(handle); handle = NULL; </p>
+</div><h2 class="groupheader">类型定义说明</h2>
+<a id="aa842fb3044b047acc4d3d424c7df7467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa842fb3044b047acc4d3d424c7df7467">&#9670;&nbsp;</a></span>st_effect_module_state_change_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>(* st_effect_module_state_change_callback) (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *p_module_info)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>贴纸播放状态发生改变引起的回调函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_module_info</td><td>贴纸信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a8337536a827e8db409426e162cb64e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8337536a827e8db409426e162cb64e4e">&#9670;&nbsp;</a></span>st_effect_package_state_change_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a>(* st_effect_package_state_change_callback) (<a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> handle, const <a class="el" href="structst__effect__package__info__t.html">st_effect_package_info_t</a> *p_package_info)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>素材包播放状态发生改变的引起的回调函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_package_info</td><td>素材包信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a30986b508c1db1583c0a70e0bd3e09e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30986b508c1db1583c0a70e0bd3e09e1">&#9670;&nbsp;</a></span>st_effect_handle_config_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a30986b508c1db1583c0a70e0bd3e09e1">st_effect_handle_config_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Effect handle配置模式 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a30986b508c1db1583c0a70e0bd3e09e1ab0cd1dfb2854613b4b9110ff1967867d"></a>EFFECT_CONFIG_NONE&#160;</td><td class="fielddoc"><p>默认配置 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a30986b508c1db1583c0a70e0bd3e09e1acf08d1c24787292a229ff9c4470788fb"></a>EFFECT_CONFIG_IMAGE_MODE&#160;</td><td class="fielddoc"><p>图片模式, 添加素材后立即生效 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a2969d5109d7bd3e1a0ce7ef5f462f258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2969d5109d7bd3e1a0ce7ef5f462f258">&#9670;&nbsp;</a></span>st_effect_param_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a2969d5109d7bd3e1a0ce7ef5f462f258">st_effect_param_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Effect句柄级别的配置项, 影响整个句柄。需在OpenGL渲染线程中执行 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258aa85dfa6a9da747dc09ce7b2aa04c76b0"></a>EFFECT_PARAM_MIN_FRAME_INTERVAL&#160;</td><td class="fielddoc"><p>贴纸前后两个序列帧切换的最小时间间隔，单位为毫秒。当两个相机帧处理的间隔小于这个值的时候， 当前显示的贴纸序列帧会继续显示，直到显示的时间大于该设定值贴纸才会切换到下一阵，相机帧不受影响。 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258a77175d7a421349072322a9d63cee2d48"></a>EFFECT_PARAM_MAX_MEMORY_BUDGET_MB&#160;</td><td class="fielddoc"><p>设置贴纸素材资源所占用的最大内存（MB），当估算内存超过这个值时，将不能再加载新的素材包 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258a3e5d90ddaef68fe238a2aec86a193761"></a>EFFECT_PARAM_QUATERNION_SMOOTH_FRAME&#160;</td><td class="fielddoc"><p>设置相机姿态平滑参数，表示平滑多少帧, 越大延迟越高，抖动越微弱 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258a0ce7f77b8e1ea45f9cee64f1ca1043ad"></a>EFFECT_PARAM_USE_INPUT_TIMESTAMP&#160;</td><td class="fielddoc"><p>设置贴纸是否使用外部时间戳更新 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258afd7b8fdf7ae8bdf91f294e09c83fbb24"></a>EFFECT_PARAM_PREFER_MEMORY_CACHE&#160;</td><td class="fielddoc"><p>倾向于空间换时间，传0的话，则尽可能清理内部缓存，保持内存最小。目前主要影响3D共享资源 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258a15c73e13773f9d3970a67f7b9c20437b"></a>EFFECT_PARAM_DISABLE_BEAUTY_OVERLAP&#160;</td><td class="fielddoc"><p>传入大于0的值，禁用美颜Overlap逻辑（贴纸中的美颜会覆盖前面通过API或者贴纸生效的美颜效果，贴纸成组覆盖，API单个覆盖），默认启用Overlap </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2969d5109d7bd3e1a0ce7ef5f462f258a724405317e29ec59f18c39e82f0d662d"></a>EFFECT_PARAM_DISABLE_MODULE_REORDER&#160;</td><td class="fielddoc"><p>传入大于0的值，禁用对于v3.1之前的素材包重新排序module的渲染顺序，该选项只会影响设置之后添加的素材。重新排序是为了在与美妆、风格素材包叠加时达到最佳效果，默认启用ReOrder </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a22d7e1c3f18a68c8f2fb2a575e6d1807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d7e1c3f18a68c8f2fb2a575e6d1807">&#9670;&nbsp;</a></span>st_effect_custom_param_config_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a22d7e1c3f18a68c8f2fb2a575e6d1807">st_effect_custom_param_config_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>自定义参数配置 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a22d7e1c3f18a68c8f2fb2a575e6d1807a6c3fcec2884f36878ab3e6c339dcf3ab"></a>EFFECT_CUSTOM_NONE&#160;</td><td class="fielddoc"><p>不需要自定义参数 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22d7e1c3f18a68c8f2fb2a575e6d1807a35fa230b2a5f0d9502d98204763f1b6a"></a>EFFECT_CUSTOM_CAMERA_QUATION&#160;</td><td class="fielddoc"><p>需要相机姿态信息 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22d7e1c3f18a68c8f2fb2a575e6d1807a6a8e71387eba0c8f5f634e803d74fb11"></a>EFFECT_CUSTOM_CAMERA_FACING&#160;</td><td class="fielddoc"><p>需要前后相机信息 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a724e41fd506f9afa6a3d9f3aec410e99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a724e41fd506f9afa6a3d9f3aec410e99">&#9670;&nbsp;</a></span>st_effect_beauty_type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>美颜类型 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99abb0fbaa5c669a03eeb77f1167f919a3f"></a>EFFECT_BEAUTY_BASE_WHITTEN&#160;</td><td class="fielddoc"><p>美白，[0,1.0], 默认值0.30, 0.0不做美白 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a0b4958ea2ba9bb892dda3192e3d93e35"></a>EFFECT_BEAUTY_BASE_REDDEN&#160;</td><td class="fielddoc"><p>红润, [0,1.0], 默认值0.36, 0.0不做红润 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a7d4f12dde9175feb7a3e7082da1342e9"></a>EFFECT_BEAUTY_BASE_FACE_SMOOTH&#160;</td><td class="fielddoc"><p>磨皮, [0,1.0], 默认值0.74, 0.0不做磨皮 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ad474bc76361a4193f5fcfdb57eba73d8"></a>EFFECT_BEAUTY_RESHAPE_SHRINK_FACE&#160;</td><td class="fielddoc"><p>瘦脸, [0,1.0], 默认值0.11, 0.0不做瘦脸效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a36f10503930eb63956f845f8aea60259"></a>EFFECT_BEAUTY_RESHAPE_ENLARGE_EYE&#160;</td><td class="fielddoc"><p>大眼, [0,1.0], 默认值0.13, 0.0不做大眼效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ade1526b3fd00249ad92f76e05e85080b"></a>EFFECT_BEAUTY_RESHAPE_SHRINK_JAW&#160;</td><td class="fielddoc"><p>小脸, [0,1.0], 默认值0.10, 0.0不做小脸效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a4101493643c122853202d54a049458a8"></a>EFFECT_BEAUTY_RESHAPE_NARROW_FACE&#160;</td><td class="fielddoc"><p>窄脸, [0,1.0], 默认值0.0, 0.0不做窄脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99af7c22dc3fe6519e44c608d7434c29873"></a>EFFECT_BEAUTY_RESHAPE_ROUND_EYE&#160;</td><td class="fielddoc"><p>圆眼, [0,1.0], 默认值0.0, 0.0不做圆眼 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99adb365e82c5fd06b9b75fb96d6b6d2edb"></a>EFFECT_BEAUTY_PLASTIC_THINNER_HEAD&#160;</td><td class="fielddoc"><p>小头, [0, 1.0], 默认值0.0, 0.0不做小头效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a8937ab06e5c33b00b6ee23397429fcbb"></a>EFFECT_BEAUTY_PLASTIC_THIN_FACE&#160;</td><td class="fielddoc"><p>瘦脸型，[0,1.0], 默认值0.0, 0.0不做瘦脸型效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a084619e5b3cd24bd33a58bddc292a106"></a>EFFECT_BEAUTY_PLASTIC_CHIN_LENGTH&#160;</td><td class="fielddoc"><p>下巴，[-1, 1], 默认值为0.0，[-1, 0]为短下巴，[0, 1]为长下巴 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a7bb84cd2eff886cd5f8011a969591822"></a>EFFECT_BEAUTY_PLASTIC_HAIRLINE_HEIGHT&#160;</td><td class="fielddoc"><p>额头，[-1, 1], 默认值为0.0，[-1, 0]为低发际线，[0, 1]为高发际线 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a19d3ff18835e21b266200ad27b1bc692"></a>EFFECT_BEAUTY_PLASTIC_APPLE_MUSLE&#160;</td><td class="fielddoc"><p>苹果肌，[0, 1.0]，默认值为0.0，0.0不做苹果肌 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99aea2b6c9ce64f7129283a9314bba3dfde"></a>EFFECT_BEAUTY_PLASTIC_NARROW_NOSE&#160;</td><td class="fielddoc"><p>瘦鼻翼，[0, 1.0], 默认值为0.0，0.0不做瘦鼻 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99afa66f4ebae0fc5b6b1d2fba488825166"></a>EFFECT_BEAUTY_PLASTIC_NOSE_LENGTH&#160;</td><td class="fielddoc"><p>长鼻，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a4ce17a8350693da820d5cf06b9d7de07"></a>EFFECT_BEAUTY_PLASTIC_PROFILE_RHINOPLASTY&#160;</td><td class="fielddoc"><p>侧脸隆鼻，[0, 1.0]，默认值为0.0，0.0不做侧脸隆鼻效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a5accc582289acefb73f07a0795ff7a92"></a>EFFECT_BEAUTY_PLASTIC_MOUTH_SIZE&#160;</td><td class="fielddoc"><p>嘴型，[-1, 1]，默认值为0.0，[-1, 0]为放大嘴巴，[0, 1]为缩小嘴巴 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a5c5a8da97931b73e72721c098938caa5"></a>EFFECT_BEAUTY_PLASTIC_PHILTRUM_LENGTH&#160;</td><td class="fielddoc"><p>缩人中，[-1, 1], 默认值为0.0，[-1, 0]为长人中，[0, 1]为短人中 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a4aa3e69fb3a2656d6a42875e0f0535b8"></a>EFFECT_BEAUTY_PLASTIC_EYE_DISTANCE&#160;</td><td class="fielddoc"><p>眼距，[-1, 1]，默认值为0.0，[-1, 0]为减小眼距，[0, 1]为增加眼距 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ad69cf10710690ac0a43d7f31c394e834"></a>EFFECT_BEAUTY_PLASTIC_EYE_ANGLE&#160;</td><td class="fielddoc"><p>眼睛角度，[-1, 1]，默认值为0.0，[-1, 0]为左眼逆时针旋转，[0, 1]为左眼顺时针旋转，右眼与左眼相对 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a86b4867f222eea78dd37845d80e9a455"></a>EFFECT_BEAUTY_PLASTIC_OPEN_CANTHUS&#160;</td><td class="fielddoc"><p>开眼角，[0, 1.0]，默认值为0.0， 0.0不做开眼角 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99afdea2a987a55000d6cd6b419d33a6a02"></a>EFFECT_BEAUTY_PLASTIC_BRIGHT_EYE&#160;</td><td class="fielddoc"><p>亮眼，[0, 1.0]，默认值为0.0，0.0不做亮眼 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ab9bf7fff11cc39bc4a31b2d0a4221a99"></a>EFFECT_BEAUTY_PLASTIC_REMOVE_DARK_CIRCLES&#160;</td><td class="fielddoc"><p>祛黑眼圈，[0, 1.0]，默认值为0.0，0.0不做去黑眼圈 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a29d48f5579f71f9faa2fba30681417e8"></a>EFFECT_BEAUTY_PLASTIC_REMOVE_NASOLABIAL_FOLDS&#160;</td><td class="fielddoc"><p>祛法令纹，[0, 1.0]，默认值为0.0，0.0不做去法令纹 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a0870513d9747ee3fa4e48705edc045c3"></a>EFFECT_BEAUTY_PLASTIC_WHITE_TEETH&#160;</td><td class="fielddoc"><p>白牙，[0, 1.0]，默认值为0.0，0.0不做白牙 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a5dcd9a0bbd735b095f9c334780f1f620"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_CHEEKBONE&#160;</td><td class="fielddoc"><p>瘦颧骨， [0, 1.0], 默认值0.0， 0.0不做瘦颧骨 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a3263418031abe0750918cb4f733abdd9"></a>EFFECT_BEAUTY_PLASTIC_OPEN_EXTERNAL_CANTHUS&#160;</td><td class="fielddoc"><p>开外眼角比例，[0, 1.0]，默认值为0.0， 0.0不做开外眼角 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a1d25bd862ef90bb533b89274aed6a3ea"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_JAWBONE&#160;</td><td class="fielddoc"><p>瘦下颔，[0, 1.0], 默认值0.0， 0.0不做瘦下颔 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a367cd9895ac5c968cf77a4899e39b3de"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_ROUND_FACE&#160;</td><td class="fielddoc"><p>圆脸瘦脸，[0, 1.0], 默认值0.0， 0.0不做瘦脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a5a094e052e6370d5defec2f316a35d32"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_LONG_FACE&#160;</td><td class="fielddoc"><p>长脸瘦脸，[0, 1.0], 默认值0.0， 0.0不做瘦脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ad21b3f34636cdc6ca75ef48d9dacfdcc"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_GODDESS_FACE&#160;</td><td class="fielddoc"><p>女神瘦脸，[0, 1.0], 默认值0.0， 0.0不做瘦脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a888075b263a66eda8cd0a3920c7b49c6"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_NATURAL_FACE&#160;</td><td class="fielddoc"><p>自然瘦脸，[0, 1.0], 默认值0.0， 0.0不做瘦脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a81ee1c614a9314fd67728a89a8b1ad80"></a>EFFECT_BEAUTY_PLASTIC_SHRINK_WHOLE_HEAD&#160;</td><td class="fielddoc"><p>整体缩放小头，[0, 1.0], 默认值0.0, 0.0不做整体缩放小头效果 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a9e5c6a1f67f993b1322db73aa68bf6bf"></a>EFFECT_BEAUTY_TONE_CONTRAST&#160;</td><td class="fielddoc"><p>对比度, [0,1.0], 默认值0.05, 0.0不做对比度处理 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99af4839ae4b7ecca3478d222b4f0497736"></a>EFFECT_BEAUTY_TONE_SATURATION&#160;</td><td class="fielddoc"><p>饱和度, [0,1.0], 默认值0.10, 0.0不做饱和度处理 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a0e5e1f126fdcf4775039bae0688f0c2d"></a>EFFECT_BEAUTY_TONE_SHARPEN&#160;</td><td class="fielddoc"><p>锐化, [0, 1.0], 默认值0.0, 0.0不做锐化 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99abe74ce32f0b7e1bf730b84211abeb747"></a>EFFECT_BEAUTY_TONE_CLEAR&#160;</td><td class="fielddoc"><p>清晰度, 清晰强度, [0,1.0], 默认值0.0, 0.0不做清晰 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a0495b37db9235e2489f5f17ad31ef4d1"></a>EFFECT_BEAUTY_MAKEUP_HAIR_DYE&#160;</td><td class="fielddoc"><p>染发 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ab4740ba46c489cab38778ebbf52e5603"></a>EFFECT_BEAUTY_MAKEUP_LIP&#160;</td><td class="fielddoc"><p>口红 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a7fc3320ceae39d643e581b615ddfd774"></a>EFFECT_BEAUTY_MAKEUP_CHEEK&#160;</td><td class="fielddoc"><p>腮红 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a53f924d9a5722e7274e56dd377834c1c"></a>EFFECT_BEAUTY_MAKEUP_NOSE&#160;</td><td class="fielddoc"><p>修容 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a350e98d0b1220be92719226e5edba453"></a>EFFECT_BEAUTY_MAKEUP_EYE_BROW&#160;</td><td class="fielddoc"><p>眉毛 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a763cf3bc5b9a8012bd1c8020583a6d71"></a>EFFECT_BEAUTY_MAKEUP_EYE_SHADOW&#160;</td><td class="fielddoc"><p>眼影 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a1327e9a9e6ee736c313b20be9da3f99c"></a>EFFECT_BEAUTY_MAKEUP_EYE_LINE&#160;</td><td class="fielddoc"><p>眼线 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a98d2b9363cb781ea74da68b4dfe5af38"></a>EFFECT_BEAUTY_MAKEUP_EYE_LASH&#160;</td><td class="fielddoc"><p>眼睫毛 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99addbed82bb7e208fdf5ae4902e6f0fb95"></a>EFFECT_BEAUTY_MAKEUP_EYE_BALL&#160;</td><td class="fielddoc"><p>美瞳 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a46f6ada45aaeac02ce974c74e9ec23c3"></a>EFFECT_BEAUTY_MAKEUP_PACKED&#160;</td><td class="fielddoc"><p>打包的美妆素材，可能包含一到多个单独的美妆模块，与其他单独美妆可以同时存在 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a1bee1cacfacd84cf8c7fb4b2ba374a5e"></a>EFFECT_BEAUTY_FILTER&#160;</td><td class="fielddoc"><p>滤镜 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99abe161ddb3862db048a8870d1a271ab36"></a>EFFECT_BEAUTY_TRYON_HAIR_COLOR&#160;</td><td class="fielddoc"><p>染发，可设置的参数包括：颜色，强度，明暗度，高光 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a2b195100b9620a99b0c51289c4cc5aec"></a>EFFECT_BEAUTY_TRYON_LIPSTICK&#160;</td><td class="fielddoc"><p>口红，可设置的参数包括：颜色，强度，高光(特定材质：水润、闪烁、金属)，质地类型 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a147ff098fbf80bf9c2b3bcc7712371df"></a>EFFECT_BEAUTY_TRYON_LIPLINE&#160;</td><td class="fielddoc"><p>唇线，可设置的参数包括：颜色，强度，唇线线宽 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a10115c5242defcc2cb4a6e416419cfb8"></a>EFFECT_BEAUTY_TRYON_BLUSH&#160;</td><td class="fielddoc"><p>腮红，可设置的参数包括：颜色，强度 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ad1cb08a70e8f351dea098f84f5ddcb37"></a>EFFECT_BEAUTY_TRYON_BROW&#160;</td><td class="fielddoc"><p>眉毛，可设置的参数包括：颜色，强度 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99aaba6135178db35caee97cf9ac43cd7ed"></a>EFFECT_BEAUTY_TRYON_FOUNDATION&#160;</td><td class="fielddoc"><p>粉底，可设置的参数包括：颜色，强度 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99aac6cf07970f94685b3e17b765ae02836"></a>EFFECT_BEAUTY_TRYON_CONTOUR&#160;</td><td class="fielddoc"><p>修容，可设置的参数包括：强度（整体），区域信息（区域id，颜色，强度） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ac995d1d1ceff322534cf4331b5e9561f"></a>EFFECT_BEAUTY_TRYON_EYESHADOW&#160;</td><td class="fielddoc"><p>眼影，可设置的参数包括：强度（整体），区域信息（区域id，颜色，强度） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99af283a25c3afbaf7861bb5c266c8f3e57"></a>EFFECT_BEAUTY_TRYON_EYELINER&#160;</td><td class="fielddoc"><p>眼线，可设置的参数包括：强度（整体），区域信息（区域id，颜色，强度） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99aa1fde445cdcb1998a656faeb5e6efd36"></a>EFFECT_BEAUTY_TRYON_EYELASH&#160;</td><td class="fielddoc"><p>眼睫毛，可设置的参数包括：颜色，强度 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99ac85c273b59f5d86db29e244c8415fceb"></a>EFFECT_BEAUTY_TRYON_STAMPLINER&#160;</td><td class="fielddoc"><p>眼印，可设置的参数包括：颜色，强度 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a724e41fd506f9afa6a3d9f3aec410e99a66cdc4ae4868087c6f118ddb2684c2cf"></a>EFFECT_BEAUTY_3D_MICRO_PLASTIC&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a4f48072afcfd3cff846392ad851341e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f48072afcfd3cff846392ad851341e7">&#9670;&nbsp;</a></span>st_effect_beauty_group_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a4f48072afcfd3cff846392ad851341e7">st_effect_beauty_group_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>美颜分组信息 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7a2cd0abbc4a28fe4c8e8298a3aaf35775"></a>EFFECT_BEAUTY_GROUP_BASE&#160;</td><td class="fielddoc"><p>基础美颜组 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7a8ed8039acfb50f21636218948b6bc0cc"></a>EFFECT_BEAUTY_GROUP_RESHAPE&#160;</td><td class="fielddoc"><p>美型组 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7a6dd2e02f82450314157394ab496435ae"></a>EFFECT_BEAUTY_GROUP_PLASTIC&#160;</td><td class="fielddoc"><p>微整形组 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7a60d0b7ab45b7d3827e9cebfc8d3718bc"></a>EFFECT_BEAUTY_GROUP_TONE&#160;</td><td class="fielddoc"><p>图像微调组 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7abded1d774a7135234fd722572c64358c"></a>EFFECT_BEAUTY_GROUP_MAKEUP&#160;</td><td class="fielddoc"><p>美妆组 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4f48072afcfd3cff846392ad851341e7ad7b53a78746189a18add07e25d71569c"></a>EFFECT_BEAUTY_GROUP_FILTER&#160;</td><td class="fielddoc"><p>滤镜组 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a3480860476b0644c11edd2906e9e31c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3480860476b0644c11edd2906e9e31c3">&#9670;&nbsp;</a></span>st_effect_lipstick_finish_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a3480860476b0644c11edd2906e9e31c3">st_effect_lipstick_finish_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>口红质地类型 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a3480860476b0644c11edd2906e9e31c3a0ca7e6c283d85884dac6e340cea8eccb"></a>EFFECT_LIPSTICK_CREAMY&#160;</td><td class="fielddoc"><p>自然 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3480860476b0644c11edd2906e9e31c3a696d1ad0e4dc0bb6c5db580f1077df48"></a>EFFECT_LIPSTICK_MATTE&#160;</td><td class="fielddoc"><p>哑光 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3480860476b0644c11edd2906e9e31c3aedc662d3394e5f78163be434cc8aa8c1"></a>EFFECT_LIPSTICK_LUSTRE&#160;</td><td class="fielddoc"><p>水润 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3480860476b0644c11edd2906e9e31c3ad02187034b9543d2c6041548fad888d3"></a>EFFECT_LIPSTICK_FROST&#160;</td><td class="fielddoc"><p>闪烁 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3480860476b0644c11edd2906e9e31c3a68251fd17ab9060efd92d38c9132f5a0"></a>EFFECT_LIPSTICK_METAL&#160;</td><td class="fielddoc"><p>金属 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a8a7fff6d7ba8f70ea231a4fa7a3dedce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7fff6d7ba8f70ea231a4fa7a3dedce">&#9670;&nbsp;</a></span>st_effect_beauty_param_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a8a7fff6d7ba8f70ea231a4fa7a3dedce">st_effect_beauty_param_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Effect 美颜配置项，影响美颜功能，需要在OpenGL渲染线程中执行 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a8a7fff6d7ba8f70ea231a4fa7a3dedcea864c04e0ea7bfe013a91c88303f50e68"></a>EFFECT_BEAUTY_PARAM_ENABLE_WHITEN_SKIN_MASK&#160;</td><td class="fielddoc"><p>是否为美白开启皮肤分割, 默认为不启用. 0 表示不启用， 非0表示启用 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ae4cd5209da79a7f4febdb5ffe8f41358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4cd5209da79a7f4febdb5ffe8f41358">&#9670;&nbsp;</a></span>st_effect_package_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#ae4cd5209da79a7f4febdb5ffe8f41358">st_effect_package_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>素材包的播放状态类型 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ae4cd5209da79a7f4febdb5ffe8f41358abe24c91e4340bafdfd98edf4a3613ad2"></a>EFFECT_PACKAGE_BEGIN&#160;</td><td class="fielddoc"><p>素材包开始(素材包中的任一素材开始播放认为素材包开始) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae4cd5209da79a7f4febdb5ffe8f41358a0471c5fdec7195d3abd9da8a9df6fecb"></a>EFFECT_PACKAGE_END&#160;</td><td class="fielddoc"><p>素材包结束(素材包中开始播放后被切换或取消,或者已经开始的素材都完成播放循环认为是素材包结束播放) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae4cd5209da79a7f4febdb5ffe8f41358a13b68f5e0766d5d3f020d5d36b30e1de"></a>EFFECT_PACKAGE_TERMINATED&#160;</td><td class="fielddoc"><p>素材包被终止(素材包中已经开始播放的素材都因为对应检测结果消失导致停止播放认为是素材包被终止) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="afe1afadc8141b9633fe2772b5886a9e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe1afadc8141b9633fe2772b5886a9e7">&#9670;&nbsp;</a></span>st_effect_module_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#afe1afadc8141b9633fe2772b5886a9e7">st_effect_module_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>素材包中Module（子特效）的播放状态类型 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7aa00d5c860b3a08e0d0be36fe6060fb6e"></a>EFFECT_MODULE_LOADED&#160;</td><td class="fielddoc"><p>已加载 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7a287205fb557c0ace1e2e92e2051e6251"></a>EFFECT_MODULE_PAUSED_FIRST_FRAME&#160;</td><td class="fielddoc"><p>暂停到第一帧 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7ab1d6b69a176ebf34782200615c3e98b1"></a>EFFECT_MODULE_PLAYING&#160;</td><td class="fielddoc"><p>正在播放 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7a65e99236a2c4d8c81f6477a3e807bbb8"></a>EFFECT_MODULE_PAUSED&#160;</td><td class="fielddoc"><p>暂停 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7a07dfb0cdf5d1b79dbdf56e762f3456be"></a>EFFECT_MODULE_PAUSED_LAST_FRAME&#160;</td><td class="fielddoc"><p>暂停到最后一帧 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7a5b311e2df07928fc62ad05d6792409c9"></a>EFFECT_MODULE_INVISIBLE&#160;</td><td class="fielddoc"><p>不可见 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7ac4c1c0793df7862a87593565da277139"></a>EFFECT_MODULE_RESUMED&#160;</td><td class="fielddoc"><p>唤醒, 下一帧开始执行 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe1afadc8141b9633fe2772b5886a9e7a6d1dfc5e785eacc6b9a5ddc84845c1f5"></a>EFFECT_MODULE_UNLOADED&#160;</td><td class="fielddoc"><p>已被销毁（卸载） </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a36cac83871fe133b6eeccd8146d03488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36cac83871fe133b6eeccd8146d03488">&#9670;&nbsp;</a></span>st_effect_module_type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#a36cac83871fe133b6eeccd8146d03488">st_effect_module_type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>特效类型 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a8b27730e0536fc565980a3b067adfb98"></a>EFFECT_MODULE_STICKER_2D&#160;</td><td class="fielddoc"><p>2D贴纸模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488abb3e3593a6d7cc0054f3abca391eb88a"></a>EFFECT_MODULE_SOUND&#160;</td><td class="fielddoc"><p>音乐模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a867dd0bbc42f650bb387705be48aa493"></a>EFFECT_MODULE_BEAUTIFY&#160;</td><td class="fielddoc"><p>美颜模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a760aa378a69c48effb1ec42498d0868e"></a>EFFECT_MODULE_FILTER&#160;</td><td class="fielddoc"><p>滤镜模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a4cc6175d561d5082742808e39b5ed300"></a>EFFECT_MODULE_DEFORMAITON&#160;</td><td class="fielddoc"><p>脸部变形模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488ad26d97ea0df109b9eedce06245700a26"></a>EFFECT_MODULE_MAKEUP&#160;</td><td class="fielddoc"><p>美妆模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488ae5e0bcfd73f836cf60c8fddca9d64806"></a>EFFECT_MODULE_BACKGROUND_EDGE&#160;</td><td class="fielddoc"><p>背景描边模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a809eb696b173eb4e1d80969527b78ceb"></a>EFFECT_MODULE_STICKER_3D&#160;</td><td class="fielddoc"><p>3D贴纸模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a8729a7f3b6a5882ab83a8a782ce9f41e"></a>EFFECT_MODULE_PARTICLE&#160;</td><td class="fielddoc"><p>粒子模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a972090d65cf57a60bc6726c762f96543"></a>EFFECT_MODULE_AVATAR&#160;</td><td class="fielddoc"><p>Avatar模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a39666f4160a4e5102f4b12e4a2a0de1c"></a>EFFECT_MODULE_FACE_EXCHANGE&#160;</td><td class="fielddoc"><p>多人换脸模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a0a29289c3f78f81919e6056e3b198da8"></a>EFFECT_MODULE_FACE_MATTING&#160;</td><td class="fielddoc"><p>扣脸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a0a4804f8e6ca5ea8579a8dd08793f1ff"></a>EFFECT_MODULE_SKYBOX&#160;</td><td class="fielddoc"><p>天空盒模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488acf2e183b9df45f91c1a8b4c98b300fb3"></a>EFFECT_MODULE_FACE_STRETCH&#160;</td><td class="fielddoc"><p>人脸拖拽模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488afa8eb8fd6725160e3cbe6afd93ab7be0"></a>EFFECT_MODULE_DOUBLEGANGER&#160;</td><td class="fielddoc"><p>影分身 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488ae4b2fc26a82381793596913787b8b393"></a>EFFECT_MODULE_MASK_FILL&#160;</td><td class="fielddoc"><p>头发分割 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488ad584ed8fad38e4bd6204513d2a34b916"></a>EFFECT_MODULE_HEAD_ANIMATION&#160;</td><td class="fielddoc"><p>大头模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a62e5118b2bab34dabf09927123470ebd"></a>EFFECT_MODULE_3D_FACE_MATTE&#160;</td><td class="fielddoc"><p>3D人脸抠图 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a6375c763e4123a2d1d7c972c00298edb"></a>EFFECT_MODULE_GAN&#160;</td><td class="fielddoc"><p>Gan模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488aedbf868f770655b51cb0c45450a2a245"></a>EFFECT_MODULE_SEGMENT&#160;</td><td class="fielddoc"><p>Segment模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488ad65f5178e2256e7354d1a645472a18db"></a>EFFECT_MODULE_3D_MICRO_PLASTIC&#160;</td><td class="fielddoc"><p>3D微整形模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a190c1197112b429c28f5cd17b0b6b918"></a>EFFECT_MODULE_FACEMESH_EFFECTS&#160;</td><td class="fielddoc"><p>3Dfacemesh特效模块 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488af671dd0faeb732d65d87748c55d515a4"></a>EFFECT_MODULE_3D_CAT_STICKER&#160;</td><td class="fielddoc"><p>3D猫脸贴纸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a73e439ec24f241942ebb8c976d6a483e"></a>EFFECT_MODULE_3D_DOG_STICKER&#160;</td><td class="fielddoc"><p>3D狗脸贴纸 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a36cac83871fe133b6eeccd8146d03488a4bf84f5052c64fe3b7a1db70dd66c52a"></a>EFFECT_MODULE_3D_SHOES_STICKER&#160;</td><td class="fielddoc"><p>3D鞋子贴纸 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ad343c73f89d1e68788ecf950b9974c37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad343c73f89d1e68788ecf950b9974c37">&#9670;&nbsp;</a></span>st_effect_reserved_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="st__mobile__effect_8h.html#ad343c73f89d1e68788ecf950b9974c37">st_effect_reserved_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Module Info中的保留数据类型，根据特定case，保留数据的类型会不同 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ad343c73f89d1e68788ecf950b9974c37a835e50e9d7fb06552546f6b3db5f380a"></a>EFFECT_RESERVED_UNKNOWN&#160;</td><td class="fielddoc"><p>未知（无意义）保留数据 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad343c73f89d1e68788ecf950b9974c37a199a46d43b6a1e4c614e93dafc93ff3c"></a>EFFECT_RESERVED_SOUND_DATA&#160;</td><td class="fielddoc"><p>声音数据的buffer，类型是st_effect_buffer_t </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad343c73f89d1e68788ecf950b9974c37ab44717ba0cbbce8018970d3eb16e6fa7"></a>EFFECT_RESERVED_LOOP_NUM&#160;</td><td class="fielddoc"><p>module的loop次数，类型是int </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad343c73f89d1e68788ecf950b9974c37a0e1c0ff8cae8895d8694b3a2f5a40189"></a>EFFECT_RESERVED_IMAGE&#160;</td><td class="fielddoc"><p>图像数据的buffer，类型是st_image_t </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a2556c6e242b46d940eb7cbf34f6172d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2556c6e242b46d940eb7cbf34f6172d0">&#9670;&nbsp;</a></span>st_mobile_effect_create_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_create_handle </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a> *&#160;</td>
+          <td class="paramname"><em>p_handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建特效句柄 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">config</td><td>素材生效模式 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">handle</td><td>特效句柄指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ae05196d3c16b63fa368cb7a53513dd03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae05196d3c16b63fa368cb7a53513dd03">&#9670;&nbsp;</a></span>st_mobile_effect_destroy_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_destroy_handle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>销毁特效句柄, 需在OpenGL渲染线程中执行 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a6bce16d53184e65663a25f2a14b97e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bce16d53184e65663a25f2a14b97e73">&#9670;&nbsp;</a></span>st_mobile_effect_set_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a2969d5109d7bd3e1a0ce7ef5f462f258">st_effect_param_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置特效的参数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的贴纸句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>参数类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>参数数值，具体范围参考参数类型说明 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a3922430d3e1968ff074868cc455b946e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3922430d3e1968ff074868cc455b946e">&#9670;&nbsp;</a></span>st_mobile_effect_get_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a2969d5109d7bd3e1a0ce7ef5f462f258">st_effect_param_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取特效的参数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的贴纸句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>参数类型 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">val</td><td>参数数值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a2410b777a34130b480a27bb45d4a8eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2410b777a34130b480a27bb45d4a8eff">&#9670;&nbsp;</a></span>st_mobile_effect_get_detect_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_detect_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>p_detect_config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取需要的检测配置选项 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_detect_config</td><td>返回检测配置选项, 每一位分别代表该位对应检测选项, 对应状态详见st_mobile_human_action.h中, 如ST_MOBILE_FACE_DETECT等 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a4e159fed7f02338cd912f6c842bfd2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e159fed7f02338cd912f6c842bfd2b2">&#9670;&nbsp;</a></span>st_mobile_effect_get_custom_event_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_custom_event_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>p_custom_event_config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取需要的自定义事件选项 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_custom_event_config</td><td>返回自定义事件选项 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a6f728e67e873e1e4f47997ccd7526462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f728e67e873e1e4f47997ccd7526462">&#9670;&nbsp;</a></span>st_mobile_effect_get_default_camera_quaternion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_default_camera_quaternion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>b_front_camera</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__quaternion__t.html">st_quaternion_t</a> *&#160;</td>
+          <td class="paramname"><em>p_default_quat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取前摄/后摄对应的默认手机姿态四元数，在处理图片、视频或者没有相应的手机姿态的情况下，需要传入默认的camera_quat </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b_front_camera</td><td>指定当前获取的默认手机姿态四元数对应前摄像头还是后摄像头 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_default_quat</td><td>返回的默认四元数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a8120ecf608712c8a44806bda58803db1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8120ecf608712c8a44806bda58803db1">&#9670;&nbsp;</a></span>st_mobile_effect_get_animal_detect_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_animal_detect_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>p_detect_config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取目前需要的动物检测类型 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_detect_config</td><td>返回的需要检测的类别，对应状态详见st_mobile_common.h中, 如ST_MOBILE_CAT_DETECT等 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a94d0a36fb108d92f79b42f25975665cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d0a36fb108d92f79b42f25975665cf">&#9670;&nbsp;</a></span>st_mobile_effect_get_custom_param_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_custom_param_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>p_custom_param_config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取自定义配置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_custom_param_config</td><td>返回的自定义配置选项, 每一位分别代表该位的检测选项, 对应的状态详见st_effect_custom_param_config_t </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a24369d3059f56caf2a210b0bcf7a4a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24369d3059f56caf2a210b0bcf7a4a8e">&#9670;&nbsp;</a></span>st_mobile_effect_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__render__in__param__t.html">st_effect_render_in_param_t</a> *&#160;</td>
+          <td class="paramname"><em>p_in_param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__render__out__param__t.html">st_effect_render_out_param_t</a> *&#160;</td>
+          <td class="paramname"><em>p_out_param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>特效渲染, 必须在OpenGL渲染线程中执行 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_in_param</td><td>输入的渲染信息 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_out_param</td><td>输出的渲染信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="af252cefb3f72ef91ef3d1f3536b4f7ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af252cefb3f72ef91ef3d1f3536b4f7ff">&#9670;&nbsp;</a></span>st_mobile_effect_get_overlapped_beauty_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_overlapped_beauty_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>p_info_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取覆盖生效的美颜的数量, 需要在st_mobile_effect_render接口后调用，因为overlap信息是在render之后更新的 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_info_num</td><td>变化的美颜的数量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="af03626af06305013c7a7dbbe369f2c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af03626af06305013c7a7dbbe369f2c9e">&#9670;&nbsp;</a></span>st_mobile_effect_get_overlapped_beauty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_overlapped_beauty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__beauty__info__t.html">st_effect_beauty_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_infos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>info_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取覆盖生效的美颜的信息, 需要在st_mobile_effect_render接口后调用，因为overlap信息是在render之后更新的 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_infos</td><td>美颜信息的起始地址 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">info_num</td><td>起始地址可以容纳美颜信息的数量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a399c46d273d7c2f91f8ceee87edf71e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399c46d273d7c2f91f8ceee87edf71e8">&#9670;&nbsp;</a></span>st_mobile_effect_set_beauty_strength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_beauty_strength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置美颜的强度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>强度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a22fbcada2bcaf1e06efd7159d534247c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22fbcada2bcaf1e06efd7159d534247c">&#9670;&nbsp;</a></span>st_mobile_effect_get_beauty_strength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_beauty_strength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取美颜的强度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">val</td><td>强度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a71afe2e7de8d3c0b0f633551252b1c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71afe2e7de8d3c0b0f633551252b1c9e">&#9670;&nbsp;</a></span>st_mobile_effect_set_beauty_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_beauty_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置美颜的模式, 目前仅对磨皮和美白有效，支持的有效模式为[0, 1, 2]三个值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>模式，支持的有效模式为[0, 1, 2]三个值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a289df0944179b18346e4ce0ddeb95e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a289df0944179b18346e4ce0ddeb95e64">&#9670;&nbsp;</a></span>st_mobile_effect_get_beauty_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_beauty_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取美颜的模式, 目前仅对磨皮和美白有效 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">mode</td><td>模式 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ae08bff6d1ccfcdcaf6989d1f80412290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae08bff6d1ccfcdcaf6989d1f80412290">&#9670;&nbsp;</a></span>st_mobile_effect_set_beauty_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_beauty_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a8a7fff6d7ba8f70ea231a4fa7a3dedce">st_effect_beauty_param_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置美颜相关配置项 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>配置项类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>配置项参数值，具体范围参考配置项说明 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a94b9f14c5db6d42a7a4116e34d71efe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94b9f14c5db6d42a7a4116e34d71efe1">&#9670;&nbsp;</a></span>st_mobile_effect_get_beauty_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_beauty_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a8a7fff6d7ba8f70ea231a4fa7a3dedce">st_effect_beauty_param_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取美颜相关配置项 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>配置项类型 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">val</td><td>配置项值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a62dbdffdb30756d17728702fc710cfed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62dbdffdb30756d17728702fc710cfed">&#9670;&nbsp;</a></span>st_mobile_effect_set_tryon_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_tryon_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>tryon_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__tryon__info__t.html">st_effect_tryon_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置试妆相关参数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tryon_type</td><td>试妆类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_info</td><td>需要设置的试妆信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="af4613e100aca9f58d48c63d5fac7244a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4613e100aca9f58d48c63d5fac7244a">&#9670;&nbsp;</a></span>st_mobile_effect_get_tryon_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_tryon_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>tryon_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__tryon__info__t.html">st_effect_tryon_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取试妆相关参数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tryon_type</td><td>试妆类型 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_info</td><td>需要返回的试妆信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="adc45b206dc9a038aa3f24dcce65c6604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc45b206dc9a038aa3f24dcce65c6604">&#9670;&nbsp;</a></span>st_mobile_effect_set_beauty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_beauty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载美颜素材，可以通过将path参数置为nullptr，清空之前类型设置的对应素材（如美颜、美妆、滤镜素材） 目前对美颜支持设置美白、红润两种自定义的素材 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>待添加的素材文件路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a7a699e2e295347d6a8e579d04a01cd80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a699e2e295347d6a8e579d04a01cd80">&#9670;&nbsp;</a></span>st_mobile_effect_set_beauty_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_beauty_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a724e41fd506f9afa6a3d9f3aec410e99">st_effect_beauty_type_t</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载美颜素材 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">param</td><td>美颜类型 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>待添加的素材缓存信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a413ef931aa1e4b186b1b9cf3dfbaf141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413ef931aa1e4b186b1b9cf3dfbaf141">&#9670;&nbsp;</a></span>st_mobile_effect_add_package()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_add_package </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>p_package_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>p_package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加素材包 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_package_path</td><td>待添加的素材包文件路径 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_package_id</td><td>素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ab4261ea663437abba421bda32ac1cdc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4261ea663437abba421bda32ac1cdc0">&#9670;&nbsp;</a></span>st_mobile_effect_add_package_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_add_package_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>p_package_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>p_package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加缓存中的素材包 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_package_buffer</td><td>待添加的素材包缓存信息 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_package_id</td><td>素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a39f602191184d6823478eff7efaa977d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f602191184d6823478eff7efaa977d">&#9670;&nbsp;</a></span>st_mobile_effect_change_package()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_change_package </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>p_package_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>p_package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更换缓存中的素材包 (删除已有的素材包) </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_package_path</td><td>待更换的素材包文件路径 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">package_id</td><td>素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a0c9008052fc5dd6ee353b8758d35f09d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c9008052fc5dd6ee353b8758d35f09d">&#9670;&nbsp;</a></span>st_mobile_effect_change_package_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_change_package_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__buffer__t.html">st_effect_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>p_package_buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>p_package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更换缓存中的素材包 (删除已有的素材包) </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_package_buffer</td><td>待更换的素材包缓存信息 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_package_id</td><td>素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a70f6c9f0f9005693af14c6803cab70e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70f6c9f0f9005693af14c6803cab70e9">&#9670;&nbsp;</a></span>st_mobile_effect_remove_package()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_remove_package </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>删除指定素材包 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">package_id</td><td>待删除的素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ae84f09d15df1687b6d22f03c06c41f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae84f09d15df1687b6d22f03c06c41f5f">&#9670;&nbsp;</a></span>st_mobile_effect_clear_packages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_clear_packages </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清空所有素材包 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a678f96205ef51b5b69461dd7beb7afa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678f96205ef51b5b69461dd7beb7afa1">&#9670;&nbsp;</a></span>st_mobile_effect_replay_package()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_replay_package </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>package_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新播放制定素材包中的素材 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">package_id</td><td>素材包ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="af566f2e3ced1ad89d161b819d448e87a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af566f2e3ced1ad89d161b819d448e87a">&#9670;&nbsp;</a></span>st_mobile_effect_get_package_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_package_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>package_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__package__info__t.html">st_effect_package_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_package_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取素材信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">package_id</td><td>素材包ID </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_package_info</td><td>素材信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a920617e408c55389bdba0e5ded2e2554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a920617e408c55389bdba0e5ded2e2554">&#9670;&nbsp;</a></span>st_mobile_effect_get_modules_in_package()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_modules_in_package </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>package_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_modules</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>module_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取素材的贴纸信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">package_id</td><td>素材包ID </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">module_num</td><td>贴纸信息地址能容纳的贴纸的数量 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_modules</td><td>贴纸信息的起始地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a5ce53596fd848b5644efdadd467e7acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce53596fd848b5644efdadd467e7acc">&#9670;&nbsp;</a></span>st_mobile_effect_get_module_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_module_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>module_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_module_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取贴纸信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">module_id</td><td>贴纸ID </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_module_info</td><td>贴纸信息的起始地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a5a98fbba04d5398f1fc2359eeb2a9c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a98fbba04d5398f1fc2359eeb2a9c47">&#9670;&nbsp;</a></span>st_mobile_effect_set_module_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_module_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structst__effect__module__info__t.html">st_effect_module_info_t</a> *&#160;</td>
+          <td class="paramname"><em>p_module_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置贴纸信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">module_id</td><td>贴纸ID </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_module_info</td><td>贴纸信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ad00b47c71c0816e631bdeabe981d5e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad00b47c71c0816e631bdeabe981d5e5d">&#9670;&nbsp;</a></span>st_mobile_effect_set_package_beauty_group_strength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_package_beauty_group_strength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pkg_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a4f48072afcfd3cff846392ad851341e7">st_effect_beauty_group_t</a>&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>strength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置贴纸素材包内部美颜组合的强度，强度范围[0.0, 1.0] </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">group</td><td>美颜组合类型，目前只支持设置美妆、滤镜组合的强度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">strength</td><td>强度值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a9d3cf113bc1ddf146638159d26d51d56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d3cf113bc1ddf146638159d26d51d56">&#9670;&nbsp;</a></span>st_mobile_effect_set_module_state_change_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_module_state_change_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#aa842fb3044b047acc4d3d424c7df7467">st_effect_module_state_change_callback</a>&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置贴纸播放状态改变的回调函数指针 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>回调函数指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a402c6cd112d8895e407ed2316846c0cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402c6cd112d8895e407ed2316846c0cd">&#9670;&nbsp;</a></span>st_mobile_effect_set_packaged_state_change_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_packaged_state_change_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="st__mobile__effect_8h.html#a8337536a827e8db409426e162cb64e4e">st_effect_package_state_change_callback</a>&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置素材包播放状态改变的回调函数指针 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>回调函数指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="ae178366c4949f637974fac140ef14455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae178366c4949f637974fac140ef14455">&#9670;&nbsp;</a></span>st_mobile_effect_release_cached_resource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_release_cached_resource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>释放内部缓存的资源，目前主要是GL相关的渲染资源，需要在GL context中调用 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="a3992285ff5e6f9ee740c04159b325f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3992285ff5e6f9ee740c04159b325f37">&#9670;&nbsp;</a></span>st_mobile_effect_reset_output_buffer_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_reset_output_buffer_cache </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重置render接口输出buffer时，PC平台内部的双缓冲。一般在PC平台上层有一段时间没有用render接口时，防止闪一帧前面画面时调用。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等 </dd></dl>
+
+</div>
+</div>
+<a id="afc875366c723bfc7a13ed2a5c506dcba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc875366c723bfc7a13ed2a5c506dcba">&#9670;&nbsp;</a></span>st_moobile_effect_get_3d_beauty_parts_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_moobile_effect_get_3d_beauty_parts_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>parts_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在调用st_mobile_effect_set_beauty函数加载了3D微整形素材包之后调用。获取到素材包中所有的blendshape的数量 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">parts_count</td><td>输出的数组长度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8b8a049f1d47c39a1df0fe3d23de4a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b8a049f1d47c39a1df0fe3d23de4a7">&#9670;&nbsp;</a></span>st_mobile_effect_get_3d_beauty_parts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_get_3d_beauty_parts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__3_d__beauty__part__info__t.html">st_effect_3D_beauty_part_info_t</a> *&#160;</td>
+          <td class="paramname"><em>parts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>parts_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在调用st_mobile_effect_set_beauty函数加载了3D微整形素材包之后调用。获取到素材包中所有的blendshape名称、index和当前强度[0, 1] </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">parts</td><td>输出的blend shape信息数组。由外部分配内存。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parts_count</td><td>输入的数组长度,应小于等于获取的数量 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af24bb56d8887615e22b8beba8a1d08e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24bb56d8887615e22b8beba8a1d08e4">&#9670;&nbsp;</a></span>st_mobile_effect_set_face_mesh_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_face_mesh_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__mobile__face__mesh__list__t.html">st_mobile_face_mesh_list_t</a> *&#160;</td>
+          <td class="paramname"><em>face_mesh_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用于输入human action的face mesh list信息。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parts</td><td>从human action中获取的face_mesh_list信息指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5f89d63c05ac9b686dd02f498107858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5f89d63c05ac9b686dd02f498107858">&#9670;&nbsp;</a></span>st_mobile_effect_set_3d_beauty_parts_strength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ST_SDK_API <a class="el" href="st__mobile__common_8h.html#aee71bb3d48ebf339a2ca65aec274c0ab">st_result_t</a> st_mobile_effect_set_3d_beauty_parts_strength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st__mobile__common_8h.html#aa46e688b3a3d3dd49f9d7d6d2e541a65">st_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structst__effect__3_d__beauty__part__info__t.html">st_effect_3D_beauty_part_info_t</a> *&#160;</td>
+          <td class="paramname"><em>parts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>partSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在调用st_mobile_effect_set_beauty函数加载了3D微整形素材包之后调用。在获取blendshape数组之后，可以依据起信息修改权重[0, 1]，设置给渲染引擎产生效果。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>已初始化的特效句柄 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parts</td><td>输入的blend shape信息数组。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">partSize</td><td>输入的数组长度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="st__mobile__effect_8h.html">st_mobile_effect.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<map id="st_mobile_hand_t" name="st_mobile_hand_t">
+<area shape="rect" id="node1" title="手势检测结果" alt="" coords="205,124,327,151"/>
+<area shape="rect" id="node2" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="5,5,95,32"/>
+<area shape="rect" id="node3" href="$structst__rect__t.html" title="矩形" alt="" coords="179,5,251,32"/>
+<area shape="rect" id="node4" href="$structst__pointf__t.html" title="2d float点" alt="" coords="275,5,358,32"/>
+<area shape="rect" id="node5" href="$structst__hand__dynamic__gesture__t.html" title="动态手势结果" alt="" coords="421,5,604,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="st_mobile_ear_t" name="st_mobile_ear_t">
+<area shape="rect" id="node1" title="耳朵关键点信息" alt="" coords="5,95,120,121"/>
+<area shape="rect" id="node2" href="$structst__pointf__t.html" title="2d float点" alt="" coords="21,5,104,32"/>
+</map>

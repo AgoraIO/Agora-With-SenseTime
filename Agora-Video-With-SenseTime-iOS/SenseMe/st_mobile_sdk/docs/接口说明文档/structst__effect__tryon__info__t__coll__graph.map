@@ -1,0 +1,5 @@
+<map id="st_effect_tryon_info_t" name="st_effect_tryon_info_t">
+<area shape="rect" id="node1" title="试妆信息" alt="" coords="5,199,152,225"/>
+<area shape="rect" id="node2" href="$structst__effect__tryon__region__info__t.html" title="试妆区域信息" alt="" coords="93,95,243,136"/>
+<area shape="rect" id="node3" href="$structst__color__t.html" title=" " alt="" coords="17,5,95,32"/>
+</map>

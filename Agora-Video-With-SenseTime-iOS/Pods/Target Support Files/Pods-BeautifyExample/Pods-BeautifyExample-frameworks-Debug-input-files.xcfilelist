@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample-frameworks.sh
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAIDenoiseExtension.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraCore.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraDav1dExtension.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraRtcKit.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSoundTouch.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSuperResolutionExtension.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/Agorafdkaac.framework
+${PODS_ROOT}/AgoraRtcEngine_iOS/Agoraffmpeg.framework

@@ -1,0 +1,286 @@
+"分割" = "Segment";
+
+"动物" = "Animal";
+
+"特效" = "Effects";
+
+"美妆" = "Makeup";
+
+"滤镜" = "Filters";
+
+"美颜" = "Beauty";
+
+"视频" = "Video";
+
+"拍摄" = "Photo";
+
+"风格" = "Style";
+"图片已保存到相册" = "The picture has been saved to the Gallery";
+"视频已存储到相册" = "The video has been saved to the Gallery";
+"提示" = "Tips";
+"视频录制时间小于2s，请重新录制" = "The video is less than 2 secs, please record again";
+"知道了" = "Got it";
+
+"性能展示" = "Performance";
+"语言切换" = "Language";
+"YUV/RGBA切换"="YUV/RGBASwitch";
+"使用条款" = "Terms of Use";
+
+"保存成功"="Successfully saved";
+
+"全部效果" = "All";
+
+"风格" = "Style";
+
+"美体" = "Body";
+"2D贴纸" = "2D";
+"3D贴纸" = "3D";
+"手势贴纸"= "Gesture";
+"背景分割" = "Background";
+"脸部变形" = "Deformation";
+"粒子效果" = "Particle";
+"猫脸" = "Cat";
+"大头特效" = "Head";
+"影分身" = "Separation";
+"抠脸" = "Pick face";
+"特效玩法" = "Play";
+"通用物体跟踪" = "Object tracking";
+"漫画脸" = "Cartoon";
+"美妆贴纸" = "Makeup";
+
+"动物类" = "Animals";
+"二次元" = "Two dimensions";
+"卡通" = "Cartoon";
+
+
+"整体效果" = "Style";
+"基础美颜" = "Basic";
+"美形" = "Advanced";
+"微整形" = "Micro Surgery";
+"美妆" = "Makeup";
+"滤镜" = "Filters";
+"调整" = "Adjust";
+"重置" = "Reset";
+"清零" = "Clear";
+
+"自然" = "Nature";
+"轻妆" = "Light";
+"流行" = "Popular";
+
+"美白" = "Brighten";
+"美白1" = "Brighten1";
+"美白2" = "Brighten2";
+"美白3" = "Brighten3";
+"红润" = "Rosy";
+"磨皮" = "Smooth";
+"磨皮1" = "Smooth1";
+"磨皮2" = "Smooth2";
+
+"瘦脸" = "Sculpt";
+"大眼" = "Enlarge";
+"小脸" = "Face";
+"窄脸" = "Slim";
+"圆眼" = "Round";
+
+"小头" = "Head";
+"小头2" = "Head2";
+"瘦脸型" = "Sharp";
+"瘦下颔" = "Thin-jaw";
+"下巴" = "Chin";
+"额头" = "Forehead";
+"苹果肌" = "Cheeks";
+"瘦鼻翼" = "Narrow";
+"长鼻" = "Long Nose";
+"侧脸隆鼻" = "Side-up";
+"嘴形" = "Mouth";
+"缩人中" = "Philtrum";
+"眼距" = "Eye Distance";
+"眼睛角度" = "Eye Angle";
+"开眼角" = "Corner";
+"亮眼" = "Bright Eyes";
+"祛黑眼圈" = "Circles";
+"祛法令纹" = "Winkles";
+"白牙" = "Whitening";
+"瘦颧骨" = "Cheekbones";
+"开外眼角" = "Enlarge corner eye";
+
+"整妆" = "Makeup Style";
+"染发" = "Hair color";
+"口红" = "Lipstick";
+"腮红" = "Blush";
+"修容" = "Contour";
+"眉毛" = "Eyebrow";
+"眼影" = "Eye shadow";
+"眼线" = "Eye liner";
+"眼睫毛" = "Eyelash";
+"美瞳" = "Eye color";
+
+"请先取消整妆"="Please cancel the Makeup Style first";
+
+"人物" = "Selfie";
+"风景" = "Scenery";
+"静物" = "Objects";
+"美食" = "Foods";
+
+"对比度" = "Contrast";
+"饱和度" = "Saturation";
+"锐化" = "Sharpen";
+"清晰度" = "Clarity";
+
+"请张张嘴"="Please open mouth";
+"请眨眨眼"="Please blink";
+"请摇摇头"="Please shake head";
+"请笑一笑"="Please lips upward";
+"请托个手"="Please hold hands";
+"请挑挑眉"="Please brow jump";
+"请双手合十"="Please bless";
+"请双手比心"="Please show your heart with hands";
+"请伸手掌"="Please stretch out your palm";
+"请伸出食指"="Please extend your index finger";
+"请亮出我爱你手势"="Please show the gesture I love you";
+"请举起拳头"="Please raise your fist";
+"请嘟嘴"="Put your mouth please";
+"请点点头"="Please nod";
+"请单手比心"="Please show your heart with one hand";
+"请比个赞"="Please give your thumbs up";
+"请比个手枪"="Please make a pistol gesture";
+"请比个剪刀手"="Please be a scissor hand";
+"请抱个拳"="Please hold a fist";
+"请亮出OK手势"="Please show the OK gesture";
+"请亮出666手势"="Please show the 666 gesture";
+"嘴角上扬"="Please lips upward";
+"请比个赞"="Please give your thumbs up";
+"请点击屏幕"="Please tap the screen";
+"请双击屏幕"="Please double-tap the screen";
+
+"退出" = "Exit";
+"未识别到人脸" = "No face recognized";
+"把脸移入圈内" = "Move the face into the circle";
+"人脸角度偏左" = "Face angle left";
+"人脸角度偏右" = "Face angle right";
+"人脸角度偏上" = "Face angle is up";
+"人脸角度偏下" = "Face angle is down";
+"属于你的智能脸型已生成" = "Your smart face has been generated";
+
+"回删" = "Back delete";
+
+"最新" = "New";
+"卡通类" = "Cartoon";
+"本地1" = "Local1";
+"本地2" = "Local2";
+"本地" = "Local";
+"叠加" = "Superposit";
+
+"手势" = "Gesture";
+"背景" = "Ground";
+"变形" = "Deformat";
+"粒子" = "Particle";
+"物体跟踪" = "Tracking";
+"大头" = "Big head";
+
+"高阶瘦脸" = "Thin face";
+"女神" = "Goddes";
+"长脸" = "Long face";
+"圆脸" = "Round face";
+
+"单帧耗时" = "Single time";
+"CPU占用率" = "CPU";
+
+"成功" = "success";
+"图片保存失败" = "Save fail";
+"图片保存成功" = "Save success";
+"视频保存成功" = "Video save success";
+"视频保存失败" = "Video save fail";
+"请先播放视频" = "Please play first";
+
+"放弃保存当前拍摄视频" = "Discard the current video shoot";
+"取消" = "Cancel";
+"确定" = "confirm";
+"确认" = "confirm";
+
+"列表正在拉取或拉取出错" = "Material List is downloading or error!";
+
+"数据加载中..." = "Data loading...";
+"授权失败,请检查网络或license" = "Authorization fails please check network or license";
+"无法连接网络,请检查网络设置" = "Unable to connect the network";
+
+"漫画脸" = "Cartoon";
+"质地" = "Finish";
+
+"请先选择颜色" = "Please select the color first";
+
+"强度" = "Strength";
+"光泽度" = "Gloss";
+"灰白度" = "Grayness";
+
+"颜色" = "Colour";
+"调色" = "Tinting";
+"无" = "None";
+
+"卡通风格" = "MangaStyle";
+"美颜1" = "Beauty1";
+"美颜2" = "Beauty2";
+
+"3D微整形" = "3D Micro";
+"眼睛比例" = "EyeScale";
+"眼高" = "EyeHeight";
+"眼距" = "EyeWidth";
+"外眼角" = "EyeOuterWidth";
+"眼睛深浅" = "EyeDepth";
+"卧蚕深浅" = "EyeLowerDepth";
+"眼睛角度" = "EyeAngle";
+"鼻子比例" = "NoseScale";
+"鼻宽" = "NoseWidth";
+"鼻长" = "NoseHeight";
+"鼻高" = "NoseDepth";
+"鼻根" = "NoseRidgeUpper";
+"鼻子驼峰" = "NoseRidgeCurve";
+"鼻尖" = "NoseTipHeight";
+"鼻翼" = "NostrilWidth";
+"嘴巴比例" = "MouthScale";
+"嘴巴宽度" = "MouthWidth";
+"嘴巴高度" = "MouthHeight";
+"嘴巴深度" = "MouthDepth";
+"嘴巴厚度" = "LipThin";
+"头部比例" = "HeadScale";
+"头部宽度" = "HeadOuterWidth";
+"脸部胖瘦" = "FaceHeavy";
+"脸部角度" = "FaceAngle";
+"脸部外扩" = "FaceCenterDepthEnlarge";
+"脸部内缩" = "FaceCenterDepthShrink";
+"嘟嘟唇" = "Beeplips";
+"微笑唇" = "Smilinglips";
+"苹果肌" = "Cheekbone";
+"脸部轮廓" = "Goldenline";
+"眼睛" = "Eye";
+"鼻子" = "Nose";
+"嘴巴" = "Mouth";
+"头部" = "Head";
+"脸部" = "Face";
+
+"嘟嘟唇" = "Beeplips";
+"微笑唇" = "Smilinglips";
+"外眼尾" = "Outereyetail";
+"内眼角尖" = "Innercorner";
+"额头" = "Forehead";
+"法令纹" = "Nasolabial";
+"泪沟" = "Tearditch";
+"眉骨" = "Browbone";
+"挑眉" = "Raiseeyebrows";
+"太阳穴" = "Temple";
+"侧额头" = "Foreheadtwo";
+
+"相册" = "Album";
+
+"扫描二维码" = "Scan QR code";
+"下载中" = "Downloading";
+"下载成功" = "Download successful";
+"下载失败，请重试" = "Download failed, please retry";
+"网络异常，请稍后再试" = "Network error, please try again later";
+"同步" = "Synchronize";
+"二维码识别失败" = "QR code recognition failed";
+"二维码格式不正确，未能生成二维码" = "The QR code format is incorrect and the QR code cannot be generated";
+
+"唇线"="Lip line";
+"眼印"="Eye print";
+"粉底"="Foundation";

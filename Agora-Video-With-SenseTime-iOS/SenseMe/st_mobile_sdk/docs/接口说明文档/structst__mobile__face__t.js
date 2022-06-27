@@ -1,0 +1,28 @@
+var structst__mobile__face__t =
+[
+    [ "face106", "structst__mobile__face__t.html#af36d469ac72f42539615c58fc00cdf0c", null ],
+    [ "p_extra_face_points", "structst__mobile__face__t.html#a0c61a3dedcc52137121ec15da469529a", null ],
+    [ "extra_face_points_count", "structst__mobile__face__t.html#a6443517f3af5ed4b2a6ac6bf7d974ac7", null ],
+    [ "p_tongue_points", "structst__mobile__face__t.html#a26f6ade996f34938bae912d37a334308", null ],
+    [ "p_tongue_points_score", "structst__mobile__face__t.html#a7e7cc7feb2e2bcdf7d54237bc2af4606", null ],
+    [ "tongue_points_count", "structst__mobile__face__t.html#aaf4d725f55f1d91f17403a536a5479fd", null ],
+    [ "p_face_mesh", "structst__mobile__face__t.html#a33d639c4757dc37a199362a11b23dc8c", null ],
+    [ "p_eyeball_center", "structst__mobile__face__t.html#aa69688f0010f8fb690abff1586a126a3", null ],
+    [ "eyeball_center_points_count", "structst__mobile__face__t.html#aa336f09272ab4a61107525538f98fd95", null ],
+    [ "p_eyeball_contour", "structst__mobile__face__t.html#aad95017afa5fea159ea12f0fa494cef2", null ],
+    [ "eyeball_contour_points_count", "structst__mobile__face__t.html#a3c0fda40add826503bd06c1a9d6815c4", null ],
+    [ "left_eyeball_score", "structst__mobile__face__t.html#a52c600e81f20fbb2bfce6b923c3672df", null ],
+    [ "right_eyeball_score", "structst__mobile__face__t.html#af3887c45d6f450230fc02760b650f0ac", null ],
+    [ "p_face_ear", "structst__mobile__face__t.html#a4d76e531469e5911e90a20b5d58c98df", null ],
+    [ "p_gaze_direction", "structst__mobile__face__t.html#ad8b7fa00c82fd2e48cea8f1cb23ab2c6", null ],
+    [ "p_gaze_score", "structst__mobile__face__t.html#ad3fad42557ae77c1c1433d7dad5a80bc", null ],
+    [ "face_action", "structst__mobile__face__t.html#a5c19d59423c9284a49ca7abeab445910", null ],
+    [ "p_avatar_help_info", "structst__mobile__face__t.html#af16a37e7d671a36fa90f00d569b10beb", null ],
+    [ "avatar_help_info_length", "structst__mobile__face__t.html#a1a46207d0d64c8529df81cb82803fdda", null ],
+    [ "s_type", "structst__mobile__face__t.html#a3d3a70865a53a2e89872184a94ac580d", null ],
+    [ "p_face_action_score", "structst__mobile__face__t.html#ad7c64691da2bc581655a30a40d9c3b17", null ],
+    [ "face_action_score_count", "structst__mobile__face__t.html#a3ad0b3a62e4415788ce0c38b8b922ed9", null ],
+    [ "p_face_forehead", "structst__mobile__face__t.html#a77cbfde8b416792f5589301cd5070d93", null ],
+    [ "hair_color", "structst__mobile__face__t.html#a733ce946da07e7086573e31200d7ce3e", null ],
+    [ "face_extra_info", "structst__mobile__face__t.html#a1f89a5188abf75e455521cc68038b265", null ]
+];

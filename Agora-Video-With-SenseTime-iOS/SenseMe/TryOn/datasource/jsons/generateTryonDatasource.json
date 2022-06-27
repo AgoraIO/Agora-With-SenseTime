@@ -1,0 +1,20 @@
+{
+  "all_categories" : [
+    {
+      "subDataSources" : [
+        {
+          "name" : "美颜1",
+          "imageName" : "tryon_style1"
+        },
+        {
+          "name" : "美颜2",
+          "imageName" : "tryon_style2"
+        }
+      ],
+      "imageName" : "meiyan_process",
+      "highlightImageName" : "",
+      "name" : "美颜",
+      "type" : 0
+    }
+  ]
+}

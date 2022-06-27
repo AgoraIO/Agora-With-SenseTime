@@ -1,0 +1,318 @@
+<!-- HTML header for doxygen 1.9.1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Effects SDK: 检测信息帮助文档</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Effects SDK
+   &#160;<span id="projectnumber">8.7.4</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md_include__sense_a_r_v8_7_0__effects_xEF_xBC_x89_xE5_xB8_xAE_xE5_x8A_xA9_xE6_x96_x87_xE6_xA1_xA3.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">检测信息帮助文档 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+1. 人脸106点检测及追踪</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+1.1. 人脸106点检测及追踪介绍</h2>
+<p>人脸关键点检测是指在检测到的人脸框中，进一步定位人脸的五官和轮廓位置。在图片给定的人脸框中对关键点的坐标进行迭代收敛，返回迭代的结果。若框中没有人脸，依然会返回结果。人脸关键点跟踪是在检测的基础上，加入面部轨迹追踪与视频动态解析技术，极大地提高了人脸的检测速度，能够随着视频内容的变化迅速定位人脸所在的位置。</p>
+<p>人脸关键点跟踪技术，采用了最新的基于级联回归的算法，结合了深度学习的五官标定初始化，综合多个不同标准的多点数据集知识，使得同一个模型可以应用于不同数量的关键点跟踪，以保障更低的误差和更好的适应性。我们的人脸关键点定位算法可对各种表情、姿态、角度丰富多变的人脸进行精准关键点定位。</p>
+<p>产品功能：</p>
+<ol type="1">
+<li>静态图片中人脸106关键点检测功能</li>
+<li>动态视频中人脸106关键点的实时检测和跟踪功能</li>
+<li>支持最多32个人脸的多人脸实时检测和跟踪</li>
+<li>支持实时人脸的三维旋转角度输出</li>
+<li>可检测张嘴、点头、摇头、挑眉、眨眼、笑、嘟嘴共7个脸部动作</li>
+<li>支持360人脸检测（使用360度人脸检测模型）</li>
+</ol>
+<p>产品优势：</p>
+<ul>
+<li>支持人脸大角度变化场景</li>
+<li>支持人脸大表情变化场景</li>
+<li>支持人脸大小变化场景</li>
+<li>支持人脸遮挡场景</li>
+<li>支持极端光照变化场景</li>
+<li>支持场景抖动</li>
+<li>支持对面部遮挡的检测，输出106点遮挡信息</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+1.2. 人脸检测及追踪位置定义</h2>
+<p>106 点每个序号的位置定义如图所示。106 点可以获取细微的面部结构信息，用于复杂的交互场景，并进行美容修改或趣味贴图。</p>
+<p><img src="http://file.intra.sensetime.com/f/2900857725/?raw=1" alt="eyes使用" style="zoom: 90%;" class="inline"/></p>
+<center>图 106点示意图</center><p> 以下为106 关键点数集合与位置对应</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">脸框   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脸框   </td><td class="markdownTableBodyNone">0-32   </td><td class="markdownTableBodyNone">鼻梁   </td><td class="markdownTableBodyNone">43-46    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眉毛   </td><td class="markdownTableBodyNone">33-37,64-67   </td><td class="markdownTableBodyNone">右眉毛   </td><td class="markdownTableBodyNone">38-42,68-71    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼眶   </td><td class="markdownTableBodyNone">52-57,72-73   </td><td class="markdownTableBodyNone">右眼眶   </td><td class="markdownTableBodyNone">58-63,75-76    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼眶中心点   </td><td class="markdownTableBodyNone">74,104   </td><td class="markdownTableBodyNone">右眼眶中心点   </td><td class="markdownTableBodyNone">77,105    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">鼻子下沿   </td><td class="markdownTableBodyNone">47-51   </td><td class="markdownTableBodyNone">鼻子外侧   </td><td class="markdownTableBodyNone">78-83    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">上嘴唇   </td><td class="markdownTableBodyNone">84-90,96-100   </td><td class="markdownTableBodyNone">下嘴唇   </td><td class="markdownTableBodyNone">91-95,101-103   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md4"></a>
+2. 人脸240点检测及追踪</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+2.1 人脸240点检测及追踪介绍</h2>
+<p>人脸240点检测及追踪功能采用业内领先的人脸检测及追踪算法，保留了原SenseAR_106 SDK产品的鲁棒性强、稳定性高、准确率高、性能卓越等方面的诸多优点，并在人脸面部特征描述的精细与准确程度上有了极大提升，解决了眉毛眼睛嘴唇这些人脸部位在不同面部特征、不同角度的情况下存在的描述欠准确问题，提高了产品的可用性、可靠性，极大的丰富并拓宽了产品的支持场景。</p>
+<p>人脸240点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眉毛眼睛嘴唇部位更加准确细致的检测和跟踪：使用26个关键点对眉毛进行检测定位与实时跟踪；使用44个关键点对眼睛进行检测定位与实时跟踪；使用64个关键点对嘴唇进行检测定位与实时跟踪。</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+2.2 人脸240点检测及追踪位置定义</h2>
+<p>人脸240点检测及追踪功能中眉毛和眼睛的每个序号的位置定义如图2.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/5d4f0b1784/?raw=1" alt="eyes使用" style="zoom: 80%;" class="inline"/></p>
+<center>图2.1 眉毛眼睛的点位示意图</center><p> 人脸240点检测及追踪功能中上嘴唇的每个序号的位置定义如图2.2所示</p>
+<p><img src="http://file.intra.sensetime.com/f/2b1204ce78/?raw=1" alt="240-1" style="zoom: 80%;" class="inline"/></p>
+<p><img src="http://file.intra.sensetime.com/f/e9f62cd3da/?raw=1" alt="mouth1使用" style="zoom:80%;" class="inline"/></p>
+<center>图2.2 嘴巴的点位示意图</center><p>人脸240点检测及追踪功能中眉毛和眼睛的每个序号的位置定义见下表</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼睛上沿   </td><td class="markdownTableBodyNone">11-21   </td><td class="markdownTableBodyNone">左眼睛下沿   </td><td class="markdownTableBodyNone">0-10    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右眼睛上沿   </td><td class="markdownTableBodyNone">33-43   </td><td class="markdownTableBodyNone">右眼睛下沿   </td><td class="markdownTableBodyNone">22-32    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眉毛上沿   </td><td class="markdownTableBodyNone">44-50   </td><td class="markdownTableBodyNone">左眉毛下沿   </td><td class="markdownTableBodyNone">51-56    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右眉毛上沿   </td><td class="markdownTableBodyNone">57-63   </td><td class="markdownTableBodyNone">右眉毛下沿   </td><td class="markdownTableBodyNone">64-69    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">上嘴唇上沿   </td><td class="markdownTableBodyNone">70-86   </td><td class="markdownTableBodyNone">上嘴唇下沿   </td><td class="markdownTableBodyNone">87-103    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">下嘴唇上沿   </td><td class="markdownTableBodyNone">104-118   </td><td class="markdownTableBodyNone">下嘴唇下沿   </td><td class="markdownTableBodyNone">119-133   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md7"></a>
+3. 3Dmesh</h1>
+<h2><a class="anchor" id="autotoc_md8"></a>
+3.1 3Dmesh功能介绍</h2>
+<p>3Dmesh是指在检测到的人脸框中提供高精度人脸稠密点，能够完美贴合人脸并清晰描述人脸三维曲面信息。在图片给定的人脸框中对人脸稠密点进行回归，并返回人脸稠密点坐标、拓扑面片、法向量和三维空间变换矩阵。若框中没有人脸，依然会返回结果。</p>
+<p>3Dmesh技术采用了轻量级深度神经网络并使用多种真实场景下的三维人脸数据进行端到端学习，使其能在手机端实时运行并保障人脸稠密点效果的鲁棒性。我们的3Dmesh算法可对各种表情、姿态、角度丰富多变的人脸进行精准贴合，支持制作精良的美妆或贴纸特效。目前需要依赖106或240关键点使用。</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+4. 眼球轮廓点检测及追踪</h1>
+<p>眼球轮廓点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眼球轮廓更加准确细致的检测和跟踪：使用19个关键点对左眼球进行检测定位与实时跟踪；使用19个关键点对右眼球进行检测定位与实时跟踪。</p>
+<p>眼球轮廓点中的每个序号的位置定义如图3.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/69124877ae/?raw=1" alt="iris_38pts使用" style="zoom:80%;" class="inline"/></p>
+<center>图4.1 眼球轮廓点位置示意图</center><p>眼球轮廓点中的每个序号的位置定义见下表</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">序号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼   </td><td class="markdownTableBodyNone">0-18   </td><td class="markdownTableBodyNone">右眼   </td><td class="markdownTableBodyNone">19-37   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md10"></a>
+5. 眼球中心点检测及追踪</h1>
+<p>眼球中点检测及追踪功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，增加了对眼球中心点更加准确细致的检测和跟踪：使用1个关键点对左眼球中心点进行检测定位与实时跟踪；使用1个关键点对右眼球中心点进行检测定位与实时跟踪。</p>
+<p>眼球轮廓点中的每个序号的位置定义如图4.1所示</p>
+<p><img src="http://file.intra.sensetime.com/f/201ee723be/?raw=1" alt="eyecenter使用" style="zoom:80%;" class="inline"/></p>
+<center>图5.1 眼球中心点位置示意图</center><div class="cccc"></div><h1><a class="anchor" id="autotoc_md11"></a>
+6. Expression检测</h1>
+<p>Expression检测功能，在使用106个关键点对人脸的轮廓及五官的位置进行检测定位与实时跟踪的基础上，进一步对人脸的姿态、面部动作、面部表情进行检测，向使用者提供更加详细的面部信息。</p>
+<p>包含内容：</p>
+<ol type="1">
+<li>五个脸部动作（眨眼、嘴巴大张、摇头、点头、挑眉）</li>
+<li>十种手势（需要有手势检测功能）</li>
+<li>7种头部状态（正向，左转，右转，左倾，右倾，抬头，低头）</li>
+<li>4种眼部状态（两眼闭，两眼睁，左眼睁右眼闭，左眼闭右眼睁）</li>
+<li>6种嘴部动作（闭嘴，张嘴，嘴角上扬，嘟嘴，左撇嘴，右撇嘴）</li>
+</ol>
+<p>详细的对应的表情如下：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">动作   </th><th class="markdownTableHeadNone">示意图   </th><th class="markdownTableHeadNone">动作   </th><th class="markdownTableHeadNone">示意图    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">正常   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/28c176a6d8/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左转头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/eca2e31236/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右转头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f8cc54c191/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左倾头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f950fb8e4e/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">右倾头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/9027d92a2d/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">抬头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f0c2390262/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">低头   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/644a5d65f3/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">闭眼   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/b1273ab152/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">睁眼   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/01eef7cbe4/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼睁右眼闭   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/c61d6efae4/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">左眼闭右眼睁   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/f99f242409/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">闭嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/4143a195c0/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">张嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/12e8d4fb1f/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">嘴角上扬   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/1f62aee2e2/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">嘟嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/c9201fbd02/?raw=1" alt="" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左撇嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/055b4c91f6/?raw=1" alt="" class="inline"/>   </td><td class="markdownTableBodyNone">右撇嘴   </td><td class="markdownTableBodyNone"><img src="http://file.intra.sensetime.com/f/e32ae3f5ab/?raw=1" alt="" class="inline"/>   </td></tr>
+</table>
+<div class="cccc"></div> <h1><a class="anchor" id="autotoc_md12"></a>
+7. 人脸属性检测</h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+7.1. 人脸属性检测介绍</h2>
+<p>SenseAR_HumanAction SDK采用商汤科技自主研发的人脸属性检测模型，可以检测数当前人脸的年龄、性别、颜值、是否戴眼镜、是否有胡子等属性值，速度快，检测准确，性能优良。</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+7.2. 人脸属性检测效果展示</h2>
+<p>人脸属性检测功能可迅速检测人脸属性，效果展示如下：</p>
+<p>检测结果：性别：女；年龄：21；颜值：90。</p>
+<p><img src="http://file.intra.sensetime.com/f/a1328f48dc/?raw=1" alt="插图00_1" class="inline"/></p>
+<center>图7.1 人脸属性检测效果展示<center> <div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md15"></a>
+8 猫脸关键点检测</h1>
+<center><center> </center></center><center><center>SenseAR 猫脸关键点检测 SDK采用商汤科技自主研发的的猫脸关键点检测跟踪功能，可以实现在主流手机上实时的猫脸检测与跟踪。目前可检测出20个关键点。</center></center><center><center></center></center><center><center><img src="http://file.intra.sensetime.com/f/1bada0cb04/?raw=1" alt="aaaa" style="zoom:50%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">下巴   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">右猫脸颊   </td><td class="markdownTableBodyNone">8    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左猫脸颊   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">左眼内外眼角   </td><td class="markdownTableBodyNone">9,10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左猫耳根   </td><td class="markdownTableBodyNone">2,4   </td><td class="markdownTableBodyNone">右眼内外眼角   </td><td class="markdownTableBodyNone">11,12    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左猫耳尖   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">猫鼻尖   </td><td class="markdownTableBodyNone">13    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">右猫耳根   </td><td class="markdownTableBodyNone">5,7   </td><td class="markdownTableBodyNone">猫嘴唇   </td><td class="markdownTableBodyNone">14,15,16,17    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">右猫耳尖   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">猫眼睛中心点   </td><td class="markdownTableBodyNone">18,19   </td></tr>
+</table>
+</center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md16"></a>
+9. 狗脸关键点检测</h1>
+<center><center> </center></center><center><center>SenseAR 狗脸关键点检测 SDK采用商汤科技自主研发的狗脸关键点检测跟踪功能，可以实现在主流手机上实时的检测与跟踪。目前可检测出102个关键点。</center></center><center><center></center></center><center><center><img src="http://file.intra.sensetime.com/f/39a2189db5/?raw=1" alt="aaaa" style="zoom:20%;" class="inline"/></center></center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脸轮廓   </td><td class="markdownTableBodyNone">0~16   </td><td class="markdownTableBodyNone">额头轮廓   </td><td class="markdownTableBodyNone">17~27    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">鼻梁中轴线   </td><td class="markdownTableBodyNone">28~32   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左眼轮廓   </td><td class="markdownTableBodyNone">33~40   </td><td class="markdownTableBodyNone">右眼轮廓   </td><td class="markdownTableBodyNone">41~48    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左眼球中心点   </td><td class="markdownTableBodyNone">49   </td><td class="markdownTableBodyNone">右眼球中心点   </td><td class="markdownTableBodyNone">50    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">鼻子轮廓点   </td><td class="markdownTableBodyNone">51~58   </td><td class="markdownTableBodyNone">鼻子中心点   </td><td class="markdownTableBodyNone">60    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左鼻孔中心点   </td><td class="markdownTableBodyNone">59   </td><td class="markdownTableBodyNone">右鼻孔中心点   </td><td class="markdownTableBodyNone">61    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">上嘴唇   </td><td class="markdownTableBodyNone">62~70   </td><td class="markdownTableBodyNone">下嘴唇   </td><td class="markdownTableBodyNone">71~77    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">左耳根   </td><td class="markdownTableBodyNone">87~89   </td><td class="markdownTableBodyNone">右耳根   </td><td class="markdownTableBodyNone">99~101    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">左耳外轮廓   </td><td class="markdownTableBodyNone">78~86   </td><td class="markdownTableBodyNone">右耳外轮廓   </td><td class="markdownTableBodyNone">90~98   </td></tr>
+</table>
+</center></center><center><center><div class="cccc"></div></center></center><center><center></center></center><h1><a class="anchor" id="autotoc_md17"></a>
+10. 手势检测及追踪</h1>
+<center><center></center></center><center><center></center></center><center><center>支持多只手的手势检测，最大检测数量为32。</center></center><center><center></center></center><center><center></center></center><center><center>支持输出3个点，1个手掌中心点（下图红点（keypoint0）），2个方向点（下图手腕处绿点keypoint1）和中指根部蓝点（keypoint2）），其中抱拳作揖、双手比心、双手合十只输出一个点，单手比心和食指输出两个点。</center></center><center><center></center></center><center><center><img src="http://file.intra.sensetime.com/f/3f9d8afc4b/?raw=1" alt="" class="inline"/></center></center><center><center><center>图18.1 可检测手势类型示意图<center></center></center></center></center><center><center><center><center><div class="cccc"></div></center></center></center></center><center><center><center><center></center></center></center></center><h1><a class="anchor" id="autotoc_md18"></a>
+11. 指甲轮廓点检测</h1>
+<center><center><center><center> </center></center></center></center><center><center><center><center>指甲检测功能支持检测图片中每个指甲的类别及轮廓点，轮廓点由16个组成，定义如下：</center></center></center></center><center><center><center><center></center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/2a6ac85648/?raw=1" alt="" style="zoom: 25%;" class="inline"/></center></center></center></center><center><center><center><center></center></center></center></center><center><center><center><center>其中，输出类别0-4分别表示大拇指、食指、中指、无名指、小拇指，可用于给每个手指制作不同的美甲效果。</center></center></center></center><center><center><center><center></center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/0e3be571b5/?raw=1" alt="" style="zoom: 25%;" class="inline"/></center></center></center></center><center><center><center><center><div class="cccc"></div></center></center></center></center><center><center><center><center><div class="cccc"></div></center></center></center></center><center><center><center><center></center></center></center></center><h1><a class="anchor" id="autotoc_md19"></a>
+12. 脚部检测+裤腿分割</h1>
+<center><center><center><center> 脚部检测功能支持检测图片中每只脚的11个关键点，结合裤腿分割算法可用于制作虚拟试鞋特效。</center></center></center></center><center><center><center><center>关键点点位检测结果示意如下：</center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/37766e86bb/?raw=1" alt="" style="zoom: 100%;" class="inline"/></center></center></center></center><center><center><center><center>结合裤腿分割输出的遮挡信息能制作的虚拟试鞋效果如下：</center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/1f30e4ce5a/?raw=1" alt="" style="zoom: 50%;" class="inline"/></center></center></center></center><center><center><center><center>脚部关键点检测11点位置与编号如下表：</center></center></center></center><center><center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">大脚趾脚尖最突出点   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">前脚掌外侧关节最突出点   </td><td class="markdownTableBodyNone">7    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">前脚掌内侧关节最突出点   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">前脚面和腿连接处最弯曲点   </td><td class="markdownTableBodyNone">8    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脚内侧足弓最弯曲点   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">脚踝内侧关节最突出点   </td><td class="markdownTableBodyNone">9    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">后脚掌内侧最突出点   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">后脚筋最弯曲点   </td><td class="markdownTableBodyNone">10    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">脚后跟后方最突出点   </td><td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">脚踝外侧关节最突出点   </td><td class="markdownTableBodyNone">11    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">后脚掌外侧最突出点   </td><td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+</center></center></center></center><center><center><center><center><div class="cccc"></div></center></center></center></center><center><center><center><center></center></center></center></center><h1><a class="anchor" id="autotoc_md20"></a>
+13. 手腕检测</h1>
+<center><center><center><center> 手腕检测功能支持检测图片中单个手腕的4个手腕点和轮廓点，结合椭圆遮挡体和手表素材可用于制作虚拟试表特效。</center></center></center></center><center><center><center><center>手腕点点位检测结果示意如下：</center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/65fab5f936/?raw=1" alt="" style="zoom: 50%;" class="inline"/></center></center></center></center><center><center><center><center>虚拟试表示意效果如下：</center></center></center></center><center><center><center><center><img src="http://file.intra.sensetime.com/f/afee1fda36/?raw=1" alt="" style="zoom: 30%;" class="inline"/></center></center></center></center><center><center><center><center>手腕检测4个手腕点位置与编号如下表：</center></center></center></center><center><center><center><center><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号   </th><th class="markdownTableHeadNone">位置   </th><th class="markdownTableHeadNone">编号    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">手腕小拇指侧最突出处   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">手腕大拇指侧最突出处   </td><td class="markdownTableBodyNone">3    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">手腕手背侧中点   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">手腕手心侧中点   </td><td class="markdownTableBodyNone">4   </td></tr>
+</table>
+</center></center></center></center><center><center><center><center><div class="cccc"></div> </center></center></center></center></div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

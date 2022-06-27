@@ -1,0 +1,8 @@
+<map id="st_mobile_head_t" name="st_mobile_head_t">
+<area shape="rect" id="node1" title="人头检测结果" alt="" coords="116,199,239,225"/>
+<area shape="rect" id="node2" href="$structst__mobile__head__result__t.html" title="人头检测结果信息" alt="" coords="5,109,168,136"/>
+<area shape="rect" id="node3" href="$structst__rect__t.html" title="矩形" alt="" coords="51,5,123,32"/>
+<area shape="rect" id="node4" href="$structst__mobile__face__mesh__t.html" title="3d mesh关键点信息" alt="" coords="192,109,349,136"/>
+<area shape="rect" id="node5" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="186,5,275,32"/>
+<area shape="rect" id="node6" href="$structst__pointf__t.html" title="2d float点" alt="" coords="348,5,431,32"/>
+</map>

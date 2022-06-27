@@ -1,0 +1,25 @@
+<map id="st_effect_render_out_param_t" name="st_effect_render_out_param_t">
+<area shape="rect" id="node1" title="渲染的输出参数" alt="" coords="1299,1017,1440,1058"/>
+<area shape="rect" id="node2" href="$structst__mobile__human__action__t.html" title="human_action检测结果" alt="" coords="1019,695,1193,721"/>
+<area shape="rect" id="node3" href="$structst__mobile__body__t.html" title="肢体检测结果" alt="" coords="437,229,559,256"/>
+<area shape="rect" id="node4" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="52,188,141,215"/>
+<area shape="rect" id="node10" href="$structst__mobile__face__mesh__t.html" title="3d mesh关键点信息" alt="" coords="419,381,577,408"/>
+<area shape="rect" id="node11" href="$structst__mobile__hand__t.html" title="手势检测结果" alt="" coords="437,95,559,121"/>
+<area shape="rect" id="node14" href="$structst__mobile__face__t.html" title="人脸检测结果" alt="" coords="756,456,875,483"/>
+<area shape="rect" id="node5" href="$structst__pointf__t.html" title="2d float点" alt="" coords="55,535,138,561"/>
+<area shape="rect" id="node6" href="$structst__mobile__nail__t.html" title="每个指甲检测结果" alt="" coords="441,784,555,811"/>
+<area shape="rect" id="node13" href="$structst__mobile__foot__t.html" title="脚部检测结果" alt="" coords="439,645,557,672"/>
+<area shape="rect" id="node15" href="$structst__mobile__106__t.html" title="人脸106点信息" alt="" coords="440,696,556,723"/>
+<area shape="rect" id="node16" href="$structst__mobile__forehead__t.html" title="额头关键点信息" alt="" coords="425,539,571,565"/>
+<area shape="rect" id="node17" href="$structst__mobile__ear__t.html" title="耳朵关键点信息" alt="" coords="441,589,555,616"/>
+<area shape="rect" id="node21" href="$structst__mobile__segment__t.html" title="分割检测结果" alt="" coords="426,973,570,1000"/>
+<area shape="rect" id="node7" href="$structst__rect__t.html" title="矩形" alt="" coords="61,739,133,765"/>
+<area shape="rect" id="node9" href="$structst__mobile__head__result__t.html" title="人头检测结果信息" alt="" coords="417,879,579,905"/>
+<area shape="rect" id="node8" href="$structst__mobile__head__t.html" title="人头检测结果" alt="" coords="754,732,877,759"/>
+<area shape="rect" id="node12" href="$structst__hand__dynamic__gesture__t.html" title="动态手势结果" alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node18" href="$structst__mobile__face__extra__info.html" title="人脸检测内部参数" alt="" coords="412,280,584,307"/>
+<area shape="rect" id="node19" href="$structst__color__t.html" title=" " alt="" coords="459,331,537,357"/>
+<area shape="rect" id="node20" href="$structst__mobile__human__action__segments__t.html" title="所有human_action 的分割结果" alt="" coords="733,901,897,942"/>
+<area shape="rect" id="node22" href="$structst__image__t.html" title="图像格式定义" alt="" coords="54,1001,139,1028"/>
+<area shape="rect" id="node23" href="$structst__effect__texture__t.html" title="纹理信息" alt="" coords="1041,1075,1171,1101"/>
+</map>

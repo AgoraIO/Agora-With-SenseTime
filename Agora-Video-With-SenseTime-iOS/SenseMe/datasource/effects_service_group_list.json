@@ -1,0 +1,88 @@
+{
+  "effects" : [
+    {
+      "name" : "最新",
+      "group" : "ff81fc70f6c111e899f602f2be7c2171"
+    },
+    {
+      "name" : "2D",
+      "group" : "3cd2dae0f6c211e8877702f2beb67403"
+    },
+    {
+      "name" : "3D",
+      "group" : "4e869010f6c211e888ea020d88863a42"
+    },
+    {
+      "name" : "手势",
+      "group" : "5aea6840f6c211e899f602f2be7c2171"
+    },
+    {
+      "name" : "分割",
+      "group" : "65365cf0f6c211e8877702f2beb67403"
+    },
+    {
+      "name" : "变形",
+      "group" : "6d036ef0f6c211e899f602f2be7c2171"
+    },
+    {
+      "name" : "粒子",
+      "group" : "7c6089f0f6c211e8877702f2beb67403"
+    },
+    {
+      "name" : "动物",
+      "group" : "f101913d44fb42f2ad279a9b383062c8"
+    },
+    {
+      "name" : "大头",
+      "group" : "36d0ec16b7684703a82bb59b0b0f7f4e"
+    },
+    {
+      "name" : "影分身",
+      "group" : "1ae998ea4dc8489da76346df0daff8ca"
+    },
+    {
+      "name" : "抠脸",
+      "group" : "caa93c1160e2440eb8dbb4c9e42fa961"
+    },
+    {
+      "name" : "特效玩法",
+      "group" : "837faa0485a7462b982d9709aa124b4f"
+    },
+    {
+      "name" : "物体跟踪",
+      "group" : ""
+    },
+    {
+      "name" : "Avatar",
+      "group" : "46028a20f6c211e888ea020d88863a42"
+    },
+    {
+      "name" : "漫画脸",
+      "group" : "2723987dcea34e2dafd6f83d9ff83e45"
+    },
+    {
+      "name" : "自然",
+      "group" : "68813ed4390443c78b5f50fc6db610d6"
+    },
+    {
+      "name" : "轻妆",
+      "group" : "ca4506325f5947c288cd8a8ec11a9fd1"
+    },
+    {
+      "name" : "流行",
+      "group" : "85317b7e4c5f4c859202ad33547c0d29"
+    },
+    {
+      "name" : "本地",
+      "group" : ""
+    },
+    {
+      "name" : "TryOn口红",
+      "group" : "62f5d3f985ac44c09931dc26c257a29b"
+    },
+    {
+      "name" : "TryOn染发",
+      "group" : "4c7a47e9a14c4849aeb1bb57fca90b4a"
+    }
+  ]
+}

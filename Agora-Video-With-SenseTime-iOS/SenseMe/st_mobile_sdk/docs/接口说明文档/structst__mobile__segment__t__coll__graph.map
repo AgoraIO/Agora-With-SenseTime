@@ -1,0 +1,5 @@
+<map id="st_mobile_segment_t" name="st_mobile_segment_t">
+<area shape="rect" id="node1" title="分割检测结果" alt="" coords="28,109,172,136"/>
+<area shape="rect" id="node2" href="$structst__pointf__t.html" title="2d float点" alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node3" href="$structst__image__t.html" title="图像格式定义" alt="" coords="112,5,197,32"/>
+</map>

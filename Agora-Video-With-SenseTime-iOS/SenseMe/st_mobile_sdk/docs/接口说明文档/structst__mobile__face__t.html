@@ -1,0 +1,524 @@
+<!-- HTML header for doxygen 1.9.1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Effects SDK: st_mobile_face_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Effects SDK
+   &#160;<span id="projectnumber">8.7.4</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('structst__mobile__face__t.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="structst__mobile__face__t-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">st_mobile_face_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;st_mobile_common.h&gt;</code></p>
+<div class="dynheader">
+st_mobile_face_t 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structst__mobile__face__t__coll__graph.png" border="0" usemap="#ast__mobile__face__t_coll__map" alt="Collaboration graph"/></div>
+<map name="ast__mobile__face__t_coll__map" id="ast__mobile__face__t_coll__map">
+<area shape="rect" title="人脸检测结果" alt="" coords="592,237,711,264"/>
+<area shape="rect" href="structst__mobile__106__t.html" title="人脸106点信息" alt="" coords="299,7,415,33"/>
+<area shape="rect" href="structst__rect__t.html" title="矩形" alt="" coords="14,7,86,33"/>
+<area shape="rect" href="structst__pointf__t.html" title="2d float点" alt="" coords="9,137,91,164"/>
+<area shape="rect" href="structst__mobile__forehead__t.html" title="额头关键点信息" alt="" coords="283,164,430,191"/>
+<area shape="rect" href="structst__mobile__ear__t.html" title="耳朵关键点信息" alt="" coords="299,215,414,241"/>
+<area shape="rect" href="structst__mobile__face__mesh__t.html" title="3d mesh关键点信息" alt="" coords="278,265,435,292"/>
+<area shape="rect" href="structst__point3f__t.html" title="3d float 点" alt="" coords="5,309,95,336"/>
+<area shape="rect" href="structst__mobile__face__extra__info.html" title="人脸检测内部参数" alt="" coords="271,393,443,420"/>
+<area shape="rect" href="structst__color__t.html" title=" " alt="" coords="317,444,396,471"/>
+</map>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="af36d469ac72f42539615c58fc00cdf0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af36d469ac72f42539615c58fc00cdf0c">&#9670;&nbsp;</a></span>face106</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__mobile__106__t.html">st_mobile_106_t</a> face106</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>人脸信息，包含矩形框、106点、head pose信息等 </p>
+
+</div>
+</div>
+<a id="a0c61a3dedcc52137121ec15da469529a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c61a3dedcc52137121ec15da469529a">&#9670;&nbsp;</a></span>p_extra_face_points</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__pointf__t.html">st_pointf_t</a>* p_extra_face_points</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼睛、眉毛、嘴唇关键点. 没有检测到时为NULL </p>
+
+</div>
+</div>
+<a id="a6443517f3af5ed4b2a6ac6bf7d974ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6443517f3af5ed4b2a6ac6bf7d974ac7">&#9670;&nbsp;</a></span>extra_face_points_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int extra_face_points_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼睛、眉毛、嘴唇关键点个数. 检测到时为ST_MOBILE_EXTRA_FACE_POINTS_COUNT, 没有检测到时为0 </p>
+
+</div>
+</div>
+<a id="a26f6ade996f34938bae912d37a334308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26f6ade996f34938bae912d37a334308">&#9670;&nbsp;</a></span>p_tongue_points</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__pointf__t.html">st_pointf_t</a>* p_tongue_points</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>舌头关键点数组 </p>
+
+</div>
+</div>
+<a id="a7e7cc7feb2e2bcdf7d54237bc2af4606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7cc7feb2e2bcdf7d54237bc2af4606">&#9670;&nbsp;</a></span>p_tongue_points_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float* p_tongue_points_score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>舌头关键点对应的置信度 </p>
+
+</div>
+</div>
+<a id="aaf4d725f55f1d91f17403a536a5479fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf4d725f55f1d91f17403a536a5479fd">&#9670;&nbsp;</a></span>tongue_points_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tongue_points_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>舌头关键点的数目 </p>
+
+</div>
+</div>
+<a id="a33d639c4757dc37a199362a11b23dc8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d639c4757dc37a199362a11b23dc8c">&#9670;&nbsp;</a></span>p_face_mesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__mobile__face__mesh__t.html">st_mobile_face_mesh_t</a>* p_face_mesh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>3d mesh信息，包括3d mesh关键点及个数 </p>
+
+</div>
+</div>
+<a id="aa69688f0010f8fb690abff1586a126a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa69688f0010f8fb690abff1586a126a3">&#9670;&nbsp;</a></span>p_eyeball_center</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__pointf__t.html">st_pointf_t</a>* p_eyeball_center</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼球中心关键点. 没有检测到时为NULL </p>
+
+</div>
+</div>
+<a id="aa336f09272ab4a61107525538f98fd95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa336f09272ab4a61107525538f98fd95">&#9670;&nbsp;</a></span>eyeball_center_points_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int eyeball_center_points_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼球中心关键点个数. 检测到时为ST_MOBILE_EYEBALL_CENTER_POINTS_COUNT, 没有检测到时为0 </p>
+
+</div>
+</div>
+<a id="aad95017afa5fea159ea12f0fa494cef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad95017afa5fea159ea12f0fa494cef2">&#9670;&nbsp;</a></span>p_eyeball_contour</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__pointf__t.html">st_pointf_t</a>* p_eyeball_contour</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼球轮廓关键点. 没有检测到时为NULL </p>
+
+</div>
+</div>
+<a id="a3c0fda40add826503bd06c1a9d6815c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c0fda40add826503bd06c1a9d6815c4">&#9670;&nbsp;</a></span>eyeball_contour_points_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int eyeball_contour_points_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>眼球轮廓关键点个数. 检测到时为ST_MOBILE_EYEBALL_CONTOUR_POINTS_COUNT, 没有检测到时为0 </p>
+
+</div>
+</div>
+<a id="a52c600e81f20fbb2bfce6b923c3672df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c600e81f20fbb2bfce6b923c3672df">&#9670;&nbsp;</a></span>left_eyeball_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float left_eyeball_score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>左眼球检测结果（中心点和轮廓点）置信度: [0.0, 1.0]，282左眼阈值为0.8 </p>
+
+</div>
+</div>
+<a id="af3887c45d6f450230fc02760b650f0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3887c45d6f450230fc02760b650f0ac">&#9670;&nbsp;</a></span>right_eyeball_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float right_eyeball_score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>右眼球检测结果（中心点和轮廓点）置信度: [0.0, 1.0]，282右眼阈值为0.8 </p>
+
+</div>
+</div>
+<a id="a4d76e531469e5911e90a20b5d58c98df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d76e531469e5911e90a20b5d58c98df">&#9670;&nbsp;</a></span>p_face_ear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__mobile__ear__t.html">st_mobile_ear_t</a>* p_face_ear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>耳朵信息，包括耳朵关键点及个数，左右耳置信度 </p>
+
+</div>
+</div>
+<a id="ad8b7fa00c82fd2e48cea8f1cb23ab2c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b7fa00c82fd2e48cea8f1cb23ab2c6">&#9670;&nbsp;</a></span>p_gaze_direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__point3f__t.html">st_point3f_t</a>* p_gaze_direction</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>左眼和右眼视线方向，没有检测到是为NULL </p>
+
+</div>
+</div>
+<a id="ad3fad42557ae77c1c1433d7dad5a80bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3fad42557ae77c1c1433d7dad5a80bc">&#9670;&nbsp;</a></span>p_gaze_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float* p_gaze_score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>视线置信度: [0.0, 1.0], 建议阈值为0.5 </p>
+
+</div>
+</div>
+<a id="a5c19d59423c9284a49ca7abeab445910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c19d59423c9284a49ca7abeab445910">&#9670;&nbsp;</a></span>face_action</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long long face_action</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>脸部动作 </p>
+
+</div>
+</div>
+<a id="af16a37e7d671a36fa90f00d569b10beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af16a37e7d671a36fa90f00d569b10beb">&#9670;&nbsp;</a></span>p_avatar_help_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char* p_avatar_help_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>avatar辅助信息,仅限内部使用，严禁修改 </p>
+
+</div>
+</div>
+<a id="a1a46207d0d64c8529df81cb82803fdda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a46207d0d64c8529df81cb82803fdda">&#9670;&nbsp;</a></span>avatar_help_info_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int avatar_help_info_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>avatar辅助信息字节长度 </p>
+
+</div>
+</div>
+<a id="a3d3a70865a53a2e89872184a94ac580d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d3a70865a53a2e89872184a94ac580d">&#9670;&nbsp;</a></span>s_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int s_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7c64691da2bc581655a30a40d9c3b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c64691da2bc581655a30a40d9c3b17">&#9670;&nbsp;</a></span>p_face_action_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float* p_face_action_score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>脸部动作置信度, eye, mouth, pitch, yaw, brow </p>
+
+</div>
+</div>
+<a id="a3ad0b3a62e4415788ce0c38b8b922ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad0b3a62e4415788ce0c38b8b922ed9">&#9670;&nbsp;</a></span>face_action_score_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int face_action_score_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>脸部动作数目 </p>
+
+</div>
+</div>
+<a id="a77cbfde8b416792f5589301cd5070d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77cbfde8b416792f5589301cd5070d93">&#9670;&nbsp;</a></span>p_face_forehead</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__mobile__forehead__t.html">st_mobile_forehead_t</a>* p_face_forehead</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>额头点信息，包括额头点坐标和个数 </p>
+
+</div>
+</div>
+<a id="a733ce946da07e7086573e31200d7ce3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a733ce946da07e7086573e31200d7ce3e">&#9670;&nbsp;</a></span>hair_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__color__t.html">st_color_t</a> hair_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>avatar发色, rgb取值范围[0.0, 1.0]; 其中a(alpha)值不必要，设置默认值为1.0 </p>
+
+</div>
+</div>
+<a id="a1f89a5188abf75e455521cc68038b265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f89a5188abf75e455521cc68038b265">&#9670;&nbsp;</a></span>face_extra_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structst__mobile__face__extra__info.html">st_mobile_face_extra_info</a> face_extra_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>人脸检测模型内部参数 </p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li><a class="el" href="st__mobile__common_8h.html">st_mobile_common.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structst__mobile__face__t.html">st_mobile_face_t</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

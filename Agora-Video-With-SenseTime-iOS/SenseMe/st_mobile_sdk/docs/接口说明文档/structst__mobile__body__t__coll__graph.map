@@ -1,0 +1,5 @@
+<map id="st_mobile_body_t" name="st_mobile_body_t">
+<area shape="rect" id="node1" title="肢体检测结果" alt="" coords="54,109,177,136"/>
+<area shape="rect" id="node2" href="$structst__point3f__t.html" title="3d float 点" alt="" coords="5,5,95,32"/>
+<area shape="rect" id="node3" href="$structst__pointf__t.html" title="2d float点" alt="" coords="139,5,222,32"/>
+</map>

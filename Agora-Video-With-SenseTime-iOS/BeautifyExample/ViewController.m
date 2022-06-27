@@ -9,18 +9,29 @@
 
 #import "ViewController.h"
 #import <AgoraRtcKit/AgoraRtcEngineKit.h>
-#import "CapturerManager.h"
-#import "VideoProcessingManager.h"
+#import "EffectsGLPreview.h"
 #import "KeyCenter.h"
-#import <AGMRenderer/AGMRenderer.h>
+#import "EFMotionManager.h"
+#import "CapturerManager.h"
 
-#import "SenseMeFilter.h"
+//#import "SenseMeFilter.h"
 
 @interface ViewController () <AgoraRtcEngineDelegate>
-
+{
+    CVOpenGLESTextureCacheRef _cvTextureCache;
+    
+    @public
+    GLuint _outTexture;
+    CVPixelBufferRef _outputPixelBuffer;
+    CVOpenGLESTextureRef _outputCVTexture;
+    BOOL _isFirstLaunch;
+}
 @property (nonatomic, strong) CapturerManager *capturerManager;
-@property (nonatomic, strong) SenseMeFilter *videoFilter;
-@property (nonatomic, strong) VideoProcessingManager *processingManager;
+@property (nonatomic, strong) EffectsGLPreview *effecgGLPreview;
+
+///贴纸id
+@property (nonatomic, assign) int stickerId;
+
 @property (nonatomic, strong) AgoraRtcEngineKit *rtcEngineKit;
 @property (nonatomic, strong) IBOutlet UIView *localView;
 
@@ -35,7 +46,6 @@
 @property (nonatomic, assign) AgoraVideoMirrorMode remoteVideoMirrored;
 @property (nonatomic, strong) AGMEAGLVideoView *glVideoView;
 
-
 @end
 
 @implementation ViewController
@@ -43,9 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.remoteView.hidden = YES;
-    
     // 初始化 rte engine
     self.rtcEngineKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter AppId] delegate:self];
     
@@ -54,29 +62,16 @@
     [self.rtcEngineKit enableVideo];
     AgoraVideoEncoderConfiguration* config = [[AgoraVideoEncoderConfiguration alloc] initWithSize:CGSizeMake(720, 1280) frameRate:15 bitrate:0 orientationMode:AgoraVideoOutputOrientationModeAdaptative];
     [self.rtcEngineKit setVideoEncoderConfiguration:config];
+
+    [self.localView layoutIfNeeded];
+    self.effecgGLPreview = [[EffectsGLPreview alloc] initWithFrame: self.localView.frame context:nil];
+    [self.localView addSubview:self.effecgGLPreview];
     
-    // init process manager
-    self.processingManager = [[VideoProcessingManager alloc] init];
-    
-    // init capturer, it will push pixelbuffer to rtc channel
-    AGMCapturerVideoConfig *videoConfig = [AGMCapturerVideoConfig defaultConfig];
-    videoConfig.sessionPreset = AVCaptureSessionPreset1280x720;
-    videoConfig.fps = 15;
-    videoConfig.pixelFormat = AGMVideoPixelFormatBGRA;
-    self.capturerManager = [[CapturerManager alloc] initWithVideoConfig:videoConfig delegate:self.processingManager];
-    
-    // add Face Beautify filter and add to process manager
-    self.videoFilter = [SenseMeFilter shareManager];
-    self.videoFilter.enabled = YES;
-    [self.processingManager addVideoFilter:self.videoFilter];
-    
+    self.capturerManager = [[CapturerManager alloc] init];
+
     [self.capturerManager startCapture];
     
-    [self.localView layoutIfNeeded];
-    self.glVideoView = [[AGMEAGLVideoView alloc] initWithFrame:self.localView.frame];
-    [self.glVideoView setRenderMode:(AGMRenderMode_Fit)];
-    [self.localView addSubview:self.glVideoView];
-    [self.capturerManager setVideoView:self.glVideoView];
+    [self.capturerManager setEffecgGLPreview:self.effecgGLPreview];
     // set custom capturer as video source
     [self.rtcEngineKit setVideoSource:self.capturerManager];
     
@@ -84,7 +79,6 @@
         
     }];
 }
-
 
 /// release
 - (void)dealloc {
