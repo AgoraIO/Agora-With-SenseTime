@@ -291,7 +291,19 @@ public class STRenderer {
 
         int orientationType = getCurrentOrientation(orientation);
 
-        // >>>>>> 1. detect human point info using cameraData
+        // >>>>>> 1. translate oes texture to 2d
+        if (mTextureOutId == null) {
+            mTextureOutId = new int[1];
+            GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
+        }
+
+        int textureId = cameraTextureId;
+        if (texFormat == GLES11Ext.GL_TEXTURE_EXTERNAL_OES) {
+            mGLRender.adjustOESImageSize(imageWidth, imageHeight, -1 * orientation, mirror, true);
+            textureId = mGLRender.processOES(cameraTextureId, texMatrix);
+        }
+
+        // >>>>>> 2. detect human point info using cameraData
         if (mIsCreateHumanActionHandleSucceeded) {
             if (mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length) {
                 mImageDataBuffer = new byte[cameraPixel.length];
@@ -326,18 +338,8 @@ public class STRenderer {
             }
         }
 
-        //2 >>>>>> deal camera texture to fit the effect
-        if (mTextureOutId == null) {
-            mTextureOutId = new int[1];
-            GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
-        }
 
-        // OES纹理转成2D纹理
-        int textureId = cameraTextureId;
-        if (texFormat == GLES11Ext.GL_TEXTURE_EXTERNAL_OES) {
-            mGLRender.adjustOESImageSize(imageWidth, imageHeight, -1 * orientation, mirror, true);
-            textureId = mGLRender.processOES(cameraTextureId, texMatrix);
-        }
+        // >>>>>> 3. render texture
 
         //输入纹理，纹理只支持2D
         STEffectTexture stEffectTexture = new STEffectTexture(textureId, imageWidth, imageHeight, 0);

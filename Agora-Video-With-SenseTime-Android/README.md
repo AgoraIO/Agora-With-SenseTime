@@ -27,7 +27,7 @@ There are two ways to add Agora Video SDK to the project:
 
 **The first method** will download Agora Video SDK automatically from JCenter when the project is building. Add the following line to "app/build.gradle" (which is default in the project):
 ```
-implementation 'io.agora.rtc:full-sdk:3.3.1'
+implementation 'io.agora.rtc:full-sdk:3.7.0'
 ```
 
 **The second method** needs developers to download SDK and copy the unzipped library files to proper project folders (acquires knowledge of the project structure):
@@ -44,30 +44,32 @@ implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 #### 1.2.1 SenseTime SDK
 
-Most the of code of SenseTime SDK is already provided in the **"sensetime"** module of the demo project. But things to note that developers need to download and copy .so libraries to **"sensetime/src/main/jni/prebuilt/lib"** folder:
+Most the of code of SenseTime SDK is already provided in the **"sensetime"** module of the demo project. But things to note that developers need to download and copy .so libraries to **"sensetime/src/main/jniLibs"** folder:
 ```
-    lib
-      |_ arm64-v8a
-         
-         
+    jniLibs
+      |_ arm64-v8a         
       |_ armeabi-v7a
-         
 ```
 
-Other native code and JNI interfaces are all in the jni folder. If you have problems building C code for the first time, you may try to select **"Build->Make Project"** or sync the gradle project.
+Other native code and JNI interfaces are all in the .arr files. Copy .aar libraries to **"sensetime/libs"** folder:
+```
+    libs
+      |_ SenseArSourceManager-release.aar         
+      |_ STMobileJNI-release.aar
+```
 
 #### 1.2.2 SenseTime Resources
 
-Copy all resource files to **"app/src/main/assets"** from the download link.
-Note: Current version is aligned with SenseAR SDK 7.5 version. And sample has assign some default filter and stickers. If these resources are not available on your SDK, you may need to replace them with yours.
+Copy all resource files to **"sensetime/src/main/assets"** from the download link.
+Note: Current version is aligned with SenseAR SDK 8.x version. And sample has assign some default filter and stickers. If these resources are not available on your SDK, you may need to replace them with yours.
 
 #### 1.2.3 SenseTime Licence
 
-Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to assets folder.
+Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to **"sensetime/src/main/assets/license"** folder.
 
 ### 1.3 Camera Capture Framework
 
-We have imported a camera capture framework library. If you are interested in source code and document of this framework, please go to [here](https://github.com/AgoraIO/Agora-Extensions/tree/master/VideoCapture/Android) for more information.
+We have imported a camera capture framework library. If you are interested in source code and document of this framework, please go to [here](https://github.com/AgoraIO-Community/MediaIO-Camera) for more information.
 
 ## Developer Environment Requirements
 - Android Studio 3.1 or above

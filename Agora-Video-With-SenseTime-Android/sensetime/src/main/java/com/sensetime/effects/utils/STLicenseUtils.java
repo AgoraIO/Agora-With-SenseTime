@@ -25,7 +25,7 @@ public class STLicenseUtils {
     //是否使用服务器License鉴权
     //true：使用服务器下拉授权文件，使用离线接口生成activeCode
     //false: 使用asset文件夹下的 "SenseME.lic"，"SenseME_Online.lic"生成activeCode
-    private static final boolean USING_SERVER_LICENSE = true;
+    private static final boolean USING_SERVER_LICENSE = false;
 
     //是否使用在线鉴权接口，使用SenseME_Online.lic文件
     //true: 使用asset文件夹下的"SenseME_Online.lic"，使用在线接口generateActiveCodeFromBufferOnline生成activeCode
