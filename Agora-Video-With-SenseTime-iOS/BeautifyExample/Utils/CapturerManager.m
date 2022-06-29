@@ -11,9 +11,11 @@
 #define CM_DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
 
 @interface CapturerManager ()
+
 @property (nonatomic, strong) AGMCameraCapturer *cameraCapturer;
 @property (nonatomic, strong) AGMCapturerVideoConfig *videoConfig;
 @property (nonatomic, weak) id<CapturerManagerDelegate> delegate;
+
 @end
 
 @implementation CapturerManager
@@ -23,6 +25,8 @@
     self.cameraCapturer = [[AGMCameraCapturer alloc] initWithConfig:self.videoConfig];
     self.cameraCapturer.delegate = self;
 }
+
+#pragma mark Public
 
 - (void)didOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer frameTime:(CMTime)time {
     if ([self.delegate respondsToSelector:@selector(processFrame:)]) {
@@ -70,6 +74,7 @@
     return self;
 }
 
+
 - (void)startCapture {
     [self.cameraCapturer start];
 }
@@ -111,6 +116,5 @@
 - (AgoraVideoContentHint)contentHint {
     return AgoraVideoContentHintNone;
 }
-
 
 @end

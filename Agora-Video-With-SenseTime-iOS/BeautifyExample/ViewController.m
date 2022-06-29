@@ -9,18 +9,14 @@
 
 #import "ViewController.h"
 #import <AgoraRtcKit/AgoraRtcEngineKit.h>
+#import "KeyCenter.h"
+#import "EFMotionManager.h"
 #import "CapturerManager.h"
 #import "VideoProcessingManager.h"
-#import "KeyCenter.h"
-#import <AGMRenderer/AGMRenderer.h>
 
-#import "SenseMeFilter.h"
-
-@interface ViewController () <AgoraRtcEngineDelegate>
-
+@interface ViewController () <AgoraRtcEngineDelegate, CapturerManagerDelegate>
 @property (nonatomic, strong) CapturerManager *capturerManager;
-@property (nonatomic, strong) SenseMeFilter *videoFilter;
-@property (nonatomic, strong) VideoProcessingManager *processingManager;
+
 @property (nonatomic, strong) AgoraRtcEngineKit *rtcEngineKit;
 @property (nonatomic, strong) IBOutlet UIView *localView;
 
@@ -33,8 +29,10 @@
 @property (nonatomic, strong) AgoraRtcVideoCanvas *videoCanvas;
 @property (nonatomic, assign) AgoraVideoMirrorMode localVideoMirrored;
 @property (nonatomic, assign) AgoraVideoMirrorMode remoteVideoMirrored;
+
 @property (nonatomic, strong) AGMEAGLVideoView *glVideoView;
 
+@property (nonatomic, strong) VideoProcessingManager *videoProcessing;
 
 @end
 
@@ -43,9 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.remoteView.hidden = YES;
-    
     // 初始化 rte engine
     self.rtcEngineKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter AppId] delegate:self];
     
@@ -55,23 +51,16 @@
     AgoraVideoEncoderConfiguration* config = [[AgoraVideoEncoderConfiguration alloc] initWithSize:CGSizeMake(720, 1280) frameRate:15 bitrate:0 orientationMode:AgoraVideoOutputOrientationModeAdaptative];
     [self.rtcEngineKit setVideoEncoderConfiguration:config];
     
-    // init process manager
-    self.processingManager = [[VideoProcessingManager alloc] init];
-    
-    // init capturer, it will push pixelbuffer to rtc channel
+    self.videoProcessing = [VideoProcessingManager new];
+
     AGMCapturerVideoConfig *videoConfig = [AGMCapturerVideoConfig defaultConfig];
     videoConfig.sessionPreset = AVCaptureSessionPreset1280x720;
     videoConfig.fps = 15;
     videoConfig.pixelFormat = AGMVideoPixelFormatBGRA;
-    self.capturerManager = [[CapturerManager alloc] initWithVideoConfig:videoConfig delegate:self.processingManager];
     
-    // add Face Beautify filter and add to process manager
-    self.videoFilter = [SenseMeFilter shareManager];
-    self.videoFilter.enabled = YES;
-    [self.processingManager addVideoFilter:self.videoFilter];
-    
+    self.capturerManager = [[CapturerManager alloc] initWithVideoConfig:videoConfig delegate:self];
+
     [self.capturerManager startCapture];
-    
     [self.localView layoutIfNeeded];
     self.glVideoView = [[AGMEAGLVideoView alloc] initWithFrame:self.localView.frame];
     [self.glVideoView setRenderMode:(AGMRenderMode_Fit)];
@@ -84,7 +73,6 @@
         
     }];
 }
-
 
 /// release
 - (void)dealloc {
@@ -108,6 +96,10 @@
     AgoraVideoEncoderConfiguration* config = [[AgoraVideoEncoderConfiguration alloc] initWithSize:CGSizeMake(720, 1280) frameRate:30 bitrate:0 orientationMode:AgoraVideoOutputOrientationModeAdaptative];
     config.mirrorMode = self.remoteVideoMirrored;
     [self.rtcEngineKit setVideoEncoderConfiguration:config];
+}
+
+- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer {
+    return [self.videoProcessing videoProcessHandler:pixelBuffer];
 }
 
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed

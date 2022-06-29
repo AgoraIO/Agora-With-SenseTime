@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		031D6012251CD0CD000934AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031D600C251CD0CD000934AB /* Assets.xcassets */; };
-		03F8193524E004A7004F7F36 /* VideoProcessingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F8193024E004A7004F7F36 /* VideoProcessingManager.m */; };
-		03F8193624E004A7004F7F36 /* CapturerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F8193424E004A7004F7F36 /* CapturerManager.m */; };
 		03F8196324E1371B004F7F36 /* KeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F8196224E1371B004F7F36 /* KeyCenter.m */; };
 		09C6666424D7BC89001D7AE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6666324D7BC89001D7AE2 /* AppDelegate.m */; };
 		09C6666A24D7BC89001D7AE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6666924D7BC89001D7AE2 /* ViewController.m */; };
@@ -20,91 +18,31 @@
 		2D8ABD2F2511B63200D28745 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ABD2E2511B63200D28745 /* MainViewController.m */; };
 		5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
 		610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
-		8B06109C260AF19B004795A4 /* SenseAR_v7.5.0(Effects).pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8B06107B260AF19B004795A4 /* SenseAR_v7.5.0(Effects).pdf */; };
-		8B06109D260AF19B004795A4 /* how_to_use_license.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8B06107C260AF19B004795A4 /* how_to_use_license.pdf */; };
-		8B06109E260AF19B004795A4 /* SenseMEEffects集成文档.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8B06107D260AF19B004795A4 /* SenseMEEffects集成文档.pdf */; };
-		8B0610A0260AF19B004795A4 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B061081260AF19B004795A4 /* libst_mobile.a */; };
 		8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */; };
-		8B0610C4260B1B48004795A4 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 8B0610C3260B1B48004795A4 /* SENSEME.lic */; };
-		8B061142260B6AB0004795A4 /* STBmpStrengthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */; };
-		8B061143260B6AB0004795A4 /* STBMPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E3260B6AAF004795A4 /* STBMPModel.m */; };
-		8B061144260B6AB0004795A4 /* STViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0610E6260B6AAF004795A4 /* STViewButton.xib */; };
-		8B061145260B6AB0004795A4 /* STLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E7260B6AAF004795A4 /* STLock.m */; };
-		8B061146260B6AB0004795A4 /* STGLPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610E8260B6AAF004795A4 /* STGLPreview.m */; };
-		8B061147260B6AB0004795A4 /* STSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0610E9260B6AAF004795A4 /* STSliderView.xib */; };
-		8B061148260B6AB0004795A4 /* SaveToastUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */; };
-		8B061149260B6AB0004795A4 /* STButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610EB260B6AAF004795A4 /* STButton.m */; };
-		8B06114A260B6AB0004795A4 /* STCommonObjectContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */; };
-		8B06114B260B6AB0004795A4 /* STTriggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F2260B6AAF004795A4 /* STTriggerView.m */; };
-		8B06114C260B6AB0004795A4 /* STTitleViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */; };
-		8B06114D260B6AB0004795A4 /* STCustomMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */; };
-		8B06114E260B6AB0004795A4 /* STParamUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FA260B6AAF004795A4 /* STParamUtil.m */; };
-		8B06114F260B6AB0004795A4 /* STCustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */; };
-		8B061150260B6AB0004795A4 /* STEffectsTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */; };
-		8B061151260B6AB0004795A4 /* STAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061100260B6AAF004795A4 /* STAudioManager.m */; };
-		8B061152260B6AB0004795A4 /* STGLPreview2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061104260B6AAF004795A4 /* STGLPreview2.m */; };
-		8B061153260B6AB0004795A4 /* STBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061105260B6AAF004795A4 /* STBeautySlider.m */; };
-		8B061154260B6AB0004795A4 /* STFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061109260B6AAF004795A4 /* STFilterView.m */; };
-		8B061155260B6AB0004795A4 /* STViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110A260B6AAF004795A4 /* STViewButton.m */; };
-		8B061156260B6AB0004795A4 /* STEffectsAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */; };
-		8B061157260B6AB0004795A4 /* STSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110C260B6AAF004795A4 /* STSliderView.m */; };
-		8B061158260B6AB0004795A4 /* STScrollTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06110D260B6AAF004795A4 /* STScrollTitleView.m */; };
-		8B061159260B6AB0004795A4 /* STPlayerControlBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061112260B6AAF004795A4 /* STPlayerControlBar.m */; };
-		8B06115A260B6AB0004795A4 /* SenseMEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061113260B6AAF004795A4 /* SenseMEUtils.m */; };
-		8B06115B260B6AB0004795A4 /* STBMPDetailColV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061115260B6AAF004795A4 /* STBMPDetailColV.m */; };
-		8B06115C260B6AB0004795A4 /* STBMPDetailColVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */; };
-		8B06115D260B6AB0004795A4 /* STCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061118260B6AAF004795A4 /* STCollectionView.m */; };
-		8B06115E260B6AB0004795A4 /* EffectsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */; };
-		8B06115F260B6AB0004795A4 /* EffectsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */; };
-		8B061160260B6AB0004795A4 /* STCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */; };
-		8B061161260B6AB0004795A4 /* STBMPCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */; };
-		8B061162260B6AB0004795A4 /* STCommonObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06111E260B6AAF004795A4 /* STCommonObjectView.m */; };
-		8B061163260B6AB0004795A4 /* EffectsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061123260B6AAF004795A4 /* EffectsCollectionView.m */; };
-		8B061164260B6AB0004795A4 /* SenseTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061124260B6AAF004795A4 /* SenseTimeUtil.m */; };
-		8B061165260B6AB0004795A4 /* STCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061127260B6AAF004795A4 /* STCamera.m */; };
-		8B061166260B6AB0004795A4 /* STVFShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061128260B6AAF004795A4 /* STVFShader.m */; };
-		8B061167260B6AB0004795A4 /* STMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061129260B6AAF004795A4 /* STMovieRecorder.m */; };
-		8B061168260B6AB0004795A4 /* STBMPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */; };
-		8B061169260B6AB0004795A4 /* SenseEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */; };
-		8B06116A260B6AB0004795A4 /* SenseBeautifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */; };
-		8B06116B260B6AB0004795A4 /* SenseTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B061131260B6AB0004795A4 /* SenseTimeManager.m */; };
-		8B061194260B6CC4004795A4 /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061183260B6CC4004795A4 /* PortraitFilters.bundle */; };
-		8B061195260B6CC4004795A4 /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061184260B6CC4004795A4 /* SceneryFilters.bundle */; };
-		8B061196260B6CC4004795A4 /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061185260B6CC4004795A4 /* StillLifeFilters.bundle */; };
-		8B061197260B6CC4004795A4 /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061186260B6CC4004795A4 /* DeliciousFoodFilters.bundle */; };
-		8B061198260B6CC4004795A4 /* eyeliner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061188260B6CC4004795A4 /* eyeliner.bundle */; };
-		8B061199260B6CC4004795A4 /* eyelash.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061189260B6CC4004795A4 /* eyelash.bundle */; };
-		8B06119A260B6CC4004795A4 /* lips.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118A260B6CC4004795A4 /* lips.bundle */; };
-		8B06119B260B6CC4004795A4 /* brow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118B260B6CC4004795A4 /* brow.bundle */; };
-		8B06119C260B6CC4004795A4 /* wholemakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118C260B6CC4004795A4 /* wholemakeup.bundle */; };
-		8B06119D260B6CC4004795A4 /* face.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118D260B6CC4004795A4 /* face.bundle */; };
-		8B06119E260B6CC4004795A4 /* eyeshadow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118E260B6CC4004795A4 /* eyeshadow.bundle */; };
-		8B06119F260B6CC4004795A4 /* maskhair.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B06118F260B6CC4004795A4 /* maskhair.bundle */; };
-		8B0611A0260B6CC4004795A4 /* blush.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061190260B6CC4004795A4 /* blush.bundle */; };
-		8B0611A1260B6CC4004795A4 /* eyeball.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061191260B6CC4004795A4 /* eyeball.bundle */; };
-		8B0611A2260B6CC4004795A4 /* my_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B061193260B6CC4004795A4 /* my_sticker.bundle */; };
-		8B0611B0260B6CCC004795A4 /* M_SenseME_CatFace_3.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611A5260B6CCC004795A4 /* M_SenseME_CatFace_3.0.0.model */; };
-		8B0611B1260B6CCC004795A4 /* M_SenseME_Face_Extra_5.23.4.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611A6260B6CCC004795A4 /* M_SenseME_Face_Extra_5.23.4.model */; };
-		8B0611B2260B6CCC004795A4 /* M_SenseME_MouthOcclusion_1.1.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611A7260B6CCC004795A4 /* M_SenseME_MouthOcclusion_1.1.1.model */; };
-		8B0611B3260B6CCC004795A4 /* M_SenseME_Segment_4.12.8.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611A8260B6CCC004795A4 /* M_SenseME_Segment_4.12.8.model */; };
-		8B0611B4260B6CCC004795A4 /* M_SenseME_Iris_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611A9260B6CCC004795A4 /* M_SenseME_Iris_2.0.0.model */; };
-		8B0611B5260B6CCC004795A4 /* SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AA260B6CCC004795A4 /* SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf */; };
-		8B0611B6260B6CCC004795A4 /* M_SenseME_Hand_5.4.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AB260B6CCC004795A4 /* M_SenseME_Hand_5.4.0.model */; };
-		8B0611B7260B6CCC004795A4 /* M_SenseME_Face_Video_7.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AC260B6CCC004795A4 /* M_SenseME_Face_Video_7.0.0.model */; };
-		8B0611B8260B6CCC004795A4 /* M_SenseME_Segment_Hair_1.3.4.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AD260B6CCC004795A4 /* M_SenseME_Segment_Hair_1.3.4.model */; };
-		8B0611B9260B6CCC004795A4 /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AE260B6CCC004795A4 /* M_SenseME_Attribute_1.0.1.model */; };
-		8B0611BA260B6CCC004795A4 /* M_SenseME_Avatar_Help_2.2.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 8B0611AF260B6CCC004795A4 /* M_SenseME_Avatar_Help_2.2.0.model */; };
-		8B63F063260A3E790040C3A8 /* SenseMeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B63F062260A3E790040C3A8 /* SenseMeFilter.m */; };
+		E777B351286C04D100C8A0E7 /* CapturerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B34E286C04D100C8A0E7 /* CapturerManager.m */; };
+		E777B352286C04D200C8A0E7 /* VideoProcessingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B350286C04D100C8A0E7 /* VideoProcessingManager.m */; };
+		E777B3AD286C282A00C8A0E7 /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */; };
+		E777B3B1286C29EA00C8A0E7 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */; };
+		E777B3C2286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */; };
+		E777B3C3286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */; };
+		E777B3C4286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */; };
+		E777B3C5286C2A0600C8A0E7 /* model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E777B3C0286C2A0600C8A0E7 /* model.bundle */; };
+		E777B3C6286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */; };
+		E777B3E2286C2A9C00C8A0E7 /* STShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E777B3CA286C2A9C00C8A0E7 /* STShaders.metal */; };
+		E777B3E3286C2A9C00C8A0E7 /* EFMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3CC286C2A9C00C8A0E7 /* EFMotionManager.m */; };
+		E777B3E4286C2A9C00C8A0E7 /* EffectsAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D2286C2A9C00C8A0E7 /* EffectsAudioPlayer.m */; };
+		E777B3E5286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D3286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.m */; };
+		E777B3E6286C2A9C00C8A0E7 /* EffectsAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D4286C2A9C00C8A0E7 /* EffectsAttribute.m */; };
+		E777B3E7286C2A9C00C8A0E7 /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D5286C2A9C00C8A0E7 /* Effects.m */; };
+		E777B3E8286C2A9C00C8A0E7 /* EffectsDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D6286C2A9C00C8A0E7 /* EffectsDetector.m */; };
+		E777B3E9286C2A9C00C8A0E7 /* EffectsAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D8286C2A9C00C8A0E7 /* EffectsAnimal.m */; };
+		E777B3EA286C2A9C00C8A0E7 /* EffectsProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D9286C2A9C00C8A0E7 /* EffectsProcess.m */; };
+		E777B3EB286C2A9C00C8A0E7 /* EffectsLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3DB286C2A9C00C8A0E7 /* EffectsLicense.m */; };
+		E777B3EC286C2A9C00C8A0E7 /* EffectsCommonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3E0286C2A9C00C8A0E7 /* EffectsCommonObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		031D600C251CD0CD000934AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03F8192F24E004A7004F7F36 /* CapturerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapturerManager.h; sourceTree = "<group>"; };
-		03F8193024E004A7004F7F36 /* VideoProcessingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProcessingManager.m; sourceTree = "<group>"; };
-		03F8193124E004A7004F7F36 /* CapturerManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapturerManagerDelegate.h; sourceTree = "<group>"; };
-		03F8193224E004A7004F7F36 /* VideoFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFilterDelegate.h; sourceTree = "<group>"; };
-		03F8193324E004A7004F7F36 /* VideoProcessingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProcessingManager.h; sourceTree = "<group>"; };
-		03F8193424E004A7004F7F36 /* CapturerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapturerManager.m; sourceTree = "<group>"; };
 		03F8196124E1371B004F7F36 /* KeyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCenter.h; sourceTree = "<group>"; };
 		03F8196224E1371B004F7F36 /* KeyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyCenter.m; sourceTree = "<group>"; };
 		09C6665F24D7BC89001D7AE2 /* BeautifyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeautifyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,141 +59,56 @@
 		2D8ABD2E2511B63200D28745 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeautifyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.debug.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.debug.xcconfig"; sourceTree = "<group>"; };
-		8B06105C260AF19B004795A4 /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
-		8B06105D260AF19B004795A4 /* st_mobile_sticker_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_module.h; sourceTree = "<group>"; };
-		8B06105E260AF19B004795A4 /* st_mobile_beautify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_beautify.h; sourceTree = "<group>"; };
-		8B06105F260AF19B004795A4 /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
-		8B061060260AF19B004795A4 /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
-		8B061061260AF19B004795A4 /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
-		8B061062260AF19B004795A4 /* st_mobile_makeup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_makeup.h; sourceTree = "<group>"; };
-		8B061063260AF19B004795A4 /* st_mobile_attribute_face_feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_attribute_face_feature.h; sourceTree = "<group>"; };
-		8B061064260AF19B004795A4 /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
-		8B061065260AF19B004795A4 /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
-		8B061066260AF19B004795A4 /* st_mobile_slam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_slam.h; sourceTree = "<group>"; };
-		8B061067260AF19B004795A4 /* st_mobile_filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_filter.h; sourceTree = "<group>"; };
-		8B061068260AF19B004795A4 /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
-		8B061069260AF19B004795A4 /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
-		8B06106A260AF19B004795A4 /* st_mobile_gen_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_gen_avatar.h; sourceTree = "<group>"; };
-		8B06106B260AF19B004795A4 /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
-		8B06106C260AF19B004795A4 /* st_mobile_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_renderer.h; sourceTree = "<group>"; };
-		8B06106D260AF19B004795A4 /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
-		8B06107B260AF19B004795A4 /* SenseAR_v7.5.0(Effects).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v7.5.0(Effects).pdf"; sourceTree = "<group>"; };
-		8B06107C260AF19B004795A4 /* how_to_use_license.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = how_to_use_license.pdf; sourceTree = "<group>"; };
-		8B06107D260AF19B004795A4 /* SenseMEEffects集成文档.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseMEEffects集成文档.pdf"; sourceTree = "<group>"; };
-		8B061081260AF19B004795A4 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
 		8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
-		8B0610C3260B1B48004795A4 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
-		8B0610E0260B6AAF004795A4 /* STBMPDetailColVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColVCell.h; sourceTree = "<group>"; };
-		8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBmpStrengthView.m; sourceTree = "<group>"; };
-		8B0610E2260B6AAF004795A4 /* STBMPDetailColV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPDetailColV.h; sourceTree = "<group>"; };
-		8B0610E3260B6AAF004795A4 /* STBMPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPModel.m; sourceTree = "<group>"; };
-		8B0610E4260B6AAF004795A4 /* STPlayerControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayerControlBar.h; sourceTree = "<group>"; };
-		8B0610E5260B6AAF004795A4 /* SenseMEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseMEUtils.h; sourceTree = "<group>"; };
-		8B0610E6260B6AAF004795A4 /* STViewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STViewButton.xib; sourceTree = "<group>"; };
-		8B0610E7260B6AAF004795A4 /* STLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLock.m; sourceTree = "<group>"; };
-		8B0610E8260B6AAF004795A4 /* STGLPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGLPreview.m; sourceTree = "<group>"; };
-		8B0610E9260B6AAF004795A4 /* STSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STSliderView.xib; sourceTree = "<group>"; };
-		8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveToastUtil.m; sourceTree = "<group>"; };
-		8B0610EB260B6AAF004795A4 /* STButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STButton.m; sourceTree = "<group>"; };
-		8B0610EC260B6AAF004795A4 /* STScrollTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STScrollTitleView.h; sourceTree = "<group>"; };
-		8B0610ED260B6AAF004795A4 /* STSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSliderView.h; sourceTree = "<group>"; };
-		8B0610EE260B6AAF004795A4 /* STViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STViewButton.h; sourceTree = "<group>"; };
-		8B0610EF260B6AAF004795A4 /* STEffectsAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEffectsAudioPlayer.h; sourceTree = "<group>"; };
-		8B0610F0260B6AAF004795A4 /* STFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STFilterView.h; sourceTree = "<group>"; };
-		8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCommonObjectContainerView.m; sourceTree = "<group>"; };
-		8B0610F2260B6AAF004795A4 /* STTriggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTriggerView.m; sourceTree = "<group>"; };
-		8B0610F3260B6AAF004795A4 /* STBMPCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPCollectionView.h; sourceTree = "<group>"; };
-		8B0610F4260B6AAF004795A4 /* STCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollectionViewCell.h; sourceTree = "<group>"; };
-		8B0610F5260B6AAF004795A4 /* EffectsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsCollectionViewCell.h; sourceTree = "<group>"; };
-		8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTitleViewItem.m; sourceTree = "<group>"; };
-		8B0610F7260B6AAF004795A4 /* STCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollectionView.h; sourceTree = "<group>"; };
-		8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCustomMemoryCache.m; sourceTree = "<group>"; };
-		8B0610F9260B6AAF004795A4 /* EffectsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsCollectionView.h; sourceTree = "<group>"; };
-		8B0610FA260B6AAF004795A4 /* STParamUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STParamUtil.m; sourceTree = "<group>"; };
-		8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCustomCollectionView.m; sourceTree = "<group>"; };
-		8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEffectsTimer.m; sourceTree = "<group>"; };
-		8B0610FD260B6AAF004795A4 /* STCommonObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCommonObjectView.h; sourceTree = "<group>"; };
-		8B0610FE260B6AAF004795A4 /* STBMPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPCollectionViewCell.h; sourceTree = "<group>"; };
-		8B0610FF260B6AAF004795A4 /* STMobileLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMobileLog.h; sourceTree = "<group>"; };
-		8B061100260B6AAF004795A4 /* STAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAudioManager.m; sourceTree = "<group>"; };
-		8B061101260B6AAF004795A4 /* STVFShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STVFShader.h; sourceTree = "<group>"; };
-		8B061102260B6AAF004795A4 /* STMovieRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMovieRecorder.h; sourceTree = "<group>"; };
-		8B061103260B6AAF004795A4 /* STCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCamera.h; sourceTree = "<group>"; };
-		8B061104260B6AAF004795A4 /* STGLPreview2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGLPreview2.m; sourceTree = "<group>"; };
-		8B061105260B6AAF004795A4 /* STBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBeautySlider.m; sourceTree = "<group>"; };
-		8B061106260B6AAF004795A4 /* SenseTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseTimeUtil.h; sourceTree = "<group>"; };
-		8B061107260B6AAF004795A4 /* STCommonObjectContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCommonObjectContainerView.h; sourceTree = "<group>"; };
-		8B061108260B6AAF004795A4 /* STTriggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTriggerView.h; sourceTree = "<group>"; };
-		8B061109260B6AAF004795A4 /* STFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFilterView.m; sourceTree = "<group>"; };
-		8B06110A260B6AAF004795A4 /* STViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STViewButton.m; sourceTree = "<group>"; };
-		8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEffectsAudioPlayer.m; sourceTree = "<group>"; };
-		8B06110C260B6AAF004795A4 /* STSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSliderView.m; sourceTree = "<group>"; };
-		8B06110D260B6AAF004795A4 /* STScrollTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STScrollTitleView.m; sourceTree = "<group>"; };
-		8B06110E260B6AAF004795A4 /* STButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STButton.h; sourceTree = "<group>"; };
-		8B06110F260B6AAF004795A4 /* SaveToastUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveToastUtil.h; sourceTree = "<group>"; };
-		8B061110260B6AAF004795A4 /* STLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLock.h; sourceTree = "<group>"; };
-		8B061111260B6AAF004795A4 /* STGLPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGLPreview.h; sourceTree = "<group>"; };
-		8B061112260B6AAF004795A4 /* STPlayerControlBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPlayerControlBar.m; sourceTree = "<group>"; };
-		8B061113260B6AAF004795A4 /* SenseMEUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseMEUtils.m; sourceTree = "<group>"; };
-		8B061114260B6AAF004795A4 /* STBMPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBMPModel.h; sourceTree = "<group>"; };
-		8B061115260B6AAF004795A4 /* STBMPDetailColV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPDetailColV.m; sourceTree = "<group>"; };
-		8B061116260B6AAF004795A4 /* STBmpStrengthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBmpStrengthView.h; sourceTree = "<group>"; };
-		8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPDetailColVCell.m; sourceTree = "<group>"; };
-		8B061118260B6AAF004795A4 /* STCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollectionView.m; sourceTree = "<group>"; };
-		8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EffectsCollectionViewCell.xib; sourceTree = "<group>"; };
-		8B06111A260B6AAF004795A4 /* STTitleViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTitleViewItem.h; sourceTree = "<group>"; };
-		8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCollectionViewCell.m; sourceTree = "<group>"; };
-		8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollectionViewCell.m; sourceTree = "<group>"; };
-		8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPCollectionView.m; sourceTree = "<group>"; };
-		8B06111E260B6AAF004795A4 /* STCommonObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCommonObjectView.m; sourceTree = "<group>"; };
-		8B06111F260B6AAF004795A4 /* STEffectsTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEffectsTimer.h; sourceTree = "<group>"; };
-		8B061120260B6AAF004795A4 /* STCustomCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCustomCollectionView.h; sourceTree = "<group>"; };
-		8B061121260B6AAF004795A4 /* STParamUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STParamUtil.h; sourceTree = "<group>"; };
-		8B061122260B6AAF004795A4 /* STCustomMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCustomMemoryCache.h; sourceTree = "<group>"; };
-		8B061123260B6AAF004795A4 /* EffectsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCollectionView.m; sourceTree = "<group>"; };
-		8B061124260B6AAF004795A4 /* SenseTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseTimeUtil.m; sourceTree = "<group>"; };
-		8B061125260B6AAF004795A4 /* STBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STBeautySlider.h; sourceTree = "<group>"; };
-		8B061126260B6AAF004795A4 /* STGLPreview2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGLPreview2.h; sourceTree = "<group>"; };
-		8B061127260B6AAF004795A4 /* STCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCamera.m; sourceTree = "<group>"; };
-		8B061128260B6AAF004795A4 /* STVFShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STVFShader.m; sourceTree = "<group>"; };
-		8B061129260B6AAF004795A4 /* STMovieRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMovieRecorder.m; sourceTree = "<group>"; };
-		8B06112A260B6AB0004795A4 /* STAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAudioManager.h; sourceTree = "<group>"; };
-		8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPCollectionViewCell.m; sourceTree = "<group>"; };
-		8B06112D260B6AB0004795A4 /* SenseBeautifyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseBeautifyManager.h; sourceTree = "<group>"; };
-		8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseEffectsManager.m; sourceTree = "<group>"; };
-		8B06112F260B6AB0004795A4 /* SenseTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseTimeManager.h; sourceTree = "<group>"; };
-		8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseBeautifyManager.m; sourceTree = "<group>"; };
-		8B061131260B6AB0004795A4 /* SenseTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseTimeManager.m; sourceTree = "<group>"; };
-		8B061132260B6AB0004795A4 /* SenseEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseEffectsManager.h; sourceTree = "<group>"; };
-		8B061183260B6CC4004795A4 /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
-		8B061184260B6CC4004795A4 /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
-		8B061185260B6CC4004795A4 /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
-		8B061186260B6CC4004795A4 /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
-		8B061188260B6CC4004795A4 /* eyeliner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeliner.bundle; sourceTree = "<group>"; };
-		8B061189260B6CC4004795A4 /* eyelash.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyelash.bundle; sourceTree = "<group>"; };
-		8B06118A260B6CC4004795A4 /* lips.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lips.bundle; sourceTree = "<group>"; };
-		8B06118B260B6CC4004795A4 /* brow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = brow.bundle; sourceTree = "<group>"; };
-		8B06118C260B6CC4004795A4 /* wholemakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = wholemakeup.bundle; sourceTree = "<group>"; };
-		8B06118D260B6CC4004795A4 /* face.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = face.bundle; sourceTree = "<group>"; };
-		8B06118E260B6CC4004795A4 /* eyeshadow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeshadow.bundle; sourceTree = "<group>"; };
-		8B06118F260B6CC4004795A4 /* maskhair.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = maskhair.bundle; sourceTree = "<group>"; };
-		8B061190260B6CC4004795A4 /* blush.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blush.bundle; sourceTree = "<group>"; };
-		8B061191260B6CC4004795A4 /* eyeball.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeball.bundle; sourceTree = "<group>"; };
-		8B061193260B6CC4004795A4 /* my_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = my_sticker.bundle; sourceTree = "<group>"; };
-		8B0611A5260B6CCC004795A4 /* M_SenseME_CatFace_3.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_3.0.0.model; sourceTree = "<group>"; };
-		8B0611A6260B6CCC004795A4 /* M_SenseME_Face_Extra_5.23.4.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Extra_5.23.4.model; sourceTree = "<group>"; };
-		8B0611A7260B6CCC004795A4 /* M_SenseME_MouthOcclusion_1.1.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_MouthOcclusion_1.1.1.model; sourceTree = "<group>"; };
-		8B0611A8260B6CCC004795A4 /* M_SenseME_Segment_4.12.8.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_4.12.8.model; sourceTree = "<group>"; };
-		8B0611A9260B6CCC004795A4 /* M_SenseME_Iris_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Iris_2.0.0.model; sourceTree = "<group>"; };
-		8B0611AA260B6CCC004795A4 /* SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf"; sourceTree = "<group>"; };
-		8B0611AB260B6CCC004795A4 /* M_SenseME_Hand_5.4.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Hand_5.4.0.model; sourceTree = "<group>"; };
-		8B0611AC260B6CCC004795A4 /* M_SenseME_Face_Video_7.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Face_Video_7.0.0.model; sourceTree = "<group>"; };
-		8B0611AD260B6CCC004795A4 /* M_SenseME_Segment_Hair_1.3.4.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Segment_Hair_1.3.4.model; sourceTree = "<group>"; };
-		8B0611AE260B6CCC004795A4 /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
-		8B0611AF260B6CCC004795A4 /* M_SenseME_Avatar_Help_2.2.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Avatar_Help_2.2.0.model; sourceTree = "<group>"; };
-		8B63F061260A3E790040C3A8 /* SenseMeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseMeFilter.h; sourceTree = "<group>"; };
-		8B63F062260A3E790040C3A8 /* SenseMeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenseMeFilter.m; sourceTree = "<group>"; };
 		AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.release.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.release.xcconfig"; sourceTree = "<group>"; };
+		E777B34D286C04D100C8A0E7 /* CapturerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapturerManager.h; sourceTree = "<group>"; };
+		E777B34E286C04D100C8A0E7 /* CapturerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapturerManager.m; sourceTree = "<group>"; };
+		E777B34F286C04D100C8A0E7 /* VideoProcessingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProcessingManager.h; sourceTree = "<group>"; };
+		E777B350286C04D100C8A0E7 /* VideoProcessingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProcessingManager.m; sourceTree = "<group>"; };
+		E777B39C286C282A00C8A0E7 /* SenseArMaterialAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialAction.h; sourceTree = "<group>"; };
+		E777B39D286C282A00C8A0E7 /* SenseArMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterial.h; sourceTree = "<group>"; };
+		E777B39E286C282A00C8A0E7 /* SenseArSourceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArSourceService.h; sourceTree = "<group>"; };
+		E777B39F286C282A00C8A0E7 /* SenseArMaterialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialService.h; sourceTree = "<group>"; };
+		E777B3A0286C282A00C8A0E7 /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
+		E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSenseArSourceService.a; sourceTree = "<group>"; };
+		E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
+		E777B3B3286C2A0000C8A0E7 /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
+		E777B3B4286C2A0000C8A0E7 /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
+		E777B3B5286C2A0000C8A0E7 /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
+		E777B3B6286C2A0000C8A0E7 /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
+		E777B3B7286C2A0000C8A0E7 /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
+		E777B3B8286C2A0000C8A0E7 /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
+		E777B3B9286C2A0000C8A0E7 /* st_mobile_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_effect.h; sourceTree = "<group>"; };
+		E777B3BA286C2A0000C8A0E7 /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
+		E777B3BB286C2A0000C8A0E7 /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
+		E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_3.0.0.model; sourceTree = "<group>"; };
+		E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_DogFace_2.0.0.model; sourceTree = "<group>"; };
+		E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf"; sourceTree = "<group>"; };
+		E777B3C0286C2A0600C8A0E7 /* model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = model.bundle; sourceTree = "<group>"; };
+		E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
+		E777B3C9286C2A9C00C8A0E7 /* STShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShaderTypes.h; sourceTree = "<group>"; };
+		E777B3CA286C2A9C00C8A0E7 /* STShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = STShaders.metal; sourceTree = "<group>"; };
+		E777B3CB286C2A9C00C8A0E7 /* EFMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFMotionManager.h; sourceTree = "<group>"; };
+		E777B3CC286C2A9C00C8A0E7 /* EFMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFMotionManager.m; sourceTree = "<group>"; };
+		E777B3CE286C2A9C00C8A0E7 /* EffectsLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsLicense.h; sourceTree = "<group>"; };
+		E777B3D0286C2A9C00C8A0E7 /* EffectsAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsAudioPlayer.h; sourceTree = "<group>"; };
+		E777B3D1286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsAudioPlayerManager.h; sourceTree = "<group>"; };
+		E777B3D2286C2A9C00C8A0E7 /* EffectsAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsAudioPlayer.m; sourceTree = "<group>"; };
+		E777B3D3286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsAudioPlayerManager.m; sourceTree = "<group>"; };
+		E777B3D4286C2A9C00C8A0E7 /* EffectsAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsAttribute.m; sourceTree = "<group>"; };
+		E777B3D5286C2A9C00C8A0E7 /* Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Effects.m; sourceTree = "<group>"; };
+		E777B3D6286C2A9C00C8A0E7 /* EffectsDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsDetector.m; sourceTree = "<group>"; };
+		E777B3D7286C2A9C00C8A0E7 /* EffectsCommonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsCommonObject.h; sourceTree = "<group>"; };
+		E777B3D8286C2A9C00C8A0E7 /* EffectsAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsAnimal.m; sourceTree = "<group>"; };
+		E777B3D9286C2A9C00C8A0E7 /* EffectsProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsProcess.m; sourceTree = "<group>"; };
+		E777B3DA286C2A9C00C8A0E7 /* EffectsAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsAttribute.h; sourceTree = "<group>"; };
+		E777B3DB286C2A9C00C8A0E7 /* EffectsLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsLicense.m; sourceTree = "<group>"; };
+		E777B3DC286C2A9C00C8A0E7 /* EffectsDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsDetector.h; sourceTree = "<group>"; };
+		E777B3DD286C2A9C00C8A0E7 /* Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Effects.h; sourceTree = "<group>"; };
+		E777B3DE286C2A9C00C8A0E7 /* EffectMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectMacro.h; sourceTree = "<group>"; };
+		E777B3DF286C2A9C00C8A0E7 /* EffectsAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsAnimal.h; sourceTree = "<group>"; };
+		E777B3E0286C2A9C00C8A0E7 /* EffectsCommonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCommonObject.m; sourceTree = "<group>"; };
+		E777B3E1286C2A9C00C8A0E7 /* EffectsProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsProcess.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,9 +117,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */,
+				E777B3AD286C282A00C8A0E7 /* libSenseArSourceService.a in Frameworks */,
 				610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */,
+				E777B3B1286C29EA00C8A0E7 /* libst_mobile.a in Frameworks */,
 				5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */,
-				8B0610A0260AF19B004795A4 /* libst_mobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +130,6 @@
 		031D600A251CD0CD000934AB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				8B0610C3260B1B48004795A4 /* SENSEME.lic */,
 				031D600C251CD0CD000934AB /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -285,12 +138,10 @@
 		03F8192E24E004A7004F7F36 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				03F8193324E004A7004F7F36 /* VideoProcessingManager.h */,
-				03F8193024E004A7004F7F36 /* VideoProcessingManager.m */,
-				03F8192F24E004A7004F7F36 /* CapturerManager.h */,
-				03F8193424E004A7004F7F36 /* CapturerManager.m */,
-				03F8193124E004A7004F7F36 /* CapturerManagerDelegate.h */,
-				03F8193224E004A7004F7F36 /* VideoFilterDelegate.h */,
+				E777B34D286C04D100C8A0E7 /* CapturerManager.h */,
+				E777B34E286C04D100C8A0E7 /* CapturerManager.m */,
+				E777B34F286C04D100C8A0E7 /* VideoProcessingManager.h */,
+				E777B350286C04D100C8A0E7 /* VideoProcessingManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -298,7 +149,7 @@
 		09C6665624D7BC89001D7AE2 = {
 			isa = PBXGroup;
 			children = (
-				8B63F060260A3B250040C3A8 /* SenseMe */,
+				E777B399286C282A00C8A0E7 /* SenseMe */,
 				09C6666124D7BC89001D7AE2 /* BeautifyExample */,
 				09C6666024D7BC89001D7AE2 /* Products */,
 				42A85BEAC6A36FA392D1839E /* Pods */,
@@ -354,239 +205,159 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8B061057260AF19B004795A4 /* st_mobile */ = {
+		E777B399286C282A00C8A0E7 /* SenseMe */ = {
 			isa = PBXGroup;
 			children = (
-				8B0611A4260B6CCC004795A4 /* models */,
-				8B06105B260AF19B004795A4 /* include */,
-				8B06107A260AF19B004795A4 /* docs */,
-				8B06107F260AF19B004795A4 /* lib */,
+				E777B3C7286C2A9C00C8A0E7 /* EffectsUtils */,
+				E777B3CD286C2A9C00C8A0E7 /* EFRender */,
+				E777B39A286C282A00C8A0E7 /* remoteSourcesLib */,
+				E777B3A8286C282A00C8A0E7 /* Language */,
+				E777B3A9286C282A00C8A0E7 /* st_mobile_sdk */,
 			);
-			path = st_mobile;
+			path = SenseMe;
 			sourceTree = "<group>";
 		};
-		8B06105B260AF19B004795A4 /* include */ = {
+		E777B39A286C282A00C8A0E7 /* remoteSourcesLib */ = {
 			isa = PBXGroup;
 			children = (
-				8B06105C260AF19B004795A4 /* st_mobile_common.h */,
-				8B06105D260AF19B004795A4 /* st_mobile_sticker_module.h */,
-				8B06105E260AF19B004795A4 /* st_mobile_beautify.h */,
-				8B06105F260AF19B004795A4 /* st_mobile_animal.h */,
-				8B061060260AF19B004795A4 /* st_mobile_human_action.h */,
-				8B061061260AF19B004795A4 /* st_mobile_object.h */,
-				8B061062260AF19B004795A4 /* st_mobile_makeup.h */,
-				8B061063260AF19B004795A4 /* st_mobile_attribute_face_feature.h */,
-				8B061064260AF19B004795A4 /* st_mobile_face_attribute.h */,
-				8B061065260AF19B004795A4 /* st_mobile_license.h */,
-				8B061066260AF19B004795A4 /* st_mobile_slam.h */,
-				8B061067260AF19B004795A4 /* st_mobile_filter.h */,
-				8B061068260AF19B004795A4 /* st_mobile_color_convert.h */,
-				8B061069260AF19B004795A4 /* st_mobile_avatar.h */,
-				8B06106A260AF19B004795A4 /* st_mobile_gen_avatar.h */,
-				8B06106B260AF19B004795A4 /* st_mobile_sticker.h */,
-				8B06106C260AF19B004795A4 /* st_mobile_renderer.h */,
-				8B06106D260AF19B004795A4 /* st_mobile_sticker_transition.h */,
+				E777B39B286C282A00C8A0E7 /* include */,
+				E777B3A1286C282A00C8A0E7 /* lib */,
+			);
+			path = remoteSourcesLib;
+			sourceTree = "<group>";
+		};
+		E777B39B286C282A00C8A0E7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E777B39C286C282A00C8A0E7 /* SenseArMaterialAction.h */,
+				E777B39D286C282A00C8A0E7 /* SenseArMaterial.h */,
+				E777B39E286C282A00C8A0E7 /* SenseArSourceService.h */,
+				E777B39F286C282A00C8A0E7 /* SenseArMaterialService.h */,
+				E777B3A0286C282A00C8A0E7 /* SenseArMaterialGroup.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		8B06107A260AF19B004795A4 /* docs */ = {
+		E777B3A1286C282A00C8A0E7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				8B06107B260AF19B004795A4 /* SenseAR_v7.5.0(Effects).pdf */,
-				8B06107C260AF19B004795A4 /* how_to_use_license.pdf */,
-				8B06107D260AF19B004795A4 /* SenseMEEffects集成文档.pdf */,
-			);
-			path = docs;
-			sourceTree = "<group>";
-		};
-		8B06107F260AF19B004795A4 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				8B061080260AF19B004795A4 /* ios_os */,
+				E777B3A4286C282A00C8A0E7 /* ios_os */,
 			);
 			path = lib;
 			sourceTree = "<group>";
 		};
-		8B061080260AF19B004795A4 /* ios_os */ = {
+		E777B3A4286C282A00C8A0E7 /* ios_os */ = {
 			isa = PBXGroup;
 			children = (
-				8B061081260AF19B004795A4 /* libst_mobile.a */,
+				E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */,
 			);
 			path = ios_os;
 			sourceTree = "<group>";
 		};
-		8B0610DF260B6AAF004795A4 /* Util */ = {
+		E777B3A8286C282A00C8A0E7 /* Language */ = {
 			isa = PBXGroup;
 			children = (
-				8B0610E0260B6AAF004795A4 /* STBMPDetailColVCell.h */,
-				8B0610E1260B6AAF004795A4 /* STBmpStrengthView.m */,
-				8B0610E2260B6AAF004795A4 /* STBMPDetailColV.h */,
-				8B0610E3260B6AAF004795A4 /* STBMPModel.m */,
-				8B0610E4260B6AAF004795A4 /* STPlayerControlBar.h */,
-				8B0610E5260B6AAF004795A4 /* SenseMEUtils.h */,
-				8B0610E6260B6AAF004795A4 /* STViewButton.xib */,
-				8B0610E7260B6AAF004795A4 /* STLock.m */,
-				8B0610E8260B6AAF004795A4 /* STGLPreview.m */,
-				8B0610E9260B6AAF004795A4 /* STSliderView.xib */,
-				8B0610EA260B6AAF004795A4 /* SaveToastUtil.m */,
-				8B0610EB260B6AAF004795A4 /* STButton.m */,
-				8B0610EC260B6AAF004795A4 /* STScrollTitleView.h */,
-				8B0610ED260B6AAF004795A4 /* STSliderView.h */,
-				8B0610EE260B6AAF004795A4 /* STViewButton.h */,
-				8B0610EF260B6AAF004795A4 /* STEffectsAudioPlayer.h */,
-				8B0610F0260B6AAF004795A4 /* STFilterView.h */,
-				8B0610F1260B6AAF004795A4 /* STCommonObjectContainerView.m */,
-				8B0610F2260B6AAF004795A4 /* STTriggerView.m */,
-				8B0610F3260B6AAF004795A4 /* STBMPCollectionView.h */,
-				8B0610F4260B6AAF004795A4 /* STCollectionViewCell.h */,
-				8B0610F5260B6AAF004795A4 /* EffectsCollectionViewCell.h */,
-				8B0610F6260B6AAF004795A4 /* STTitleViewItem.m */,
-				8B0610F7260B6AAF004795A4 /* STCollectionView.h */,
-				8B0610F8260B6AAF004795A4 /* STCustomMemoryCache.m */,
-				8B0610F9260B6AAF004795A4 /* EffectsCollectionView.h */,
-				8B0610FA260B6AAF004795A4 /* STParamUtil.m */,
-				8B0610FB260B6AAF004795A4 /* STCustomCollectionView.m */,
-				8B0610FC260B6AAF004795A4 /* STEffectsTimer.m */,
-				8B0610FD260B6AAF004795A4 /* STCommonObjectView.h */,
-				8B0610FE260B6AAF004795A4 /* STBMPCollectionViewCell.h */,
-				8B0610FF260B6AAF004795A4 /* STMobileLog.h */,
-				8B061100260B6AAF004795A4 /* STAudioManager.m */,
-				8B061101260B6AAF004795A4 /* STVFShader.h */,
-				8B061102260B6AAF004795A4 /* STMovieRecorder.h */,
-				8B061103260B6AAF004795A4 /* STCamera.h */,
-				8B061104260B6AAF004795A4 /* STGLPreview2.m */,
-				8B061105260B6AAF004795A4 /* STBeautySlider.m */,
-				8B061106260B6AAF004795A4 /* SenseTimeUtil.h */,
-				8B061107260B6AAF004795A4 /* STCommonObjectContainerView.h */,
-				8B061108260B6AAF004795A4 /* STTriggerView.h */,
-				8B061109260B6AAF004795A4 /* STFilterView.m */,
-				8B06110A260B6AAF004795A4 /* STViewButton.m */,
-				8B06110B260B6AAF004795A4 /* STEffectsAudioPlayer.m */,
-				8B06110C260B6AAF004795A4 /* STSliderView.m */,
-				8B06110D260B6AAF004795A4 /* STScrollTitleView.m */,
-				8B06110E260B6AAF004795A4 /* STButton.h */,
-				8B06110F260B6AAF004795A4 /* SaveToastUtil.h */,
-				8B061110260B6AAF004795A4 /* STLock.h */,
-				8B061111260B6AAF004795A4 /* STGLPreview.h */,
-				8B061112260B6AAF004795A4 /* STPlayerControlBar.m */,
-				8B061113260B6AAF004795A4 /* SenseMEUtils.m */,
-				8B061114260B6AAF004795A4 /* STBMPModel.h */,
-				8B061115260B6AAF004795A4 /* STBMPDetailColV.m */,
-				8B061116260B6AAF004795A4 /* STBmpStrengthView.h */,
-				8B061117260B6AAF004795A4 /* STBMPDetailColVCell.m */,
-				8B061118260B6AAF004795A4 /* STCollectionView.m */,
-				8B061119260B6AAF004795A4 /* EffectsCollectionViewCell.xib */,
-				8B06111A260B6AAF004795A4 /* STTitleViewItem.h */,
-				8B06111B260B6AAF004795A4 /* EffectsCollectionViewCell.m */,
-				8B06111C260B6AAF004795A4 /* STCollectionViewCell.m */,
-				8B06111D260B6AAF004795A4 /* STBMPCollectionView.m */,
-				8B06111E260B6AAF004795A4 /* STCommonObjectView.m */,
-				8B06111F260B6AAF004795A4 /* STEffectsTimer.h */,
-				8B061120260B6AAF004795A4 /* STCustomCollectionView.h */,
-				8B061121260B6AAF004795A4 /* STParamUtil.h */,
-				8B061122260B6AAF004795A4 /* STCustomMemoryCache.h */,
-				8B061123260B6AAF004795A4 /* EffectsCollectionView.m */,
-				8B061124260B6AAF004795A4 /* SenseTimeUtil.m */,
-				8B061125260B6AAF004795A4 /* STBeautySlider.h */,
-				8B061126260B6AAF004795A4 /* STGLPreview2.h */,
-				8B061127260B6AAF004795A4 /* STCamera.m */,
-				8B061128260B6AAF004795A4 /* STVFShader.m */,
-				8B061129260B6AAF004795A4 /* STMovieRecorder.m */,
-				8B06112A260B6AB0004795A4 /* STAudioManager.h */,
-				8B06112B260B6AB0004795A4 /* STBMPCollectionViewCell.m */,
 			);
-			path = Util;
+			path = Language;
 			sourceTree = "<group>";
 		};
-		8B06112C260B6AB0004795A4 /* SenseManager */ = {
+		E777B3A9286C282A00C8A0E7 /* st_mobile_sdk */ = {
 			isa = PBXGroup;
 			children = (
-				8B06112D260B6AB0004795A4 /* SenseBeautifyManager.h */,
-				8B06112E260B6AB0004795A4 /* SenseEffectsManager.m */,
-				8B06112F260B6AB0004795A4 /* SenseTimeManager.h */,
-				8B061130260B6AB0004795A4 /* SenseBeautifyManager.m */,
-				8B061131260B6AB0004795A4 /* SenseTimeManager.m */,
-				8B061132260B6AB0004795A4 /* SenseEffectsManager.h */,
+				E777B3BC286C2A0600C8A0E7 /* models */,
+				E777B3B2286C2A0000C8A0E7 /* include */,
+				E777B3AF286C29EA00C8A0E7 /* ios_os-universal */,
 			);
-			path = SenseManager;
+			path = st_mobile_sdk;
 			sourceTree = "<group>";
 		};
-		8B061181260B6CC4004795A4 /* resources */ = {
+		E777B3AF286C29EA00C8A0E7 /* ios_os-universal */ = {
 			isa = PBXGroup;
 			children = (
-				8B061182260B6CC4004795A4 /* Filters */,
-				8B061187260B6CC4004795A4 /* Makeup */,
-				8B061192260B6CC4004795A4 /* StickerZipAndIcons */,
+				E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */,
 			);
-			path = resources;
+			path = "ios_os-universal";
 			sourceTree = "<group>";
 		};
-		8B061182260B6CC4004795A4 /* Filters */ = {
+		E777B3B2286C2A0000C8A0E7 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				8B061183260B6CC4004795A4 /* PortraitFilters.bundle */,
-				8B061184260B6CC4004795A4 /* SceneryFilters.bundle */,
-				8B061185260B6CC4004795A4 /* StillLifeFilters.bundle */,
-				8B061186260B6CC4004795A4 /* DeliciousFoodFilters.bundle */,
+				E777B3B3286C2A0000C8A0E7 /* st_mobile_common.h */,
+				E777B3B4286C2A0000C8A0E7 /* st_mobile_animal.h */,
+				E777B3B5286C2A0000C8A0E7 /* st_mobile_human_action.h */,
+				E777B3B6286C2A0000C8A0E7 /* st_mobile_object.h */,
+				E777B3B7286C2A0000C8A0E7 /* st_mobile_face_attribute.h */,
+				E777B3B8286C2A0000C8A0E7 /* st_mobile_license.h */,
+				E777B3B9286C2A0000C8A0E7 /* st_mobile_effect.h */,
+				E777B3BA286C2A0000C8A0E7 /* st_mobile_color_convert.h */,
+				E777B3BB286C2A0000C8A0E7 /* st_mobile_avatar.h */,
 			);
-			path = Filters;
+			path = include;
 			sourceTree = "<group>";
 		};
-		8B061187260B6CC4004795A4 /* Makeup */ = {
+		E777B3BC286C2A0600C8A0E7 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				8B061188260B6CC4004795A4 /* eyeliner.bundle */,
-				8B061189260B6CC4004795A4 /* eyelash.bundle */,
-				8B06118A260B6CC4004795A4 /* lips.bundle */,
-				8B06118B260B6CC4004795A4 /* brow.bundle */,
-				8B06118C260B6CC4004795A4 /* wholemakeup.bundle */,
-				8B06118D260B6CC4004795A4 /* face.bundle */,
-				8B06118E260B6CC4004795A4 /* eyeshadow.bundle */,
-				8B06118F260B6CC4004795A4 /* maskhair.bundle */,
-				8B061190260B6CC4004795A4 /* blush.bundle */,
-				8B061191260B6CC4004795A4 /* eyeball.bundle */,
-			);
-			path = Makeup;
-			sourceTree = "<group>";
-		};
-		8B061192260B6CC4004795A4 /* StickerZipAndIcons */ = {
-			isa = PBXGroup;
-			children = (
-				8B061193260B6CC4004795A4 /* my_sticker.bundle */,
-			);
-			path = StickerZipAndIcons;
-			sourceTree = "<group>";
-		};
-		8B0611A4260B6CCC004795A4 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				8B0611A5260B6CCC004795A4 /* M_SenseME_CatFace_3.0.0.model */,
-				8B0611A6260B6CCC004795A4 /* M_SenseME_Face_Extra_5.23.4.model */,
-				8B0611A7260B6CCC004795A4 /* M_SenseME_MouthOcclusion_1.1.1.model */,
-				8B0611A8260B6CCC004795A4 /* M_SenseME_Segment_4.12.8.model */,
-				8B0611A9260B6CCC004795A4 /* M_SenseME_Iris_2.0.0.model */,
-				8B0611AA260B6CCC004795A4 /* SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf */,
-				8B0611AB260B6CCC004795A4 /* M_SenseME_Hand_5.4.0.model */,
-				8B0611AC260B6CCC004795A4 /* M_SenseME_Face_Video_7.0.0.model */,
-				8B0611AD260B6CCC004795A4 /* M_SenseME_Segment_Hair_1.3.4.model */,
-				8B0611AE260B6CCC004795A4 /* M_SenseME_Attribute_1.0.1.model */,
-				8B0611AF260B6CCC004795A4 /* M_SenseME_Avatar_Help_2.2.0.model */,
+				E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */,
+				E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */,
+				E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */,
+				E777B3C0286C2A0600C8A0E7 /* model.bundle */,
+				E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */,
 			);
 			path = models;
 			sourceTree = "<group>";
 		};
-		8B63F060260A3B250040C3A8 /* SenseMe */ = {
+		E777B3C7286C2A9C00C8A0E7 /* EffectsUtils */ = {
 			isa = PBXGroup;
 			children = (
-				8B061181260B6CC4004795A4 /* resources */,
-				8B06112C260B6AB0004795A4 /* SenseManager */,
-				8B0610DF260B6AAF004795A4 /* Util */,
-				8B061057260AF19B004795A4 /* st_mobile */,
-				8B63F061260A3E790040C3A8 /* SenseMeFilter.h */,
-				8B63F062260A3E790040C3A8 /* SenseMeFilter.m */,
+				E777B3C8286C2A9C00C8A0E7 /* metalshaders */,
+				E777B3CB286C2A9C00C8A0E7 /* EFMotionManager.h */,
+				E777B3CC286C2A9C00C8A0E7 /* EFMotionManager.m */,
 			);
-			path = SenseMe;
+			path = EffectsUtils;
+			sourceTree = "<group>";
+		};
+		E777B3C8286C2A9C00C8A0E7 /* metalshaders */ = {
+			isa = PBXGroup;
+			children = (
+				E777B3C9286C2A9C00C8A0E7 /* STShaderTypes.h */,
+				E777B3CA286C2A9C00C8A0E7 /* STShaders.metal */,
+			);
+			path = metalshaders;
+			sourceTree = "<group>";
+		};
+		E777B3CD286C2A9C00C8A0E7 /* EFRender */ = {
+			isa = PBXGroup;
+			children = (
+				E777B3CE286C2A9C00C8A0E7 /* EffectsLicense.h */,
+				E777B3CF286C2A9C00C8A0E7 /* EffectsAudioPlayer */,
+				E777B3D4286C2A9C00C8A0E7 /* EffectsAttribute.m */,
+				E777B3D5286C2A9C00C8A0E7 /* Effects.m */,
+				E777B3D6286C2A9C00C8A0E7 /* EffectsDetector.m */,
+				E777B3D7286C2A9C00C8A0E7 /* EffectsCommonObject.h */,
+				E777B3D8286C2A9C00C8A0E7 /* EffectsAnimal.m */,
+				E777B3D9286C2A9C00C8A0E7 /* EffectsProcess.m */,
+				E777B3DA286C2A9C00C8A0E7 /* EffectsAttribute.h */,
+				E777B3DB286C2A9C00C8A0E7 /* EffectsLicense.m */,
+				E777B3DC286C2A9C00C8A0E7 /* EffectsDetector.h */,
+				E777B3DD286C2A9C00C8A0E7 /* Effects.h */,
+				E777B3DE286C2A9C00C8A0E7 /* EffectMacro.h */,
+				E777B3DF286C2A9C00C8A0E7 /* EffectsAnimal.h */,
+				E777B3E0286C2A9C00C8A0E7 /* EffectsCommonObject.m */,
+				E777B3E1286C2A9C00C8A0E7 /* EffectsProcess.h */,
+			);
+			path = EFRender;
+			sourceTree = "<group>";
+		};
+		E777B3CF286C2A9C00C8A0E7 /* EffectsAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E777B3D0286C2A9C00C8A0E7 /* EffectsAudioPlayer.h */,
+				E777B3D1286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.h */,
+				E777B3D2286C2A9C00C8A0E7 /* EffectsAudioPlayer.m */,
+				E777B3D3286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.m */,
+			);
+			path = EffectsAudioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,43 +420,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B06109D260AF19B004795A4 /* how_to_use_license.pdf in Resources */,
-				8B0610C4260B1B48004795A4 /* SENSEME.lic in Resources */,
-				8B0611B8260B6CCC004795A4 /* M_SenseME_Segment_Hair_1.3.4.model in Resources */,
-				8B061199260B6CC4004795A4 /* eyelash.bundle in Resources */,
 				09C6667224D7BC8B001D7AE2 /* LaunchScreen.storyboard in Resources */,
-				8B06119C260B6CC4004795A4 /* wholemakeup.bundle in Resources */,
-				8B061147260B6AB0004795A4 /* STSliderView.xib in Resources */,
-				8B0611B7260B6CCC004795A4 /* M_SenseME_Face_Video_7.0.0.model in Resources */,
-				8B0611B1260B6CCC004795A4 /* M_SenseME_Face_Extra_5.23.4.model in Resources */,
-				8B0611A1260B6CC4004795A4 /* eyeball.bundle in Resources */,
-				8B0611B5260B6CCC004795A4 /* SenseAR_v7.5.0(Effects)_Model_Usage_Instructions的.pdf in Resources */,
-				8B061198260B6CC4004795A4 /* eyeliner.bundle in Resources */,
-				8B061195260B6CC4004795A4 /* SceneryFilters.bundle in Resources */,
-				8B0611B6260B6CCC004795A4 /* M_SenseME_Hand_5.4.0.model in Resources */,
-				8B06119A260B6CC4004795A4 /* lips.bundle in Resources */,
-				8B06119E260B6CC4004795A4 /* eyeshadow.bundle in Resources */,
-				8B0611A0260B6CC4004795A4 /* blush.bundle in Resources */,
+				E777B3C6286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model in Resources */,
 				09C6666F24D7BC8B001D7AE2 /* Assets.xcassets in Resources */,
-				8B0611B9260B6CCC004795A4 /* M_SenseME_Attribute_1.0.1.model in Resources */,
-				8B06119F260B6CC4004795A4 /* maskhair.bundle in Resources */,
-				8B061196260B6CC4004795A4 /* StillLifeFilters.bundle in Resources */,
-				8B06115E260B6AB0004795A4 /* EffectsCollectionViewCell.xib in Resources */,
-				8B0611B0260B6CCC004795A4 /* M_SenseME_CatFace_3.0.0.model in Resources */,
-				8B06119B260B6CC4004795A4 /* brow.bundle in Resources */,
-				8B0611B4260B6CCC004795A4 /* M_SenseME_Iris_2.0.0.model in Resources */,
-				8B0611A2260B6CC4004795A4 /* my_sticker.bundle in Resources */,
-				8B06109E260AF19B004795A4 /* SenseMEEffects集成文档.pdf in Resources */,
-				8B06119D260B6CC4004795A4 /* face.bundle in Resources */,
-				8B061197260B6CC4004795A4 /* DeliciousFoodFilters.bundle in Resources */,
 				09C6666D24D7BC89001D7AE2 /* Main.storyboard in Resources */,
-				8B061194260B6CC4004795A4 /* PortraitFilters.bundle in Resources */,
-				8B06109C260AF19B004795A4 /* SenseAR_v7.5.0(Effects).pdf in Resources */,
-				8B061144260B6AB0004795A4 /* STViewButton.xib in Resources */,
-				8B0611BA260B6CCC004795A4 /* M_SenseME_Avatar_Help_2.2.0.model in Resources */,
+				E777B3C4286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */,
+				E777B3C2286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model in Resources */,
+				E777B3C5286C2A0600C8A0E7 /* model.bundle in Resources */,
+				E777B3C3286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model in Resources */,
 				031D6012251CD0CD000934AB /* Assets.xcassets in Resources */,
-				8B0611B2260B6CCC004795A4 /* M_SenseME_MouthOcclusion_1.1.1.model in Resources */,
-				8B0611B3260B6CCC004795A4 /* M_SenseME_Segment_4.12.8.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,53 +481,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B06115C260B6AB0004795A4 /* STBMPDetailColVCell.m in Sources */,
-				8B06114B260B6AB0004795A4 /* STTriggerView.m in Sources */,
-				8B061151260B6AB0004795A4 /* STAudioManager.m in Sources */,
-				8B061166260B6AB0004795A4 /* STVFShader.m in Sources */,
-				8B061162260B6AB0004795A4 /* STCommonObjectView.m in Sources */,
-				8B061160260B6AB0004795A4 /* STCollectionViewCell.m in Sources */,
-				8B061146260B6AB0004795A4 /* STGLPreview.m in Sources */,
-				03F8193624E004A7004F7F36 /* CapturerManager.m in Sources */,
-				8B061161260B6AB0004795A4 /* STBMPCollectionView.m in Sources */,
-				8B061149260B6AB0004795A4 /* STButton.m in Sources */,
-				8B63F063260A3E790040C3A8 /* SenseMeFilter.m in Sources */,
+				E777B351286C04D100C8A0E7 /* CapturerManager.m in Sources */,
+				E777B3E2286C2A9C00C8A0E7 /* STShaders.metal in Sources */,
+				E777B3EC286C2A9C00C8A0E7 /* EffectsCommonObject.m in Sources */,
+				E777B3E9286C2A9C00C8A0E7 /* EffectsAnimal.m in Sources */,
+				E777B3EB286C2A9C00C8A0E7 /* EffectsLicense.m in Sources */,
 				2D8ABD2F2511B63200D28745 /* MainViewController.m in Sources */,
-				8B061167260B6AB0004795A4 /* STMovieRecorder.m in Sources */,
-				8B061159260B6AB0004795A4 /* STPlayerControlBar.m in Sources */,
-				8B061145260B6AB0004795A4 /* STLock.m in Sources */,
-				8B061164260B6AB0004795A4 /* SenseTimeUtil.m in Sources */,
-				8B06116B260B6AB0004795A4 /* SenseTimeManager.m in Sources */,
-				8B06114D260B6AB0004795A4 /* STCustomMemoryCache.m in Sources */,
-				8B061168260B6AB0004795A4 /* STBMPCollectionViewCell.m in Sources */,
-				8B061154260B6AB0004795A4 /* STFilterView.m in Sources */,
-				8B061163260B6AB0004795A4 /* EffectsCollectionView.m in Sources */,
-				8B061165260B6AB0004795A4 /* STCamera.m in Sources */,
-				8B061156260B6AB0004795A4 /* STEffectsAudioPlayer.m in Sources */,
-				03F8193524E004A7004F7F36 /* VideoProcessingManager.m in Sources */,
-				8B061155260B6AB0004795A4 /* STViewButton.m in Sources */,
-				8B06114C260B6AB0004795A4 /* STTitleViewItem.m in Sources */,
-				8B06116A260B6AB0004795A4 /* SenseBeautifyManager.m in Sources */,
-				8B061157260B6AB0004795A4 /* STSliderView.m in Sources */,
-				8B06114E260B6AB0004795A4 /* STParamUtil.m in Sources */,
-				8B06114A260B6AB0004795A4 /* STCommonObjectContainerView.m in Sources */,
-				8B06115D260B6AB0004795A4 /* STCollectionView.m in Sources */,
-				8B06114F260B6AB0004795A4 /* STCustomCollectionView.m in Sources */,
-				8B06115F260B6AB0004795A4 /* EffectsCollectionViewCell.m in Sources */,
-				8B061142260B6AB0004795A4 /* STBmpStrengthView.m in Sources */,
-				8B061153260B6AB0004795A4 /* STBeautySlider.m in Sources */,
 				03F8196324E1371B004F7F36 /* KeyCenter.m in Sources */,
-				8B061169260B6AB0004795A4 /* SenseEffectsManager.m in Sources */,
-				8B061143260B6AB0004795A4 /* STBMPModel.m in Sources */,
+				E777B3E5286C2A9C00C8A0E7 /* EffectsAudioPlayerManager.m in Sources */,
+				E777B3E6286C2A9C00C8A0E7 /* EffectsAttribute.m in Sources */,
+				E777B3E8286C2A9C00C8A0E7 /* EffectsDetector.m in Sources */,
 				09C6666A24D7BC89001D7AE2 /* ViewController.m in Sources */,
-				8B061148260B6AB0004795A4 /* SaveToastUtil.m in Sources */,
-				8B06115B260B6AB0004795A4 /* STBMPDetailColV.m in Sources */,
+				E777B352286C04D200C8A0E7 /* VideoProcessingManager.m in Sources */,
+				E777B3EA286C2A9C00C8A0E7 /* EffectsProcess.m in Sources */,
+				E777B3E4286C2A9C00C8A0E7 /* EffectsAudioPlayer.m in Sources */,
+				E777B3E7286C2A9C00C8A0E7 /* Effects.m in Sources */,
 				09C6666424D7BC89001D7AE2 /* AppDelegate.m in Sources */,
-				8B06115A260B6AB0004795A4 /* SenseMEUtils.m in Sources */,
-				8B061152260B6AB0004795A4 /* STGLPreview2.m in Sources */,
-				8B061150260B6AB0004795A4 /* STEffectsTimer.m in Sources */,
 				09C6667524D7BC8B001D7AE2 /* main.m in Sources */,
-				8B061158260B6AB0004795A4 /* STScrollTitleView.m in Sources */,
+				E777B3E3286C2A9C00C8A0E7 /* EFMotionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,9 +639,9 @@
 			baseConfigurationReference = 55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = JDPG69R49Z;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS397FG5PA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BeautifyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -935,10 +649,10 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_os",
-					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_sim",
-					"$(PROJECT_DIR)/SenseMe/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_os",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_sim",
+					"$(PROJECT_DIR)/SenseMe/st_mobile_sdk/ios_os-universal",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -977,9 +691,9 @@
 					"\"VideoToolbox\"",
 					"-lsqlite3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraLab2020;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -989,9 +703,9 @@
 			baseConfigurationReference = AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = JDPG69R49Z;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS397FG5PA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BeautifyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -999,10 +713,10 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_os",
-					"$(PROJECT_DIR)/SenseMe/st_mobile/lib/ios_sim",
-					"$(PROJECT_DIR)/SenseMe/SenseArSourceService/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_universal",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_os",
+					"$(PROJECT_DIR)/SenseMe/remoteSourcesLib/lib/ios_sim",
+					"$(PROJECT_DIR)/SenseMe/st_mobile_sdk/ios_os-universal",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1041,9 +755,9 @@
 					"\"VideoToolbox\"",
 					"-lsqlite3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.agora.Agora-With-SenseTime";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraLab2020;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

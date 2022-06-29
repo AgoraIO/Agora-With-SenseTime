@@ -7,9 +7,9 @@
 //
 
 #import "MainViewController.h"
-
 #import "ViewController.h"
-
+#import "EffectsProcess.h"sub
+#import "SenseArSourceService.h"
 
 @interface MainViewController ()
 
@@ -24,7 +24,7 @@
     [super viewDidLoad];
 
 //    self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setupSenseArService];
 }
 
 /// 输入房间号开始跳转
@@ -39,6 +39,25 @@
     
 }
 
+- (void)setupSenseArService {
+    SenseArMaterialService * service = [SenseArMaterialService sharedInstance];
+    [[SenseArMaterialService sharedInstance] setMaxCacheSize:800000000];
+    if ([SenseArMaterialService isAuthorized]) {
+        return;
+    }
+    [service authorizeWithAppID:@"6dc0af51b69247d0af4b0a676e11b5ee" appKey:@"e4156e4d61b040d2bcbf896c798d06e3" onSuccess:^{
+        BOOL isSuccess = [self checkLicenseFromServer];
+        NSLog(@"isSuccess == %d", isSuccess);
+    } onFailure:^(SenseArAuthorizeError iErrorCode, NSString *errMessage) {
+        NSLog(@"iErrorCode == %lu errorMEssage == %@", (unsigned long)iErrorCode, errMessage);
+    }];
+}
+
+//使用服务器拉取的license进行本地鉴权
+- (BOOL)checkLicenseFromServer {
+    NSData *licenseData = [[SenseArMaterialService sharedInstance] getLicenseData];
+    return [EffectsProcess authorizeWithLicenseData:licenseData];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueid = segue.identifier;
