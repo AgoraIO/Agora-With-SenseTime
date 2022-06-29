@@ -10,7 +10,7 @@ This demo demonstrates the combined use of Agora RTC sdk and SenseTime beautific
 ### 1.1 Agora RTC
 #### 1.1.1 App Id
 
-Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), create a new project and obtain an App ID as the identification of the running app. Update "app/src/main/res/values/strings-config.xml" with your App ID.
+Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), create a new project and obtain an App ID as the identification of the running app. Update "KeyCenter" with your App ID.
 
 修改`KeyCenter.m`中 `AppId`
 
@@ -18,7 +18,6 @@ Create a developer account at [Agora.io](https://dashboard.agora.io/signin/), cr
 
 There are two ways to add Agora Video SDK to the project:
 
-* JCenter (recommended)
 * Download SDK from [Agora.io SDK](https://docs.agora.io/en/Agora%20Platform/downloads)
 
 **The first method** will download Agora Video SDK automatically from Podfile
