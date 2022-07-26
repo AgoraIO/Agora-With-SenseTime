@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-public class OESProgram {
+public class RenderProgram {
     // Simple vertex shader, used for all programs.
     private static final String VERTEX_SHADER =
             "uniform mat4 uMVPMatrix;\n" +
@@ -33,6 +33,14 @@ public class OESProgram {
                     "    gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
                     "}\n";
 
+    private static final String FRAGMENT_SHADER =
+            "precision mediump float;\n" +
+                    "varying vec2 vTextureCoord;\n" +
+                    "uniform sampler2D sTexture;\n" +
+                    "void main() {\n" +
+                    "    gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
+                    "}\n";
+
     public static final float VERTEX_POSITION[] = {
             -1.0f, -1.0f,   // 0 bottom left
             1.0f, -1.0f,   // 1 bottom right
@@ -40,10 +48,10 @@ public class OESProgram {
             1.0f, 1.0f,   // 3 top right
     };
     public static final float TEXTURE_COORD[] = {
+            0.0f, 0.0f,     // 2 bottom left
+            1.0f, 0.0f,      // 3 bottom right
             0.0f, 1.0f,     // 0 top left
             1.0f, 1.0f,     // 1 top right
-            0.0f, 0.0f,     // 2 bottom left
-            1.0f, 0.0f      // 3 bottom right
     };
 
     private int mProgramHandle;
@@ -62,9 +70,11 @@ public class OESProgram {
     private int[] mTargetTexture = new int[1];
     private int mWidth, mHeight;
 
+    private final int textureType;
 
-    public OESProgram() {
-        mProgramHandle = OpenGLUtils.loadProgram(VERTEX_SHADER, FRAGMENT_SHADER_EXT);
+    public RenderProgram(int textureType) {
+        this.textureType = textureType;
+        mProgramHandle = OpenGLUtils.loadProgram(VERTEX_SHADER, textureType == GLES11Ext.GL_TEXTURE_EXTERNAL_OES ? FRAGMENT_SHADER_EXT: FRAGMENT_SHADER);
         muMVPMatrixLoc = GLES20.glGetUniformLocation(mProgramHandle, "uMVPMatrix");
         muTexMatrixLoc = GLES20.glGetUniformLocation(mProgramHandle, "uTexMatrix");
         maPositionLoc = GLES20.glGetAttribLocation(mProgramHandle, "aPosition");
@@ -112,7 +122,7 @@ public class OESProgram {
 
         // Set the texture.
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textureId);
+        GLES20.glBindTexture(textureType, textureId);
 
         // Copy the model / view / projection matrix over.
         GLES20.glUniformMatrix4fv(muMVPMatrixLoc, 1, false, mvpMatrix, 0);
@@ -146,7 +156,7 @@ public class OESProgram {
 
         GLES20.glDisableVertexAttribArray(maPositionLoc);
         GLES20.glDisableVertexAttribArray(maTextureCoordLoc);
-        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0);
+        GLES20.glBindTexture(textureType, 0);
 
 
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);

@@ -3,11 +3,10 @@ package io.agora.rtcwithst.framework;
 import android.opengl.GLES20;
 import android.util.Log;
 
-import io.agora.capture.framework.modules.channels.ChannelManager;
 import io.agora.capture.framework.modules.channels.VideoChannel;
-import io.agora.capture.framework.modules.consumers.IVideoConsumer;
+import io.agora.capture.framework.modules.consumers.ICaptureFrameConsumer;
+import io.agora.capture.video.camera.CameraVideoManager;
 import io.agora.capture.video.camera.VideoCaptureFrame;
-import io.agora.capture.video.camera.VideoModule;
 import io.agora.rtc.mediaio.IVideoFrameConsumer;
 import io.agora.rtc.mediaio.IVideoSource;
 import io.agora.rtc.mediaio.MediaIO;
@@ -19,24 +18,15 @@ import io.agora.rtc.video.AgoraVideoFrame;
  * from current video channel, and also the video source
  * of rtc engine.
  */
-public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
+public class RtcVideoConsumer implements ICaptureFrameConsumer, IVideoSource {
     private static final String TAG = RtcVideoConsumer.class.getSimpleName();
 
     private volatile IVideoFrameConsumer mRtcConsumer;
     private volatile boolean mValidInRtc;
+    private final CameraVideoManager cameraVideoManager;
 
-    private VideoModule mVideoModule;
-    private VideoChannel mVideoChannel;
-    private int mChannelId;
-
-
-    public RtcVideoConsumer() {
-        this(ChannelManager.ChannelID.CAMERA);
-    }
-
-    private RtcVideoConsumer(int channelId) {
-        mVideoModule = VideoModule.instance();
-        mChannelId = channelId;
+    public RtcVideoConsumer(CameraVideoManager cameraVideoManager) {
+        this.cameraVideoManager = cameraVideoManager;
     }
 
     @Override
@@ -48,66 +38,24 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
             if (mRtcConsumer != null) {
                 mRtcConsumer.consumeTextureFrame(frame.textureId, format,
                         frame.format.getWidth(), frame.format.getHeight(),
-                        frame.rotation + 180, frame.timestamp, frame.textureTransform);
+                        frame.rotation, frame.timestamp, frame.textureTransform);
             }
         }
     }
 
-    @Override
-    public void connectChannel(int channelId) {
-        // Rtc transmission is an off-screen rendering procedure.
-        mVideoChannel = mVideoModule.connectConsumer(
-                this, channelId, IVideoConsumer.TYPE_OFF_SCREEN);
-    }
 
-    @Override
-    public void disconnectChannel(int channelId) {
-        mVideoModule.disconnectConsumer(this, channelId);
-    }
-
-    @Override
-    public void setMirrorMode(int i) {
-
-    }
-
-    @Override
-    public Object getDrawingTarget() {
-        // Rtc engine does not draw the frames
-        // on any target window surface
-        return null;
-    }
-
-    @Override
-    public int onMeasuredWidth() {
-        return 0;
-    }
-
-    @Override
-    public int onMeasuredHeight() {
-        return 0;
-    }
-
-    @Override
-    public void recycle() {
-
-    }
-
-    @Override
-    public String getId() {
-        return null;
-    }
 
     @Override
     public boolean onInitialize(IVideoFrameConsumer consumer) {
         Log.i("consumer", "onInitialize");
         mRtcConsumer = consumer;
+        cameraVideoManager.attachOffScreenConsumer(this);
         return true;
     }
 
     @Override
     public boolean onStart() {
         Log.i("consumer", "onStart");
-        connectChannel(mChannelId);
         mValidInRtc = true;
         return true;
     }
@@ -121,7 +69,7 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     @Override
     public void onDispose() {
         Log.i("consumer", "onDispose");
-        disconnectChannel(mChannelId);
+        cameraVideoManager.detachOffScreenConsumer(this);
     }
 
     @Override

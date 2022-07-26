@@ -68,7 +68,8 @@ public class STRenderer {
     private boolean mIsCreateHumanActionHandleSucceeded = false;
     private long mDetectConfig = -1;
 
-    private STGLRender mGLRender;
+    private STGLRender mGLRenderBefore;
+    private STGLRender mGLRenderAfter;
     private int[] mTextureOutId;
     private byte[] mImageDataBuffer = null;
     protected STHumanAction[] mSTHumanAction = new STHumanAction[2];
@@ -179,7 +180,8 @@ public class STRenderer {
 
 
     private void initGLRender() {
-        mGLRender = new STGLRender();
+        mGLRenderBefore = new STGLRender(GLES11Ext.GL_TEXTURE_EXTERNAL_OES);
+        mGLRenderAfter = new STGLRender(GLES20.GL_TEXTURE_2D);
     }
 
 
@@ -299,8 +301,8 @@ public class STRenderer {
 
         int textureId = cameraTextureId;
         if (texFormat == GLES11Ext.GL_TEXTURE_EXTERNAL_OES) {
-            mGLRender.adjustOESImageSize(imageWidth, imageHeight, -1 * orientation, mirror, true);
-            textureId = mGLRender.processOES(cameraTextureId, texMatrix);
+            mGLRenderBefore.adjustRenderSize(imageWidth, imageHeight, -1 * orientation, mirror, false);
+            textureId = mGLRenderBefore.process(cameraTextureId, texMatrix);
         }
 
         // >>>>>> 2. detect human point info using cameraData
@@ -314,7 +316,7 @@ public class STRenderer {
 
             // prepare params
             updateHumanActionDetectConfig();
-            mSTHumanActionNative.nativeHumanActionPtrCopy();
+            //mSTHumanActionNative.nativeHumanActionPtrCopy();
 
             int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
                     pixelFormat,
@@ -348,7 +350,7 @@ public class STRenderer {
 
         //渲染接口输入参数
         STEffectRenderInParam sTEffectRenderInParam = new STEffectRenderInParam(
-                mSTHumanActionNative.getNativeHumanActionPtrCopy(),
+                mSTHumanActionNative.getNativeHumanActionResultPtr(),
                 mAnimalFaceInfo[0],
                 0,
                 0,
@@ -367,9 +369,15 @@ public class STRenderer {
             textureId = stEffectRenderOutParam.getTexture().getId();
         }
 
+        GLES20.glFinish();
+
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, true);
+        int retTexId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
+
+
         // Transform the image to the ideal direction according
         // to the texture matrix.
-        return textureId;
+        return retTexId;
     }
 
     protected void animalDetect(int cameraId, int cameraOrientaion, byte[] imageData, int format, int orientation, int width, int height, int index) {
@@ -532,7 +540,8 @@ public class STRenderer {
         mChangeStickerManagerThread.quit();
         mChangeStickerManagerThread = null;
         deleteTextures();
-        mGLRender.destroyPrograms();
+        mGLRenderBefore.destroyPrograms();
+        mGLRenderAfter.destroyPrograms();
     }
 
     private void deleteTextures() {

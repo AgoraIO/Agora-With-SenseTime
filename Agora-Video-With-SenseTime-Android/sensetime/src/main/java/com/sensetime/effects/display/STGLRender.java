@@ -4,16 +4,23 @@ import android.opengl.Matrix;
 
 public class STGLRender {
     private final static String TAG = "STGLRender";
-    private float[] oesMVPMatrix = new float[16];
 
-    private OESProgram mOESProgram;
-
-    public STGLRender() {
-        mOESProgram = new OESProgram();
+    public static final float[] IDENTITY_MATRIX = new float[16];
+    static {
+        Matrix.setIdentityM(IDENTITY_MATRIX, 0);
     }
 
-    public void adjustOESImageSize(int width, int height, int rotation, boolean flipH, boolean flipV) {
-        boolean resize = mOESProgram.resize(width, height);
+    private float[] renderMVPMatrix = new float[16];
+
+
+    private RenderProgram mRenderProgram;
+
+    public STGLRender(int textureType) {
+        mRenderProgram = new RenderProgram(textureType);
+    }
+
+    public void adjustRenderSize(int width, int height, int rotation, boolean flipH, boolean flipV) {
+        boolean resize = mRenderProgram.resize(width, height);
         if (resize) {
             float[] tmp = new float[16];
             Matrix.setIdentityM(tmp, 0);
@@ -40,16 +47,17 @@ public class STGLRender {
                 Matrix.rotateM(tmp, 0, tmp, 0, _rotation, 0, 0, 1);
             }
 
-            Matrix.setIdentityM(oesMVPMatrix, 0);
-            Matrix.multiplyMM(oesMVPMatrix, 0, tmp, 0, oesMVPMatrix, 0);
+            Matrix.setIdentityM(renderMVPMatrix, 0);
+            Matrix.multiplyMM(renderMVPMatrix, 0, tmp, 0, renderMVPMatrix, 0);
         }
     }
 
-    public int processOES(int textureId, float[] texMatrix) {
-        return mOESProgram.process(textureId, texMatrix, oesMVPMatrix);
+    public int process(int textureId, float[] texMatrix) {
+        return mRenderProgram.process(textureId, texMatrix, renderMVPMatrix);
     }
 
+
     public void destroyPrograms() {
-        mOESProgram.destroyProgram();
+        mRenderProgram.destroyProgram();
     }
 }

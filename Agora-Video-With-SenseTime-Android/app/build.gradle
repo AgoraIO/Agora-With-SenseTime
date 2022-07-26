@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "io.agora.rtcwithst"
-        minSdkVersion 26
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -46,5 +46,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':sensetime')
 
-    implementation 'com.github.AgoraIO-Community:MediaIO-Camera:1.1.6-preview'
+    implementation 'com.github.AgoraIO-Community:MediaIO-Camera:1.1.6.1'
 }
