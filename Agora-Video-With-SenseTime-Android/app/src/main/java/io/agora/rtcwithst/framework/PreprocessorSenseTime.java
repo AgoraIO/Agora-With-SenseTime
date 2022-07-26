@@ -2,6 +2,7 @@ package io.agora.rtcwithst.framework;
 
 import android.content.Context;
 import android.graphics.ImageFormat;
+import android.hardware.Camera;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
@@ -16,6 +17,7 @@ import java.io.File;
 
 import io.agora.capture.framework.modules.channels.VideoChannel;
 import io.agora.capture.framework.modules.processors.IPreprocessor;
+import io.agora.capture.video.camera.Constant;
 import io.agora.capture.video.camera.VideoCaptureFrame;
 
 public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
@@ -66,7 +68,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
         // SenseTime library will rotate the target
         // image automatically to upright.
         int textureId = mSTRenderer.preProcess(
-                outFrame.format.getCameraId(),
+                outFrame.format.getCameraFacing() == Constant.CAMERA_FACING_FRONT ? Camera.CameraInfo.CAMERA_FACING_FRONT : Camera.CameraInfo.CAMERA_FACING_BACK,
                 outFrame.format.getWidth(),
                 outFrame.format.getHeight(),
                 outFrame.rotation,

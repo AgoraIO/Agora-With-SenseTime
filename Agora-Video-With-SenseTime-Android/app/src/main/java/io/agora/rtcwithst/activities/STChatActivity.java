@@ -52,6 +52,13 @@ public class STChatActivity extends RtcBasedActivity {
         initUI();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        rtcEngine().leaveChannel();
+        mCameraVideoManager.stopCapture();
+    }
+
     private void initUI() {
         setContentView(R.layout.activity_main);
         mVideoSurface = findViewById(R.id.local_video_surface);
@@ -137,7 +144,7 @@ public class STChatActivity extends RtcBasedActivity {
     }
 
     private void initRoom() {
-        rtcEngine().setVideoSource(new RtcVideoConsumer());
+        rtcEngine().setVideoSource(new RtcVideoConsumer(videoManager()));
         joinChannel();
     }
 
@@ -190,6 +197,11 @@ public class STChatActivity extends RtcBasedActivity {
             }
 
             @Override
+            public void onCameraOpen() {
+
+            }
+
+            @Override
             public void onCameraClosed() {
                 Log.i(TAG, "onCameraClosed!");
             }
@@ -202,7 +214,7 @@ public class STChatActivity extends RtcBasedActivity {
 
         // Set camera capture configuration
         mCameraVideoManager.setPictureSize(640, 480);
-        mCameraVideoManager.setFrameRate(24);
+        mCameraVideoManager.setFrameRate(15);
         mCameraVideoManager.setFacing(io.agora.capture.video.camera.Constant.CAMERA_FACING_FRONT);
 
         // The preview surface is actually considered as
