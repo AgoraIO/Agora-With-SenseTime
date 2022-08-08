@@ -19,10 +19,10 @@ import com.sensetime.effects.utils.STLicenseUtils;
 import com.sensetime.stmobile.STCommonNative;
 import com.sensetime.stmobile.STEffectInImage;
 import com.sensetime.stmobile.STMobileAnimalNative;
+import com.sensetime.stmobile.STMobileColorConvertNative;
 import com.sensetime.stmobile.STMobileEffectNative;
 import com.sensetime.stmobile.STMobileEffectParams;
 import com.sensetime.stmobile.STMobileHumanActionNative;
-import com.sensetime.stmobile.STMobileObjectTrackNative;
 import com.sensetime.stmobile.model.STAnimalFace;
 import com.sensetime.stmobile.model.STAnimalFaceInfo;
 import com.sensetime.stmobile.model.STEffectRenderInParam;
@@ -59,7 +59,7 @@ public class STRenderer {
     public STMobileEffectNative mSTMobileEffectNative = new STMobileEffectNative();
     protected STMobileHumanActionNative mSTHumanActionNative = new STMobileHumanActionNative();
     protected STMobileAnimalNative mStAnimalNative = new STMobileAnimalNative();
-    protected STMobileObjectTrackNative mSTMobileObjectTrackNative = new STMobileObjectTrackNative();
+    private STMobileColorConvertNative mSTMobileColorConvertNative = new STMobileColorConvertNative();
 
     private boolean mAuthorized;
 
@@ -92,6 +92,7 @@ public class STRenderer {
 
     private void init() {
         checkLicense();
+        initColorConvert();
         initGLRender();
         initMobileEffect();
         initHumanAction();
@@ -169,6 +170,10 @@ public class STRenderer {
 
             }
         }).start();
+    }
+
+    private void initColorConvert(){
+        mSTMobileColorConvertNative.createInstance();
     }
 
 
@@ -259,6 +264,104 @@ public class STRenderer {
             default:
                 return STRotateType.ST_CLOCKWISE_ROTATE_0;
         }
+    }
+
+    public int preProcess(
+            int cameraId,
+            int width, int height, int orientation, boolean mirror,
+            byte[] cameraPixel, int pixelFormat
+    ) {
+
+        if (!mAuthorized || !mIsCreateHumanActionHandleSucceeded) {
+            return -1;
+        }
+
+        int imageWidth = width;
+        int imageHeight = height;
+        if (orientation == 90 || orientation == 270) {
+            imageWidth = height;
+            imageHeight = width;
+        }
+
+        int orientationType = getCurrentOrientation(orientation);
+
+        if (mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length) {
+            mImageDataBuffer = new byte[cameraPixel.length];
+        }
+        System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
+
+
+        // >>>>>> 1. detect human point info using cameraData
+
+        // prepare params
+        updateHumanActionDetectConfig();
+        //mSTHumanActionNative.nativeHumanActionPtrCopy();
+
+        int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
+                pixelFormat,
+                mDetectConfig,
+                orientationType,
+                width,
+                height);
+        if (ret == 0) {
+            //nv21数据为横向，相对于预览方向需要旋转处理，前置摄像头还需要镜像
+            STHumanAction.nativeHumanActionRotateAndMirror(mSTHumanActionNative,
+                    mSTHumanActionNative.getNativeHumanActionResultPtr(),
+                    imageWidth, imageHeight,
+                    cameraId, orientation, orientationType);
+            if (mNeedAnimalDetect) {
+                animalDetect(cameraId, orientation, mImageDataBuffer, STCommonNative.ST_PIX_FMT_NV21, orientationType, width, height, 0);
+            } else {
+                mAnimalFaceInfo[0] = new STAnimalFaceInfo(null, 0);
+            }
+        }
+
+        // >>>>>> 2. upload nv21 to texture
+        if (mTextureOutId == null) {
+            mTextureOutId = new int[2];
+            GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
+        }
+
+        mSTMobileColorConvertNative.setTextureSize(imageWidth, imageHeight);
+        mSTMobileColorConvertNative.nv21BufferToRgbaTexture(width, height,
+                cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT ? STRotateType.ST_CLOCKWISE_ROTATE_90 : STRotateType.ST_CLOCKWISE_ROTATE_270,
+                mirror, mImageDataBuffer, mTextureOutId[0]);
+        int textureId = mTextureOutId[0];
+
+        // >>>>>> 3. render texture
+
+        //输入纹理，纹理只支持2D
+        STEffectTexture stEffectTexture = new STEffectTexture(textureId, imageWidth, imageHeight, 0);
+        //输出纹理，需要在上层初始化
+        STEffectTexture stEffectTextureOut = new STEffectTexture(mTextureOutId[1], imageWidth, imageHeight, 0);
+
+        //渲染接口输入参数
+        STEffectRenderInParam sTEffectRenderInParam = new STEffectRenderInParam(
+                mSTHumanActionNative.getNativeHumanActionResultPtr(),
+                mAnimalFaceInfo[0],
+                180,
+                180,
+                false,
+                null,
+                stEffectTexture,
+                new STEffectInImage(new STImage(mImageDataBuffer, pixelFormat, width, height), orientationType, mirror));
+        //渲染接口输出参数
+        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, mSTHumanAction[0]);
+        mSTMobileEffectNative.setParam(STEffectParam.EFFECT_PARAM_USE_INPUT_TIMESTAMP, 1);
+        ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, false);
+        if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {
+            textureId = stEffectRenderOutParam.getTexture().getId();
+        }
+
+        GLES20.glFinish();
+
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, true);
+        int retTexId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
+
+
+        // Transform the image to the ideal direction according
+        // to the texture matrix.
+        return retTexId;
     }
 
 
@@ -535,6 +638,7 @@ public class STRenderer {
         }
 
         mSTHumanActionNative.reset();
+        mSTMobileColorConvertNative.destroyInstance();
 
         mChangeStickerManagerHandler.removeCallbacksAndMessages(null);
         mChangeStickerManagerThread.quit();
@@ -551,7 +655,7 @@ public class STRenderer {
 
     private void deleteInternalTextures() {
         if (mTextureOutId != null) {
-            GLES20.glDeleteTextures(1, mTextureOutId, 0);
+            GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
             mTextureOutId = null;
         }
     }
