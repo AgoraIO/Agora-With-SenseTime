@@ -339,8 +339,8 @@ public class STRenderer {
         STEffectRenderInParam sTEffectRenderInParam = new STEffectRenderInParam(
                 mSTHumanActionNative.getNativeHumanActionResultPtr(),
                 mAnimalFaceInfo[0],
-                180,
-                180,
+                0,
+                0,
                 false,
                 null,
                 stEffectTexture,

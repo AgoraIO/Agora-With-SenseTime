@@ -75,7 +75,7 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 outFrame.mirrored,
                 outFrame.image,
                 outFrame.format.getPixelFormat() == ImageFormat.NV21 ? STCommonNative.ST_PIX_FMT_NV21 : STCommonNative.ST_PIX_FMT_BGRA8888
-                //outFrame.textureId,
+                //,outFrame.textureId,
                 //outFrame.format.getTexFormat(),
                 //outFrame.textureTransform
         );
