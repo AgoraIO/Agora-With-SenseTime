@@ -73,8 +73,12 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
                 outFrame.format.getHeight(),
                 outFrame.rotation,
                 outFrame.mirrored,
-                outFrame.image, outFrame.format.getPixelFormat() == ImageFormat.NV21 ? STCommonNative.ST_PIX_FMT_NV21 : STCommonNative.ST_PIX_FMT_BGRA8888,
-                outFrame.textureId, outFrame.format.getTexFormat(), outFrame.textureTransform);
+                outFrame.image,
+                outFrame.format.getPixelFormat() == ImageFormat.NV21 ? STCommonNative.ST_PIX_FMT_NV21 : STCommonNative.ST_PIX_FMT_BGRA8888
+                //outFrame.textureId,
+                //outFrame.format.getTexFormat(),
+                //outFrame.textureTransform
+        );
         if (textureId < 0) {
             return outFrame;
         }
