@@ -11,11 +11,9 @@
 #import <AgoraRtcKit/AgoraRtcEngineKit.h>
 #import "KeyCenter.h"
 #import "EFMotionManager.h"
-#import "CapturerManager.h"
 #import "VideoProcessingManager.h"
 
-@interface ViewController () <AgoraRtcEngineDelegate, CapturerManagerDelegate>
-@property (nonatomic, strong) CapturerManager *capturerManager;
+@interface ViewController () <AgoraRtcEngineDelegate, AgoraVideoFrameDelegate>
 
 @property (nonatomic, strong) AgoraRtcEngineKit *rtcEngineKit;
 @property (nonatomic, strong) IBOutlet UIView *localView;
@@ -30,8 +28,6 @@
 @property (nonatomic, assign) AgoraVideoMirrorMode localVideoMirrored;
 @property (nonatomic, assign) AgoraVideoMirrorMode remoteVideoMirrored;
 
-@property (nonatomic, strong) AGMEAGLVideoView *glVideoView;
-
 @property (nonatomic, strong) VideoProcessingManager *videoProcessing;
 
 @end
@@ -43,81 +39,88 @@
     // Do any additional setup after loading the view.
     self.remoteView.hidden = YES;
     // 初始化 rte engine
-    self.rtcEngineKit = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter AppId] delegate:self];
+    AgoraRtcEngineConfig *config = [[AgoraRtcEngineConfig alloc] init];
+    config.appId = [KeyCenter AppId];
+    config.channelProfile = AgoraChannelProfileLiveBroadcasting;
+    self.rtcEngineKit = [AgoraRtcEngineKit sharedEngineWithConfig:config delegate:self];
     
-    [self.rtcEngineKit setChannelProfile:AgoraChannelProfileLiveBroadcasting];
+    [self.rtcEngineKit setVideoFrameDelegate:self];
     [self.rtcEngineKit setClientRole:AgoraClientRoleBroadcaster];
+    AgoraCameraCapturerConfiguration *captuer = [[AgoraCameraCapturerConfiguration alloc] init];
+    captuer.cameraDirection = AgoraCameraDirectionFront;
+    [self.rtcEngineKit setCameraCapturerConfiguration:captuer];
+    
     [self.rtcEngineKit enableVideo];
-    AgoraVideoEncoderConfiguration* config = [[AgoraVideoEncoderConfiguration alloc] initWithSize:CGSizeMake(720, 1280) frameRate:15 bitrate:0 orientationMode:AgoraVideoOutputOrientationModeAdaptative];
-    [self.rtcEngineKit setVideoEncoderConfiguration:config];
+    [self.rtcEngineKit enableAudio];
+    
+    AgoraVideoEncoderConfiguration *configuration = [[AgoraVideoEncoderConfiguration alloc] init];
+//    configuration.dimensions = CGSizeMake(360, 640);
+//    configuration.dimensions = CGSizeMake(720, 1280);
+
+    [self.rtcEngineKit setVideoEncoderConfiguration: configuration];
+    AgoraRtcChannelMediaOptions *option = [[AgoraRtcChannelMediaOptions alloc] init];
+    option.clientRoleType = [AgoraRtcIntOptional of: AgoraClientRoleBroadcaster];
+    option.publishMicrophoneTrack = [AgoraRtcBoolOptional of:YES];
+    option.publishCameraTrack = [AgoraRtcBoolOptional of:YES];
+    [self.rtcEngineKit joinChannelByToken:nil channelId:self.channelName uid:0 mediaOptions:option joinSuccess:^(NSString * _Nonnull channel, NSUInteger uid, NSInteger elapsed) { }];
+    
+    AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
+    videoCanvas.uid = 0;
+    // Since we are making a simple 1:1 video chat app, for simplicity sake, we are not storing the UIDs. You could use a mechanism such as an array to store the UIDs in a channel.
+    
+    videoCanvas.view = self.localView;
+    videoCanvas.renderMode = AgoraVideoRenderModeHidden;
+    // Bind remote video stream to view
+    [self.rtcEngineKit setupLocalVideo:videoCanvas];
+    [self.rtcEngineKit startPreview];
     
     self.videoProcessing = [VideoProcessingManager new];
-
-    AGMCapturerVideoConfig *videoConfig = [AGMCapturerVideoConfig defaultConfig];
-    videoConfig.sessionPreset = AVCaptureSessionPreset1280x720;
-    videoConfig.fps = 15;
-    videoConfig.pixelFormat = AGMVideoPixelFormatBGRA;
-    
-    self.capturerManager = [[CapturerManager alloc] initWithVideoConfig:videoConfig delegate:self];
-
-    [self.capturerManager startCapture];
-    [self.localView layoutIfNeeded];
-    self.glVideoView = [[AGMEAGLVideoView alloc] initWithFrame:self.localView.frame];
-    [self.glVideoView setRenderMode:(AGMRenderMode_Fit)];
-    [self.localView addSubview:self.glVideoView];
-    [self.capturerManager setVideoView:self.glVideoView];
-    // set custom capturer as video source
-    [self.rtcEngineKit setVideoSource:self.capturerManager];
-    
-    [self.rtcEngineKit joinChannelByToken:nil channelId:self.channelName info:nil uid:0 joinSuccess:^(NSString * _Nonnull channel, NSUInteger uid, NSInteger elapsed) {
-        
-    }];
 }
 
 /// release
 - (void)dealloc {
 
-    [self.capturerManager stopCapture];
     [self.rtcEngineKit leaveChannel:nil];
     [self.rtcEngineKit stopPreview];
-    [self.rtcEngineKit setVideoSource:nil];
     [AgoraRtcEngineKit destroy];
 }
 
 
 - (IBAction)switchCamera:(UIButton *)button
 {
-    [self.capturerManager switchCamera];
+    [self.rtcEngineKit switchCamera];
 }
 
 - (IBAction)toggleRemoteMirror:(UIButton *)button
 {
     self.remoteVideoMirrored = self.remoteVideoMirrored == AgoraVideoMirrorModeEnabled ? AgoraVideoMirrorModeDisabled : AgoraVideoMirrorModeEnabled;
-    AgoraVideoEncoderConfiguration* config = [[AgoraVideoEncoderConfiguration alloc] initWithSize:CGSizeMake(720, 1280) frameRate:30 bitrate:0 orientationMode:AgoraVideoOutputOrientationModeAdaptative];
-    config.mirrorMode = self.remoteVideoMirrored;
-    [self.rtcEngineKit setVideoEncoderConfiguration:config];
-}
-
-- (CVPixelBufferRef)processFrame:(CVPixelBufferRef)pixelBuffer {
-    return [self.videoProcessing videoProcessHandler:pixelBuffer];
+    [self.rtcEngineKit setLocalRenderMode:AgoraVideoRenderModeHidden mirror:self.remoteVideoMirrored];
 }
 
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed
 {
-    if (self.remoteView.hidden) {
-        self.remoteView.hidden = NO;
-    }
-    
-    AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
-    videoCanvas.uid = uid;
-    // Since we are making a simple 1:1 video chat app, for simplicity sake, we are not storing the UIDs. You could use a mechanism such as an array to store the UIDs in a channel.
-    
-    videoCanvas.view = self.remoteView;
-    videoCanvas.renderMode = AgoraVideoRenderModeHidden;
-    // Bind remote video stream to view
-    [self.rtcEngineKit setupRemoteVideo:videoCanvas];
-    
+    NSLog(@"join uid === %lu", uid);
 }
 
+- (BOOL)onCaptureVideoFrame:(AgoraOutputVideoFrame *)videoFrame {
+    CVPixelBufferRef pixelBuffer = [self.videoProcessing videoProcessHandler:videoFrame.pixelBuffer];
+    videoFrame.pixelBuffer = pixelBuffer;
+    return YES;
+}
+
+- (AgoraVideoFormat)getVideoPixelFormatPreference{
+    return AgoraVideoFormatBGRA;
+}
+- (AgoraVideoFrameProcessMode)getVideoFrameProcessMode{
+    return AgoraVideoFrameProcessModeReadWrite;
+}
+
+- (BOOL)getMirrorApplied{
+    return YES;
+}
+
+- (BOOL)getRotationApplied{
+    return NO;
+}
 
 @end

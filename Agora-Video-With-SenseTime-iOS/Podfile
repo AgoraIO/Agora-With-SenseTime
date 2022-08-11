@@ -6,7 +6,7 @@ target 'BeautifyExample' do
   use_frameworks!
 
   # Pods for BeautifyExample
-  pod 'AGMCapturer_iOS', '~> 2.0.0'
-  pod 'AgoraRtcEngine_iOS', '~> 3.7.0'
+#  pod 'AGMCapturer_iOS', '~> 2.0.0'
+  pod 'AgoraRtcEngine_iOS', '4.0.0-rc.1'
 
 end
