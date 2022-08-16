@@ -69,7 +69,7 @@ Developers must contact SenseTime to obtain the licence file. Change the file na
 
 ### 1.3 SenseTime In Extensions Marketplace
 
-The SenseTime extension is available in agora extensions marketplace. If you want to integrate the sdk via SenseTime extension, you can refer to the [document](https://docs.agora.io/en/extension_customer/use_extension_android?platform=Android).
+The SenseTime extension is available in agora extensions marketplace. If you want to integrate the sdk via SenseTime extension, you can refer to the [document](https://github.com/AgoraIO-Community/AgoraMarketPlace/blob/master/SenseTime/README.md).
 
 ## Developer Environment Requirements
 - Android Studio 3.1 or above
