@@ -1,0 +1,2 @@
+include ':app', ':sensetime'
+rootProject.name='Agora-Video-With-SenseTime-Android'
