@@ -67,9 +67,9 @@ Note: Current version is aligned with SenseAR SDK 8.x version. And sample has as
 
 Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to **"sensetime/src/main/assets/license"** folder.
 
-### 1.3 Camera Capture Framework
+### 1.3 SenseTime In Extensions Marketplace
 
-We have imported a camera capture framework library. If you are interested in source code and document of this framework, please go to [here](https://github.com/AgoraIO-Community/MediaIO-Camera) for more information.
+The SenseTime extension is available in agora extensions marketplace. If you want to integrate the sdk via SenseTime extension, you can refer to the [document](https://docs.agora.io/en/extension_customer/use_extension_android?platform=Android).
 
 ## Developer Environment Requirements
 - Android Studio 3.1 or above
