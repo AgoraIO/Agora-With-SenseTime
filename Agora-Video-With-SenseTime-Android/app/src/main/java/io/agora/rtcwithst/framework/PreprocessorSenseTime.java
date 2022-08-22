@@ -1,11 +1,8 @@
 package io.agora.rtcwithst.framework;
 
 import android.content.Context;
-import android.graphics.ImageFormat;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.util.Log;
-import android.view.WindowManager;
+import android.graphics.Matrix;
+import android.hardware.Camera;
 
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
@@ -13,86 +10,118 @@ import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.stmobile.STCommonNative;
 
 import java.io.File;
+import java.nio.ByteBuffer;
 
-import io.agora.capture.framework.modules.channels.VideoChannel;
-import io.agora.capture.framework.modules.processors.IPreprocessor;
-import io.agora.capture.video.camera.VideoCaptureFrame;
+import io.agora.base.TextureBufferHelper;
+import io.agora.base.VideoFrame;
+import io.agora.rtc2.video.IVideoFrameObserver;
+import io.agora.rtcwithst.utils.YUVUtils;
 
-public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
+public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListener {
     private static final String TAG = PreprocessorSenseTime.class.getSimpleName();
 
     private STRenderer mSTRenderer;
+    private final TextureBufferHelper mTextureBufferHelper;
     private Context mContext;
-    private float[] mIdentityMatrix = new float[16];
-
-    private boolean mEnabled = true;
-
-    private WindowManager mWindowManager;
+    private volatile int cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
-        mWindowManager = (WindowManager) mContext
-                .getSystemService(Context.WINDOW_SERVICE);
+        mTextureBufferHelper = TextureBufferHelper.create("STRender", null);
+        mTextureBufferHelper.invoke(() -> {
+            mSTRenderer = new STRenderer(context);
+            return null;
+        });
     }
 
-    @Override
-    public void initPreprocessor() {
-        Log.i(TAG, "initPreprocessor");
-        mSTRenderer = new STRenderer(mContext);
-        Matrix.setIdentityM(mIdentityMatrix, 0);
-    }
-
-    @Override
-    public void enablePreProcess(boolean enabled) {
-        mEnabled = enabled;
-    }
-
-    @Override
-    public void releasePreprocessor(VideoChannel.ChannelContext context) {
-        Log.i(TAG, "releasePreprocessor");
-        if (mSTRenderer != null) {
-            mSTRenderer.release();
-            mSTRenderer = null;
+    public void switchCamera() {
+        if (cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+        } else {
+            cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
         }
     }
 
     @Override
-    public VideoCaptureFrame onPreProcessFrame(VideoCaptureFrame outFrame, VideoChannel.ChannelContext context) {
-        if (mSTRenderer == null || !mEnabled) {
-            return outFrame;
-        }
+    public boolean onCaptureVideoFrame(VideoFrame videoFrame) {
+        VideoFrame.Buffer buffer = videoFrame.getBuffer();
+
+        VideoFrame.I420Buffer i420Buffer = buffer.toI420();
+        int width = i420Buffer.getWidth();
+        int height = i420Buffer.getHeight();
+
+        ByteBuffer bufferY = i420Buffer.getDataY();
+        ByteBuffer bufferU = i420Buffer.getDataU();
+        ByteBuffer bufferV = i420Buffer.getDataV();
+
+        byte[] i420 = YUVUtils.toWrappedI420(bufferY, bufferU, bufferV, width, height);
+        byte[] nv21 = YUVUtils.I420ToNV21(i420, width, height);
+
+        Integer textureId = mTextureBufferHelper.invoke(
+                () -> mSTRenderer.preProcess(
+                        cameraId,
+                        width,
+                        height,
+                        videoFrame.getRotation(),
+                        cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT,
+                        nv21,
+                        STCommonNative.ST_PIX_FMT_NV21
+                ));
+        Matrix transformMatrix = new Matrix();
+        VideoFrame.TextureBuffer textureBuffer = mTextureBufferHelper.wrapTextureBuffer(videoFrame.getRotatedWidth(), videoFrame.getRotatedHeight(), VideoFrame.TextureBuffer.Type.RGB, textureId, transformMatrix);
+        videoFrame.replaceBuffer(textureBuffer, 0, videoFrame.getTimestampNs());
+        return true;
+    }
+
+    @Override
+    public int getVideoFrameProcessMode() {
+        return IVideoFrameObserver.PROCESS_MODE_READ_WRITE;
+    }
+
+    @Override
+    public int getVideoFormatPreference() {
+        return IVideoFrameObserver.VIDEO_PIXEL_DEFAULT;
+    }
+
+    @Override
+    public boolean getRotationApplied() {
+        return false;
+    }
+
+    @Override
+    public boolean getMirrorApplied() {
+        return false;
+    }
+
+    @Override
+    public int getObservedFramePosition() {
+        return IVideoFrameObserver.POSITION_POST_CAPTURER;
+    }
 
 
-        // SenseTime library will rotate the target
-        // image automatically to upright.
-        int textureId = mSTRenderer.preProcess(
-                outFrame.format.getCameraId(),
-                outFrame.format.getWidth(),
-                outFrame.format.getHeight(),
-                outFrame.rotation,
-                outFrame.mirrored,
-                outFrame.image, outFrame.format.getPixelFormat() == ImageFormat.NV21 ? STCommonNative.ST_PIX_FMT_NV21 : STCommonNative.ST_PIX_FMT_BGRA8888,
-                outFrame.textureId, outFrame.format.getTexFormat(), outFrame.textureTransform);
-        if (textureId < 0) {
-            return outFrame;
-        }
+    @Override
+    public boolean onPreEncodeVideoFrame(VideoFrame videoFrame) {
+        return false;
+    }
 
+    @Override
+    public boolean onScreenCaptureVideoFrame(VideoFrame videoFrame) {
+        return false;
+    }
 
-        if (outFrame.rotation == 90 || outFrame.rotation == 270) {
-            int width = outFrame.format.getWidth();
-            int height = outFrame.format.getHeight();
-            outFrame.format.setWidth(height);
-            outFrame.format.setHeight(width);
-        }
-        outFrame.textureId = textureId;
-        outFrame.rotation = 0;
-        outFrame.textureTransform = mIdentityMatrix;
-        outFrame.mirrored = false;
-        outFrame.image = null;
-        outFrame.format.setPixelFormat(ImageFormat.UNKNOWN);
-        outFrame.format.setTexFormat(GLES20.GL_TEXTURE_2D);
+    @Override
+    public boolean onPreEncodeScreenVideoFrame(VideoFrame videoFrame) {
+        return false;
+    }
 
-        return outFrame;
+    @Override
+    public boolean onMediaPlayerVideoFrame(VideoFrame videoFrame, int mediaPlayerId) {
+        return false;
+    }
+
+    @Override
+    public boolean onRenderVideoFrame(String channelId, int uid, VideoFrame videoFrame) {
+        return false;
     }
 
     @Override
@@ -131,10 +160,10 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
     }
 
     @Override
-    public void onMakeupSelected(int type, String path, float strength) {
+    public void onMakeupSelected(int type, String typePath, float strength) {
         if (mSTRenderer != null) {
-            if (path != null) {
-                String[] split = path.split(File.separator);
+            if (typePath != null) {
+                String[] split = typePath.split(File.separator);
                 String className = split[0];
                 String fileName = split[1];
                 String _path = FileUtils.getFilePath(mContext, className + File.separator + fileName);
@@ -155,9 +184,9 @@ public class PreprocessorSenseTime implements IPreprocessor, STEffectListener {
         String _path = FileUtils.getFilePath(mContext, className + File.separator + fileName);
         FileUtils.copyFileIfNeed(mContext, fileName, className);
         if (mSTRenderer != null) {
-            if(!attach){
+            if (!attach) {
                 mSTRenderer.removeSticker(_path);
-            }else{
+            } else {
                 mSTRenderer.changeSticker(_path);
             }
         }

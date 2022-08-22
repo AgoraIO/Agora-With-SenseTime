@@ -27,7 +27,7 @@ There are two ways to add Agora Video SDK to the project:
 
 **The first method** will download Agora Video SDK automatically from JCenter when the project is building. Add the following line to "app/build.gradle" (which is default in the project):
 ```
-implementation 'io.agora.rtc:full-sdk:3.7.0'
+implementation 'io.agora.rtc:full-sdk:4.0.0-rc.1'
 ```
 
 **The second method** needs developers to download SDK and copy the unzipped library files to proper project folders (acquires knowledge of the project structure):
@@ -67,9 +67,9 @@ Note: Current version is aligned with SenseAR SDK 8.x version. And sample has as
 
 Developers must contact SenseTime to obtain the licence file. Change the file name as **"SenseMe.lic"** and copy the file to **"sensetime/src/main/assets/license"** folder.
 
-### 1.3 Camera Capture Framework
+### 1.3 SenseTime In Extensions Marketplace
 
-We have imported a camera capture framework library. If you are interested in source code and document of this framework, please go to [here](https://github.com/AgoraIO-Community/MediaIO-Camera) for more information.
+The SenseTime extension is available in agora extensions marketplace. If you want to integrate the sdk via SenseTime extension, you can refer to the [document](https://github.com/AgoraIO-Community/AgoraMarketPlace/blob/master/SenseTime/README.md).
 
 ## Developer Environment Requirements
 - Android Studio 3.1 or above

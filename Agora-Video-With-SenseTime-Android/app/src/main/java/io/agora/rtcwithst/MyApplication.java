@@ -1,26 +1,22 @@
 package io.agora.rtcwithst;
 
-import static android.content.ContentValues.TAG;
 
 import android.app.Application;
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import io.agora.capture.video.camera.CameraVideoManager;
-import io.agora.rtc.RtcEngine;
+import io.agora.rtc2.RtcEngine;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 
 public class MyApplication extends Application {
-    private CameraVideoManager mVideoManager;
     private RtcEngine mRtcEngine;
     private RtcEngineEventHandlerProxy mRtcEventHandler;
+    private PreprocessorSenseTime preprocessorSenseTime;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initRtcEngine();
-        initVideoCapture();
     }
 
     private void initRtcEngine() {
@@ -33,21 +29,20 @@ public class MyApplication extends Application {
         try {
             mRtcEngine = RtcEngine.create(this, appId, mRtcEventHandler);
             mRtcEngine.enableVideo();
-            mRtcEngine.setChannelProfile(io.agora.rtc.Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
+            preprocessorSenseTime = new PreprocessorSenseTime(this);
+            mRtcEngine.registerVideoFrameObserver(preprocessorSenseTime);
+            mRtcEngine.setChannelProfile(io.agora.rtc2.Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
         } catch (Exception e) {
             throw new RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
         }
     }
 
-    private void initVideoCapture() {
-        Context application = getApplicationContext();
-        mVideoManager = CameraVideoManager.create(application,
-                new PreprocessorSenseTime(application));
-        Log.i(TAG, mVideoManager.toString());
-    }
-
     public RtcEngine rtcEngine() {
         return mRtcEngine;
+    }
+
+    public PreprocessorSenseTime preProcessor() {
+        return preprocessorSenseTime;
     }
 
     public void addRtcHandler(RtcEngineEventHandler handler) {
@@ -58,7 +53,4 @@ public class MyApplication extends Application {
         mRtcEventHandler.removeEventHandler(handler);
     }
 
-    public CameraVideoManager videoManager() {
-        return mVideoManager;
-    }
 }

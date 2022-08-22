@@ -6,10 +6,10 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import io.agora.capture.video.camera.CameraVideoManager;
-import io.agora.rtc.RtcEngine;
+import io.agora.rtc2.RtcEngine;
 import io.agora.rtcwithst.MyApplication;
 import io.agora.rtcwithst.RtcEngineEventHandler;
+import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 
 public abstract class RtcBasedActivity extends AppCompatActivity implements RtcEngineEventHandler {
     @Override
@@ -39,8 +39,8 @@ public abstract class RtcBasedActivity extends AppCompatActivity implements RtcE
         return application().rtcEngine();
     }
 
-    protected final CameraVideoManager videoManager() {
-        return application().videoManager();
+    protected PreprocessorSenseTime preProcessor() {
+        return application().preProcessor();
     }
 
     private void addRtcHandler(RtcEngineEventHandler handler) {
