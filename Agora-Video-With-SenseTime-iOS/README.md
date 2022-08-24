@@ -23,7 +23,7 @@ There are two ways to add Agora Video SDK to the project:
 
 **The first method** will download Agora Video SDK automatically from Podfile
 ```
-  pod 'AgoraRtcEngine_iOS', '~> 3.7.0'
+  pod 'AgoraRtcEngine_iOS', '~> 4.0.0-rc.1'
 ```
 
 # SenseTime
@@ -47,7 +47,7 @@ Other soureces all in the remoteSourcesLib files. Copy libraries to **"SenseMe/r
 ```
 
 ## Connect Us
-
+- If you want to use plug-in integration, see [cloud market](https://docs.agora.io/cn/extension_customer/quickstart_sensetime?platform=iOS)
 - You can find full Agora API document at [Document Center](https://docs.agora.io/en/)
 - You can file bugs about this demo at [issue](https://github.com/AgoraIO/Agora-With-SenseTime/issues)
 
