@@ -118,8 +118,7 @@ public class YUVUtils {
         byte[] bytes = baos.toByteArray();
         try {
             baos.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -183,6 +182,35 @@ public class YUVUtils {
 
         return out;
     }
+
+
+    public static byte[] toWrappedNV21(ByteBuffer bufferY,
+                                       ByteBuffer bufferU,
+                                       ByteBuffer bufferV,
+                                       int width,
+                                       int height) {
+        int chromaWidth = (width + 1) / 2;
+        int chromaHeight = (height + 1) / 2;
+        int lengthY = width * height;
+        int lengthU = chromaWidth * chromaHeight;
+        int lengthV = lengthU;
+
+
+        int size = lengthY + lengthU + lengthV;
+
+        byte[] out = new byte[size];
+        bufferY.get(out, 0, lengthY);
+
+        for (int i = 0; i < chromaWidth * chromaHeight; i++) {
+            int j = i / chromaWidth;
+            int k = i % chromaWidth;
+            out[lengthY + i * 2] = bufferV.get(j * width + k);
+            out[lengthY + i * 2 + 1] = bufferU.get(j * width + k);
+        }
+
+        return out;
+    }
+
     /**
      * I420转nv21
      */

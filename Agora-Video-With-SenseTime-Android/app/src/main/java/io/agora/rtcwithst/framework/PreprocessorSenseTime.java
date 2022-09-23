@@ -3,6 +3,7 @@ package io.agora.rtcwithst.framework;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.hardware.Camera;
+import android.util.Log;
 
 import com.sensetime.effects.STEffectListener;
 import com.sensetime.effects.STRenderer;
@@ -11,6 +12,7 @@ import com.sensetime.stmobile.STCommonNative;
 
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.util.Locale;
 
 import io.agora.base.TextureBufferHelper;
 import io.agora.base.VideoFrame;
@@ -19,6 +21,7 @@ import io.agora.rtcwithst.utils.YUVUtils;
 
 public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListener {
     private static final String TAG = PreprocessorSenseTime.class.getSimpleName();
+    private static final boolean DEBUG = false;
 
     private STRenderer mSTRenderer;
     private final TextureBufferHelper mTextureBufferHelper;
@@ -34,6 +37,12 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         });
     }
 
+    private void log(String format, Object... args) {
+        if (DEBUG) {
+            Log.d(TAG, String.format(Locale.US, format, args));
+        }
+    }
+
     public void switchCamera() {
         if (cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
             cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
@@ -44,18 +53,28 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
 
     @Override
     public boolean onCaptureVideoFrame(VideoFrame videoFrame) {
+        log("video frame transform >> start... ");
+
+        long startTime = System.currentTimeMillis();
         VideoFrame.Buffer buffer = videoFrame.getBuffer();
 
         VideoFrame.I420Buffer i420Buffer = buffer.toI420();
         int width = i420Buffer.getWidth();
         int height = i420Buffer.getHeight();
 
+        log("video frame transform >> toI420 consume: " + (System.currentTimeMillis() - startTime) + "ms");
+
         ByteBuffer bufferY = i420Buffer.getDataY();
         ByteBuffer bufferU = i420Buffer.getDataU();
         ByteBuffer bufferV = i420Buffer.getDataV();
 
-        byte[] i420 = YUVUtils.toWrappedI420(bufferY, bufferU, bufferV, width, height);
-        byte[] nv21 = YUVUtils.I420ToNV21(i420, width, height);
+        //byte[] i420 = YUVUtils.toWrappedI420(bufferY, bufferU, bufferV, width, height);
+        //log("video frame transform >> toWrappedI420 consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        //byte[] nv21 = YUVUtils.I420ToNV21(i420, width, height);
+        //Log.d("video frame transform >> I420ToNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
+
+        byte[] nv21 = YUVUtils.toWrappedNV21(bufferY, bufferU, bufferV, width, height);
+        log("video frame transform >> toWrappedNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
 
         Integer textureId = mTextureBufferHelper.invoke(
                 () -> mSTRenderer.preProcess(
@@ -67,9 +86,14 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
                         nv21,
                         STCommonNative.ST_PIX_FMT_NV21
                 ));
+        log("video frame transform >> preProcess consume: " + (System.currentTimeMillis() - startTime) + "ms");
+
         Matrix transformMatrix = new Matrix();
         VideoFrame.TextureBuffer textureBuffer = mTextureBufferHelper.wrapTextureBuffer(videoFrame.getRotatedWidth(), videoFrame.getRotatedHeight(), VideoFrame.TextureBuffer.Type.RGB, textureId, transformMatrix);
         videoFrame.replaceBuffer(textureBuffer, 0, videoFrame.getTimestampNs());
+
+        log("video frame transform >> total consume: " + (System.currentTimeMillis() - startTime) + "ms");
+
         return true;
     }
 

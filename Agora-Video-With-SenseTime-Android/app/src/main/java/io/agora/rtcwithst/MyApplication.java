@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import io.agora.rtc2.RtcEngine;
+import io.agora.rtc2.video.CameraCapturerConfiguration;
 import io.agora.rtcwithst.framework.PreprocessorSenseTime;
 
 public class MyApplication extends Application {
@@ -29,6 +30,11 @@ public class MyApplication extends Application {
         try {
             mRtcEngine = RtcEngine.create(this, appId, mRtcEventHandler);
             mRtcEngine.enableVideo();
+            mRtcEngine.setCameraCapturerConfiguration(new CameraCapturerConfiguration(
+                    new CameraCapturerConfiguration.CaptureFormat(
+                            720, 1280, 24
+                    )
+            ));
             preprocessorSenseTime = new PreprocessorSenseTime(this);
             mRtcEngine.registerVideoFrameObserver(preprocessorSenseTime);
             mRtcEngine.setChannelProfile(io.agora.rtc2.Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
