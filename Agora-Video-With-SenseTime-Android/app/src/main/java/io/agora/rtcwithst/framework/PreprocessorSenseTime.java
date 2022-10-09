@@ -16,12 +16,12 @@ import java.util.Locale;
 
 import io.agora.base.TextureBufferHelper;
 import io.agora.base.VideoFrame;
+import io.agora.base.internal.video.YuvHelper;
 import io.agora.rtc2.video.IVideoFrameObserver;
-import io.agora.rtcwithst.utils.YUVUtils;
 
 public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListener {
     private static final String TAG = PreprocessorSenseTime.class.getSimpleName();
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     private STRenderer mSTRenderer;
     private final TextureBufferHelper mTextureBufferHelper;
@@ -51,6 +51,9 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         }
     }
 
+    private ByteBuffer videoByteBuffer;
+    private byte[] videoNV21;
+
     @Override
     public boolean onCaptureVideoFrame(VideoFrame videoFrame) {
         log("video frame transform >> start... ");
@@ -71,9 +74,24 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         //byte[] i420 = YUVUtils.toWrappedI420(bufferY, bufferU, bufferV, width, height);
         //log("video frame transform >> toWrappedI420 consume: " + (System.currentTimeMillis() - startTime) + "ms");
         //byte[] nv21 = YUVUtils.I420ToNV21(i420, width, height);
-        //Log.d("video frame transform >> I420ToNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        //log("video frame transform >> I420ToNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
 
-        byte[] nv21 = YUVUtils.toWrappedNV21(bufferY, bufferU, bufferV, width, height);
+        // byte[] nv21 = YUVUtils.toWrappedNV21(bufferY, bufferU, bufferV, width, height);
+
+        int chromaWidth = (width + 1) / 2;
+        int chromaHeight = (height + 1) / 2;
+        int minSize = width * height + chromaWidth * chromaHeight * 2;
+        if(videoByteBuffer == null || videoByteBuffer.capacity() != minSize ){
+            videoByteBuffer = ByteBuffer.allocateDirect(minSize);
+            videoNV21 = new byte[minSize];
+        }
+        YuvHelper.I420ToNV12(bufferY, i420Buffer.getStrideY(),
+                bufferV, i420Buffer.getStrideV(),
+                bufferU, i420Buffer.getStrideU(),
+                videoByteBuffer,
+                width, height);
+        videoByteBuffer.position(0);
+        videoByteBuffer.get(videoNV21);
         log("video frame transform >> toWrappedNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
 
         Integer textureId = mTextureBufferHelper.invoke(
@@ -83,7 +101,7 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
                         height,
                         videoFrame.getRotation(),
                         cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT,
-                        nv21,
+                        videoNV21,
                         STCommonNative.ST_PIX_FMT_NV21
                 ));
         log("video frame transform >> preProcess consume: " + (System.currentTimeMillis() - startTime) + "ms");
