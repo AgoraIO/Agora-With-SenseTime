@@ -1,4 +1,0 @@
-framework module AgoraRtcCryptoLoader {
-  umbrella header "AgoraRtcCryptoLoader.h"
-  export *
-}
