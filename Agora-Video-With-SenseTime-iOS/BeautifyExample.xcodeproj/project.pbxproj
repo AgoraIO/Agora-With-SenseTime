@@ -18,15 +18,15 @@
 		2D8ABD2F2511B63200D28745 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8ABD2E2511B63200D28745 /* MainViewController.m */; };
 		5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
 		610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */; };
+		844EE19828F6804B00FB1BBB /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 844EE19328F6804B00FB1BBB /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */; };
+		844EE19928F6804B00FB1BBB /* M_SenseME_DogFace_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 844EE19428F6804B00FB1BBB /* M_SenseME_DogFace_2.0.0.model */; };
+		844EE19A28F6804B00FB1BBB /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 844EE19528F6804B00FB1BBB /* M_SenseME_Attribute_1.0.1.model */; };
+		844EE19B28F6804B00FB1BBB /* M_SenseME_CatFace_3.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 844EE19628F6804B00FB1BBB /* M_SenseME_CatFace_3.0.0.model */; };
+		844EE19C28F6804B00FB1BBB /* model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 844EE19728F6804B00FB1BBB /* model.bundle */; };
+		844EE1B128F6878900FB1BBB /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844EE1AD28F6878900FB1BBB /* libSenseArSourceService.a */; };
+		844EE1BA28F68A9100FB1BBB /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 844EE1B928F68A9100FB1BBB /* SENSEME.lic */; };
 		8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */; };
 		E777B352286C04D200C8A0E7 /* VideoProcessingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B350286C04D100C8A0E7 /* VideoProcessingManager.m */; };
-		E777B3AD286C282A00C8A0E7 /* libSenseArSourceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */; };
-		E777B3B1286C29EA00C8A0E7 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */; };
-		E777B3C2286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */; };
-		E777B3C3286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */; };
-		E777B3C4286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */; };
-		E777B3C5286C2A0600C8A0E7 /* model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E777B3C0286C2A0600C8A0E7 /* model.bundle */; };
-		E777B3C6286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */; };
 		E777B3E2286C2A9C00C8A0E7 /* STShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E777B3CA286C2A9C00C8A0E7 /* STShaders.metal */; };
 		E777B3E3286C2A9C00C8A0E7 /* EFMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3CC286C2A9C00C8A0E7 /* EFMotionManager.m */; };
 		E777B3E4286C2A9C00C8A0E7 /* EffectsAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D2286C2A9C00C8A0E7 /* EffectsAudioPlayer.m */; };
@@ -38,6 +38,7 @@
 		E777B3EA286C2A9C00C8A0E7 /* EffectsProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3D9286C2A9C00C8A0E7 /* EffectsProcess.m */; };
 		E777B3EB286C2A9C00C8A0E7 /* EffectsLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3DB286C2A9C00C8A0E7 /* EffectsLicense.m */; };
 		E777B3EC286C2A9C00C8A0E7 /* EffectsCommonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E777B3E0286C2A9C00C8A0E7 /* EffectsCommonObject.m */; };
+		E7A49D2D2907E65900F06DD4 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A49D2C2907E65900F06DD4 /* libst_mobile.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,31 +59,31 @@
 		2D8ABD2E2511B63200D28745 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3D32F315DAB48F1AE0AFB5C4 /* Pods_BeautifyExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeautifyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AE3D698E3E43CFA1B47A16 /* Pods-BeautifyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.debug.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.debug.xcconfig"; sourceTree = "<group>"; };
+		844EE19328F6804B00FB1BBB /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf"; sourceTree = "<group>"; };
+		844EE19428F6804B00FB1BBB /* M_SenseME_DogFace_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_DogFace_2.0.0.model; sourceTree = "<group>"; };
+		844EE19528F6804B00FB1BBB /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
+		844EE19628F6804B00FB1BBB /* M_SenseME_CatFace_3.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_3.0.0.model; sourceTree = "<group>"; };
+		844EE19728F6804B00FB1BBB /* model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = model.bundle; sourceTree = "<group>"; };
+		844EE19D28F6806600FB1BBB /* st_mobile_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_effect.h; sourceTree = "<group>"; };
+		844EE19E28F6806600FB1BBB /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
+		844EE19F28F6806600FB1BBB /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
+		844EE1A028F6806600FB1BBB /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
+		844EE1A128F6806600FB1BBB /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
+		844EE1A228F6806700FB1BBB /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
+		844EE1A328F6806700FB1BBB /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
+		844EE1A428F6806700FB1BBB /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
+		844EE1A528F6806700FB1BBB /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
+		844EE1AD28F6878900FB1BBB /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSenseArSourceService.a; sourceTree = "<group>"; };
+		844EE1B328F6883500FB1BBB /* SenseArMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterial.h; sourceTree = "<group>"; };
+		844EE1B428F6883500FB1BBB /* SenseArSourceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArSourceService.h; sourceTree = "<group>"; };
+		844EE1B528F6883500FB1BBB /* SenseArMaterialAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialAction.h; sourceTree = "<group>"; };
+		844EE1B628F6883500FB1BBB /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
+		844EE1B728F6883500FB1BBB /* SenseArMaterialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialService.h; sourceTree = "<group>"; };
+		844EE1B928F68A9100FB1BBB /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		8B0610BC260B0CE7004795A4 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		AC523AADA896ACCF33329856 /* Pods-BeautifyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifyExample.release.xcconfig"; path = "Target Support Files/Pods-BeautifyExample/Pods-BeautifyExample.release.xcconfig"; sourceTree = "<group>"; };
 		E777B34F286C04D100C8A0E7 /* VideoProcessingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProcessingManager.h; sourceTree = "<group>"; };
 		E777B350286C04D100C8A0E7 /* VideoProcessingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProcessingManager.m; sourceTree = "<group>"; };
-		E777B39C286C282A00C8A0E7 /* SenseArMaterialAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialAction.h; sourceTree = "<group>"; };
-		E777B39D286C282A00C8A0E7 /* SenseArMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterial.h; sourceTree = "<group>"; };
-		E777B39E286C282A00C8A0E7 /* SenseArSourceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArSourceService.h; sourceTree = "<group>"; };
-		E777B39F286C282A00C8A0E7 /* SenseArMaterialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialService.h; sourceTree = "<group>"; };
-		E777B3A0286C282A00C8A0E7 /* SenseArMaterialGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenseArMaterialGroup.h; sourceTree = "<group>"; };
-		E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSenseArSourceService.a; sourceTree = "<group>"; };
-		E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
-		E777B3B3286C2A0000C8A0E7 /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
-		E777B3B4286C2A0000C8A0E7 /* st_mobile_animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_animal.h; sourceTree = "<group>"; };
-		E777B3B5286C2A0000C8A0E7 /* st_mobile_human_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_human_action.h; sourceTree = "<group>"; };
-		E777B3B6286C2A0000C8A0E7 /* st_mobile_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_object.h; sourceTree = "<group>"; };
-		E777B3B7286C2A0000C8A0E7 /* st_mobile_face_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_face_attribute.h; sourceTree = "<group>"; };
-		E777B3B8286C2A0000C8A0E7 /* st_mobile_license.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_license.h; sourceTree = "<group>"; };
-		E777B3B9286C2A0000C8A0E7 /* st_mobile_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_effect.h; sourceTree = "<group>"; };
-		E777B3BA286C2A0000C8A0E7 /* st_mobile_color_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_color_convert.h; sourceTree = "<group>"; };
-		E777B3BB286C2A0000C8A0E7 /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
-		E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_CatFace_3.0.0.model; sourceTree = "<group>"; };
-		E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_DogFace_2.0.0.model; sourceTree = "<group>"; };
-		E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf"; sourceTree = "<group>"; };
-		E777B3C0286C2A0600C8A0E7 /* model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = model.bundle; sourceTree = "<group>"; };
-		E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Attribute_1.0.1.model; sourceTree = "<group>"; };
 		E777B3C9286C2A9C00C8A0E7 /* STShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShaderTypes.h; sourceTree = "<group>"; };
 		E777B3CA286C2A9C00C8A0E7 /* STShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = STShaders.metal; sourceTree = "<group>"; };
 		E777B3CB286C2A9C00C8A0E7 /* EFMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFMotionManager.h; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		E777B3DF286C2A9C00C8A0E7 /* EffectsAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsAnimal.h; sourceTree = "<group>"; };
 		E777B3E0286C2A9C00C8A0E7 /* EffectsCommonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsCommonObject.m; sourceTree = "<group>"; };
 		E777B3E1286C2A9C00C8A0E7 /* EffectsProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsProcess.h; sourceTree = "<group>"; };
+		E7A49D2C2907E65900F06DD4 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +116,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0610BD260B0CE7004795A4 /* libz.1.1.3.tbd in Frameworks */,
-				E777B3AD286C282A00C8A0E7 /* libSenseArSourceService.a in Frameworks */,
 				610C64E814134B04440D425B /* Pods_BeautifyExample.framework in Frameworks */,
-				E777B3B1286C29EA00C8A0E7 /* libst_mobile.a in Frameworks */,
+				844EE1B128F6878900FB1BBB /* libSenseArSourceService.a in Frameworks */,
+				E7A49D2D2907E65900F06DD4 /* libst_mobile.a in Frameworks */,
 				5F66A41254472834DB1BBB0E /* Pods_BeautifyExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,13 +202,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		844EE1A628F6808400FB1BBB /* ios_os-universal */ = {
+			isa = PBXGroup;
+			children = (
+				E7A49D2C2907E65900F06DD4 /* libst_mobile.a */,
+			);
+			path = "ios_os-universal";
+			sourceTree = "<group>";
+		};
+		844EE1A928F6878900FB1BBB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				844EE1AC28F6878900FB1BBB /* ios_os */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		844EE1AC28F6878900FB1BBB /* ios_os */ = {
+			isa = PBXGroup;
+			children = (
+				844EE1AD28F6878900FB1BBB /* libSenseArSourceService.a */,
+			);
+			path = ios_os;
+			sourceTree = "<group>";
+		};
+		844EE1B828F68A9100FB1BBB /* license */ = {
+			isa = PBXGroup;
+			children = (
+				844EE1B928F68A9100FB1BBB /* SENSEME.lic */,
+			);
+			path = license;
+			sourceTree = "<group>";
+		};
 		E777B399286C282A00C8A0E7 /* SenseMe */ = {
 			isa = PBXGroup;
 			children = (
 				E777B3C7286C2A9C00C8A0E7 /* EffectsUtils */,
 				E777B3CD286C2A9C00C8A0E7 /* EFRender */,
 				E777B39A286C282A00C8A0E7 /* remoteSourcesLib */,
-				E777B3A8286C282A00C8A0E7 /* Language */,
 				E777B3A9286C282A00C8A0E7 /* st_mobile_sdk */,
 			);
 			path = SenseMe;
@@ -215,8 +248,8 @@
 		E777B39A286C282A00C8A0E7 /* remoteSourcesLib */ = {
 			isa = PBXGroup;
 			children = (
+				844EE1A928F6878900FB1BBB /* lib */,
 				E777B39B286C282A00C8A0E7 /* include */,
-				E777B3A1286C282A00C8A0E7 /* lib */,
 			);
 			path = remoteSourcesLib;
 			sourceTree = "<group>";
@@ -224,68 +257,38 @@
 		E777B39B286C282A00C8A0E7 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				E777B39C286C282A00C8A0E7 /* SenseArMaterialAction.h */,
-				E777B39D286C282A00C8A0E7 /* SenseArMaterial.h */,
-				E777B39E286C282A00C8A0E7 /* SenseArSourceService.h */,
-				E777B39F286C282A00C8A0E7 /* SenseArMaterialService.h */,
-				E777B3A0286C282A00C8A0E7 /* SenseArMaterialGroup.h */,
+				844EE1B328F6883500FB1BBB /* SenseArMaterial.h */,
+				844EE1B528F6883500FB1BBB /* SenseArMaterialAction.h */,
+				844EE1B628F6883500FB1BBB /* SenseArMaterialGroup.h */,
+				844EE1B728F6883500FB1BBB /* SenseArMaterialService.h */,
+				844EE1B428F6883500FB1BBB /* SenseArSourceService.h */,
 			);
 			path = include;
-			sourceTree = "<group>";
-		};
-		E777B3A1286C282A00C8A0E7 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				E777B3A4286C282A00C8A0E7 /* ios_os */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		E777B3A4286C282A00C8A0E7 /* ios_os */ = {
-			isa = PBXGroup;
-			children = (
-				E777B3A5286C282A00C8A0E7 /* libSenseArSourceService.a */,
-			);
-			path = ios_os;
-			sourceTree = "<group>";
-		};
-		E777B3A8286C282A00C8A0E7 /* Language */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Language;
 			sourceTree = "<group>";
 		};
 		E777B3A9286C282A00C8A0E7 /* st_mobile_sdk */ = {
 			isa = PBXGroup;
 			children = (
+				844EE1B828F68A9100FB1BBB /* license */,
+				844EE1A628F6808400FB1BBB /* ios_os-universal */,
 				E777B3BC286C2A0600C8A0E7 /* models */,
 				E777B3B2286C2A0000C8A0E7 /* include */,
-				E777B3AF286C29EA00C8A0E7 /* ios_os-universal */,
 			);
 			path = st_mobile_sdk;
-			sourceTree = "<group>";
-		};
-		E777B3AF286C29EA00C8A0E7 /* ios_os-universal */ = {
-			isa = PBXGroup;
-			children = (
-				E777B3B0286C29EA00C8A0E7 /* libst_mobile.a */,
-			);
-			path = "ios_os-universal";
 			sourceTree = "<group>";
 		};
 		E777B3B2286C2A0000C8A0E7 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				E777B3B3286C2A0000C8A0E7 /* st_mobile_common.h */,
-				E777B3B4286C2A0000C8A0E7 /* st_mobile_animal.h */,
-				E777B3B5286C2A0000C8A0E7 /* st_mobile_human_action.h */,
-				E777B3B6286C2A0000C8A0E7 /* st_mobile_object.h */,
-				E777B3B7286C2A0000C8A0E7 /* st_mobile_face_attribute.h */,
-				E777B3B8286C2A0000C8A0E7 /* st_mobile_license.h */,
-				E777B3B9286C2A0000C8A0E7 /* st_mobile_effect.h */,
-				E777B3BA286C2A0000C8A0E7 /* st_mobile_color_convert.h */,
-				E777B3BB286C2A0000C8A0E7 /* st_mobile_avatar.h */,
+				844EE1A028F6806600FB1BBB /* st_mobile_animal.h */,
+				844EE19E28F6806600FB1BBB /* st_mobile_avatar.h */,
+				844EE1A128F6806600FB1BBB /* st_mobile_color_convert.h */,
+				844EE19F28F6806600FB1BBB /* st_mobile_common.h */,
+				844EE19D28F6806600FB1BBB /* st_mobile_effect.h */,
+				844EE1A328F6806700FB1BBB /* st_mobile_face_attribute.h */,
+				844EE1A428F6806700FB1BBB /* st_mobile_human_action.h */,
+				844EE1A528F6806700FB1BBB /* st_mobile_license.h */,
+				844EE1A228F6806700FB1BBB /* st_mobile_object.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -293,11 +296,11 @@
 		E777B3BC286C2A0600C8A0E7 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				E777B3BD286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model */,
-				E777B3BE286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model */,
-				E777B3BF286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */,
-				E777B3C0286C2A0600C8A0E7 /* model.bundle */,
-				E777B3C1286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model */,
+				844EE19528F6804B00FB1BBB /* M_SenseME_Attribute_1.0.1.model */,
+				844EE19628F6804B00FB1BBB /* M_SenseME_CatFace_3.0.0.model */,
+				844EE19428F6804B00FB1BBB /* M_SenseME_DogFace_2.0.0.model */,
+				844EE19728F6804B00FB1BBB /* model.bundle */,
+				844EE19328F6804B00FB1BBB /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -416,14 +419,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				09C6667224D7BC8B001D7AE2 /* LaunchScreen.storyboard in Resources */,
-				E777B3C6286C2A0600C8A0E7 /* M_SenseME_Attribute_1.0.1.model in Resources */,
 				09C6666F24D7BC8B001D7AE2 /* Assets.xcassets in Resources */,
+				844EE19828F6804B00FB1BBB /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */,
 				09C6666D24D7BC89001D7AE2 /* Main.storyboard in Resources */,
-				E777B3C4286C2A0600C8A0E7 /* SenseAR_v8.8.0(Effects)_Model_Usage_Instructions的.pdf in Resources */,
-				E777B3C2286C2A0600C8A0E7 /* M_SenseME_CatFace_3.0.0.model in Resources */,
-				E777B3C5286C2A0600C8A0E7 /* model.bundle in Resources */,
-				E777B3C3286C2A0600C8A0E7 /* M_SenseME_DogFace_2.0.0.model in Resources */,
+				844EE19B28F6804B00FB1BBB /* M_SenseME_CatFace_3.0.0.model in Resources */,
 				031D6012251CD0CD000934AB /* Assets.xcassets in Resources */,
+				844EE19C28F6804B00FB1BBB /* model.bundle in Resources */,
+				844EE1BA28F68A9100FB1BBB /* SENSEME.lic in Resources */,
+				844EE19928F6804B00FB1BBB /* M_SenseME_DogFace_2.0.0.model in Resources */,
+				844EE19A28F6804B00FB1BBB /* M_SenseME_Attribute_1.0.1.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,7 +669,7 @@
 					"\"VideoToolbox\"",
 					"-lsqlite3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.rte.extension.sensetime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -709,7 +713,7 @@
 					"\"VideoToolbox\"",
 					"-lsqlite3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.rte.extension.sensetime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

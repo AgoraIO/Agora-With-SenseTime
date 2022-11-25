@@ -46,6 +46,9 @@
             [self.effectsProcess setEffectType:EFFECT_BEAUTY_RESHAPE_ENLARGE_EYE value:1.0];
             [self.effectsProcess setEffectType:EFFECT_BEAUTY_RESHAPE_ROUND_EYE value:1.0];
             [self.effectsProcess setEffectType:EFFECT_BEAUTY_PLASTIC_OPEN_CANTHUS value:1.0];
+            [self.effectsProcess setStickerWithPath:@"" callBack:^(st_result_t state, int stickerId, uint64_t action) {
+                            
+            }];
         });
     }
     return self;

@@ -13,10 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KeyCenter : NSObject
 + (NSString *)AppId;
 
-+ (NSString *)STAppId;
-
-+ (NSString *)STAppKey;
-
 @end
 
 NS_ASSUME_NONNULL_END

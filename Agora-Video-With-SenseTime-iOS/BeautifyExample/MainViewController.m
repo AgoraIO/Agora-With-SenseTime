@@ -23,9 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-//    self.view.backgroundColor = [UIColor whiteColor];
-    [self setupSenseArService];
 }
 
 /// 输入房间号开始跳转
@@ -38,26 +35,6 @@
         return;
     }
     
-}
-
-- (void)setupSenseArService {
-    SenseArMaterialService * service = [SenseArMaterialService sharedInstance];
-    [[SenseArMaterialService sharedInstance] setMaxCacheSize:800000000];
-    if ([SenseArMaterialService isAuthorized]) {
-        return;
-    }
-    [service authorizeWithAppID: KeyCenter.STAppId appKey: KeyCenter.STAppKey onSuccess:^{
-        BOOL isSuccess = [self checkLicenseFromServer];
-        NSLog(@"isSuccess == %d", isSuccess);
-    } onFailure:^(SenseArAuthorizeError iErrorCode, NSString *errMessage) {
-        NSLog(@"iErrorCode == %lu errorMEssage == %@", (unsigned long)iErrorCode, errMessage);
-    }];
-}
-
-//使用服务器拉取的license进行本地鉴权
-- (BOOL)checkLicenseFromServer {
-    NSData *licenseData = [[SenseArMaterialService sharedInstance] getLicenseData];
-    return [EffectsProcess authorizeWithLicenseData:licenseData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -36,6 +36,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self checkLicense];
+}
+
+//使用license进行本地鉴权
+- (void)checkLicense {
+    NSString *licensePath = [[NSBundle mainBundle] pathForResource:@"SENSEME" ofType:@"lic"];
+    BOOL isSuccess = [EffectsProcess authorizeWithLicensePath:licensePath];
+    if (isSuccess) {
+        [self setup];
+    } else {
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"license 验证失败" message:@"请检查license文件" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:sure];
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
+}
+
+- (void)setup {
     // Do any additional setup after loading the view.
     self.remoteView.hidden = YES;
     // 初始化 rte engine

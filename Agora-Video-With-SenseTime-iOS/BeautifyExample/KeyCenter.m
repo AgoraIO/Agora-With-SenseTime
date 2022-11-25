@@ -10,15 +10,7 @@
 
 @implementation KeyCenter
 + (NSString *)AppId {
-    return <#ENTRY YOUR APP ID#>;
-}
-
-+ (NSString *)STAppId {
-    return @"6dc0af51b69247d0af4b0a676e11b5ee";
-}
-
-+ (NSString *)STAppKey {
-    return @"e4156e4d61b040d2bcbf896c798d06e3";
+    return <# Entry Your AppID#>
 }
 
 @end
