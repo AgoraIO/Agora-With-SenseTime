@@ -93,6 +93,7 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         videoByteBuffer.position(0);
         videoByteBuffer.get(videoNV21);
         log("video frame transform >> toWrappedNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        i420Buffer.release();
 
         Integer textureId = mTextureBufferHelper.invoke(
                 () -> mSTRenderer.preProcess(
@@ -109,9 +110,9 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         Matrix transformMatrix = new Matrix();
         VideoFrame.TextureBuffer textureBuffer = mTextureBufferHelper.wrapTextureBuffer(videoFrame.getRotatedWidth(), videoFrame.getRotatedHeight(), VideoFrame.TextureBuffer.Type.RGB, textureId, transformMatrix);
         videoFrame.replaceBuffer(textureBuffer, 0, videoFrame.getTimestampNs());
-
         log("video frame transform >> total consume: " + (System.currentTimeMillis() - startTime) + "ms");
-
+        buffer.release();
+        
         return true;
     }
 
