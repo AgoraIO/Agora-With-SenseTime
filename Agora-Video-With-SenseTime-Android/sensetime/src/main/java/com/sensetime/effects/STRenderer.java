@@ -285,7 +285,8 @@ public class STRenderer {
 
         int orientationType = getCurrentOrientation(orientation);
 
-        if (mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length) {
+        boolean sizeChanged = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
+        if (sizeChanged) {
             mImageDataBuffer = new byte[cameraPixel.length];
         }
         System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
@@ -320,6 +321,10 @@ public class STRenderer {
         if (mTextureOutId == null) {
             mTextureOutId = new int[2];
             GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
+        } else if (sizeChanged) {
+            GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
+            mTextureOutId = null;
+            return -1;
         }
 
         mSTMobileColorConvertNative.setTextureSize(imageWidth, imageHeight);
@@ -395,11 +400,16 @@ public class STRenderer {
         }
 
         int orientationType = getCurrentOrientation(orientation);
+        boolean sizeChanged = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
 
         // >>>>>> 1. translate oes texture to 2d
         if (mTextureOutId == null) {
             mTextureOutId = new int[1];
             GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
+        }else if(sizeChanged){
+            GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
+            mTextureOutId = null;
+            return -1;
         }
 
         int textureId = cameraTextureId;
@@ -410,7 +420,7 @@ public class STRenderer {
 
         // >>>>>> 2. detect human point info using cameraData
         if (mIsCreateHumanActionHandleSucceeded) {
-            if (mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length) {
+            if (sizeChanged) {
                 mImageDataBuffer = new byte[cameraPixel.length];
             }
             System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
