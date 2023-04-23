@@ -1,7 +1,6 @@
 package com.sensetime.effects;
 
 import android.content.Context;
-import android.hardware.Camera;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.os.Handler;
@@ -17,7 +16,6 @@ import com.sensetime.effects.utils.FileUtils;
 import com.sensetime.effects.utils.LogUtils;
 import com.sensetime.effects.utils.STLicenseUtils;
 import com.sensetime.stmobile.STCommonNative;
-import com.sensetime.stmobile.STEffectInImage;
 import com.sensetime.stmobile.STMobileAnimalNative;
 import com.sensetime.stmobile.STMobileColorConvertNative;
 import com.sensetime.stmobile.STMobileEffectNative;
@@ -30,8 +28,8 @@ import com.sensetime.stmobile.model.STEffectRenderOutParam;
 import com.sensetime.stmobile.model.STEffectTexture;
 import com.sensetime.stmobile.model.STFaceMeshList;
 import com.sensetime.stmobile.model.STHumanAction;
-import com.sensetime.stmobile.model.STImage;
 import com.sensetime.stmobile.params.STBeautyParamsType;
+import com.sensetime.stmobile.params.STEffectBeautyGroup;
 import com.sensetime.stmobile.params.STEffectBeautyType;
 import com.sensetime.stmobile.params.STEffectParam;
 import com.sensetime.stmobile.params.STHumanActionParamsType;
@@ -40,7 +38,9 @@ import com.sensetime.stmobile.params.STRotateType;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class STRenderer {
     private static final String TAG = STRenderer.class.getSimpleName();
@@ -79,6 +79,8 @@ public class STRenderer {
 
     private String mCurrentSticker;
     private final LinkedHashMap<Integer, String> mCurrentStickerMaps = new LinkedHashMap<>();
+
+    private final LinkedHashMap<Integer, String> mCurrentStyleMaps = new LinkedHashMap<>();
 
     private final STEffectParameters mEffectParams = new STEffectParameters();
 
@@ -267,8 +269,7 @@ public class STRenderer {
     }
 
     public int preProcess(
-            int cameraId,
-            int width, int height, int orientation, boolean mirror,
+            int width, int height, int orientation,
             byte[] cameraPixel, int pixelFormat
     ) {
 
@@ -278,15 +279,8 @@ public class STRenderer {
 
         int imageWidth = width;
         int imageHeight = height;
-        if (orientation == 90 || orientation == 270) {
-            imageWidth = height;
-            imageHeight = width;
-        }
-
-        int orientationType = getCurrentOrientation(orientation);
-
-        boolean sizeChanged = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
-        if (sizeChanged) {
+        boolean imageSizeChange = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
+        if (imageSizeChange) {
             mImageDataBuffer = new byte[cameraPixel.length];
         }
         System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
@@ -298,20 +292,16 @@ public class STRenderer {
         updateHumanActionDetectConfig();
         //mSTHumanActionNative.nativeHumanActionPtrCopy();
 
-        int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
+        int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(
+                mImageDataBuffer,
                 pixelFormat,
                 mDetectConfig,
-                orientationType,
+                getCurrentOrientation(orientation),
                 width,
                 height);
         if (ret == 0) {
-            //nv21数据为横向，相对于预览方向需要旋转处理，前置摄像头还需要镜像
-            STHumanAction.nativeHumanActionRotateAndMirror(mSTHumanActionNative,
-                    mSTHumanActionNative.getNativeHumanActionResultPtr(),
-                    imageWidth, imageHeight,
-                    cameraId, orientation, orientationType);
             if (mNeedAnimalDetect) {
-                animalDetect(cameraId, orientation, mImageDataBuffer, STCommonNative.ST_PIX_FMT_NV21, orientationType, width, height, 0);
+                animalDetect(mImageDataBuffer, pixelFormat, getCurrentOrientation(orientation), width, height, 0);
             } else {
                 mAnimalFaceInfo[0] = new STAnimalFaceInfo(null, 0);
             }
@@ -321,7 +311,13 @@ public class STRenderer {
         if (mTextureOutId == null) {
             mTextureOutId = new int[2];
             GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
-        } else if (sizeChanged) {
+        }
+        else if(mTextureOutId.length < 2){
+            GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
+            mTextureOutId = null;
+            return -1;
+        }
+        else if (imageSizeChange) {
             GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
             mTextureOutId = null;
             return -1;
@@ -329,8 +325,10 @@ public class STRenderer {
 
         mSTMobileColorConvertNative.setTextureSize(imageWidth, imageHeight);
         mSTMobileColorConvertNative.nv21BufferToRgbaTexture(width, height,
-                cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT ? STRotateType.ST_CLOCKWISE_ROTATE_90 : STRotateType.ST_CLOCKWISE_ROTATE_270,
-                mirror, mImageDataBuffer, mTextureOutId[0]);
+                STRotateType.ST_CLOCKWISE_ROTATE_0,
+                false,
+                mImageDataBuffer,
+                mTextureOutId[0]);
         int textureId = mTextureOutId[0];
 
         // >>>>>> 3. render texture
@@ -349,24 +347,25 @@ public class STRenderer {
                 false,
                 null,
                 stEffectTexture,
-                new STEffectInImage(new STImage(mImageDataBuffer, pixelFormat, width, height), orientationType, mirror));
+                null
+        );
         //渲染接口输出参数
-        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, mSTHumanAction[0]);
+        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(
+                stEffectTextureOut,
+                null,
+                null);
         mSTMobileEffectNative.setParam(STEffectParam.EFFECT_PARAM_USE_INPUT_TIMESTAMP, 1);
         ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, false);
         if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {
             textureId = stEffectRenderOutParam.getTexture().getId();
         }
 
-        GLES20.glFinish();
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, false);
+        textureId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
 
-        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, true);
-        int retTexId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
+        GLES20.glFlush();
 
-
-        // Transform the image to the ideal direction according
-        // to the texture matrix.
-        return retTexId;
+        return textureId;
     }
 
 
@@ -374,19 +373,16 @@ public class STRenderer {
      * @param width           camera preview width
      * @param height          camera preview height
      * @param orientation     camera preview orientation
-     * @param mirror          camera preview mirror
      * @param cameraPixel     camera preview pixel data
      * @param pixelFormat     {@link STCommonNative#ST_PIX_FMT_NV21} and etc.
      * @param cameraTextureId camera preview texture id
-     * @param texFormat       {@link android.opengl.GLES11Ext#GL_TEXTURE_EXTERNAL_OES} or {@link GLES20#GL_TEXTURE_2D}
-     * @param texMatrix       float[16]
+     * @param texFormat       {@link GLES11Ext#GL_TEXTURE_EXTERNAL_OES} or {@link GLES20#GL_TEXTURE_2D}
      * @return new Texture ID to render
      */
     public int preProcess(
-            int cameraId,
-            int width, int height, int orientation, boolean mirror,
+            int width, int height, int orientation,
             byte[] cameraPixel, int pixelFormat,
-            int cameraTextureId, int texFormat, float[] texMatrix) {
+            int cameraTextureId, int texFormat) {
 
         if (!mAuthorized) {
             return -1;
@@ -394,19 +390,13 @@ public class STRenderer {
 
         int imageWidth = width;
         int imageHeight = height;
-        if (orientation == 90 || orientation == 270) {
-            imageWidth = height;
-            imageHeight = width;
-        }
-
-        int orientationType = getCurrentOrientation(orientation);
-        boolean sizeChanged = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
+        boolean imageSizeChange = mImageDataBuffer == null || mImageDataBuffer.length != cameraPixel.length;
 
         // >>>>>> 1. translate oes texture to 2d
         if (mTextureOutId == null) {
             mTextureOutId = new int[1];
             GlUtil.initEffectTexture(imageWidth, imageHeight, mTextureOutId, GLES20.GL_TEXTURE_2D);
-        }else if(sizeChanged){
+        } else if (imageSizeChange) {
             GLES20.glDeleteTextures(mTextureOutId.length, mTextureOutId, 0);
             mTextureOutId = null;
             return -1;
@@ -414,39 +404,32 @@ public class STRenderer {
 
         int textureId = cameraTextureId;
         if (texFormat == GLES11Ext.GL_TEXTURE_EXTERNAL_OES) {
-            mGLRenderBefore.adjustRenderSize(imageWidth, imageHeight, -1 * orientation, mirror, false);
-            textureId = mGLRenderBefore.process(cameraTextureId, texMatrix);
+            mGLRenderBefore.adjustRenderSize(imageWidth, imageHeight, 0, false, false);
+            textureId = mGLRenderBefore.process(cameraTextureId, STGLRender.IDENTITY_MATRIX);
         }
 
         // >>>>>> 2. detect human point info using cameraData
         if (mIsCreateHumanActionHandleSucceeded) {
-            if (sizeChanged) {
+            if (imageSizeChange) {
                 mImageDataBuffer = new byte[cameraPixel.length];
             }
             System.arraycopy(cameraPixel, 0, mImageDataBuffer, 0, cameraPixel.length);
 
-            long startHumanAction = System.currentTimeMillis();
-
             // prepare params
             updateHumanActionDetectConfig();
-            //mSTHumanActionNative.nativeHumanActionPtrCopy();
+            // mSTHumanActionNative.nativeHumanActionPtrCopy();
 
             int ret = mSTHumanActionNative.nativeHumanActionDetectPtr(mImageDataBuffer,
                     pixelFormat,
                     mDetectConfig,
-                    orientationType,
+                    getCurrentOrientation(orientation),
                     width,
                     height);
             //STHumanAction nativeHumanAction = mSTHumanActionNative.getNativeHumanAction();
             //LogUtils.i(TAG, "human action detect cost time: %d, ret: %d", System.currentTimeMillis() - startHumanAction, ret);
             if (ret == 0) {
-                //nv21数据为横向，相对于预览方向需要旋转处理，前置摄像头还需要镜像
-                STHumanAction.nativeHumanActionRotateAndMirror(mSTHumanActionNative,
-                        mSTHumanActionNative.getNativeHumanActionResultPtr(),
-                        imageWidth, imageHeight,
-                        cameraId, orientation, orientationType);
                 if (mNeedAnimalDetect) {
-                    animalDetect(cameraId, orientation, mImageDataBuffer, STCommonNative.ST_PIX_FMT_NV21, orientationType, width, height, 0);
+                    animalDetect(mImageDataBuffer, pixelFormat, getCurrentOrientation(orientation), width, height, 0);
                 } else {
                     mAnimalFaceInfo[0] = new STAnimalFaceInfo(null, 0);
                 }
@@ -470,30 +453,24 @@ public class STRenderer {
                 false,
                 null,
                 stEffectTexture,
-                new STEffectInImage(new STImage(mImageDataBuffer, pixelFormat, width, height), orientationType, mirror));
+                null);
         //渲染接口输出参数
-        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, mSTHumanAction[0]);
-        long mStartRenderTime = System.currentTimeMillis();
+        STEffectRenderOutParam stEffectRenderOutParam = new STEffectRenderOutParam(stEffectTextureOut, null, null);
         mSTMobileEffectNative.setParam(STEffectParam.EFFECT_PARAM_USE_INPUT_TIMESTAMP, 1);
         int ret = mSTMobileEffectNative.render(sTEffectRenderInParam, stEffectRenderOutParam, false);
-        //LogUtils.i(TAG, "render cost time total: %d", System.currentTimeMillis() - mStartRenderTime);
-        // CostTimeUtils.printAverage("CostTimeUtils",  System.currentTimeMillis() - mStartRenderTime);
         if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {
             textureId = stEffectRenderOutParam.getTexture().getId();
         }
 
-        GLES20.glFinish();
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, false);
+        textureId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
 
-        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, true);
-        int retTexId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
+        GLES20.glFlush();
 
-
-        // Transform the image to the ideal direction according
-        // to the texture matrix.
-        return retTexId;
+        return textureId;
     }
 
-    protected void animalDetect(int cameraId, int cameraOrientaion, byte[] imageData, int format, int orientation, int width, int height, int index) {
+    protected void animalDetect(byte[] imageData, int format, int orientation, int width, int height, int index) {
         if (mNeedAnimalDetect) {
             long catDetectStartTime = System.currentTimeMillis();
             int animalDetectConfig = (int) mSTMobileEffectNative.getAnimalDetectConfig();
@@ -501,33 +478,10 @@ public class STRenderer {
             STAnimalFace[] animalFaces = mStAnimalNative.animalDetect(imageData, format, orientation, animalDetectConfig, width, height);
             LogUtils.i(TAG, "animal detect cost time: %d", System.currentTimeMillis() - catDetectStartTime);
 
-            if (animalFaces != null && animalFaces.length > 0) {
-                Log.d(TAG, "animalDetect: " + animalFaces.length);
-                animalFaces = processAnimalFaceResult(width, height, animalFaces, cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT, cameraOrientaion);
-            }
-
             mAnimalFaceInfo[index] = new STAnimalFaceInfo(animalFaces, animalFaces == null ? 0 : animalFaces.length);
         } else {
             mAnimalFaceInfo[index] = new STAnimalFaceInfo(null, 0);
         }
-    }
-
-    protected STAnimalFace[] processAnimalFaceResult(int width, int height, STAnimalFace[] animalFaces, boolean isFrontCamera, int cameraOrientation) {
-        if (animalFaces == null) {
-            return null;
-        }
-        if (isFrontCamera && cameraOrientation == 90) {
-            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_90, animalFaces, animalFaces.length);
-            animalFaces = STMobileAnimalNative.animalMirror(height, animalFaces, animalFaces.length);
-        } else if (isFrontCamera && cameraOrientation == 270) {
-            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_270, animalFaces, animalFaces.length);
-            animalFaces = STMobileAnimalNative.animalMirror(height, animalFaces, animalFaces.length);
-        } else if (!isFrontCamera && cameraOrientation == 270) {
-            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_270, animalFaces, animalFaces.length);
-        } else if (!isFrontCamera && cameraOrientation == 90) {
-            animalFaces = STMobileAnimalNative.animalRotate(width, height, STRotateType.ST_CLOCKWISE_ROTATE_90, animalFaces, animalFaces.length);
-        }
-        return animalFaces;
     }
 
     public STEffectParameters getSTEffectParameters() {
@@ -620,6 +574,13 @@ public class STRenderer {
         mChangeStickerManagerHandler.sendMessage(msg);
     }
 
+    public void removeStickers(){
+        Set<Map.Entry<Integer, String>> entries = new LinkedHashSet<>(mCurrentStickerMaps.entrySet());
+        for (Map.Entry<Integer, String> entry : entries) {
+            removeSticker(entry.getKey());
+        }
+    }
+
     public void removeSticker(String path) {
         int packageId = -1;
         for (Map.Entry<Integer, String> entry : mCurrentStickerMaps.entrySet()) {
@@ -639,6 +600,23 @@ public class STRenderer {
         if (mCurrentStickerMaps != null && result == 0) {
             mCurrentStickerMaps.remove(packageId);
         }
+    }
+
+    public void cleanStyle(){
+        for (Integer packageId : mCurrentStyleMaps.keySet()) {
+            mSTMobileEffectNative.removeEffect(packageId);
+        }
+        mCurrentStyleMaps.clear();
+    }
+
+    public void setStyle(String stylePath, float filterStrength, float makeupStrength){
+        cleanStyle();
+
+        int packageId = mSTMobileEffectNative.addPackage(stylePath);
+        updateHumanActionDetectConfig();
+        setPackageBeautyGroupStrength(packageId, STEffectBeautyGroup.EFFECT_BEAUTY_GROUP_FILTER, filterStrength);
+        setPackageBeautyGroupStrength(packageId, STEffectBeautyGroup.EFFECT_BEAUTY_GROUP_MAKEUP, makeupStrength);
+        mCurrentStyleMaps.put(packageId, stylePath);
     }
 
     public void release() {

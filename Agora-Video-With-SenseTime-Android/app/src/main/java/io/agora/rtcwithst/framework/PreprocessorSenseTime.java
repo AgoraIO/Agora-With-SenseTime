@@ -3,6 +3,8 @@ package io.agora.rtcwithst.framework;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.hardware.Camera;
+import android.opengl.GLES11Ext;
+import android.opengl.GLES20;
 import android.util.Log;
 
 import com.sensetime.effects.STEffectListener;
@@ -17,6 +19,7 @@ import java.util.Locale;
 import io.agora.base.TextureBufferHelper;
 import io.agora.base.VideoFrame;
 import io.agora.base.internal.video.YuvHelper;
+import io.agora.rtc2.gl.EglBaseProvider;
 import io.agora.rtc2.video.IVideoFrameObserver;
 
 public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListener {
@@ -27,10 +30,11 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
     private final TextureBufferHelper mTextureBufferHelper;
     private Context mContext;
     private volatile int cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+    private boolean shouldMirror = false;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
-        mTextureBufferHelper = TextureBufferHelper.create("STRender", null);
+        mTextureBufferHelper = TextureBufferHelper.create("STRender", EglBaseProvider.instance().getRootEglBase().getEglBaseContext());
         mTextureBufferHelper.invoke(() -> {
             mSTRenderer = new STRenderer(context);
             return null;
@@ -81,9 +85,10 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         int chromaWidth = (width + 1) / 2;
         int chromaHeight = (height + 1) / 2;
         int minSize = width * height + chromaWidth * chromaHeight * 2;
-        if(videoByteBuffer == null || videoByteBuffer.capacity() != minSize ){
+        if (videoByteBuffer == null || videoByteBuffer.capacity() != minSize) {
             videoByteBuffer = ByteBuffer.allocateDirect(minSize);
             videoNV21 = new byte[minSize];
+            return false;
         }
         YuvHelper.I420ToNV12(bufferY, i420Buffer.getStrideY(),
                 bufferV, i420Buffer.getStrideV(),
@@ -95,24 +100,40 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
         log("video frame transform >> toWrappedNV21 consume: " + (System.currentTimeMillis() - startTime) + "ms");
         i420Buffer.release();
 
-        Integer textureId = mTextureBufferHelper.invoke(
-                () -> mSTRenderer.preProcess(
-                        cameraId,
-                        width,
-                        height,
-                        videoFrame.getRotation(),
-                        cameraId == Camera.CameraInfo.CAMERA_FACING_FRONT,
-                        videoNV21,
-                        STCommonNative.ST_PIX_FMT_NV21
-                ));
-        log("video frame transform >> preProcess consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        int textureId;
+        Matrix transformMatrix;
+        if (buffer instanceof VideoFrame.TextureBuffer) {
+            // 使用双输入接口
+            VideoFrame.TextureBuffer texBuffer = (VideoFrame.TextureBuffer) buffer;
+            textureId = mTextureBufferHelper.invoke(
+                    () -> mSTRenderer.preProcess(
+                            width,
+                            height,
+                            videoFrame.getRotation(),
+                            videoNV21,
+                            STCommonNative.ST_PIX_FMT_NV21,
+                            texBuffer.getTextureId(),
+                            texBuffer.getType() == VideoFrame.TextureBuffer.Type.OES ? GLES11Ext.GL_TEXTURE_EXTERNAL_OES : GLES20.GL_TEXTURE_2D
+                    ));
+            transformMatrix = texBuffer.getTransformMatrix();
+            log("video frame transform >> preProcess double input consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        } else {
+            textureId = mTextureBufferHelper.invoke(
+                    () -> mSTRenderer.preProcess(
+                            width,
+                            height,
+                            videoFrame.getRotation(),
+                            videoNV21,
+                            STCommonNative.ST_PIX_FMT_NV21
+                    ));
+            transformMatrix = new Matrix();
+            shouldMirror = true;
+            log("video frame transform >> preProcess single input consume: " + (System.currentTimeMillis() - startTime) + "ms");
+        }
 
-        Matrix transformMatrix = new Matrix();
-        VideoFrame.TextureBuffer textureBuffer = mTextureBufferHelper.wrapTextureBuffer(videoFrame.getRotatedWidth(), videoFrame.getRotatedHeight(), VideoFrame.TextureBuffer.Type.RGB, textureId, transformMatrix);
-        videoFrame.replaceBuffer(textureBuffer, 0, videoFrame.getTimestampNs());
+        VideoFrame.TextureBuffer textureBuffer = mTextureBufferHelper.wrapTextureBuffer(buffer.getWidth(), buffer.getHeight(), VideoFrame.TextureBuffer.Type.RGB, textureId, transformMatrix);
+        videoFrame.replaceBuffer(textureBuffer, videoFrame.getRotation(), videoFrame.getTimestampNs());
         log("video frame transform >> total consume: " + (System.currentTimeMillis() - startTime) + "ms");
-        buffer.release();
-        
         return true;
     }
 
@@ -133,7 +154,7 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
 
     @Override
     public boolean getMirrorApplied() {
-        return false;
+        return shouldMirror;
     }
 
     @Override
