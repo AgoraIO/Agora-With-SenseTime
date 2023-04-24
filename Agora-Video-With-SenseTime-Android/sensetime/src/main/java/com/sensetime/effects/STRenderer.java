@@ -359,8 +359,8 @@ public class STRenderer {
         if (ret == 0 && stEffectRenderOutParam.getTexture() != null) {
             textureId = stEffectRenderOutParam.getTexture().getId();
         }
-
-        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, false);
+        boolean isFront = orientation == 270;
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, !isFront);
         textureId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
 
         GLES20.glFlush();
@@ -462,7 +462,8 @@ public class STRenderer {
             textureId = stEffectRenderOutParam.getTexture().getId();
         }
 
-        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, false);
+        boolean isFront = orientation == 270;
+        mGLRenderAfter.adjustRenderSize(imageWidth, imageHeight, 0, false, isFront);
         textureId = mGLRenderAfter.process(textureId, STGLRender.IDENTITY_MATRIX);
 
         GLES20.glFlush();

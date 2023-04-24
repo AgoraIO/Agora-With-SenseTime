@@ -30,7 +30,6 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
     private final TextureBufferHelper mTextureBufferHelper;
     private Context mContext;
     private volatile int cameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
-    private boolean shouldMirror = false;
 
     public PreprocessorSenseTime(Context context) {
         mContext = context;
@@ -117,7 +116,8 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
                     ));
             transformMatrix = texBuffer.getTransformMatrix();
             log("video frame transform >> preProcess double input consume: " + (System.currentTimeMillis() - startTime) + "ms");
-        } else {
+        }
+        else {
             textureId = mTextureBufferHelper.invoke(
                     () -> mSTRenderer.preProcess(
                             width,
@@ -127,7 +127,6 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
                             STCommonNative.ST_PIX_FMT_NV21
                     ));
             transformMatrix = new Matrix();
-            shouldMirror = true;
             log("video frame transform >> preProcess single input consume: " + (System.currentTimeMillis() - startTime) + "ms");
         }
 
@@ -154,7 +153,7 @@ public class PreprocessorSenseTime implements IVideoFrameObserver, STEffectListe
 
     @Override
     public boolean getMirrorApplied() {
-        return shouldMirror;
+        return false;
     }
 
     @Override

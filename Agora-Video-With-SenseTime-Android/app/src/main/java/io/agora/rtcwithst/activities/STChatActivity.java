@@ -166,7 +166,7 @@ public class STChatActivity extends RtcBasedActivity {
     private void initCamera() {
         // Can attach other consumers here,
         // For example, rtc consumer or rtmp module
-        rtcEngine().setupLocalVideo(new VideoCanvas(mVideoSurface, Constants.RENDER_MODE_HIDDEN));
+        rtcEngine().setupLocalVideo(new VideoCanvas(mVideoSurface, Constants.RENDER_MODE_HIDDEN, Constants.VIDEO_MIRROR_MODE_DISABLED, 0));
         rtcEngine().startPreview();
         updateEffectOptionPanel();
     }
@@ -206,6 +206,11 @@ public class STChatActivity extends RtcBasedActivity {
             runOnUiThread(() -> {
                 mRemoteUid = uid;
                 setRemoteVideoView(uid);
+            });
+        }else{
+            runOnUiThread(() -> {
+                mRemoteUid = -1;
+                mRemoteViewContainer.removeAllViews();
             });
         }
     }

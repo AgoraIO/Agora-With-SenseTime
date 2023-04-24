@@ -20,36 +20,34 @@ public class STGLRender {
     }
 
     public void adjustRenderSize(int width, int height, int rotation, boolean flipH, boolean flipV) {
-        boolean resize = mRenderProgram.resize(width, height);
-        if (resize) {
-            float[] tmp = new float[16];
-            Matrix.setIdentityM(tmp, 0);
+        mRenderProgram.resize(width, height);
+        float[] tmp = new float[16];
+        Matrix.setIdentityM(tmp, 0);
 
-            boolean _flipH = flipH;
-            boolean _flipV = flipV;
-            if(rotation % 180 != 0){
-                _flipH = flipV;
-                _flipV = flipH;
-            }
-
-            if (_flipH) {
-                Matrix.rotateM(tmp, 0, tmp, 0, 180, 0, 1f, 0);
-            }
-            if (_flipV) {
-                Matrix.rotateM(tmp, 0, tmp, 0, 180, 1f, 0f, 0);
-            }
-
-            float _rotation = rotation;
-            if (_rotation != 0) {
-                if(_flipH != _flipV){
-                    _rotation *= -1;
-                }
-                Matrix.rotateM(tmp, 0, tmp, 0, _rotation, 0, 0, 1);
-            }
-
-            Matrix.setIdentityM(renderMVPMatrix, 0);
-            Matrix.multiplyMM(renderMVPMatrix, 0, tmp, 0, renderMVPMatrix, 0);
+        boolean _flipH = flipH;
+        boolean _flipV = flipV;
+        if(rotation % 180 != 0){
+            _flipH = flipV;
+            _flipV = flipH;
         }
+
+        if (_flipH) {
+            Matrix.rotateM(tmp, 0, tmp, 0, 180, 0, 1f, 0);
+        }
+        if (_flipV) {
+            Matrix.rotateM(tmp, 0, tmp, 0, 180, 1f, 0f, 0);
+        }
+
+        float _rotation = rotation;
+        if (_rotation != 0) {
+            if(_flipH != _flipV){
+                _rotation *= -1;
+            }
+            Matrix.rotateM(tmp, 0, tmp, 0, _rotation, 0, 0, 1);
+        }
+
+        Matrix.setIdentityM(renderMVPMatrix, 0);
+        Matrix.multiplyMM(renderMVPMatrix, 0, tmp, 0, renderMVPMatrix, 0);
     }
 
     public int process(int textureId, float[] texMatrix) {
